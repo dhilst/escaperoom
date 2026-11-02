@@ -1,5 +1,5 @@
 import { enUS } from "../i18n/locales/en-US";
-import { phraseKey } from "./parser";
+import { buildVocabulary, parse, vocabularyEntries } from "./parser";
 import { MAX_HINTS, type GameDefinition, type ParserLanguage, type RoomDefinition } from "./types";
 
 export class RoomValidationError extends Error {
@@ -17,7 +17,33 @@ const isFlagValue = (v: unknown) => ["boolean", "string", "number"].includes(typ
 const isStrArray = (v: unknown): v is string[] => Array.isArray(v) && v.every(isStr);
 
 const CAMERAS = ["A", "C"];
-const VERBS = ["inspect", "open", "use"];
+
+/**
+ * Every word must mean one thing in the room (global words included), and
+ * every rule's phrase must be typeable: writing its words by name must parse
+ * back to exactly that phrase.
+ */
+function checkVocabulary(room: RoomDefinition, language: ParserLanguage, err: (msg: string) => void) {
+  const owner = new Map<string, [string, string]>();
+  for (const [key, id, source] of vocabularyEntries(room, language)) {
+    const before = owner.get(key);
+    if (before && before[0] !== id) err(`"${key}" means both ${before[1]} and ${source}`);
+    else if (!before) owner.set(key, [id, source]);
+  }
+
+  const globalName = (w: string) => Object.entries(language.words).find(([, id]) => id === w)?.[0];
+  const spoken = (w: string) =>
+    room.objects[w]?.name ?? room.items[w]?.name ?? room.verbs?.[w]?.name ?? globalName(w) ?? w;
+  const vocabulary = buildVocabulary(room, language);
+  room.interactions.forEach((rule, i) => {
+    const text = rule.say.map(spoken).join(" ");
+    const parsed = parse(text, vocabulary, language);
+    const heard = parsed.ok ? parsed.command.words : [];
+    if (heard.join("\u0000") !== rule.say.join("\u0000")) {
+      err(`interactions[${i}].say ${JSON.stringify(rule.say)} can't be typed: "${text}" is read as ${JSON.stringify(heard)}`);
+    }
+  });
+}
 
 /**
  * Check untrusted JSON against the room schema and cross-references.
@@ -77,25 +103,12 @@ export function validateRoom(data: unknown, language: ParserLanguage = enUS.pars
     });
   };
 
-  const aliasOwner = new Map<string, string>();
+  // Shapes only; clashes between names are checked on the whole vocabulary at the end.
   const checkNamed = (kind: string, id: string, def: unknown) => {
     const where = `${kind}.${id}`;
     if (!isObj(def)) return err(`${where} must be an object`);
     if (!isStr(def.name)) err(`${where}.name must be a non-empty string`);
     if (def.aliases !== undefined && !isStrArray(def.aliases)) err(`${where}.aliases must be an array of strings`);
-    const names = [id, id.replace(/_/g, " "), def.name, ...(isStrArray(def.aliases) ? def.aliases : [])];
-    for (const raw of names) {
-      if (typeof raw !== "string") continue;
-      // Compare names the way the parser will see them (case, accents and articles ignored).
-      const name = phraseKey(raw, language);
-      if (name === "") {
-        err(`${where}: name "${raw}" is empty once articles and prepositions are ignored`);
-        continue;
-      }
-      const owner = aliasOwner.get(name);
-      if (owner !== undefined && owner !== id) err(`name "${name}" is used by both "${owner}" and "${id}"`);
-      aliasOwner.set(name, id);
-    }
   };
 
   for (const [id, def] of Object.entries(objects)) {
@@ -114,6 +127,11 @@ export function validateRoom(data: unknown, language: ParserLanguage = enUS.pars
     }
   }
 
+  if (data.verbs !== undefined) {
+    if (!isObj(data.verbs)) err("verbs must be an object");
+    else for (const [id, def] of Object.entries(data.verbs)) checkNamed("verbs", id, def);
+  }
+
   if (data.initialFlags !== undefined) {
     if (!isObj(data.initialFlags)) err("initialFlags must be an object");
     else
@@ -128,10 +146,7 @@ export function validateRoom(data: unknown, language: ParserLanguage = enUS.pars
     data.interactions.forEach((rule, i) => {
       const where = `interactions[${i}]`;
       if (!isObj(rule)) return err(`${where} must be an object`);
-      if (!VERBS.includes(rule.verb as string)) err(`${where}.verb must be one of ${VERBS.join(", ")}`);
-      if (!isStr(rule.object) || !(rule.object in objects)) err(`${where}.object "${rule.object}" is not a known object`);
-      if (rule.verb === "use" && !isStr(rule.item)) err(`${where}.item is required for "use"`);
-      if (rule.verb !== "use" && rule.item !== undefined) err(`${where}.item is only allowed for "use"`);
+      if (!isStrArray(rule.say) || rule.say.length === 0) err(`${where}.say must be a non-empty array of words`);
 
       checkConditions(rule.conditions, `${where}.conditions`);
 
@@ -191,6 +206,8 @@ export function validateRoom(data: unknown, language: ParserLanguage = enUS.pars
       });
     }
   }
+
+  if (problems.length === 0) checkVocabulary(data as unknown as RoomDefinition, language, err);
 
   if (problems.length > 0) throw new RoomValidationError(problems);
   return data as unknown as RoomDefinition;

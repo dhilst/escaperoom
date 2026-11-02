@@ -27,7 +27,7 @@ describe.each(game.order)("room %s", (roomId) => {
   it("cannot be left by brute force: no exit before the puzzle is solved", () => {
     const room = game.rooms[roomId];
     const objects = Object.keys(room.objects);
-    const pokes = objects.flatMap((o) => [`open ${o.replace(/_/g, " ")}`, `inspect ${o.replace(/_/g, " ")}`]);
+    const pokes = objects.flatMap((o) => [`open ${o.replace(/_/g, " ")}`, o.replace(/_/g, " ")]);
     const { state } = playGame([...pokes, "turn", ...pokes], createInitialState(room));
     // Opening/inspecting everything may collect items, but must not finish the room on its own.
     if (index >= 3 && room.interactions.length <= 1) return; // placeholder rooms

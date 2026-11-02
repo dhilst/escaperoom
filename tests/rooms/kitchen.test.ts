@@ -27,25 +27,25 @@ describe("The Kitchen", () => {
   });
 
   it("the ice won't melt on a cold stove", () => {
-    const { state, last } = playGame(["open icebox", "use ice block stove"], at());
+    const { state, last } = playGame(["open icebox", "ice block stove"], at());
     expect(texts(last)).toEqual(["The stove is cold."]);
     expect(state.inventory).toEqual(["ice_block"]);
     expect(state.flags.key_thawed).toBe(false);
   });
 
   it("the stove reads differently cold and lit", () => {
-    expect(texts(playGame(["inspect stove"], at()).last)[0]).toMatch(/cold as a grave/);
-    const lit = playGame([...LIT, "inspect burner"], at());
+    expect(texts(playGame(["stove"], at()).last)[0]).toMatch(/cold as a grave/);
+    const lit = playGame([...LIT, "burner"], at());
     expect(texts(lit.last)).toEqual(["The burner roars. Heat rolls off the black iron."]);
   });
 
   it("the door is locked until the key is thawed out", () => {
-    const { state, last } = playGame(["turn", "open door", "use key door"], at());
+    const { state, last } = playGame(["turn", "open door", "key door"], at());
     expect(texts(playGame(["turn", "open door"], at()).last)).toEqual(["It's locked."]);
     expect(texts(last)).not.toContain("It's locked.");
     expect(state.roomId).toBe("kitchen");
     // Holding the frozen block is not enough either.
-    expect(playGame(["open icebox", "turn", "use ice door", "open door"], at()).state.roomId).toBe("kitchen");
+    expect(playGame(["open icebox", "turn", "ice door", "open door"], at()).state.roomId).toBe("kitchen");
   });
 
   it("each cupboard gives its prize once", () => {
@@ -54,21 +54,22 @@ describe("The Kitchen", () => {
       at(),
     );
     expect(state.inventory).toEqual(["ice_block", "matches"]);
-    const after = playGame([...LIT, "open icebox", "use ice stove", "use ice stove"], at()).state;
+    const after = playGame([...LIT, "open icebox", "ice stove", "ice stove"], at()).state;
     expect(after.inventory).toEqual(["hall_key"]);
   });
 
   it("objects belong to their camera", () => {
-    expect(texts(playGame(["open drawer"], at()).last)[0]).toMatch(/don't see any drawer here/);
-    expect(texts(playGame(["turn", "open icebox"], at()).last)[0]).toMatch(/don't see any icebox here/);
+    expect(texts(playGame(["drawer"], at()).last)[0]).toMatch(/don't see any drawer here/);
+    expect(texts(playGame(["turn", "icebox"], at()).last)[0]).toMatch(/don't see any icebox here/);
+    expect(texts(playGame(["open drawer"], at()).last)).toEqual(["Nothing happens."]);
   });
 
   it("every visible object can be inspected", () => {
     for (const name of ["sink", "pipe", "fridge"]) {
-      expect(texts(playGame([`inspect ${name}`], at()).last)[0], name).not.toMatch(/no such|Nothing special/);
+      expect(texts(playGame([name], at()).last)[0], name).not.toMatch(/no such|Nothing special/);
     }
     for (const name of ["dresser", "plates", "pots", "rack", "keyhole"]) {
-      expect(texts(playGame(["turn", `inspect ${name}`], at()).last)[0], name).not.toMatch(/no such|Nothing special/);
+      expect(texts(playGame(["turn", name], at()).last)[0], name).not.toMatch(/no such|Nothing special/);
     }
   });
 
@@ -88,15 +89,15 @@ describe("The Kitchen", () => {
     const pt = loadGame("pt-BR").rooms.kitchen;
     const es = loadGame("es").rooms.kitchen;
     expect(
-      texts(playGame(["abrir a geladeira", "usar o gelo no fogão"], createInitialState(pt), "pt-BR").last),
+      texts(playGame(["abrir geladeira", "gelo fogão"], createInitialState(pt), "pt-BR").last),
     ).toEqual(["O fogão está frio."]);
     expect(
-      texts(playGame(["abrir la nevera", "usar el hielo en el fogón"], createInitialState(es), "es").last),
+      texts(playGame(["abrir nevera", "hielo fogón"], createInitialState(es), "es").last),
     ).toEqual(["El fogón está frío."]);
-    expect(texts(playGame(["virar", "abrir a porta"], createInitialState(pt), "pt-BR").last)).toEqual([
+    expect(texts(playGame(["virar", "abrir porta"], createInitialState(pt), "pt-BR").last)).toEqual([
       "Está trancada.",
     ]);
-    expect(texts(playGame(["girar", "abrir la puerta"], createInitialState(es), "es").last)).toEqual([
+    expect(texts(playGame(["girar", "abrir puerta"], createInitialState(es), "es").last)).toEqual([
       "Está cerrada con llave.",
     ]);
   });

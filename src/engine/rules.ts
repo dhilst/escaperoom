@@ -1,11 +1,9 @@
 import type {
-  Command,
   Condition,
   Effect,
   EngineMessages,
   GameEvent,
   GameState,
-  Interaction,
   RoomDefinition,
 } from "./types";
 
@@ -52,19 +50,4 @@ export function applyEffect(
       state.completed = true;
       return [{ type: "game_completed", text: messages.escaped }];
   }
-}
-
-/** Rules whose verb and arguments match the command, regardless of conditions. */
-export function matchingInteractions(room: RoomDefinition, command: Command): Interaction[] {
-  return room.interactions.filter((rule) => {
-    switch (command.verb) {
-      case "inspect":
-      case "open":
-        return rule.verb === command.verb && rule.object === command.object;
-      case "use":
-        return rule.verb === "use" && rule.object === command.target && rule.item === command.item;
-      default:
-        return false;
-    }
-  });
 }

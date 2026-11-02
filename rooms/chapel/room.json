@@ -66,7 +66,11 @@
       "cameras": ["A"]
     },
     "white_candle": {
-      "name": {"en-US": "white candle", "pt-BR": "vela branca", "es": "vela blanca"},
+      "name": {
+        "en-US": "white candle",
+        "pt-BR": "vela branca",
+        "es": "vela blanca"
+      },
       "aliases": {"en-US": ["white"], "pt-BR": ["branca"], "es": ["blanca"]},
       "cameras": ["A"]
     },
@@ -77,11 +81,19 @@
     },
     "black_candle": {
       "name": {"en-US": "black candle", "pt-BR": "vela preta", "es": "vela negra"},
-      "aliases": {"en-US": ["black"], "pt-BR": ["preta", "vela negra", "negra"], "es": ["negra"]},
+      "aliases": {
+        "en-US": ["black"],
+        "pt-BR": ["preta", "vela negra", "negra"],
+        "es": ["negra"]
+      },
       "cameras": ["A"]
     },
     "candle_box": {
-      "name": {"en-US": "candle box", "pt-BR": "caixa de velas", "es": "caja de velas"},
+      "name": {
+        "en-US": "candle box",
+        "pt-BR": "caixa de velas",
+        "es": "caja de velas"
+      },
       "aliases": {
         "en-US": ["box", "small box", "tin box"],
         "pt-BR": ["caixa", "caixinha", "caixa de lata"],
@@ -102,8 +114,20 @@
       "name": {"en-US": "lamp", "pt-BR": "lamparina", "es": "lámpara"},
       "aliases": {
         "en-US": ["red lamp", "sanctuary lamp", "red light", "flame", "chain"],
-        "pt-BR": ["lamparina vermelha", "lâmpada", "luz vermelha", "chama", "corrente"],
-        "es": ["lámpara roja", "lámpara del santísimo", "luz roja", "llama", "cadena"]
+        "pt-BR": [
+          "lamparina vermelha",
+          "lâmpada",
+          "luz vermelha",
+          "chama",
+          "corrente"
+        ],
+        "es": [
+          "lámpara roja",
+          "lámpara del santísimo",
+          "luz roja",
+          "llama",
+          "cadena"
+        ]
       },
       "cameras": ["C"]
     },
@@ -126,11 +150,27 @@
       "cameras": ["C"]
     },
     "confessional": {
-      "name": {"en-US": "confessional", "pt-BR": "confessionário", "es": "confesionario"},
+      "name": {
+        "en-US": "confessional",
+        "pt-BR": "confessionário",
+        "es": "confesionario"
+      },
       "aliases": {
         "en-US": ["booth", "panel", "back panel", "curtain", "exit"],
-        "pt-BR": ["cabine", "painel", "painel do fundo", "cortina", "saída"],
-        "es": ["cabina", "panel", "panel del fondo", "cortina", "salida"]
+        "pt-BR": [
+          "cabine",
+          "painel",
+          "painel do fundo",
+          "cortina",
+          "saída"
+        ],
+        "es": [
+          "cabina",
+          "panel",
+          "panel del fondo",
+          "cortina",
+          "salida"
+        ]
       },
       "cameras": ["C"]
     }
@@ -176,8 +216,7 @@
   ],
   "interactions": [
     {
-      "verb": "inspect",
-      "object": "altar",
+      "say": ["altar"],
       "effects": [
         {
           "type": "display_message",
@@ -190,8 +229,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "window",
+      "say": ["window"],
       "effects": [
         {
           "type": "display_message",
@@ -204,8 +242,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "white_candle",
+      "say": ["white_candle"],
       "conditions": [{"type": "flag_equals", "flag": "lit", "value": 0}],
       "effects": [
         {
@@ -219,8 +256,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "white_candle",
+      "say": ["white_candle"],
       "effects": [
         {
           "type": "display_message",
@@ -233,8 +269,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "red_candle",
+      "say": ["red_candle"],
       "conditions": [{"type": "flag_equals", "flag": "lit", "value": 2}],
       "effects": [
         {
@@ -248,8 +283,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "red_candle",
+      "say": ["red_candle"],
       "conditions": [{"type": "flag_equals", "flag": "lit", "value": 3}],
       "effects": [
         {
@@ -263,8 +297,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "red_candle",
+      "say": ["red_candle"],
       "effects": [
         {
           "type": "display_message",
@@ -277,8 +310,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "black_candle",
+      "say": ["black_candle"],
       "conditions": [{"type": "flag_equals", "flag": "lit", "value": 3}],
       "effects": [
         {
@@ -292,8 +324,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "black_candle",
+      "say": ["black_candle"],
       "effects": [
         {
           "type": "display_message",
@@ -306,8 +337,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "candle_box",
+      "say": ["candle_box"],
       "conditions": [{"type": "flag_equals", "flag": "box_open", "value": false}],
       "effects": [
         {
@@ -321,8 +351,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "candle_box",
+      "say": ["candle_box"],
       "effects": [
         {
           "type": "display_message",
@@ -335,8 +364,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "candle_box",
+      "say": ["open", "candle_box"],
       "conditions": [{"type": "flag_equals", "flag": "box_open", "value": false}],
       "effects": [
         {"type": "set_flag", "flag": "box_open", "value": true},
@@ -352,8 +380,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "candle_box",
+      "say": ["open", "candle_box"],
       "effects": [
         {
           "type": "display_message",
@@ -366,8 +393,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "lamp",
+      "say": ["lamp"],
       "effects": [
         {
           "type": "display_message",
@@ -380,9 +406,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "taper",
-      "object": "lamp",
+      "say": ["taper", "lamp"],
       "conditions": [{"type": "flag_equals", "flag": "taper_lit", "value": false}],
       "effects": [
         {"type": "set_flag", "flag": "taper_lit", "value": true},
@@ -397,9 +421,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "taper",
-      "object": "lamp",
+      "say": ["taper", "lamp"],
       "effects": [
         {
           "type": "display_message",
@@ -412,8 +434,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "lectern",
+      "say": ["lectern"],
       "effects": [
         {
           "type": "display_message",
@@ -426,8 +447,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "hymnal",
+      "say": ["hymnal"],
       "effects": [
         {
           "type": "display_message",
@@ -441,8 +461,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "confessional",
+      "say": ["confessional"],
       "conditions": [{"type": "flag_equals", "flag": "panel_open", "value": false}],
       "effects": [
         {
@@ -456,8 +475,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "confessional",
+      "say": ["confessional"],
       "effects": [
         {
           "type": "display_message",
@@ -470,8 +488,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "confessional",
+      "say": ["open", "confessional"],
       "conditions": [{"type": "flag_equals", "flag": "panel_open", "value": false}],
       "effects": [
         {
@@ -485,8 +502,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "confessional",
+      "say": ["open", "confessional"],
       "effects": [
         {
           "type": "display_message",
@@ -499,55 +515,92 @@
         {"type": "change_room", "room": "clocktower"}
       ]
     },
-
     {
-      "verb": "use",
-      "item": "taper",
-      "object": "white_candle",
+      "say": ["taper", "white_candle"],
       "conditions": [{"type": "flag_equals", "flag": "panel_open", "value": true}],
-      "effects": [{"type": "display_message", "text": {"en-US": "All three candles already burn. Better leave them be.", "pt-BR": "As três velas já estão acesas. Melhor deixá-las em paz.", "es": "Las tres velas ya arden. Mejor dejarlas en paz."}}]
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "All three candles already burn. Better leave them be.",
+            "pt-BR": "As três velas já estão acesas. Melhor deixá-las em paz.",
+            "es": "Las tres velas ya arden. Mejor dejarlas en paz."
+          }
+        }
+      ]
     },
     {
-      "verb": "use",
-      "item": "taper",
-      "object": "red_candle",
+      "say": ["taper", "red_candle"],
       "conditions": [{"type": "flag_equals", "flag": "panel_open", "value": true}],
-      "effects": [{"type": "display_message", "text": {"en-US": "All three candles already burn. Better leave them be.", "pt-BR": "As três velas já estão acesas. Melhor deixá-las em paz.", "es": "Las tres velas ya arden. Mejor dejarlas en paz."}}]
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "All three candles already burn. Better leave them be.",
+            "pt-BR": "As três velas já estão acesas. Melhor deixá-las em paz.",
+            "es": "Las tres velas ya arden. Mejor dejarlas en paz."
+          }
+        }
+      ]
     },
     {
-      "verb": "use",
-      "item": "taper",
-      "object": "black_candle",
+      "say": ["taper", "black_candle"],
       "conditions": [{"type": "flag_equals", "flag": "panel_open", "value": true}],
-      "effects": [{"type": "display_message", "text": {"en-US": "All three candles already burn. Better leave them be.", "pt-BR": "As três velas já estão acesas. Melhor deixá-las em paz.", "es": "Las tres velas ya arden. Mejor dejarlas en paz."}}]
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "All three candles already burn. Better leave them be.",
+            "pt-BR": "As três velas já estão acesas. Melhor deixá-las em paz.",
+            "es": "Las tres velas ya arden. Mejor dejarlas en paz."
+          }
+        }
+      ]
     },
-
     {
-      "verb": "use",
-      "item": "taper",
-      "object": "white_candle",
+      "say": ["taper", "white_candle"],
       "conditions": [{"type": "flag_equals", "flag": "taper_lit", "value": false}],
-      "effects": [{"type": "display_message", "text": {"en-US": "The taper isn't lit.", "pt-BR": "O pavio não está aceso.", "es": "La mecha no está encendida."}}]
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The taper isn't lit.",
+            "pt-BR": "O pavio não está aceso.",
+            "es": "La mecha no está encendida."
+          }
+        }
+      ]
     },
     {
-      "verb": "use",
-      "item": "taper",
-      "object": "red_candle",
+      "say": ["taper", "red_candle"],
       "conditions": [{"type": "flag_equals", "flag": "taper_lit", "value": false}],
-      "effects": [{"type": "display_message", "text": {"en-US": "The taper isn't lit.", "pt-BR": "O pavio não está aceso.", "es": "La mecha no está encendida."}}]
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The taper isn't lit.",
+            "pt-BR": "O pavio não está aceso.",
+            "es": "La mecha no está encendida."
+          }
+        }
+      ]
     },
     {
-      "verb": "use",
-      "item": "taper",
-      "object": "black_candle",
+      "say": ["taper", "black_candle"],
       "conditions": [{"type": "flag_equals", "flag": "taper_lit", "value": false}],
-      "effects": [{"type": "display_message", "text": {"en-US": "The taper isn't lit.", "pt-BR": "O pavio não está aceso.", "es": "La mecha no está encendida."}}]
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The taper isn't lit.",
+            "pt-BR": "O pavio não está aceso.",
+            "es": "La mecha no está encendida."
+          }
+        }
+      ]
     },
-
     {
-      "verb": "use",
-      "item": "taper",
-      "object": "white_candle",
+      "say": ["taper", "white_candle"],
       "conditions": [{"type": "flag_equals", "flag": "lit", "value": 0}],
       "effects": [
         {"type": "set_flag", "flag": "lit", "value": 1},
@@ -562,9 +615,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "taper",
-      "object": "red_candle",
+      "say": ["taper", "red_candle"],
       "conditions": [{"type": "flag_equals", "flag": "lit", "value": 1}],
       "effects": [
         {"type": "set_flag", "flag": "lit", "value": 2},
@@ -579,9 +630,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "taper",
-      "object": "black_candle",
+      "say": ["taper", "black_candle"],
       "conditions": [{"type": "flag_equals", "flag": "lit", "value": 2}],
       "effects": [
         {"type": "set_flag", "flag": "lit", "value": 3},
@@ -596,11 +645,8 @@
         }
       ]
     },
-
     {
-      "verb": "use",
-      "item": "taper",
-      "object": "white_candle",
+      "say": ["taper", "white_candle"],
       "effects": [
         {"type": "set_flag", "flag": "lit", "value": 0},
         {
@@ -614,9 +660,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "taper",
-      "object": "red_candle",
+      "say": ["taper", "red_candle"],
       "effects": [
         {"type": "set_flag", "flag": "lit", "value": 0},
         {
@@ -630,9 +674,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "taper",
-      "object": "black_candle",
+      "say": ["taper", "black_candle"],
       "effects": [
         {"type": "set_flag", "flag": "lit", "value": 0},
         {

@@ -4,30 +4,16 @@ export const enUS: Language = {
   locale: "en-US",
   name: "English (US)",
   parser: {
-    verbs: {
+    words: {
       look: "look",
       turn: "turn",
-      inspect: "inspect",
       open: "open",
-      use: "use",
       inventory: "inventory",
       help: "help",
-      // Hidden: not listed in help or in the "Try:" message.
+      // Hidden: not listed in help.
       hint: "hint",
     },
-    stopwords: ["the", "a", "an", "on", "in", "into", "with", "at", "to"],
     empty: "Type a command.",
-    unknown: (word) => `Unknown command "${word}". Try: look, turn, inspect, open, use, inventory, help.`,
-    usage: {
-      look: "Usage: look",
-      turn: "Usage: turn",
-      inventory: "Usage: inventory",
-      inspect: "Usage: inspect <object>",
-      open: "Usage: open <object>",
-      use: "Usage: use <item> <target>",
-      help: "Usage: help",
-      hint: "Usage: hint",
-    },
   },
   engine: {
     nothingSpecial: "Nothing special.",
@@ -38,7 +24,7 @@ export const enUS: Language = {
     itemRemoved: (name) => `[${name} removed from inventory]`,
     noSuchObject: (typed) => `There is no such ${typed}.`,
     notVisible: (typed) => `You don't see any ${typed} here.`,
-    help: "Commands: look · turn · inspect <object> · open <object> · use <item> <target> · inventory",
+    help: "Name something to look at it: clock. Combine what you carry with what you see: key door. Also: open <thing> · turn · look · inventory",
     hint: (n, total, text) => `Hint ${n}/${total}: ${text}`,
     hintLocked: (countdown) => `Next hint available in ${countdown}`,
     noMoreHints: "There are no more hints for this room.",

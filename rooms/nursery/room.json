@@ -1,10 +1,6 @@
 {
   "id": "nursery",
-  "title": {
-    "en-US": "The Nursery",
-    "pt-BR": "O Quarto das Crianças",
-    "es": "El Cuarto de los Niños"
-  },
+  "title": {"en-US": "The Nursery", "pt-BR": "O Quarto das Crianças", "es": "El Cuarto de los Niños"},
   "cameras": {
     "A": {
       "image": "camera_a.png",
@@ -25,11 +21,7 @@
   },
   "objects": {
     "blocks": {
-      "name": {
-        "en-US": "blocks",
-        "pt-BR": "blocos",
-        "es": "bloques"
-      },
+      "name": {"en-US": "blocks", "pt-BR": "blocos", "es": "bloques"},
       "aliases": {
         "en-US": [
           "block",
@@ -38,49 +30,19 @@
           "toy blocks",
           "cubes"
         ],
-        "pt-BR": [
-          "bloco",
-          "blocos de madeira",
-          "cubos",
-          "cubinhos"
-        ],
-        "es": [
-          "bloque",
-          "bloques de madera",
-          "cubos",
-          "cubitos"
-        ]
+        "pt-BR": ["bloco", "blocos de madeira", "cubos", "cubinhos"],
+        "es": ["bloque", "bloques de madera", "cubos", "cubitos"]
       },
-      "cameras": [
-        "A"
-      ]
+      "cameras": ["A"]
     },
     "shelf": {
-      "name": {
-        "en-US": "shelf",
-        "pt-BR": "estante",
-        "es": "estantería"
-      },
+      "name": {"en-US": "shelf", "pt-BR": "estante", "es": "estantería"},
       "aliases": {
-        "en-US": [
-          "toy shelf",
-          "shelves",
-          "toys"
-        ],
-        "pt-BR": [
-          "estante de brinquedos",
-          "prateleira",
-          "brinquedos"
-        ],
-        "es": [
-          "estantería de juguetes",
-          "repisa",
-          "juguetes"
-        ]
+        "en-US": ["toy shelf", "shelves", "toys"],
+        "pt-BR": ["estante de brinquedos", "prateleira", "brinquedos"],
+        "es": ["estantería de juguetes", "repisa", "juguetes"]
       },
-      "cameras": [
-        "A"
-      ]
+      "cameras": ["A"]
     },
     "rocking_horse": {
       "name": {
@@ -89,15 +51,8 @@
         "es": "caballito balancín"
       },
       "aliases": {
-        "en-US": [
-          "horse",
-          "toy horse"
-        ],
-        "pt-BR": [
-          "cavalinho",
-          "cavalo",
-          "cavalo de balanço"
-        ],
+        "en-US": ["horse", "toy horse"],
+        "pt-BR": ["cavalinho", "cavalo", "cavalo de balanço"],
         "es": [
           "caballito",
           "caballo",
@@ -105,44 +60,19 @@
           "caballito de madera"
         ]
       },
-      "cameras": [
-        "A"
-      ]
+      "cameras": ["A"]
     },
     "crib": {
-      "name": {
-        "en-US": "crib",
-        "pt-BR": "berço",
-        "es": "cuna"
-      },
+      "name": {"en-US": "crib", "pt-BR": "berço", "es": "cuna"},
       "aliases": {
-        "en-US": [
-          "cot",
-          "cradle",
-          "rattle",
-          "bed"
-        ],
-        "pt-BR": [
-          "chocalho",
-          "cama",
-          "caminha"
-        ],
-        "es": [
-          "sonajero",
-          "cama",
-          "camita"
-        ]
+        "en-US": ["cot", "cradle", "rattle", "bed"],
+        "pt-BR": ["chocalho", "cama", "caminha"],
+        "es": ["sonajero", "cama", "camita"]
       },
-      "cameras": [
-        "A"
-      ]
+      "cameras": ["A"]
     },
     "mural": {
-      "name": {
-        "en-US": "mural",
-        "pt-BR": "mural",
-        "es": "mural"
-      },
+      "name": {"en-US": "mural", "pt-BR": "mural", "es": "mural"},
       "aliases": {
         "en-US": [
           "painting",
@@ -175,25 +105,12 @@
           "historia"
         ]
       },
-      "cameras": [
-        "C"
-      ]
+      "cameras": ["C"]
     },
     "door": {
-      "name": {
-        "en-US": "door",
-        "pt-BR": "porta",
-        "es": "puerta"
-      },
+      "name": {"en-US": "door", "pt-BR": "porta", "es": "puerta"},
       "aliases": {
-        "en-US": [
-          "lock",
-          "brass lock",
-          "dials",
-          "dial",
-          "small door",
-          "exit"
-        ],
+        "en-US": ["lock", "brass lock", "dials", "dial", "small door", "exit"],
         "pt-BR": [
           "portinha",
           "cadeado",
@@ -211,35 +128,16 @@
           "salida"
         ]
       },
-      "cameras": [
-        "C"
-      ]
+      "cameras": ["C"]
     },
     "mobile": {
-      "name": {
-        "en-US": "mobile",
-        "pt-BR": "móbile",
-        "es": "móvil"
-      },
+      "name": {"en-US": "mobile", "pt-BR": "móbile", "es": "móvil"},
       "aliases": {
-        "en-US": [
-          "hanging mobile",
-          "birds",
-          "paper birds"
-        ],
-        "pt-BR": [
-          "passarinhos",
-          "pássaros de papel"
-        ],
-        "es": [
-          "pajaritos",
-          "pájaros de papel",
-          "colgante"
-        ]
+        "en-US": ["hanging mobile", "birds", "paper birds"],
+        "pt-BR": ["passarinhos", "pássaros de papel"],
+        "es": ["pajaritos", "pájaros de papel", "colgante"]
       },
-      "cameras": [
-        "C"
-      ]
+      "cameras": ["C"]
     }
   },
   "items": {
@@ -250,15 +148,9 @@
         "es": "Bloques: estrella 2, sol 4, luna 7"
       },
       "aliases": {
-        "en-US": [
-          "blocks note"
-        ],
-        "pt-BR": [
-          "anotação dos blocos"
-        ],
-        "es": [
-          "nota de los bloques"
-        ]
+        "en-US": ["blocks note"],
+        "pt-BR": ["anotação dos blocos"],
+        "es": ["nota de los bloques"]
       },
       "description": {
         "en-US": "You noted the blocks, left to right: star 2, sun 4, moon 7.",
@@ -273,15 +165,9 @@
         "es": "Mural: sol, luna, estrella"
       },
       "aliases": {
-        "en-US": [
-          "mural note"
-        ],
-        "pt-BR": [
-          "anotação do mural"
-        ],
-        "es": [
-          "nota del mural"
-        ]
+        "en-US": ["mural note"],
+        "pt-BR": ["anotação do mural"],
+        "es": ["nota del mural"]
       },
       "description": {
         "en-US": "You noted the story on the mural: first the sun, then the moon, then a star.",
@@ -290,20 +176,12 @@
       }
     }
   },
-  "initialFlags": {
-    "blocks_seen": false,
-    "mural_seen": false
-  },
+  "initialFlags": {"blocks_seen": false, "mural_seen": false},
   "interactions": [
     {
-      "verb": "inspect",
-      "object": "blocks",
+      "say": ["blocks"],
       "effects": [
-        {
-          "type": "set_flag",
-          "flag": "blocks_seen",
-          "value": true
-        },
+        {"type": "set_flag", "flag": "blocks_seen", "value": true},
         {
           "type": "display_message",
           "text": {
@@ -312,15 +190,11 @@
             "es": "Tres bloques de madera, pintados por una mano infantil. De izquierda a derecha:\nuna estrella con un 2, un sol con un 4, una luna con un 7."
           }
         },
-        {
-          "type": "add_item",
-          "item": "blocks_note"
-        }
+        {"type": "add_item", "item": "blocks_note"}
       ]
     },
     {
-      "verb": "open",
-      "object": "blocks",
+      "say": ["open", "blocks"],
       "effects": [
         {
           "type": "display_message",
@@ -333,8 +207,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "shelf",
+      "say": ["shelf"],
       "effects": [
         {
           "type": "display_message",
@@ -347,8 +220,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "rocking_horse",
+      "say": ["rocking_horse"],
       "effects": [
         {
           "type": "display_message",
@@ -361,8 +233,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "crib",
+      "say": ["crib"],
       "effects": [
         {
           "type": "display_message",
@@ -375,14 +246,9 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "mural",
+      "say": ["mural"],
       "effects": [
-        {
-          "type": "set_flag",
-          "flag": "mural_seen",
-          "value": true
-        },
+        {"type": "set_flag", "flag": "mural_seen", "value": true},
         {
           "type": "display_message",
           "text": {
@@ -391,15 +257,11 @@
             "es": "Un cielo pintado como un cuento para dormir, de izquierda a derecha:\nprimero el sol, luego la luna, luego una sola estrella."
           }
         },
-        {
-          "type": "add_item",
-          "item": "mural_note"
-        }
+        {"type": "add_item", "item": "mural_note"}
       ]
     },
     {
-      "verb": "inspect",
-      "object": "mobile",
+      "say": ["mobile"],
       "effects": [
         {
           "type": "display_message",
@@ -412,8 +274,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "door",
+      "say": ["door"],
       "effects": [
         {
           "type": "display_message",
@@ -426,8 +287,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "door",
+      "say": ["open", "door"],
       "effects": [
         {
           "type": "display_message",
@@ -440,9 +300,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "472",
-      "object": "door",
+      "say": ["472", "door"],
       "effects": [
         {
           "type": "display_message",
@@ -452,10 +310,7 @@
             "es": "La última rueda encaja con un clic. El candado se abre.\nPasas a gatas a un pasillo estrecho, cubierto de libros."
           }
         },
-        {
-          "type": "change_room",
-          "room": "library"
-        }
+        {"type": "change_room", "room": "library"}
       ]
     }
   ],
@@ -466,13 +321,7 @@
         "pt-BR": "As crianças deixaram os brinquedos arrumados com cuidado. Olhe de perto o que está na estante.",
         "es": "Los niños dejaron sus juguetes ordenados con cuidado. Mira de cerca lo que hay en la estantería."
       },
-      "skipIf": [
-        {
-          "type": "flag_equals",
-          "flag": "blocks_seen",
-          "value": true
-        }
-      ]
+      "skipIf": [{"type": "flag_equals", "flag": "blocks_seen", "value": true}]
     },
     {
       "text": {
@@ -480,13 +329,7 @@
         "pt-BR": "A parede do outro lado conta uma história. Observe-a desde o começo.",
         "es": "La pared del otro lado cuenta una historia. Obsérvala desde el principio."
       },
-      "skipIf": [
-        {
-          "type": "flag_equals",
-          "flag": "mural_seen",
-          "value": true
-        }
-      ]
+      "skipIf": [{"type": "flag_equals", "flag": "mural_seen", "value": true}]
     },
     {
       "text": {

@@ -4,34 +4,16 @@ export const ptBR: Language = {
   locale: "pt-BR",
   name: "Português (Brasil)",
   parser: {
-    verbs: {
+    words: {
       olhar: "look",
       virar: "turn",
-      examinar: "inspect",
-      inspecionar: "inspect",
       abrir: "open",
-      usar: "use",
       inventário: "inventory",
       ajuda: "help",
-      // Ocultos: fora da ajuda e da mensagem "Tente:".
+      // Oculto: fora da ajuda.
       dica: "hint",
     },
-    stopwords: [
-      "o", "a", "os", "as", "um", "uma", "uns", "umas",
-      "de", "do", "da", "dos", "das", "no", "na", "nos", "nas", "em", "com", "para", "pra", "ao", "à",
-    ],
     empty: "Digite um comando.",
-    unknown: (word) => `Comando desconhecido "${word}". Tente: olhar, virar, examinar, abrir, usar, inventário, ajuda.`,
-    usage: {
-      look: "Uso: olhar",
-      turn: "Uso: virar",
-      inventory: "Uso: inventário",
-      inspect: "Uso: examinar <objeto>",
-      open: "Uso: abrir <objeto>",
-      use: "Uso: usar <item> <alvo>",
-      help: "Uso: ajuda",
-      hint: "Uso: dica",
-    },
   },
   engine: {
     nothingSpecial: "Nada de especial.",
@@ -42,7 +24,7 @@ export const ptBR: Language = {
     itemRemoved: (name) => `[Removido do inventário: ${name}]`,
     noSuchObject: (typed) => `Não há "${typed}" aqui.`,
     notVisible: (typed) => `Daqui você não vê "${typed}".`,
-    help: "Comandos: olhar · virar · examinar <objeto> · abrir <objeto> · usar <item> <alvo> · inventário",
+    help: "Diga o nome de algo para olhá-lo: relógio. Combine o que você carrega com o que vê: chave porta. Também: abrir <coisa> · virar · olhar · inventário",
     hint: (n, total, text) => `Dica ${n}/${total}: ${text}`,
     hintLocked: (countdown) => `Próxima dica disponível em ${countdown}`,
     noMoreHints: "Não há mais dicas para esta sala.",

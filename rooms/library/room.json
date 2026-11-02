@@ -33,9 +33,38 @@
     "shelves": {
       "name": {"en-US": "shelves", "pt-BR": "estantes", "es": "estanterías"},
       "aliases": {
-        "en-US": ["shelf", "bookshelves", "bookshelf", "bookcase", "books", "gap", "label", "brass label", "astronomy"],
-        "pt-BR": ["estante", "prateleiras", "prateleira", "livros", "vão", "etiqueta", "plaquinha", "placa de latão", "astronomia"],
-        "es": ["estantería", "estantes", "estante", "libros", "hueco", "etiqueta", "placa de latón", "astronomía"]
+        "en-US": [
+          "shelf",
+          "bookshelves",
+          "bookshelf",
+          "bookcase",
+          "books",
+          "gap",
+          "label",
+          "brass label",
+          "astronomy"
+        ],
+        "pt-BR": [
+          "estante",
+          "prateleiras",
+          "prateleira",
+          "livros",
+          "vão",
+          "etiqueta",
+          "plaquinha",
+          "placa de latão",
+          "astronomia"
+        ],
+        "es": [
+          "estantería",
+          "estantes",
+          "estante",
+          "libros",
+          "hueco",
+          "etiqueta",
+          "placa de latón",
+          "astronomía"
+        ]
       },
       "cameras": ["A"]
     },
@@ -52,7 +81,12 @@
       "name": {"en-US": "portrait", "pt-BR": "retrato", "es": "retrato"},
       "aliases": {
         "en-US": ["painting", "picture", "librarian", "old librarian"],
-        "pt-BR": ["quadro", "pintura", "bibliotecário", "velho bibliotecário"],
+        "pt-BR": [
+          "quadro",
+          "pintura",
+          "bibliotecário",
+          "velho bibliotecário"
+        ],
         "es": ["cuadro", "pintura", "bibliotecario", "viejo bibliotecario"]
       },
       "cameras": ["A"]
@@ -69,9 +103,28 @@
     "atlas": {
       "name": {"en-US": "atlas", "pt-BR": "atlas", "es": "atlas"},
       "aliases": {
-        "en-US": ["huge atlas", "chained atlas", "chain", "padlock", "small padlock", "lock"],
-        "pt-BR": ["atlas enorme", "atlas acorrentado", "corrente", "cadeado", "cadeadinho"],
-        "es": ["atlas enorme", "atlas encadenado", "cadena", "candado", "candadito"]
+        "en-US": [
+          "huge atlas",
+          "chained atlas",
+          "chain",
+          "padlock",
+          "small padlock",
+          "lock"
+        ],
+        "pt-BR": [
+          "atlas enorme",
+          "atlas acorrentado",
+          "corrente",
+          "cadeado",
+          "cadeadinho"
+        ],
+        "es": [
+          "atlas enorme",
+          "atlas encadenado",
+          "cadena",
+          "candado",
+          "candadito"
+        ]
       },
       "cameras": ["C"]
     },
@@ -131,7 +184,11 @@
       }
     },
     "label_note": {
-      "name": {"en-US": "Shelf label: ASTRONOMY", "pt-BR": "Etiqueta da estante: ASTRONOMIA", "es": "Etiqueta del estante: ASTRONOMÍA"},
+      "name": {
+        "en-US": "Shelf label: ASTRONOMY",
+        "pt-BR": "Etiqueta da estante: ASTRONOMIA",
+        "es": "Etiqueta del estante: ASTRONOMÍA"
+      },
       "aliases": {
         "en-US": ["label note", "shelf note"],
         "pt-BR": ["anotação da etiqueta", "anotação da estante"],
@@ -147,8 +204,7 @@
   "initialFlags": {"gap_seen": false, "book_open": false, "atlas_taken": false},
   "interactions": [
     {
-      "verb": "inspect",
-      "object": "shelves",
+      "say": ["shelves"],
       "effects": [
         {"type": "set_flag", "flag": "gap_seen", "value": true},
         {
@@ -163,8 +219,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "shelves",
+      "say": ["open", "shelves"],
       "effects": [
         {
           "type": "display_message",
@@ -177,9 +232,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "star_atlas",
-      "object": "shelves",
+      "say": ["star_atlas", "shelves"],
       "conditions": [{"type": "has_item", "item": "star_atlas"}],
       "effects": [
         {
@@ -195,9 +248,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "atlas",
-      "object": "shelves",
+      "say": ["atlas", "shelves"],
       "conditions": [{"type": "has_item", "item": "star_atlas"}],
       "effects": [
         {
@@ -213,8 +264,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "fireplace",
+      "say": ["fireplace"],
       "effects": [
         {
           "type": "display_message",
@@ -227,8 +277,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "portrait",
+      "say": ["portrait"],
       "effects": [
         {
           "type": "display_message",
@@ -241,8 +290,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "table",
+      "say": ["table"],
       "conditions": [{"type": "flag_equals", "flag": "atlas_taken", "value": false}],
       "effects": [
         {
@@ -256,8 +304,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "table",
+      "say": ["table"],
       "effects": [
         {
           "type": "display_message",
@@ -270,8 +317,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "atlas",
+      "say": ["atlas"],
       "conditions": [{"type": "flag_equals", "flag": "atlas_taken", "value": false}],
       "effects": [
         {
@@ -285,8 +331,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "atlas",
+      "say": ["atlas"],
       "effects": [
         {
           "type": "display_message",
@@ -299,8 +344,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "atlas",
+      "say": ["open", "atlas"],
       "conditions": [{"type": "flag_equals", "flag": "atlas_taken", "value": false}],
       "effects": [
         {
@@ -314,8 +358,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "atlas",
+      "say": ["open", "atlas"],
       "effects": [
         {
           "type": "display_message",
@@ -328,9 +371,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "small_key",
-      "object": "atlas",
+      "say": ["small_key", "atlas"],
       "conditions": [{"type": "flag_equals", "flag": "atlas_taken", "value": false}],
       "effects": [
         {"type": "set_flag", "flag": "atlas_taken", "value": true},
@@ -347,9 +388,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "small_key",
-      "object": "table",
+      "say": ["small_key", "table"],
       "conditions": [{"type": "flag_equals", "flag": "atlas_taken", "value": false}],
       "effects": [
         {"type": "set_flag", "flag": "atlas_taken", "value": true},
@@ -366,8 +405,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "cart",
+      "say": ["cart"],
       "effects": [
         {
           "type": "display_message",
@@ -380,8 +418,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "book",
+      "say": ["book"],
       "conditions": [{"type": "flag_equals", "flag": "book_open", "value": false}],
       "effects": [
         {
@@ -395,8 +432,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "book",
+      "say": ["book"],
       "effects": [
         {
           "type": "display_message",
@@ -409,8 +445,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "book",
+      "say": ["open", "book"],
       "conditions": [{"type": "flag_equals", "flag": "book_open", "value": false}],
       "effects": [
         {"type": "set_flag", "flag": "book_open", "value": true},
@@ -426,8 +461,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "book",
+      "say": ["open", "book"],
       "effects": [
         {
           "type": "display_message",
@@ -440,8 +474,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "window",
+      "say": ["window"],
       "effects": [
         {
           "type": "display_message",

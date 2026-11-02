@@ -1,5 +1,5 @@
 export * from "./types";
-export { parse, buildAliasMap, phraseKey, words, type AliasMap } from "./parser";
+export { parse, buildVocabulary, vocabularyEntries, phraseKey, words, type Vocabulary } from "./parser";
 export {
   step,
   createInitialState,

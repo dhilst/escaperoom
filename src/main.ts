@@ -2,7 +2,7 @@ import "./ui/style.css";
 import { loadGame } from "./content";
 import { LANGUAGES, localeFromParam, type Language } from "./i18n";
 import {
-  buildAliasMap,
+  buildVocabulary,
   createGameState,
   createInitialState,
   describeCamera,
@@ -11,7 +11,7 @@ import {
   parse,
   roomBrightness,
   stepGame,
-  type AliasMap,
+  type Vocabulary,
   type GameDefinition,
   type GameEvent,
   type GameState,
@@ -54,7 +54,7 @@ function start(game: GameDefinition, language: Language): void {
   const history: string[] = [];
   let historyIndex = 0;
   let state: GameState;
-  let aliases: AliasMap;
+  let aliases: Vocabulary;
   let aliasesFor = "";
 
   const currentRoom = () => game.rooms[state.roomId];
@@ -65,7 +65,7 @@ function start(game: GameDefinition, language: Language): void {
   const render = () => {
     const room = currentRoom();
     if (aliasesFor !== room.id) {
-      aliases = buildAliasMap(room, language.parser);
+      aliases = buildVocabulary(room, language.parser);
       aliasesFor = room.id;
     }
     const camera = room.cameras[state.camera];

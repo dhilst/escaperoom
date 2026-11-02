@@ -1,10 +1,6 @@
 {
   "id": "foyer",
-  "title": {
-    "en-US": "The Grand Foyer",
-    "pt-BR": "O Grande Saguão",
-    "es": "El Gran Vestíbulo"
-  },
+  "title": {"en-US": "The Grand Foyer", "pt-BR": "O Grande Saguão", "es": "El Gran Vestíbulo"},
   "cameras": {
     "A": {
       "image": "camera_a.png",
@@ -41,56 +37,22 @@
   },
   "objects": {
     "coat_rack": {
-      "name": {
-        "en-US": "coat rack",
-        "pt-BR": "cabideiro",
-        "es": "perchero"
-      },
+      "name": {"en-US": "coat rack", "pt-BR": "cabideiro", "es": "perchero"},
       "aliases": {
-        "en-US": [
-          "rack",
-          "coat stand",
-          "hanger"
-        ],
-        "pt-BR": [
-          "cabide",
-          "chapeleira"
-        ],
-        "es": [
-          "percha",
-          "colgador"
-        ]
+        "en-US": ["rack", "coat stand", "hanger"],
+        "pt-BR": ["cabide", "chapeleira"],
+        "es": ["percha", "colgador"]
       },
-      "cameras": [
-        "A"
-      ]
+      "cameras": ["A"]
     },
     "coat": {
-      "name": {
-        "en-US": "coat",
-        "pt-BR": "sobretudo",
-        "es": "abrigo"
-      },
+      "name": {"en-US": "coat", "pt-BR": "sobretudo", "es": "abrigo"},
       "aliases": {
-        "en-US": [
-          "overcoat",
-          "pocket",
-          "pockets"
-        ],
-        "pt-BR": [
-          "casaco",
-          "bolso",
-          "bolsos"
-        ],
-        "es": [
-          "gabán",
-          "bolsillo",
-          "bolsillos"
-        ]
+        "en-US": ["overcoat", "pocket", "pockets"],
+        "pt-BR": ["casaco", "bolso", "bolsos"],
+        "es": ["gabán", "bolsillo", "bolsillos"]
       },
-      "cameras": [
-        "A"
-      ]
+      "cameras": ["A"]
     },
     "umbrella_stand": {
       "name": {
@@ -99,12 +61,7 @@
         "es": "paragüero"
       },
       "aliases": {
-        "en-US": [
-          "umbrellas",
-          "umbrella",
-          "leaves",
-          "dead leaves"
-        ],
+        "en-US": ["umbrellas", "umbrella", "leaves", "dead leaves"],
         "pt-BR": [
           "porta guarda chuva",
           "guarda-chuvas",
@@ -112,15 +69,9 @@
           "folhas",
           "folhas secas"
         ],
-        "es": [
-          "paraguas",
-          "hojas",
-          "hojas secas"
-        ]
+        "es": ["paraguas", "hojas", "hojas secas"]
       },
-      "cameras": [
-        "A"
-      ]
+      "cameras": ["A"]
     },
     "grandfather_clock": {
       "name": {
@@ -129,53 +80,20 @@
         "es": "reloj de péndulo"
       },
       "aliases": {
-        "en-US": [
-          "clock",
-          "case",
-          "clock case",
-          "pendulum"
-        ],
-        "pt-BR": [
-          "relógio",
-          "caixa do relógio",
-          "pêndulo"
-        ],
-        "es": [
-          "reloj",
-          "caja del reloj",
-          "péndulo"
-        ]
+        "en-US": ["clock", "case", "clock case", "pendulum"],
+        "pt-BR": ["relógio", "caixa do relógio", "pêndulo"],
+        "es": ["reloj", "caja del reloj", "péndulo"]
       },
-      "cameras": [
-        "A"
-      ]
+      "cameras": ["A"]
     },
     "floor": {
-      "name": {
-        "en-US": "floor",
-        "pt-BR": "chão",
-        "es": "suelo"
-      },
+      "name": {"en-US": "floor", "pt-BR": "chão", "es": "suelo"},
       "aliases": {
-        "en-US": [
-          "tiles",
-          "checkered floor"
-        ],
-        "pt-BR": [
-          "piso",
-          "piso xadrez",
-          "ladrilhos"
-        ],
-        "es": [
-          "piso",
-          "baldosas",
-          "suelo ajedrezado"
-        ]
+        "en-US": ["tiles", "checkered floor"],
+        "pt-BR": ["piso", "piso xadrez", "ladrilhos"],
+        "es": ["piso", "baldosas", "suelo ajedrezado"]
       },
-      "cameras": [
-        "A",
-        "C"
-      ]
+      "cameras": ["A", "C"]
     },
     "front_door": {
       "name": {
@@ -184,13 +102,7 @@
         "es": "puerta principal"
       },
       "aliases": {
-        "en-US": [
-          "door",
-          "double door",
-          "locks",
-          "lock",
-          "exit"
-        ],
+        "en-US": ["door", "double door", "locks", "lock", "exit"],
         "pt-BR": [
           "porta",
           "porta dupla",
@@ -206,16 +118,10 @@
           "salida"
         ]
       },
-      "cameras": [
-        "C"
-      ]
+      "cameras": ["C"]
     },
     "chandelier": {
-      "name": {
-        "en-US": "chandelier",
-        "pt-BR": "lustre",
-        "es": "candelabro"
-      },
+      "name": {"en-US": "chandelier", "pt-BR": "lustre", "es": "candelabro"},
       "aliases": {
         "en-US": [
           "crystal chandelier",
@@ -238,58 +144,22 @@
           "algo dorado"
         ]
       },
-      "cameras": [
-        "C"
-      ]
+      "cameras": ["C"]
     },
     "winch": {
-      "name": {
-        "en-US": "winch",
-        "pt-BR": "guincho",
-        "es": "cabrestante"
-      },
+      "name": {"en-US": "winch", "pt-BR": "guincho", "es": "cabrestante"},
       "aliases": {
-        "en-US": [
-          "chain",
-          "wall winch",
-          "windlass",
-          "drum"
-        ],
-        "pt-BR": [
-          "corrente",
-          "sarilho",
-          "tambor"
-        ],
-        "es": [
-          "torno",
-          "cadena",
-          "malacate",
-          "tambor"
-        ]
+        "en-US": ["chain", "wall winch", "windlass", "drum"],
+        "pt-BR": ["corrente", "sarilho", "tambor"],
+        "es": ["torno", "cadena", "malacate", "tambor"]
       },
-      "cameras": [
-        "C"
-      ]
+      "cameras": ["C"]
     }
   },
   "items": {
     "iron_key": {
-      "name": {
-        "en-US": "Iron key",
-        "pt-BR": "Chave de ferro",
-        "es": "Llave de hierro"
-      },
-      "aliases": {
-        "en-US": [
-          "iron"
-        ],
-        "pt-BR": [
-          "ferro"
-        ],
-        "es": [
-          "hierro"
-        ]
-      },
+      "name": {"en-US": "Iron key", "pt-BR": "Chave de ferro", "es": "Llave de hierro"},
+      "aliases": {"en-US": ["iron"], "pt-BR": ["ferro"], "es": ["hierro"]},
       "description": {
         "en-US": "A heavy iron key, black with age. Its bit is crude and thick.",
         "pt-BR": "Uma chave de ferro pesada, preta de tão velha. O dente é grosso e tosco.",
@@ -302,17 +172,7 @@
         "pt-BR": "Chave de prata",
         "es": "Llave de plata"
       },
-      "aliases": {
-        "en-US": [
-          "silver"
-        ],
-        "pt-BR": [
-          "prata"
-        ],
-        "es": [
-          "plata"
-        ]
-      },
+      "aliases": {"en-US": ["silver"], "pt-BR": ["prata"], "es": ["plata"]},
       "description": {
         "en-US": "A slender silver key, tarnished grey. A leaf is still stuck to it.",
         "pt-BR": "Uma chave de prata fina, escurecida. Ainda tem uma folha grudada.",
@@ -320,24 +180,11 @@
       }
     },
     "gold_key": {
-      "name": {
-        "en-US": "Gold key",
-        "pt-BR": "Chave de ouro",
-        "es": "Llave de oro"
-      },
+      "name": {"en-US": "Gold key", "pt-BR": "Chave de ouro", "es": "Llave de oro"},
       "aliases": {
-        "en-US": [
-          "golden key",
-          "gold"
-        ],
-        "pt-BR": [
-          "chave dourada",
-          "ouro"
-        ],
-        "es": [
-          "llave dorada",
-          "oro"
-        ]
+        "en-US": ["golden key", "gold"],
+        "pt-BR": ["chave dourada", "ouro"],
+        "es": ["llave dorada", "oro"]
       },
       "description": {
         "en-US": "A small gold key on a frayed ribbon. It barely weighs anything.",
@@ -346,24 +193,11 @@
       }
     },
     "crank_handle": {
-      "name": {
-        "en-US": "Crank handle",
-        "pt-BR": "Manivela",
-        "es": "Manivela"
-      },
+      "name": {"en-US": "Crank handle", "pt-BR": "Manivela", "es": "Manivela"},
       "aliases": {
-        "en-US": [
-          "handle",
-          "crank"
-        ],
-        "pt-BR": [
-          "cabo",
-          "manopla"
-        ],
-        "es": [
-          "manija",
-          "mango"
-        ]
+        "en-US": ["handle", "crank"],
+        "pt-BR": ["cabo", "manopla"],
+        "es": ["manija", "mango"]
       },
       "description": {
         "en-US": "An iron crank handle with a square socket. Made for some kind of winch.",
@@ -384,22 +218,10 @@
     "door_open": false
   },
   "brightness": 0.6,
-  "lighting": [
-    {
-      "when": [
-        {
-          "type": "flag_equals",
-          "flag": "door_open",
-          "value": true
-        }
-      ],
-      "brightness": 1.25
-    }
-  ],
+  "lighting": [{"when": [{"type": "flag_equals", "flag": "door_open", "value": true}], "brightness": 1.25}],
   "interactions": [
     {
-      "verb": "inspect",
-      "object": "coat_rack",
+      "say": ["coat_rack"],
       "effects": [
         {
           "type": "display_message",
@@ -412,15 +234,8 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "coat",
-      "conditions": [
-        {
-          "type": "flag_equals",
-          "flag": "coat_searched",
-          "value": false
-        }
-      ],
+      "say": ["coat"],
+      "conditions": [{"type": "flag_equals", "flag": "coat_searched", "value": false}],
       "effects": [
         {
           "type": "display_message",
@@ -433,8 +248,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "coat",
+      "say": ["coat"],
       "effects": [
         {
           "type": "display_message",
@@ -447,21 +261,10 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "coat",
-      "conditions": [
-        {
-          "type": "flag_equals",
-          "flag": "coat_searched",
-          "value": false
-        }
-      ],
+      "say": ["open", "coat"],
+      "conditions": [{"type": "flag_equals", "flag": "coat_searched", "value": false}],
       "effects": [
-        {
-          "type": "set_flag",
-          "flag": "coat_searched",
-          "value": true
-        },
+        {"type": "set_flag", "flag": "coat_searched", "value": true},
         {
           "type": "display_message",
           "text": {
@@ -470,15 +273,11 @@
             "es": "Hurgas en los bolsillos. Pelusa, una polilla muerta... y metal frío.\n¡Encontraste una llave de hierro!"
           }
         },
-        {
-          "type": "add_item",
-          "item": "iron_key"
-        }
+        {"type": "add_item", "item": "iron_key"}
       ]
     },
     {
-      "verb": "open",
-      "object": "coat",
+      "say": ["open", "coat"],
       "effects": [
         {
           "type": "display_message",
@@ -491,21 +290,10 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "umbrella_stand",
-      "conditions": [
-        {
-          "type": "flag_equals",
-          "flag": "umbrella_searched",
-          "value": false
-        }
-      ],
+      "say": ["umbrella_stand"],
+      "conditions": [{"type": "flag_equals", "flag": "umbrella_searched", "value": false}],
       "effects": [
-        {
-          "type": "set_flag",
-          "flag": "umbrella_searched",
-          "value": true
-        },
+        {"type": "set_flag", "flag": "umbrella_searched", "value": true},
         {
           "type": "display_message",
           "text": {
@@ -514,15 +302,11 @@
             "es": "Paraguas negros, podridos hasta las varillas. Metes la mano entre las hojas secas del fondo...\n¡Encontraste una llave de plata!"
           }
         },
-        {
-          "type": "add_item",
-          "item": "silver_key"
-        }
+        {"type": "add_item", "item": "silver_key"}
       ]
     },
     {
-      "verb": "inspect",
-      "object": "umbrella_stand",
+      "say": ["umbrella_stand"],
       "effects": [
         {
           "type": "display_message",
@@ -535,15 +319,8 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "grandfather_clock",
-      "conditions": [
-        {
-          "type": "flag_equals",
-          "flag": "clock_open",
-          "value": false
-        }
-      ],
+      "say": ["grandfather_clock"],
+      "conditions": [{"type": "flag_equals", "flag": "clock_open", "value": false}],
       "effects": [
         {
           "type": "display_message",
@@ -556,8 +333,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "grandfather_clock",
+      "say": ["grandfather_clock"],
       "effects": [
         {
           "type": "display_message",
@@ -570,21 +346,10 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "grandfather_clock",
-      "conditions": [
-        {
-          "type": "flag_equals",
-          "flag": "clock_open",
-          "value": false
-        }
-      ],
+      "say": ["open", "grandfather_clock"],
+      "conditions": [{"type": "flag_equals", "flag": "clock_open", "value": false}],
       "effects": [
-        {
-          "type": "set_flag",
-          "flag": "clock_open",
-          "value": true
-        },
+        {"type": "set_flag", "flag": "clock_open", "value": true},
         {
           "type": "display_message",
           "text": {
@@ -593,15 +358,11 @@
             "es": "La puerta de la caja se abre con un crujido. Donde deberían colgar las pesas, hay una manivela de hierro.\n¡Encontraste una manivela!"
           }
         },
-        {
-          "type": "add_item",
-          "item": "crank_handle"
-        }
+        {"type": "add_item", "item": "crank_handle"}
       ]
     },
     {
-      "verb": "open",
-      "object": "grandfather_clock",
+      "say": ["open", "grandfather_clock"],
       "effects": [
         {
           "type": "display_message",
@@ -614,8 +375,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "floor",
+      "say": ["floor"],
       "effects": [
         {
           "type": "display_message",
@@ -628,15 +388,8 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "front_door",
-      "conditions": [
-        {
-          "type": "flag_equals",
-          "flag": "iron_turned",
-          "value": true
-        }
-      ],
+      "say": ["front_door"],
+      "conditions": [{"type": "flag_equals", "flag": "iron_turned", "value": true}],
       "effects": [
         {
           "type": "display_message",
@@ -649,15 +402,8 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "front_door",
-      "conditions": [
-        {
-          "type": "flag_equals",
-          "flag": "silver_turned",
-          "value": true
-        }
-      ],
+      "say": ["front_door"],
+      "conditions": [{"type": "flag_equals", "flag": "silver_turned", "value": true}],
       "effects": [
         {
           "type": "display_message",
@@ -670,15 +416,8 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "front_door",
-      "conditions": [
-        {
-          "type": "flag_equals",
-          "flag": "gold_turned",
-          "value": true
-        }
-      ],
+      "say": ["front_door"],
+      "conditions": [{"type": "flag_equals", "flag": "gold_turned", "value": true}],
       "effects": [
         {
           "type": "display_message",
@@ -691,8 +430,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "front_door",
+      "say": ["front_door"],
       "effects": [
         {
           "type": "display_message",
@@ -705,8 +443,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "front_door",
+      "say": ["open", "front_door"],
       "effects": [
         {
           "type": "display_message",
@@ -719,41 +456,16 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "iron_key",
-      "object": "front_door",
+      "say": ["iron_key", "front_door"],
       "conditions": [
-        {
-          "type": "flag_equals",
-          "flag": "iron_turned",
-          "value": false
-        },
-        {
-          "type": "flag_equals",
-          "flag": "silver_turned",
-          "value": true
-        },
-        {
-          "type": "flag_equals",
-          "flag": "gold_turned",
-          "value": true
-        }
+        {"type": "flag_equals", "flag": "iron_turned", "value": false},
+        {"type": "flag_equals", "flag": "silver_turned", "value": true},
+        {"type": "flag_equals", "flag": "gold_turned", "value": true}
       ],
       "effects": [
-        {
-          "type": "set_flag",
-          "flag": "iron_turned",
-          "value": true
-        },
-        {
-          "type": "set_flag",
-          "flag": "door_open",
-          "value": true
-        },
-        {
-          "type": "remove_item",
-          "item": "iron_key"
-        },
+        {"type": "set_flag", "flag": "iron_turned", "value": true},
+        {"type": "set_flag", "flag": "door_open", "value": true},
+        {"type": "remove_item", "item": "iron_key"},
         {
           "type": "display_message",
           "text": {
@@ -762,32 +474,15 @@
             "es": "La última cerradura gira. La gran puerta gime y se abre de par en par a un amanecer gris.\nAire frío, cantos de pájaros. Sales de la casa."
           }
         },
-        {
-          "type": "complete_game"
-        }
+        {"type": "complete_game"}
       ]
     },
     {
-      "verb": "use",
-      "item": "iron_key",
-      "object": "front_door",
-      "conditions": [
-        {
-          "type": "flag_equals",
-          "flag": "iron_turned",
-          "value": false
-        }
-      ],
+      "say": ["iron_key", "front_door"],
+      "conditions": [{"type": "flag_equals", "flag": "iron_turned", "value": false}],
       "effects": [
-        {
-          "type": "set_flag",
-          "flag": "iron_turned",
-          "value": true
-        },
-        {
-          "type": "remove_item",
-          "item": "iron_key"
-        },
+        {"type": "set_flag", "flag": "iron_turned", "value": true},
+        {"type": "remove_item", "item": "iron_key"},
         {
           "type": "display_message",
           "text": {
@@ -799,41 +494,16 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "silver_key",
-      "object": "front_door",
+      "say": ["silver_key", "front_door"],
       "conditions": [
-        {
-          "type": "flag_equals",
-          "flag": "silver_turned",
-          "value": false
-        },
-        {
-          "type": "flag_equals",
-          "flag": "iron_turned",
-          "value": true
-        },
-        {
-          "type": "flag_equals",
-          "flag": "gold_turned",
-          "value": true
-        }
+        {"type": "flag_equals", "flag": "silver_turned", "value": false},
+        {"type": "flag_equals", "flag": "iron_turned", "value": true},
+        {"type": "flag_equals", "flag": "gold_turned", "value": true}
       ],
       "effects": [
-        {
-          "type": "set_flag",
-          "flag": "silver_turned",
-          "value": true
-        },
-        {
-          "type": "set_flag",
-          "flag": "door_open",
-          "value": true
-        },
-        {
-          "type": "remove_item",
-          "item": "silver_key"
-        },
+        {"type": "set_flag", "flag": "silver_turned", "value": true},
+        {"type": "set_flag", "flag": "door_open", "value": true},
+        {"type": "remove_item", "item": "silver_key"},
         {
           "type": "display_message",
           "text": {
@@ -842,32 +512,15 @@
             "es": "La última cerradura gira. La gran puerta gime y se abre de par en par a un amanecer gris.\nAire frío, cantos de pájaros. Sales de la casa."
           }
         },
-        {
-          "type": "complete_game"
-        }
+        {"type": "complete_game"}
       ]
     },
     {
-      "verb": "use",
-      "item": "silver_key",
-      "object": "front_door",
-      "conditions": [
-        {
-          "type": "flag_equals",
-          "flag": "silver_turned",
-          "value": false
-        }
-      ],
+      "say": ["silver_key", "front_door"],
+      "conditions": [{"type": "flag_equals", "flag": "silver_turned", "value": false}],
       "effects": [
-        {
-          "type": "set_flag",
-          "flag": "silver_turned",
-          "value": true
-        },
-        {
-          "type": "remove_item",
-          "item": "silver_key"
-        },
+        {"type": "set_flag", "flag": "silver_turned", "value": true},
+        {"type": "remove_item", "item": "silver_key"},
         {
           "type": "display_message",
           "text": {
@@ -879,41 +532,16 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "gold_key",
-      "object": "front_door",
+      "say": ["gold_key", "front_door"],
       "conditions": [
-        {
-          "type": "flag_equals",
-          "flag": "gold_turned",
-          "value": false
-        },
-        {
-          "type": "flag_equals",
-          "flag": "iron_turned",
-          "value": true
-        },
-        {
-          "type": "flag_equals",
-          "flag": "silver_turned",
-          "value": true
-        }
+        {"type": "flag_equals", "flag": "gold_turned", "value": false},
+        {"type": "flag_equals", "flag": "iron_turned", "value": true},
+        {"type": "flag_equals", "flag": "silver_turned", "value": true}
       ],
       "effects": [
-        {
-          "type": "set_flag",
-          "flag": "gold_turned",
-          "value": true
-        },
-        {
-          "type": "set_flag",
-          "flag": "door_open",
-          "value": true
-        },
-        {
-          "type": "remove_item",
-          "item": "gold_key"
-        },
+        {"type": "set_flag", "flag": "gold_turned", "value": true},
+        {"type": "set_flag", "flag": "door_open", "value": true},
+        {"type": "remove_item", "item": "gold_key"},
         {
           "type": "display_message",
           "text": {
@@ -922,32 +550,15 @@
             "es": "La última cerradura gira. La gran puerta gime y se abre de par en par a un amanecer gris.\nAire frío, cantos de pájaros. Sales de la casa."
           }
         },
-        {
-          "type": "complete_game"
-        }
+        {"type": "complete_game"}
       ]
     },
     {
-      "verb": "use",
-      "item": "gold_key",
-      "object": "front_door",
-      "conditions": [
-        {
-          "type": "flag_equals",
-          "flag": "gold_turned",
-          "value": false
-        }
-      ],
+      "say": ["gold_key", "front_door"],
+      "conditions": [{"type": "flag_equals", "flag": "gold_turned", "value": false}],
       "effects": [
-        {
-          "type": "set_flag",
-          "flag": "gold_turned",
-          "value": true
-        },
-        {
-          "type": "remove_item",
-          "item": "gold_key"
-        },
+        {"type": "set_flag", "flag": "gold_turned", "value": true},
+        {"type": "remove_item", "item": "gold_key"},
         {
           "type": "display_message",
           "text": {
@@ -959,15 +570,8 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "chandelier",
-      "conditions": [
-        {
-          "type": "flag_equals",
-          "flag": "chandelier_lowered",
-          "value": false
-        }
-      ],
+      "say": ["chandelier"],
+      "conditions": [{"type": "flag_equals", "flag": "chandelier_lowered", "value": false}],
       "effects": [
         {
           "type": "display_message",
@@ -980,21 +584,10 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "chandelier",
-      "conditions": [
-        {
-          "type": "flag_equals",
-          "flag": "gold_taken",
-          "value": false
-        }
-      ],
+      "say": ["chandelier"],
+      "conditions": [{"type": "flag_equals", "flag": "gold_taken", "value": false}],
       "effects": [
-        {
-          "type": "set_flag",
-          "flag": "gold_taken",
-          "value": true
-        },
+        {"type": "set_flag", "flag": "gold_taken", "value": true},
         {
           "type": "display_message",
           "text": {
@@ -1003,15 +596,11 @@
             "es": "Polvo y telarañas cuelgan de los cristales. Atada entre ellos con una cinta...\n¡Encontraste una llave de oro!"
           }
         },
-        {
-          "type": "add_item",
-          "item": "gold_key"
-        }
+        {"type": "add_item", "item": "gold_key"}
       ]
     },
     {
-      "verb": "inspect",
-      "object": "chandelier",
+      "say": ["chandelier"],
       "effects": [
         {
           "type": "display_message",
@@ -1024,15 +613,8 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "winch",
-      "conditions": [
-        {
-          "type": "flag_equals",
-          "flag": "chandelier_lowered",
-          "value": false
-        }
-      ],
+      "say": ["winch"],
+      "conditions": [{"type": "flag_equals", "flag": "chandelier_lowered", "value": false}],
       "effects": [
         {
           "type": "display_message",
@@ -1045,8 +627,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "winch",
+      "say": ["winch"],
       "effects": [
         {
           "type": "display_message",
@@ -1059,26 +640,11 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "crank_handle",
-      "object": "winch",
-      "conditions": [
-        {
-          "type": "flag_equals",
-          "flag": "chandelier_lowered",
-          "value": false
-        }
-      ],
+      "say": ["crank_handle", "winch"],
+      "conditions": [{"type": "flag_equals", "flag": "chandelier_lowered", "value": false}],
       "effects": [
-        {
-          "type": "set_flag",
-          "flag": "chandelier_lowered",
-          "value": true
-        },
-        {
-          "type": "remove_item",
-          "item": "crank_handle"
-        },
+        {"type": "set_flag", "flag": "chandelier_lowered", "value": true},
+        {"type": "remove_item", "item": "crank_handle"},
         {
           "type": "display_message",
           "text": {
@@ -1098,16 +664,8 @@
         "es": "Tres cerraduras piden tres llaves. Quienes vivieron aquí dejaron cosas atrás; revísalas."
       },
       "skipIf": [
-        {
-          "type": "flag_equals",
-          "flag": "coat_searched",
-          "value": true
-        },
-        {
-          "type": "flag_equals",
-          "flag": "umbrella_searched",
-          "value": true
-        }
+        {"type": "flag_equals", "flag": "coat_searched", "value": true},
+        {"type": "flag_equals", "flag": "umbrella_searched", "value": true}
       ]
     },
     {
@@ -1117,16 +675,8 @@
         "es": "Las cosas pequeñas se quedan donde nadie mira: en bolsillos viejos, en el fondo de un soporte."
       },
       "skipIf": [
-        {
-          "type": "flag_equals",
-          "flag": "coat_searched",
-          "value": true
-        },
-        {
-          "type": "flag_equals",
-          "flag": "umbrella_searched",
-          "value": true
-        }
+        {"type": "flag_equals", "flag": "coat_searched", "value": true},
+        {"type": "flag_equals", "flag": "umbrella_searched", "value": true}
       ]
     },
     {
@@ -1135,13 +685,7 @@
         "pt-BR": "O relógio alto parou há muito tempo. A caixa dele pode guardar algo que pertence a outro canto do saguão.",
         "es": "El reloj alto se detuvo hace mucho. Su caja podría guardar algo que pertenece a otro rincón del vestíbulo."
       },
-      "skipIf": [
-        {
-          "type": "flag_equals",
-          "flag": "clock_open",
-          "value": true
-        }
-      ]
+      "skipIf": [{"type": "flag_equals", "flag": "clock_open", "value": true}]
     },
     {
       "text": {
@@ -1149,13 +693,7 @@
         "pt-BR": "O brilho no lustre está fora de alcance. O que o sustenta lá em cima poderia baixá-lo.",
         "es": "El brillo del candelabro está fuera de tu alcance. Lo que lo sostiene arriba podría bajarlo."
       },
-      "skipIf": [
-        {
-          "type": "flag_equals",
-          "flag": "chandelier_lowered",
-          "value": true
-        }
-      ]
+      "skipIf": [{"type": "flag_equals", "flag": "chandelier_lowered", "value": true}]
     },
     {
       "text": {

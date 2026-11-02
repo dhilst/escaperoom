@@ -138,8 +138,7 @@
   "initialFlags": {"cage_open": false, "box_open": false, "lens_fitted": false},
   "interactions": [
     {
-      "verb": "inspect",
-      "object": "telescope",
+      "say": ["telescope"],
       "conditions": [{"type": "flag_equals", "flag": "lens_fitted", "value": false}],
       "effects": [
         {
@@ -153,8 +152,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "telescope",
+      "say": ["telescope"],
       "effects": [
         {
           "type": "display_message",
@@ -168,9 +166,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "lens",
-      "object": "telescope",
+      "say": ["lens", "telescope"],
       "conditions": [{"type": "flag_equals", "flag": "lens_fitted", "value": false}],
       "effects": [
         {"type": "set_flag", "flag": "lens_fitted", "value": true},
@@ -186,8 +182,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "star_chart",
+      "say": ["star_chart"],
       "effects": [
         {
           "type": "display_message",
@@ -200,8 +195,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "birdcage",
+      "say": ["birdcage"],
       "conditions": [{"type": "flag_equals", "flag": "cage_open", "value": false}],
       "effects": [
         {
@@ -215,8 +209,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "birdcage",
+      "say": ["birdcage"],
       "effects": [
         {
           "type": "display_message",
@@ -229,8 +222,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "birdcage",
+      "say": ["open", "birdcage"],
       "conditions": [{"type": "flag_equals", "flag": "cage_open", "value": false}],
       "effects": [
         {"type": "set_flag", "flag": "cage_open", "value": true},
@@ -246,8 +238,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "music_box",
+      "say": ["music_box"],
       "conditions": [{"type": "flag_equals", "flag": "box_open", "value": false}],
       "effects": [
         {
@@ -261,8 +252,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "music_box",
+      "say": ["music_box"],
       "effects": [
         {
           "type": "display_message",
@@ -275,8 +265,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "music_box",
+      "say": ["open", "music_box"],
       "conditions": [{"type": "flag_equals", "flag": "box_open", "value": false}],
       "effects": [
         {
@@ -290,9 +279,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "crank",
-      "object": "music_box",
+      "say": ["crank", "music_box"],
       "conditions": [{"type": "flag_equals", "flag": "box_open", "value": false}],
       "effects": [
         {"type": "set_flag", "flag": "box_open", "value": true},
@@ -309,8 +296,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "window",
+      "say": ["window"],
       "effects": [
         {
           "type": "display_message",
@@ -323,8 +309,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "hatch",
+      "say": ["hatch"],
       "effects": [
         {
           "type": "display_message",
@@ -337,8 +322,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "hatch",
+      "say": ["open", "hatch"],
       "effects": [
         {
           "type": "display_message",
@@ -351,9 +335,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "2618",
-      "object": "hatch",
+      "say": ["2618", "hatch"],
       "effects": [
         {
           "type": "display_message",

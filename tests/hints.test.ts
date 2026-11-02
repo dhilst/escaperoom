@@ -5,6 +5,7 @@ import {
   formatCountdown,
   HINT_UNLOCK_MS,
   MAX_HINTS,
+  phraseKey,
   stepGame,
   validateRoom,
 } from "../src/engine";
@@ -28,13 +29,20 @@ describe("hints", () => {
 
   it("never give away an answer: no codes, numbers or commands", () => {
     for (const locale of LOCALES) {
-      const { verbs } = LANGUAGES[locale].parser;
+      const globalName = (w: string) =>
+        Object.entries(LANGUAGES[locale].parser.words).find(([, id]) => id === w)?.[0];
       for (const room of Object.values(loadGame(locale).rooms)) {
+        // Every multi-word phrase a rule answers to, written with the room's names.
+        const phrases = room.interactions
+          .filter((rule) => rule.say.length > 1)
+          .map((rule) =>
+            phraseKey(rule.say.map((w) => room.objects[w]?.name ?? room.items[w]?.name ?? globalName(w) ?? w).join(" ")),
+          );
         for (const { text } of room.hints ?? []) {
           expect(text, `${locale} ${room.id}: ${text}`).not.toMatch(/\d/);
-          // No ready-made commands such as "use 0315 drawer" / "usar ... na porta".
-          const firstWords = text.toLowerCase().split(/[.:!?¡¿]\s*/).map((part) => part.split(/\s+/)[0]);
-          expect(firstWords.filter((w) => w in verbs && verbs[w] === "use"), `${locale} ${room.id}: ${text}`).toEqual([]);
+          // No ready-made commands such as "key door" / "chave porta".
+          const said = ` ${phraseKey(text)} `;
+          expect(phrases.filter((p) => said.includes(` ${p} `)), `${locale} ${room.id}: ${text}`).toEqual([]);
         }
       }
     }
@@ -49,13 +57,13 @@ describe("hints", () => {
   });
 
   it("skips hints about steps the player already solved", () => {
-    const { state, last } = playGame(["use 0315 drawer", "hint"], undefined, "en-US", LATER);
+    const { state, last } = playGame(["0315 drawer", "hint"], undefined, "en-US", LATER);
     expect(state.hints).toEqual([3]);
     expect(texts(last)).toEqual([`Hint 4/5: ${study.hints![3].text}`]);
   });
 
   it("keeps hints already revealed even if their step gets solved later", () => {
-    const { state } = playGame(["hint", "use 0315 drawer", "hint"], undefined, "en-US", LATER);
+    const { state } = playGame(["hint", "0315 drawer", "hint"], undefined, "en-US", LATER);
     expect(state.hints).toEqual([0, 3]);
   });
 
@@ -128,7 +136,7 @@ describe("hint unlock times", () => {
   });
 
   it("depend on how many hints were revealed, not which (skipped hints don't count)", () => {
-    const solvedDrawer = at(10, ["use 0315 drawer", "hint"]).state; // 1st reveal is hint #4
+    const solvedDrawer = at(10, ["0315 drawer", "hint"]).state; // 1st reveal is hint #4
     expect(solvedDrawer.hints).toEqual([3]);
     expect(texts(at(29, ["hint"], solvedDrawer).last)[0]).toMatch(/^Next hint available in/);
   });
@@ -136,7 +144,7 @@ describe("hint unlock times", () => {
   it("can be given a different schedule (all zeros = no waiting)", () => {
     const start = createGameState(game);
     const step = (state: typeof start) =>
-      stepGame(state, { verb: "hint" }, game, LANGUAGES["en-US"].engine, 0, HINT_UNLOCK_MS.map(() => 0)).state;
+      stepGame(state, { words: ["hint"] }, game, LANGUAGES["en-US"].engine, 0, HINT_UNLOCK_MS.map(() => 0)).state;
     let state = start;
     for (let i = 0; i < MAX_HINTS; i++) state = step(state);
     expect(state.hints).toEqual([0, 1, 2, 3, 4]);

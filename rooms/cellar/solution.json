@@ -2,31 +2,31 @@
   "en-US": [
     "open toolbox",
     "turn",
-    "use crowbar crate",
+    "crowbar crate",
     "turn",
-    "use fuse fuse box",
+    "fuse fuse box",
     "turn",
-    "inspect wall",
-    "use 7419 door"
+    "wall",
+    "7419 door"
   ],
   "pt-BR": [
-    "abrir a caixa de ferramentas",
+    "abrir caixa de ferramentas",
     "virar",
-    "usar o pé de cabra nos caixotes",
+    "pé de cabra caixotes",
     "virar",
-    "usar o fusível na caixa de fusíveis",
+    "fusível caixa de fusíveis",
     "virar",
-    "examinar a parede",
-    "usar 7419 na porta"
+    "parede",
+    "7419 porta"
   ],
   "es": [
-    "abrir la caja de herramientas",
+    "abrir caja de herramientas",
     "girar",
-    "usar la palanca en las cajas",
+    "palanca cajas",
     "girar",
-    "usar el fusible en la caja de fusibles",
+    "fusible caja de fusibles",
     "girar",
-    "examinar la pared",
-    "usar 7419 en la puerta"
+    "pared",
+    "7419 puerta"
   ]
 }

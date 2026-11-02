@@ -27,7 +27,7 @@ describe("The Rooftop Greenhouse", () => {
   it("the door stays locked without the key", () => {
     const { state, last } = run(["turn", "open door"]);
     expect(texts(last)).toEqual(["Locked. The iron lock won't give."]);
-    const tries = run(["turn", "use key door", "use iron key door", "open door key"]);
+    const tries = run(["turn", "key door", "iron key door", "open door key"]);
     expect(tries.state.roomId).toBe("greenhouse");
     expect(state.roomId).toBe("greenhouse");
   });
@@ -36,18 +36,18 @@ describe("The Rooftop Greenhouse", () => {
     const { state, last } = run(["open pot"]);
     expect(texts(last)[0]).toContain("baked hard as stone");
     expect(state.inventory).toEqual([]);
-    expect(texts(run(["inspect pot"]).last)[0]).toContain("Something metal glints");
+    expect(texts(run(["pot"]).last)[0]).toContain("Something metal glints");
   });
 
   it("an empty watering can does nothing to the pot", () => {
-    const { state, last } = run(["open cabinet", "use watering can pot"]);
+    const { state, last } = run(["open cabinet", "watering can pot"]);
     expect(texts(last)).toEqual(["You tip the watering can. It's empty. Not a drop comes out."]);
     expect(state.flags.key_found).toBe(false);
     expect(state.inventory).toEqual(["watering_can"]);
   });
 
   it("filling twice says the can is already full; pouring empties it", () => {
-    const full = run(["open cabinet", "turn", "use can barrel", "use can barrel"]);
+    const full = run(["open cabinet", "turn", "can barrel", "can barrel"]);
     expect(texts(full.last)).toEqual(["The watering can is already full."]);
     expect(full.state.flags.can_full).toBe(true);
     const poured = run(SOLUTION.slice(0, 5));
@@ -59,9 +59,9 @@ describe("The Rooftop Greenhouse", () => {
       ...SOLUTION.slice(0, 5),
       "open cabinet",
       "turn",
-      "use watering can barrel",
+      "watering can barrel",
       "turn",
-      "use watering can pot",
+      "watering can pot",
     ]);
     expect(texts(last)).toEqual(["The soil is already soaked."]);
     expect(state.inventory).toEqual(["watering_can", "iron_key"]);
@@ -69,8 +69,8 @@ describe("The Rooftop Greenhouse", () => {
   });
 
   it("objects only work from their own camera", () => {
-    expect(run(["use watering can barrel"]).last[0]).toMatchObject({ type: "failure", reason: "not_visible" });
-    expect(run(["open cabinet", "turn", "use can pot"]).last[0]).toMatchObject({ reason: "not_visible" });
+    expect(run(["watering can barrel"]).last[0]).toMatchObject({ type: "failure", reason: "not_visible" });
+    expect(run(["open cabinet", "turn", "can pot"]).last[0]).toMatchObject({ reason: "not_visible" });
   });
 
   it("the bench camera mentions the wet soil once the key is found", () => {
@@ -81,21 +81,21 @@ describe("The Rooftop Greenhouse", () => {
   });
 
   it("every visible thing can be inspected", () => {
-    const a = ["inspect bench", "inspect pots", "inspect pot", "inspect cabinet", "inspect vines"];
-    const c = ["inspect barrel", "inspect door", "inspect lock", "inspect broken glass", "inspect moonlight"];
+    const a = ["bench", "pots", "pot", "cabinet", "vines"];
+    const c = ["barrel", "door", "lock", "broken glass", "moonlight"];
     const { log } = run([...a, "turn", ...c]);
     log.forEach((events) => expect(events.find((e) => e.type === "failure")).toBeUndefined());
   });
 
   it("is translated", () => {
-    expect(texts(run(["abrir o armário", "usar o regador no vaso"], "pt-BR").last)).toEqual([
+    expect(texts(run(["abrir armário", "regador vaso"], "pt-BR").last)).toEqual([
       "Você inclina o regador. Está vazio. Não sai uma gota.",
     ]);
-    expect(texts(run(["virar", "abrir a porta"], "pt-BR").last)).toEqual(["Trancada. A fechadura de ferro não cede."]);
-    expect(texts(run(["abrir el armario", "usar la regadera en la maceta"], "es").last)).toEqual([
+    expect(texts(run(["virar", "abrir porta"], "pt-BR").last)).toEqual(["Trancada. A fechadura de ferro não cede."]);
+    expect(texts(run(["abrir armario", "regadera maceta"], "es").last)).toEqual([
       "Inclinas la regadera. Está vacía. No sale ni una gota.",
     ]);
-    expect(texts(run(["girar", "abrir la puerta"], "es").last)).toEqual([
+    expect(texts(run(["girar", "abrir puerta"], "es").last)).toEqual([
       "Cerrada con llave. La cerradura de hierro no cede.",
     ]);
     const es = run(solution("greenhouse", "es"), "es");

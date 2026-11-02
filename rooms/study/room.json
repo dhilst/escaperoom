@@ -115,8 +115,7 @@
   "initialFlags": {"drawer_open": false, "door_unlocked": false},
   "interactions": [
     {
-      "verb": "inspect",
-      "object": "clock",
+      "say": ["clock"],
       "effects": [
         {
           "type": "display_message",
@@ -130,8 +129,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "papers",
+      "say": ["papers"],
       "effects": [
         {
           "type": "display_message",
@@ -144,8 +142,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "candle",
+      "say": ["candle"],
       "effects": [
         {
           "type": "display_message",
@@ -158,8 +155,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "desk",
+      "say": ["desk"],
       "conditions": [{"type": "flag_equals", "flag": "drawer_open", "value": false}],
       "effects": [
         {
@@ -173,8 +169,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "desk",
+      "say": ["desk"],
       "effects": [
         {
           "type": "display_message",
@@ -187,8 +182,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "drawer",
+      "say": ["drawer"],
       "conditions": [{"type": "flag_equals", "flag": "drawer_open", "value": false}],
       "effects": [
         {
@@ -202,8 +196,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "drawer",
+      "say": ["drawer"],
       "effects": [
         {
           "type": "display_message",
@@ -216,8 +209,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "drawer",
+      "say": ["open", "drawer"],
       "conditions": [{"type": "flag_equals", "flag": "drawer_open", "value": false}],
       "effects": [
         {
@@ -231,9 +223,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "0315",
-      "object": "drawer",
+      "say": ["0315", "drawer"],
       "conditions": [{"type": "flag_equals", "flag": "drawer_open", "value": false}],
       "effects": [
         {"type": "set_flag", "flag": "drawer_open", "value": true},
@@ -249,8 +239,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "bookshelf",
+      "say": ["bookshelf"],
       "effects": [
         {
           "type": "display_message",
@@ -263,8 +252,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "door",
+      "say": ["door"],
       "effects": [
         {
           "type": "display_message",
@@ -277,8 +265,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "door",
+      "say": ["open", "door"],
       "conditions": [{"type": "flag_equals", "flag": "door_unlocked", "value": false}],
       "effects": [
         {
@@ -292,9 +279,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "brass_key",
-      "object": "door",
+      "say": ["brass_key", "door"],
       "conditions": [{"type": "has_item", "item": "brass_key"}],
       "effects": [
         {"type": "set_flag", "flag": "door_unlocked", "value": true},

@@ -6,12 +6,12 @@ import { CELLAR_SOLUTION, game, playGame, studyJson, texts } from "./helpers";
 const at = (roomId: string) => createInitialState(game.rooms[roomId]);
 
 describe("help", () => {
-  it("lists the basic commands in each language, never hint", () => {
+  it("explains naming and combining, never hint", () => {
     const en = texts(playGame(["help"]).last)[0];
-    expect(en).toBe("Commands: look · turn · inspect <object> · open <object> · use <item> <target> · inventory");
+    expect(en).toMatch(/^Name something to look at it/);
     expect(en).not.toMatch(/hint|restart/);
-    expect(texts(playGame(["ajuda"], undefined, "pt-BR").last)[0]).toMatch(/^Comandos: olhar · virar/);
-    expect(texts(playGame(["ayuda"], undefined, "es").last)[0]).toMatch(/^Comandos: mirar · girar/);
+    expect(texts(playGame(["ajuda"], undefined, "pt-BR").last)[0]).toMatch(/^Diga o nome de algo/);
+    expect(texts(playGame(["ayuda"], undefined, "es").last)[0]).toMatch(/^Di el nombre de algo/);
   });
 
   it("works anywhere and changes nothing", () => {
@@ -20,29 +20,26 @@ describe("help", () => {
   });
 });
 
-describe("open <object> <code>", () => {
-  it("means use <code> <object>", () => {
-    for (const line of ["open drawer 0315", "open the drawer with 0315"]) {
-      const { state } = playGame([line]);
-      expect(state.inventory, line).toContain("brass_key");
-    }
-    const pt = playGame(["abrir a gaveta com 0315"], undefined, "pt-BR");
-    expect(pt.state.inventory).toContain("brass_key");
+describe("codes", () => {
+  it("a code followed by its target", () => {
+    expect(playGame(["0315 drawer"]).state.inventory).toContain("brass_key");
+    expect(playGame(["0315 gaveta"], undefined, "pt-BR").state.inventory).toContain("brass_key");
   });
 
-  it("a wrong code stays vague, and plain open still works", () => {
-    expect(texts(playGame(["open drawer 1234"]).last)).toEqual(["Nothing happens."]);
+  it("any other order or extra word is a different phrase", () => {
+    for (const line of ["drawer 0315", "open drawer 0315", "0315 the drawer", "1234 drawer"]) {
+      expect(texts(playGame([line]).last), line).toEqual(["Nothing happens."]);
+    }
     expect(texts(playGame(["open drawer"]).last)).toEqual(["It's locked. The dials need a four-digit code."]);
-    expect(texts(playGame(["open painting 1234"]).last)).toEqual(["There is no such painting 1234."]);
   });
 });
 
 describe("decorative objects", () => {
   it("the papers and candle on the desk can be inspected", () => {
     for (const name of ["papers", "paper", "note", "candle"]) {
-      expect(texts(playGame([`inspect ${name}`]).last)[0], name).not.toMatch(/no such|Nothing special/);
+      expect(texts(playGame([name]).last)[0], name).not.toMatch(/no such|Nothing special/);
     }
-    expect(texts(playGame(["examinar o papel"], undefined, "pt-BR").last)[0]).toMatch(/^Folhas soltas/);
+    expect(texts(playGame(["papel"], undefined, "pt-BR").last)[0]).toMatch(/^Folhas soltas/);
   });
 });
 

@@ -1,20 +1,20 @@
 {
   "en-US": [
-    "inspect clock",
-    "use 0315 drawer",
+    "clock",
+    "0315 drawer",
     "turn",
-    "use key door"
+    "key door"
   ],
   "pt-BR": [
-    "examinar o relógio",
-    "usar 0315 na gaveta",
+    "relógio",
+    "0315 gaveta",
     "virar",
-    "usar a chave na porta"
+    "chave porta"
   ],
   "es": [
-    "examinar el reloj",
-    "usar 0315 en el cajón",
+    "reloj",
+    "0315 cajón",
     "girar",
-    "usar la llave en la puerta"
+    "llave puerta"
   ]
 }

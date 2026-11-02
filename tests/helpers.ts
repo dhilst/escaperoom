@@ -1,18 +1,18 @@
 import { loadGame } from "../src/content";
-import { buildAliasMap, createGameState, createInitialState, parse, step, stepGame } from "../src/engine";
+import { buildVocabulary, createGameState, createInitialState, parse, step, stepGame } from "../src/engine";
 import type { GameDefinition, GameEvent, GameState } from "../src/engine";
 import { LANGUAGES, localize, type Locale } from "../src/i18n";
 import rawStudy from "../rooms/study/room.json";
 
 export const game = loadGame("en-US");
 export const room = game.rooms.study;
-export const aliases = buildAliasMap(room);
+export const aliases = buildVocabulary(room);
 /** The study's room.json with English text, for building variants in tests. */
 export const studyJson = localize(rawStudy, "en-US");
 
 function parseOrThrow(line: string, roomId: string, g: GameDefinition = game, locale: Locale = "en-US") {
   const language = LANGUAGES[locale].parser;
-  const parsed = parse(line, buildAliasMap(g.rooms[roomId], language), language);
+  const parsed = parse(line, buildVocabulary(g.rooms[roomId], language), language);
   if (!parsed.ok) throw new Error(`parse failed for "${line}": ${parsed.error}`);
   return parsed.command;
 }
@@ -50,22 +50,22 @@ export function playGame(
 export const texts = (events: GameEvent[]) =>
   events.flatMap((e) => ("text" in e ? [e.text] : []));
 
-export const STUDY_SOLUTION = ["use 0315 drawer", "turn", "use key door"];
+export const STUDY_SOLUTION = ["0315 drawer", "turn", "key door"];
 export const CELLAR_SOLUTION = [
   "open toolbox",
   "turn",
-  "use crowbar crate",
+  "crowbar crate",
   "turn",
-  "use fuse fuse box",
+  "fuse fuse box",
   "turn",
-  "use 7419 door",
+  "7419 door",
 ];
 export const OBSERVATORY_SOLUTION = [
   "open birdcage",
   "turn",
-  "use crank music box",
+  "crank music box",
   "turn",
-  "use lens telescope",
+  "lens telescope",
   "turn",
-  "use 2618 hatch",
+  "2618 hatch",
 ];

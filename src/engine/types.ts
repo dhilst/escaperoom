@@ -7,33 +7,30 @@ export type FlagValue = boolean | string | number;
 // Commands (parser output)
 // ---------------------------------------------------------------------------
 
-/**
- * `typed` keeps the player's own words for the object/target (accents included,
- * articles dropped) so messages like "There is no such ..." can echo them.
- */
-export type Command =
-  | { verb: "look" }
-  | { verb: "turn" }
-  | { verb: "inventory" }
-  | { verb: "help" }
-  | { verb: "hint" }
-  | { verb: "inspect"; object: string; typed?: string }
-  | { verb: "open"; object: string; typed?: string }
-  | { verb: "use"; item: string; target: string; typed?: string };
+/** Words every room understands. Rooms add their own objects, items and verbs. */
+export const GLOBAL_WORDS = ["look", "turn", "open", "inventory", "help", "hint"] as const;
+export type GlobalWord = (typeof GLOBAL_WORDS)[number];
 
-export type Verb = Command["verb"];
+/**
+ * A command is a phrase: a sequence of words. Each word is an id (a global
+ * word, or one of the room's objects, items or verbs) or, when the player
+ * typed something the room doesn't know, the literal text (e.g. a code
+ * "0315"). `typed` holds what the player actually wrote for each word, for
+ * messages like "There is no such ...".
+ *
+ * One object word looks at it, one item word describes it, and longer
+ * phrases ("key door", "open toolbox") must match a room rule exactly.
+ */
+export interface Command {
+  words: string[];
+  typed?: string[];
+}
 
 /** Everything the parser needs to understand one human language. */
 export interface ParserLanguage {
-  /** Typed word -> canonical verb. Several words may map to the same verb. */
-  verbs: Record<string, Verb>;
-  /** Articles and prepositions ignored in object phrases ("the", "on", "na", "la"...). */
-  stopwords: string[];
+  /** Typed word -> global word. Several words may map to the same one. */
+  words: Record<string, GlobalWord>;
   empty: string;
-  /** Shown for unknown verbs. Lists the documented verbs only (not hint). */
-  unknown(word: string): string;
-  /** Full usage message per verb, e.g. "Usage: inspect <object>". */
-  usage: Record<Verb, string>;
 }
 
 /** Player-facing text produced by the engine itself (room text comes from room data). */
@@ -139,19 +136,26 @@ export interface ItemDefinition {
 }
 
 /**
- * One rule. Rules are tried in file order; the first rule whose verb and
- * arguments match and whose conditions all hold is applied.
+ * One rule: the exact phrase that triggers it. Each word of `say` is an id
+ * (global word, object, item or room verb) or a literal such as a code. Rules
+ * are tried in file order; the first whose phrase matches and whose
+ * conditions all hold is applied.
  *
- * - inspect/open: `object` is required.
- * - use: `item` is either an item id (the player must hold it) or a literal
- *   code such as "0315"; `object` is the target.
+ * ["clock"] looks at the clock, ["open", "drawer"] opens it,
+ * ["brass_key", "door"] uses the key on the door, ["0315", "drawer"] enters
+ * a code. The last word is the target: it must be visible from the current
+ * camera (or be a carried item), and every item word must be carried.
  */
 export interface Interaction {
-  verb: "inspect" | "open" | "use";
-  object: string;
-  item?: string;
+  say: string[];
   conditions?: Condition[];
   effects: Effect[];
+}
+
+/** A room-specific word (e.g. "pour", "pray"), usable in that room's phrases. */
+export interface VerbDefinition {
+  name: string;
+  aliases?: string[];
 }
 
 /** A room is one level of the game. */
@@ -161,6 +165,8 @@ export interface RoomDefinition {
   cameras: Record<CameraId, CameraDefinition>;
   objects: Record<string, ObjectDefinition>;
   items: Record<string, ItemDefinition>;
+  /** Room-specific words; must not clash with any other word of the room or a global word. */
+  verbs?: Record<string, VerbDefinition>;
   initialFlags?: Record<string, FlagValue>;
   interactions: Interaction[];
   /** Up to MAX_HINTS hints, from vaguest to most explicit. */

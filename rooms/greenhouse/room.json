@@ -38,7 +38,13 @@
       "name": {"en-US": "potting bench", "pt-BR": "bancada", "es": "mesa de cultivo"},
       "aliases": {
         "en-US": ["bench", "pots", "clay pots", "planters", "row of pots"],
-        "pt-BR": ["bancada de plantio", "vasos", "vasos de barro", "floreiras", "jardineiras"],
+        "pt-BR": [
+          "bancada de plantio",
+          "vasos",
+          "vasos de barro",
+          "floreiras",
+          "jardineiras"
+        ],
         "es": ["mesa", "macetas", "macetas de barro", "jardineras", "banco"]
       },
       "cameras": ["A"]
@@ -46,9 +52,31 @@
     "pot": {
       "name": {"en-US": "pot", "pt-BR": "vaso", "es": "maceta"},
       "aliases": {
-        "en-US": ["clay pot", "soil", "dirt", "earth", "cracked soil", "glint", "metal"],
-        "pt-BR": ["vaso de barro", "terra", "solo", "terra rachada", "brilho", "metal"],
-        "es": ["maceta de barro", "tierra", "suelo", "tierra agrietada", "brillo", "metal"]
+        "en-US": [
+          "clay pot",
+          "soil",
+          "dirt",
+          "earth",
+          "cracked soil",
+          "glint",
+          "metal"
+        ],
+        "pt-BR": [
+          "vaso de barro",
+          "terra",
+          "solo",
+          "terra rachada",
+          "brilho",
+          "metal"
+        ],
+        "es": [
+          "maceta de barro",
+          "tierra",
+          "suelo",
+          "tierra agrietada",
+          "brillo",
+          "metal"
+        ]
       },
       "cameras": ["A"]
     },
@@ -74,26 +102,94 @@
       "name": {"en-US": "rain barrel", "pt-BR": "barril", "es": "barril"},
       "aliases": {
         "en-US": ["barrel", "rainwater", "water", "rain"],
-        "pt-BR": ["barril de chuva", "tonel", "água", "água da chuva", "chuva"],
-        "es": ["barril de lluvia", "tonel", "agua", "agua de lluvia", "lluvia"]
+        "pt-BR": [
+          "barril de chuva",
+          "tonel",
+          "água",
+          "água da chuva",
+          "chuva"
+        ],
+        "es": [
+          "barril de lluvia",
+          "tonel",
+          "agua",
+          "agua de lluvia",
+          "lluvia"
+        ]
       },
       "cameras": ["C"]
     },
     "door": {
       "name": {"en-US": "door", "pt-BR": "porta", "es": "puerta"},
       "aliases": {
-        "en-US": ["glass door", "stairwell door", "lock", "iron lock", "keyhole", "stairwell", "stairs", "exit"],
-        "pt-BR": ["porta de vidro", "fechadura", "fechadura de ferro", "escada", "escadaria", "saída"],
-        "es": ["puerta de cristal", "cerradura", "cerradura de hierro", "escalera", "salida"]
+        "en-US": [
+          "glass door",
+          "stairwell door",
+          "lock",
+          "iron lock",
+          "keyhole",
+          "stairwell",
+          "stairs",
+          "exit"
+        ],
+        "pt-BR": [
+          "porta de vidro",
+          "fechadura",
+          "fechadura de ferro",
+          "escada",
+          "escadaria",
+          "saída"
+        ],
+        "es": [
+          "puerta de cristal",
+          "cerradura",
+          "cerradura de hierro",
+          "escalera",
+          "salida"
+        ]
       },
       "cameras": ["C"]
     },
     "panes": {
       "name": {"en-US": "broken panes", "pt-BR": "vidraças", "es": "cristales"},
       "aliases": {
-        "en-US": ["panes", "pane", "glass", "broken glass", "shards", "roof", "window", "windows", "moonlight", "moon", "sky"],
-        "pt-BR": ["vidraça", "vidraças quebradas", "vidro", "vidros", "cacos", "telhado", "teto", "janela", "luar", "lua", "céu"],
-        "es": ["cristal", "cristales rotos", "vidrio", "vidrios", "techo", "ventana", "luz de luna", "luna", "cielo"]
+        "en-US": [
+          "panes",
+          "pane",
+          "glass",
+          "broken glass",
+          "shards",
+          "roof",
+          "window",
+          "windows",
+          "moonlight",
+          "moon",
+          "sky"
+        ],
+        "pt-BR": [
+          "vidraça",
+          "vidraças quebradas",
+          "vidro",
+          "vidros",
+          "cacos",
+          "telhado",
+          "teto",
+          "janela",
+          "luar",
+          "lua",
+          "céu"
+        ],
+        "es": [
+          "cristal",
+          "cristales rotos",
+          "vidrio",
+          "vidrios",
+          "techo",
+          "ventana",
+          "luz de luna",
+          "luna",
+          "cielo"
+        ]
       },
       "cameras": ["C"]
     }
@@ -114,11 +210,7 @@
     },
     "iron_key": {
       "name": {"en-US": "Iron key", "pt-BR": "Chave de ferro", "es": "Llave de hierro"},
-      "aliases": {
-        "en-US": ["key"],
-        "pt-BR": ["chave"],
-        "es": ["llave"]
-      },
+      "aliases": {"en-US": ["key"], "pt-BR": ["chave"], "es": ["llave"]},
       "description": {
         "en-US": "A heavy iron key, still caked with mud.",
         "pt-BR": "Uma chave de ferro pesada, ainda suja de lama.",
@@ -129,8 +221,7 @@
   "initialFlags": {"cabinet_open": false, "can_full": false, "key_found": false},
   "interactions": [
     {
-      "verb": "inspect",
-      "object": "bench",
+      "say": ["bench"],
       "effects": [
         {
           "type": "display_message",
@@ -143,8 +234,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "pot",
+      "say": ["pot"],
       "conditions": [{"type": "flag_equals", "flag": "key_found", "value": false}],
       "effects": [
         {
@@ -158,8 +248,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "pot",
+      "say": ["pot"],
       "effects": [
         {
           "type": "display_message",
@@ -172,8 +261,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "pot",
+      "say": ["open", "pot"],
       "conditions": [{"type": "flag_equals", "flag": "key_found", "value": false}],
       "effects": [
         {
@@ -187,8 +275,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "pot",
+      "say": ["open", "pot"],
       "effects": [
         {
           "type": "display_message",
@@ -201,9 +288,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "watering_can",
-      "object": "pot",
+      "say": ["watering_can", "pot"],
       "conditions": [
         {"type": "flag_equals", "flag": "key_found", "value": false},
         {"type": "flag_equals", "flag": "can_full", "value": true}
@@ -223,9 +308,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "watering_can",
-      "object": "pot",
+      "say": ["watering_can", "pot"],
       "conditions": [{"type": "flag_equals", "flag": "key_found", "value": true}],
       "effects": [
         {
@@ -239,9 +322,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "watering_can",
-      "object": "pot",
+      "say": ["watering_can", "pot"],
       "effects": [
         {
           "type": "display_message",
@@ -254,8 +335,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "cabinet",
+      "say": ["cabinet"],
       "conditions": [{"type": "flag_equals", "flag": "cabinet_open", "value": false}],
       "effects": [
         {
@@ -269,8 +349,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "cabinet",
+      "say": ["cabinet"],
       "effects": [
         {
           "type": "display_message",
@@ -283,8 +362,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "cabinet",
+      "say": ["open", "cabinet"],
       "conditions": [{"type": "flag_equals", "flag": "cabinet_open", "value": false}],
       "effects": [
         {"type": "set_flag", "flag": "cabinet_open", "value": true},
@@ -300,8 +378,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "cabinet",
+      "say": ["open", "cabinet"],
       "effects": [
         {
           "type": "display_message",
@@ -314,8 +391,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "vines",
+      "say": ["vines"],
       "effects": [
         {
           "type": "display_message",
@@ -328,8 +404,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "barrel",
+      "say": ["barrel"],
       "effects": [
         {
           "type": "display_message",
@@ -342,8 +417,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "barrel",
+      "say": ["open", "barrel"],
       "effects": [
         {
           "type": "display_message",
@@ -356,9 +430,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "watering_can",
-      "object": "barrel",
+      "say": ["watering_can", "barrel"],
       "conditions": [{"type": "flag_equals", "flag": "can_full", "value": false}],
       "effects": [
         {"type": "set_flag", "flag": "can_full", "value": true},
@@ -373,9 +445,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "watering_can",
-      "object": "barrel",
+      "say": ["watering_can", "barrel"],
       "effects": [
         {
           "type": "display_message",
@@ -388,8 +458,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "door",
+      "say": ["door"],
       "effects": [
         {
           "type": "display_message",
@@ -402,8 +471,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "door",
+      "say": ["open", "door"],
       "effects": [
         {
           "type": "display_message",
@@ -416,9 +484,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "iron_key",
-      "object": "door",
+      "say": ["iron_key", "door"],
       "effects": [
         {
           "type": "display_message",
@@ -432,8 +498,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "panes",
+      "say": ["panes"],
       "effects": [
         {
           "type": "display_message",

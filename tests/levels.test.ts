@@ -25,30 +25,30 @@ describe("The Flooded Cellar", () => {
   });
 
   it("the wall can only be read once the power is on", () => {
-    expect(texts(playGame(["turn", "inspect wall"], at("cellar")).last)).toEqual(["Too dark to make anything out."]);
-    const lit = playGame([...CELLAR_SOLUTION.slice(0, 5), "turn", "inspect writing"], at("cellar"));
+    expect(texts(playGame(["turn", "wall"], at("cellar")).last)).toEqual(["Too dark to make anything out."]);
+    const lit = playGame([...CELLAR_SOLUTION.slice(0, 5), "turn", "writing"], at("cellar"));
     expect(texts(lit.last)).toEqual(["Numbers in dripping red paint:\n7 4 1 9", "[Wall: 7 4 1 9 added to inventory]"]);
   });
 
   it("reading the wall in the dark notes nothing", () => {
-    expect(playGame(["turn", "inspect wall"], at("cellar")).state.inventory).toEqual([]);
+    expect(playGame(["turn", "wall"], at("cellar")).state.inventory).toEqual([]);
   });
 
   it("the right code does nothing without power", () => {
-    const { state, last } = playGame(["turn", "use 7419 door"], at("cellar"));
+    const { state, last } = playGame(["turn", "7419 door"], at("cellar"));
     expect(texts(last)).toEqual(["Nothing happens."]);
     expect(state.roomId).toBe("cellar");
   });
 
   it("the crate needs the crowbar", () => {
-    const { state } = playGame(["turn", "open crate", "use crowbar crate"], at("cellar"));
+    const { state } = playGame(["turn", "open crate", "crowbar crate"], at("cellar"));
     expect(state.flags.crate_open).toBe(false);
     expect(state.inventory).toEqual([]);
   });
 
   it("does not hand out a second crowbar or fuse", () => {
     const { state } = playGame(
-      ["open toolbox", "open toolbox", "turn", "use crowbar crate", "use crowbar crate", "open crate"],
+      ["open toolbox", "open toolbox", "turn", "crowbar crate", "crowbar crate", "open crate"],
       at("cellar"),
     );
     expect(state.inventory).toEqual(["fuse"]);
@@ -64,46 +64,46 @@ describe("The Observatory", () => {
   });
 
   it("the telescope shows the code only once the lens is fitted", () => {
-    expect(texts(playGame(["inspect telescope"], at("observatory")).last)[0]).toContain("lens is missing");
-    const fitted = playGame([...OBSERVATORY_SOLUTION.slice(0, 5), "inspect telescope"], at("observatory"));
+    expect(texts(playGame(["telescope"], at("observatory")).last)[0]).toContain("lens is missing");
+    const fitted = playGame([...OBSERVATORY_SOLUTION.slice(0, 5), "telescope"], at("observatory"));
     expect(texts(fitted.last)[0]).toContain("2, 6, 1, 8");
   });
 
   it("the music box cannot be opened without the crank", () => {
-    const { state, last } = playGame(["turn", "open music box", "use crank box"], at("observatory"));
+    const { state, last } = playGame(["turn", "open music box", "crank box"], at("observatory"));
     expect(texts(last)).toEqual(["Nothing happens."]);
     expect(state.inventory).toEqual([]);
   });
 
   it("the hatch rejects wrong codes", () => {
-    const { state } = playGame(["turn", "use 1234 hatch", "use 0315 hatch", "use 7419 hatch"], at("observatory"));
+    const { state } = playGame(["turn", "1234 hatch", "0315 hatch", "7419 hatch"], at("observatory"));
     expect(state.completed).toBe(false);
   });
 });
 
 describe("codes are noted in the inventory", () => {
   it("once per room, with what the player saw", () => {
-    const study = playGame(["inspect clock", "inspect clock", "inventory"]);
+    const study = playGame(["clock", "clock", "inventory"]);
     expect(study.state.inventory).toEqual(["clock_note"]);
     expect(texts(study.last)).toEqual(["- Clock: 03:15"]);
 
-    const cellar = playGame([...CELLAR_SOLUTION.slice(0, 5), "turn", "inspect wall"], at("cellar"));
+    const cellar = playGame([...CELLAR_SOLUTION.slice(0, 5), "turn", "wall"], at("cellar"));
     expect(cellar.state.inventory).toEqual(["wall_note"]);
 
-    const obs = playGame([...OBSERVATORY_SOLUTION.slice(0, 5), "inspect telescope"], at("observatory"));
+    const obs = playGame([...OBSERVATORY_SOLUTION.slice(0, 5), "telescope"], at("observatory"));
     expect(obs.state.inventory).toEqual(["stars_note"]);
   });
 
   it("a note can be inspected from either camera", () => {
-    const { last } = playGame(["inspect clock", "turn", "inspect clock note"]);
+    const { last } = playGame(["clock", "turn", "clock note"]);
     expect(texts(last)).toEqual(["You noted the time on the stopped clock: 03:15."]);
   });
 
   it("notes are translated", () => {
-    expect(texts(playGame(["examinar o relógio"], undefined, "pt-BR").last)[1]).toBe(
+    expect(texts(playGame(["relógio"], undefined, "pt-BR").last)[1]).toBe(
       "[Adicionado ao inventário: Relógio: 03:15]",
     );
-    expect(texts(playGame(["examinar el reloj"], undefined, "es").last)[1]).toBe(
+    expect(texts(playGame(["reloj"], undefined, "es").last)[1]).toBe(
       "[Añadido al inventario: Reloj: 03:15]",
     );
   });
@@ -122,7 +122,7 @@ describe("full game", () => {
   });
 
   it("each level starts fresh: camera A, empty inventory, the room's own flags", () => {
-    const { state } = playGame(["use 0315 drawer", "turn", "use key door"]);
+    const { state } = playGame(["0315 drawer", "turn", "key door"]);
     expect(state).toEqual({
       roomId: "cellar",
       camera: "A",
@@ -135,7 +135,7 @@ describe("full game", () => {
   });
 
   it("objects from earlier rooms are no longer reachable", () => {
-    const { last } = playGame([...STUDY_SOLUTION, "inspect clock"]);
+    const { last } = playGame([...STUDY_SOLUTION, "clock"]);
     expect(texts(last)).toEqual(["There is no such clock."]);
   });
 

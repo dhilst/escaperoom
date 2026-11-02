@@ -177,8 +177,7 @@
   "lighting": [{"when": [{"type": "flag_equals", "flag": "power_on", "value": true}], "brightness": 1.1}],
   "interactions": [
     {
-      "verb": "inspect",
-      "object": "workbench",
+      "say": ["workbench"],
       "effects": [
         {
           "type": "display_message",
@@ -191,8 +190,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "toolbox",
+      "say": ["toolbox"],
       "conditions": [{"type": "flag_equals", "flag": "toolbox_open", "value": false}],
       "effects": [
         {
@@ -206,8 +204,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "toolbox",
+      "say": ["toolbox"],
       "effects": [
         {
           "type": "display_message",
@@ -220,8 +217,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "toolbox",
+      "say": ["open", "toolbox"],
       "conditions": [{"type": "flag_equals", "flag": "toolbox_open", "value": false}],
       "effects": [
         {"type": "set_flag", "flag": "toolbox_open", "value": true},
@@ -237,8 +233,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "fuse_box",
+      "say": ["fuse_box"],
       "conditions": [{"type": "flag_equals", "flag": "power_on", "value": false}],
       "effects": [
         {
@@ -252,8 +247,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "fuse_box",
+      "say": ["fuse_box"],
       "effects": [
         {
           "type": "display_message",
@@ -266,9 +260,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "fuse",
-      "object": "fuse_box",
+      "say": ["fuse", "fuse_box"],
       "conditions": [{"type": "flag_equals", "flag": "power_on", "value": false}],
       "effects": [
         {"type": "set_flag", "flag": "power_on", "value": true},
@@ -284,8 +276,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "shelves",
+      "say": ["shelves"],
       "effects": [
         {
           "type": "display_message",
@@ -298,8 +289,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "crates",
+      "say": ["crates"],
       "conditions": [{"type": "flag_equals", "flag": "crate_open", "value": false}],
       "effects": [
         {
@@ -313,8 +303,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "crates",
+      "say": ["crates"],
       "effects": [
         {
           "type": "display_message",
@@ -327,8 +316,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "crates",
+      "say": ["open", "crates"],
       "conditions": [{"type": "flag_equals", "flag": "crate_open", "value": false}],
       "effects": [
         {
@@ -342,9 +330,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "crowbar",
-      "object": "crates",
+      "say": ["crowbar", "crates"],
       "conditions": [{"type": "flag_equals", "flag": "crate_open", "value": false}],
       "effects": [
         {"type": "set_flag", "flag": "crate_open", "value": true},
@@ -361,8 +347,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "wall",
+      "say": ["wall"],
       "conditions": [{"type": "flag_equals", "flag": "power_on", "value": false}],
       "effects": [
         {
@@ -376,8 +361,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "wall",
+      "say": ["wall"],
       "effects": [
         {
           "type": "display_message",
@@ -391,8 +375,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "water",
+      "say": ["water"],
       "effects": [
         {
           "type": "display_message",
@@ -405,8 +388,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "door",
+      "say": ["door"],
       "conditions": [{"type": "flag_equals", "flag": "power_on", "value": false}],
       "effects": [
         {
@@ -420,8 +402,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "door",
+      "say": ["door"],
       "effects": [
         {
           "type": "display_message",
@@ -434,8 +415,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "door",
+      "say": ["open", "door"],
       "effects": [
         {
           "type": "display_message",
@@ -448,9 +428,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "7419",
-      "object": "door",
+      "say": ["7419", "door"],
       "conditions": [{"type": "flag_equals", "flag": "power_on", "value": true}],
       "effects": [
         {

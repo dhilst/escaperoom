@@ -1,20 +1,20 @@
 {
   "en-US": [
-    "inspect blocks",
+    "blocks",
     "turn",
-    "inspect mural",
-    "use 472 door"
+    "mural",
+    "472 door"
   ],
   "pt-BR": [
-    "examinar os blocos",
+    "blocos",
     "virar",
-    "examinar o mural",
-    "usar 472 na porta"
+    "mural",
+    "472 porta"
   ],
   "es": [
-    "examinar los bloques",
+    "bloques",
     "girar",
-    "examinar el mural",
-    "usar 472 en la puerta"
+    "mural",
+    "472 puerta"
   ]
 }

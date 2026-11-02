@@ -43,9 +43,30 @@
     "mechanism": {
       "name": {"en-US": "mechanism", "pt-BR": "mecanismo", "es": "mecanismo"},
       "aliases": {
-        "en-US": ["gears", "axle", "clockwork", "clock", "cogs", "machinery", "wheels"],
-        "pt-BR": ["engrenagens", "eixo", "relógio", "maquinário", "rodas dentadas"],
-        "es": ["engranajes", "eje", "reloj", "maquinaria", "ruedas dentadas", "mecanismo del reloj"]
+        "en-US": [
+          "gears",
+          "axle",
+          "clockwork",
+          "clock",
+          "cogs",
+          "machinery",
+          "wheels"
+        ],
+        "pt-BR": [
+          "engrenagens",
+          "eixo",
+          "relógio",
+          "maquinário",
+          "rodas dentadas"
+        ],
+        "es": [
+          "engranajes",
+          "eje",
+          "reloj",
+          "maquinaria",
+          "ruedas dentadas",
+          "mecanismo del reloj"
+        ]
       },
       "cameras": ["A"]
     },
@@ -79,9 +100,31 @@
     "clock_face": {
       "name": {"en-US": "clock face", "pt-BR": "mostrador", "es": "esfera"},
       "aliases": {
-        "en-US": ["face", "dial", "glass", "moonlight", "moon", "hands", "numerals"],
-        "pt-BR": ["mostrador do relógio", "vidro", "luar", "lua", "ponteiros", "algarismos"],
-        "es": ["esfera del reloj", "cristal", "luz de luna", "luna", "manecillas", "números"]
+        "en-US": [
+          "face",
+          "dial",
+          "glass",
+          "moonlight",
+          "moon",
+          "hands",
+          "numerals"
+        ],
+        "pt-BR": [
+          "mostrador do relógio",
+          "vidro",
+          "luar",
+          "lua",
+          "ponteiros",
+          "algarismos"
+        ],
+        "es": [
+          "esfera del reloj",
+          "cristal",
+          "luz de luna",
+          "luna",
+          "manecillas",
+          "números"
+        ]
       },
       "cameras": ["C"]
     },
@@ -97,16 +140,42 @@
     "door": {
       "name": {"en-US": "door", "pt-BR": "porta", "es": "puerta"},
       "aliases": {
-        "en-US": ["stair door", "bars", "rods", "iron rods", "iron bars", "exit", "stairs"],
-        "pt-BR": ["porta da escada", "barras", "hastes", "barras de ferro", "saída", "escada"],
-        "es": ["puerta de la escalera", "barras", "varillas", "barras de hierro", "salida", "escalera"]
+        "en-US": [
+          "stair door",
+          "bars",
+          "rods",
+          "iron rods",
+          "iron bars",
+          "exit",
+          "stairs"
+        ],
+        "pt-BR": [
+          "porta da escada",
+          "barras",
+          "hastes",
+          "barras de ferro",
+          "saída",
+          "escada"
+        ],
+        "es": [
+          "puerta de la escalera",
+          "barras",
+          "varillas",
+          "barras de hierro",
+          "salida",
+          "escalera"
+        ]
       },
       "cameras": ["C"]
     }
   },
   "items": {
     "brass_gear": {
-      "name": {"en-US": "Brass gear", "pt-BR": "Engrenagem de latão", "es": "Engranaje de latón"},
+      "name": {
+        "en-US": "Brass gear",
+        "pt-BR": "Engrenagem de latão",
+        "es": "Engranaje de latón"
+      },
       "aliases": {
         "en-US": ["gear", "small gear", "cog"],
         "pt-BR": ["engrenagem", "engrenagem pequena"],
@@ -132,11 +201,16 @@
       }
     }
   },
-  "initialFlags": {"gear_taken": false, "cupboard_open": false, "gear_fitted": false, "oiled": false, "running": false},
+  "initialFlags": {
+    "gear_taken": false,
+    "cupboard_open": false,
+    "gear_fitted": false,
+    "oiled": false,
+    "running": false
+  },
   "interactions": [
     {
-      "verb": "inspect",
-      "object": "nest",
+      "say": ["nest"],
       "conditions": [{"type": "flag_equals", "flag": "gear_taken", "value": false}],
       "effects": [
         {"type": "set_flag", "flag": "gear_taken", "value": true},
@@ -152,8 +226,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "nest",
+      "say": ["nest"],
       "effects": [
         {
           "type": "display_message",
@@ -166,8 +239,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "beam",
+      "say": ["beam"],
       "effects": [
         {
           "type": "display_message",
@@ -180,8 +252,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "mechanism",
+      "say": ["mechanism"],
       "conditions": [{"type": "flag_equals", "flag": "running", "value": true}],
       "effects": [
         {
@@ -195,8 +266,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "mechanism",
+      "say": ["mechanism"],
       "conditions": [{"type": "flag_equals", "flag": "gear_fitted", "value": true}],
       "effects": [
         {
@@ -210,8 +280,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "mechanism",
+      "say": ["mechanism"],
       "conditions": [{"type": "flag_equals", "flag": "oiled", "value": true}],
       "effects": [
         {
@@ -225,8 +294,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "mechanism",
+      "say": ["mechanism"],
       "effects": [
         {
           "type": "display_message",
@@ -239,9 +307,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "brass_gear",
-      "object": "mechanism",
+      "say": ["brass_gear", "mechanism"],
       "conditions": [
         {"type": "flag_equals", "flag": "gear_fitted", "value": false},
         {"type": "flag_equals", "flag": "oiled", "value": true}
@@ -261,9 +327,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "brass_gear",
-      "object": "mechanism",
+      "say": ["brass_gear", "mechanism"],
       "conditions": [{"type": "flag_equals", "flag": "gear_fitted", "value": false}],
       "effects": [
         {"type": "set_flag", "flag": "gear_fitted", "value": true},
@@ -279,9 +343,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "oil_can",
-      "object": "mechanism",
+      "say": ["oil_can", "mechanism"],
       "conditions": [
         {"type": "flag_equals", "flag": "oiled", "value": false},
         {"type": "flag_equals", "flag": "gear_fitted", "value": true}
@@ -301,9 +363,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "oil_can",
-      "object": "mechanism",
+      "say": ["oil_can", "mechanism"],
       "conditions": [{"type": "flag_equals", "flag": "oiled", "value": false}],
       "effects": [
         {"type": "set_flag", "flag": "oiled", "value": true},
@@ -319,8 +379,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "pendulum",
+      "say": ["pendulum"],
       "conditions": [{"type": "flag_equals", "flag": "running", "value": true}],
       "effects": [
         {
@@ -334,8 +393,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "pendulum",
+      "say": ["pendulum"],
       "effects": [
         {
           "type": "display_message",
@@ -348,8 +406,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "clock_face",
+      "say": ["clock_face"],
       "conditions": [{"type": "flag_equals", "flag": "running", "value": true}],
       "effects": [
         {
@@ -363,8 +420,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "clock_face",
+      "say": ["clock_face"],
       "effects": [
         {
           "type": "display_message",
@@ -377,8 +433,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "cupboard",
+      "say": ["cupboard"],
       "conditions": [{"type": "flag_equals", "flag": "cupboard_open", "value": false}],
       "effects": [
         {
@@ -392,8 +447,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "cupboard",
+      "say": ["cupboard"],
       "effects": [
         {
           "type": "display_message",
@@ -406,8 +460,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "cupboard",
+      "say": ["open", "cupboard"],
       "conditions": [{"type": "flag_equals", "flag": "cupboard_open", "value": false}],
       "effects": [
         {"type": "set_flag", "flag": "cupboard_open", "value": true},
@@ -423,8 +476,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "cupboard",
+      "say": ["open", "cupboard"],
       "effects": [
         {
           "type": "display_message",
@@ -437,8 +489,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "door",
+      "say": ["door"],
       "conditions": [{"type": "flag_equals", "flag": "running", "value": true}],
       "effects": [
         {
@@ -452,8 +503,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "door",
+      "say": ["door"],
       "effects": [
         {
           "type": "display_message",
@@ -466,8 +516,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "door",
+      "say": ["open", "door"],
       "conditions": [{"type": "flag_equals", "flag": "running", "value": true}],
       "effects": [
         {
@@ -482,8 +531,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "door",
+      "say": ["open", "door"],
       "effects": [
         {
           "type": "display_message",

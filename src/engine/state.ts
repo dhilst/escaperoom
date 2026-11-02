@@ -1,5 +1,5 @@
 import { enUS } from "../i18n/locales/en-US";
-import { applyEffect, checkCondition, matchingInteractions } from "./rules";
+import { applyEffect, checkCondition } from "./rules";
 import type {
   Command,
   EngineMessages,
@@ -9,7 +9,7 @@ import type {
   RoomDefinition,
   StepResult,
 } from "./types";
-import { HINT_UNLOCK_MS } from "./types";
+import { GLOBAL_WORDS, HINT_UNLOCK_MS } from "./types";
 
 /** `now` is the host clock (ms); the level's hint timer starts there. */
 export function createInitialState(room: RoomDefinition, now = 0): GameState {
@@ -94,88 +94,104 @@ function run(
     return [{ type: "message", text: messages.alreadyEscaped }];
   }
 
-  switch (command.verb) {
-    case "look":
-      return [{ type: "message", text: describeCamera(state, room) }];
+  const [word] = command.words;
+  if (command.words.length === 1) {
+    switch (word) {
+      case "look":
+        return [{ type: "message", text: describeCamera(state, room) }];
 
-    case "help":
-      return [{ type: "message", text: messages.help }];
+      case "help":
+        return [{ type: "message", text: messages.help }];
 
-    case "turn": {
-      state.camera = state.camera === "A" ? "C" : "A";
-      return [
-        { type: "camera_changed", camera: state.camera, text: messages.turned },
-        { type: "message", text: describeCamera(state, room) },
-      ];
-    }
-
-    case "inventory": {
-      const names = state.inventory.map((id) => `- ${room.items[id]?.name ?? id}`);
-      const text = names.length > 0 ? names.join("\n") : messages.emptyInventory;
-      return [{ type: "inventory", items: [...state.inventory], text }];
-    }
-
-    case "hint": {
-      const hints = room.hints ?? [];
-      const next = nextHint(state, room);
-      if (next === undefined) return [{ type: "message", text: messages.noMoreHints }];
-      const availableAt = hintAvailableAt(state, hintUnlockMs);
-      if (now < availableAt) {
-        return [{ type: "hint_locked", availableAt, text: messages.hintLocked(formatCountdown(availableAt - now)) }];
+      case "turn": {
+        state.camera = state.camera === "A" ? "C" : "A";
+        return [
+          { type: "camera_changed", camera: state.camera, text: messages.turned },
+          { type: "message", text: describeCamera(state, room) },
+        ];
       }
-      state.hints.push(next);
-      return [{ type: "hint_revealed", hint: next, text: messages.hint(next + 1, hints.length, hints[next].text) }];
-    }
 
-    case "inspect":
-    case "open":
-    case "use":
-      return interact(state, command, room, messages);
+      case "inventory": {
+        const names = state.inventory.map((id) => `- ${room.items[id]?.name ?? id}`);
+        const text = names.length > 0 ? names.join("\n") : messages.emptyInventory;
+        return [{ type: "inventory", items: [...state.inventory], text }];
+      }
+
+      case "hint": {
+        const hints = room.hints ?? [];
+        const next = nextHint(state, room);
+        if (next === undefined) return [{ type: "message", text: messages.noMoreHints }];
+        const availableAt = hintAvailableAt(state, hintUnlockMs);
+        if (now < availableAt) {
+          return [{ type: "hint_locked", availableAt, text: messages.hintLocked(formatCountdown(availableAt - now)) }];
+        }
+        state.hints.push(next);
+        return [{ type: "hint_revealed", hint: next, text: messages.hint(next + 1, hints.length, hints[next].text) }];
+      }
+    }
   }
+
+  return say(state, command, room, messages);
 }
 
-function interact(
-  state: GameState,
-  command: Extract<Command, { verb: "inspect" | "open" | "use" }>,
-  room: RoomDefinition,
-  messages: EngineMessages,
-): GameEvent[] {
-  const targetId = command.verb === "use" ? command.target : command.object;
-  const said = () => command.typed ?? room.objects[targetId]?.name ?? room.items[targetId]?.name ?? targetId;
+/**
+ * Match a phrase against the room's rules.
+ *
+ * Single words are safe to try: an object is looked at, a carried item is
+ * described, and unknown or out-of-view names say so. Longer phrases either
+ * match a rule exactly or get the same "Nothing happens." whatever was wrong
+ * with them, so a failed attempt never reveals which words were right.
+ */
+function say(state: GameState, command: Command, room: RoomDefinition, messages: EngineMessages): GameEvent[] {
+  const { words } = command;
+  const single = words.length === 1;
+  const target = words[words.length - 1];
+  const said = (i: number) =>
+    command.typed?.[i] ?? room.objects[words[i]]?.name ?? room.items[words[i]]?.name ?? words[i];
 
   const fail = (reason: FailureReason): GameEvent[] => {
-    const text =
-      reason === "unknown_object"
-        ? messages.noSuchObject(said())
+    const looking = single && (target in room.objects || target in room.items);
+    const text = !single
+      ? messages.nothingHappens
+      : reason === "unknown_object"
+        ? messages.noSuchObject(said(0))
         : reason === "not_visible"
-          ? messages.notVisible(said())
-          : command.verb === "inspect"
+          ? messages.notVisible(said(0))
+          : looking
             ? messages.nothingSpecial
             : messages.nothingHappens;
     return [{ type: "failure", reason, text }];
   };
 
-  // Carried items can be inspected from anywhere.
-  if (command.verb === "inspect" && state.inventory.includes(targetId)) {
-    const description = room.items[targetId]?.description;
+  const isKnown = (w: string) =>
+    w in room.objects || w in room.items || (room.verbs !== undefined && w in room.verbs) || isGlobalWord(w);
+  const carried = (w: string) => state.inventory.includes(w);
+
+  // The target must be visible from this camera, or be a carried item.
+  if (target in room.objects) {
+    if (!room.objects[target].cameras.includes(state.camera)) return fail("not_visible");
+  } else if (target in room.items) {
+    if (!carried(target)) return fail("not_visible");
+  } else if (single && !isKnown(target)) {
+    return fail("unknown_object");
+  }
+  // Every item in the phrase must be carried.
+  if (words.some((w) => w in room.items && !carried(w))) return fail("item_not_held");
+
+  const candidates = room.interactions.filter(
+    (rule) => rule.say.length === words.length && rule.say.every((w, i) => w === words[i]),
+  );
+  if (candidates.length === 0) {
+    // A carried item on its own describes itself unless a rule says otherwise.
+    const description = single ? room.items[target]?.description : undefined;
     return description ? [{ type: "message", text: description }] : fail("no_interaction");
   }
-
-  const target = room.objects[targetId];
-  // An item that exists in this room but isn't carried is "not here", not unknown.
-  if (!target) return fail(targetId in room.items ? "not_visible" : "unknown_object");
-  if (!target.cameras.includes(state.camera)) return fail("not_visible");
-
-  // Real items must be held to be used; anything else is treated as a literal code.
-  if (command.verb === "use" && command.item in room.items && !state.inventory.includes(command.item)) {
-    return fail("item_not_held");
-  }
-
-  const candidates = matchingInteractions(room, command);
-  if (candidates.length === 0) return fail("no_interaction");
 
   const rule = candidates.find((r) => (r.conditions ?? []).every((c) => checkCondition(state, c)));
   if (!rule) return fail("conditions_unmet");
 
   return rule.effects.flatMap((effect) => applyEffect(state, effect, room, messages));
 }
+
+const GLOBALS = new Set<string>(GLOBAL_WORDS);
+const isGlobalWord = (w: string) => GLOBALS.has(w);

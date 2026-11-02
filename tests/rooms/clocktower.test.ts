@@ -8,12 +8,12 @@ const start = (locale: Locale = "en-US") => createInitialState(loadGame(locale).
 const run = (lines: string[], locale: Locale = "en-US") => playGame(lines, start(locale), locale);
 const room = loadGame("en-US").rooms.clocktower;
 
-const GEAR = ["inspect nest"];
+const GEAR = ["nest"];
 const OIL = ["turn", "open cupboard", "turn"];
 
 describe("The Clock Tower", () => {
   it("taking the gear from the nest happens once", () => {
-    const { state, log } = run(["inspect nest", "inspect nest", "inventory"]);
+    const { state, log } = run(["nest", "nest", "inventory"]);
     expect(texts(log[0])).toEqual([
       "Twigs, feathers, tiny bones. Something brass glints among them.\nYou take a small brass gear.",
       "[Brass gear added to inventory]",
@@ -37,7 +37,7 @@ describe("The Clock Tower", () => {
   });
 
   it("the gear alone fits but the rusted axle won't turn", () => {
-    const { state, log } = run([...GEAR, "use gear mechanism", "inspect mechanism", "turn", "open door"]);
+    const { state, log } = run([...GEAR, "gear mechanism", "mechanism", "turn", "open door"]);
     expect(texts(log[1])[0]).toMatch(/rusted solid/);
     expect(state.flags).toMatchObject({ gear_fitted: true, oiled: false, running: false });
     expect(state.inventory).toEqual([]);
@@ -46,7 +46,7 @@ describe("The Clock Tower", () => {
   });
 
   it("oil alone loosens the axles but a gear is still missing", () => {
-    const { state, log } = run([...OIL, "use oil can mechanism", "inspect mechanism", "turn", "open door"]);
+    const { state, log } = run([...OIL, "oil can mechanism", "mechanism", "turn", "open door"]);
     expect(texts(log[3])[0]).toMatch(/A wheel is still missing/);
     expect(state.flags).toMatchObject({ gear_fitted: false, oiled: true, running: false });
     expect(state.inventory).toEqual([]);
@@ -55,8 +55,8 @@ describe("The Clock Tower", () => {
   });
 
   it.each([
-    ["gear first", [...GEAR, ...OIL, "use gear mechanism", "use oil can mechanism"]],
-    ["oil first", [...GEAR, ...OIL, "use oil mechanism", "use brass gear clockwork"]],
+    ["gear first", [...GEAR, ...OIL, "gear mechanism", "oil can mechanism"]],
+    ["oil first", [...GEAR, ...OIL, "oil mechanism", "brass gear clockwork"]],
   ])("both fixes start the clock in any order (%s) and release the door", (_name, lines) => {
     const { state, last } = run([...lines, "turn", "open door"]);
     expect(texts(last)[0]).toBe(
@@ -66,52 +66,52 @@ describe("The Clock Tower", () => {
   });
 
   it("the second fix announces the clock starting", () => {
-    const { state, last } = run([...GEAR, ...OIL, "use gear mechanism", "use oil can mechanism"]);
+    const { state, last } = run([...GEAR, ...OIL, "gear mechanism", "oil can mechanism"]);
     expect(texts(last)[0]).toMatch(/the clock starts/);
     expect(state.flags.running).toBe(true);
   });
 
   it("the mechanism can only be repaired from the gears' camera", () => {
-    const { state } = run([...GEAR, "turn", "open cupboard", "use gear mechanism", "use oil can mechanism"]);
+    const { state } = run([...GEAR, "turn", "open cupboard", "gear mechanism", "oil can mechanism"]);
     expect(state.flags.running).toBe(false);
     expect(state.inventory).toEqual(["brass_gear", "oil_can"]);
   });
 
   it("items can't be used before they are found", () => {
-    const { state } = run(["use gear mechanism", "use oil can mechanism", "use 1234 mechanism"]);
+    const { state } = run(["gear mechanism", "oil can mechanism", "1234 mechanism"]);
     expect(state.flags).toMatchObject({ gear_fitted: false, oiled: false, running: false });
   });
 
   it("both cameras change once the clock runs", () => {
-    const solved = run([...GEAR, ...OIL, "use gear mechanism", "use oil can mechanism"]).state;
+    const solved = run([...GEAR, ...OIL, "gear mechanism", "oil can mechanism"]).state;
     expect(describeCamera(start(), room, "A")).toMatch(/frozen above a still pendulum/);
     expect(describeCamera(solved, room, "A")).toMatch(/pendulum swings/);
     expect(describeCamera(start(), room, "C")).toMatch(/barred with iron rods/);
     expect(describeCamera(solved, room, "C")).toMatch(/drawn back/);
-    expect(texts(run([...GEAR, ...OIL, "use gear mechanism", "use oil can mechanism", "inspect pendulum"]).last))
+    expect(texts(run([...GEAR, ...OIL, "gear mechanism", "oil can mechanism", "pendulum"]).last))
       .toEqual(["The pendulum swings, slow and heavy. Each beat shakes the floor."]);
   });
 
   it("every object in both cameras answers to inspect", () => {
     for (const o of ["mechanism", "nest", "beam", "pendulum"]) {
-      expect(run([`inspect ${o}`]).last.find((e) => e.type === "failure"), o).toBeUndefined();
+      expect(run([o]).last.find((e) => e.type === "failure"), o).toBeUndefined();
     }
     for (const o of ["clock face", "cupboard", "door"]) {
-      expect(run(["turn", `inspect ${o}`]).last.find((e) => e.type === "failure"), o).toBeUndefined();
+      expect(run(["turn", o]).last.find((e) => e.type === "failure"), o).toBeUndefined();
     }
   });
 
   it("is translated", () => {
-    expect(texts(run(["examinar o ninho"], "pt-BR").last)[0]).toBe(
+    expect(texts(run(["ninho"], "pt-BR").last)[0]).toBe(
       "Gravetos, penas, ossinhos. Algo de latão brilha no meio deles.\nVocê pega uma pequena engrenagem de latão.",
     );
-    expect(texts(run(["girar", "abrir la puerta"], "es").last)).toEqual([
+    expect(texts(run(["girar", "abrir puerta"], "es").last)).toEqual([
       "Las barras no ceden. Están trabadas en el mecanismo del reloj.",
     ]);
-    expect(texts(run(["virar", "abrir a porta"], "pt-BR").last)).toEqual([
+    expect(texts(run(["virar", "abrir porta"], "pt-BR").last)).toEqual([
       "As barras não cedem. Estão presas ao mecanismo do relógio.",
     ]);
-    expect(texts(run(["examinar el nido", "usar el engranaje en el reloj"], "es").last)[0]).toMatch(
+    expect(texts(run(["nido", "engranaje reloj"], "es").last)[0]).toMatch(
       /agarrotados por el óxido/,
     );
   });

@@ -5,12 +5,12 @@ describe("The Locked Study", () => {
   it("can be solved with the intended sequence and leads to the cellar", () => {
     const lines = [
       "look",
-      "inspect clock",
-      "inspect desk",
-      "use 0315 drawer",
+      "clock",
+      "desk",
+      "0315 drawer",
       "inventory",
       "turn",
-      "use key door",
+      "key door",
     ];
     const { state, log } = playGame(lines);
     expect(texts(log[3])).toEqual([
@@ -28,13 +28,13 @@ describe("The Locked Study", () => {
   });
 
   it("cannot be escaped without the key", () => {
-    const { state } = play(["turn", "open door", "use key door", "use 0315 door", "use brass key door"]);
+    const { state } = play(["turn", "open door", "key door", "0315 door", "brass key door"]);
     expect(state.roomId).toBe("study");
     expect(state.inventory).toEqual([]);
   });
 
   it("the door does not open from the desk camera even with the key", () => {
-    const { state } = play(["use 0315 drawer", "use key door"]);
+    const { state } = play(["0315 drawer", "key door"]);
     expect(state.roomId).toBe("study");
   });
 

@@ -4,34 +4,16 @@ export const es: Language = {
   locale: "es",
   name: "Español",
   parser: {
-    verbs: {
+    words: {
       mirar: "look",
       girar: "turn",
-      examinar: "inspect",
-      inspeccionar: "inspect",
       abrir: "open",
-      usar: "use",
       inventario: "inventory",
       ayuda: "help",
-      // Ocultos: fuera de la ayuda y del mensaje "Prueba:".
+      // Oculto: fuera de la ayuda.
       pista: "hint",
     },
-    stopwords: [
-      "el", "la", "los", "las", "un", "una", "unos", "unas",
-      "de", "del", "en", "con", "a", "al", "para", "sobre",
-    ],
     empty: "Escribe un comando.",
-    unknown: (word) => `Comando desconocido "${word}". Prueba: mirar, girar, examinar, abrir, usar, inventario, ayuda.`,
-    usage: {
-      look: "Uso: mirar",
-      turn: "Uso: girar",
-      inventory: "Uso: inventario",
-      inspect: "Uso: examinar <objeto>",
-      open: "Uso: abrir <objeto>",
-      use: "Uso: usar <objeto> <destino>",
-      help: "Uso: ayuda",
-      hint: "Uso: pista",
-    },
   },
   engine: {
     nothingSpecial: "Nada especial.",
@@ -42,7 +24,7 @@ export const es: Language = {
     itemRemoved: (name) => `[Retirado del inventario: ${name}]`,
     noSuchObject: (typed) => `Aquí no hay "${typed}".`,
     notVisible: (typed) => `Desde aquí no ves "${typed}".`,
-    help: "Comandos: mirar · girar · examinar <objeto> · abrir <objeto> · usar <objeto> <destino> · inventario",
+    help: "Di el nombre de algo para mirarlo: reloj. Combina lo que llevas con lo que ves: llave puerta. También: abrir <cosa> · girar · mirar · inventario",
     hint: (n, total, text) => `Pista ${n}/${total}: ${text}`,
     hintLocked: (countdown) => `Próxima pista disponible en ${countdown}`,
     noMoreHints: "No hay más pistas para esta sala.",

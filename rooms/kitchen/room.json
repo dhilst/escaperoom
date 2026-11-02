@@ -219,8 +219,7 @@
   "lighting": [{"when": [{"type": "flag_equals", "flag": "stove_lit", "value": true}], "brightness": 1.05}],
   "interactions": [
     {
-      "verb": "inspect",
-      "object": "stove",
+      "say": ["stove"],
       "conditions": [{"type": "flag_equals", "flag": "stove_lit", "value": false}],
       "effects": [
         {
@@ -234,8 +233,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "stove",
+      "say": ["stove"],
       "effects": [
         {
           "type": "display_message",
@@ -248,8 +246,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "stove",
+      "say": ["open", "stove"],
       "effects": [
         {
           "type": "display_message",
@@ -262,9 +259,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "matches",
-      "object": "stove",
+      "say": ["matches", "stove"],
       "conditions": [{"type": "flag_equals", "flag": "stove_lit", "value": false}],
       "effects": [
         {"type": "set_flag", "flag": "stove_lit", "value": true},
@@ -280,9 +275,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "ice_block",
-      "object": "stove",
+      "say": ["ice_block", "stove"],
       "conditions": [{"type": "flag_equals", "flag": "stove_lit", "value": false}],
       "effects": [
         {
@@ -296,9 +289,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "ice_block",
-      "object": "stove",
+      "say": ["ice_block", "stove"],
       "conditions": [{"type": "flag_equals", "flag": "key_thawed", "value": false}],
       "effects": [
         {"type": "set_flag", "flag": "key_thawed", "value": true},
@@ -315,8 +306,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "icebox",
+      "say": ["icebox"],
       "conditions": [{"type": "flag_equals", "flag": "icebox_open", "value": false}],
       "effects": [
         {
@@ -330,8 +320,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "icebox",
+      "say": ["icebox"],
       "effects": [
         {
           "type": "display_message",
@@ -344,8 +333,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "icebox",
+      "say": ["open", "icebox"],
       "conditions": [{"type": "flag_equals", "flag": "icebox_open", "value": false}],
       "effects": [
         {"type": "set_flag", "flag": "icebox_open", "value": true},
@@ -361,8 +349,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "icebox",
+      "say": ["open", "icebox"],
       "effects": [
         {
           "type": "display_message",
@@ -375,8 +362,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "sink",
+      "say": ["sink"],
       "effects": [
         {
           "type": "display_message",
@@ -389,8 +375,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "dresser",
+      "say": ["dresser"],
       "effects": [
         {
           "type": "display_message",
@@ -403,8 +388,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "dresser",
+      "say": ["open", "dresser"],
       "effects": [
         {
           "type": "display_message",
@@ -417,8 +401,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "drawer",
+      "say": ["drawer"],
       "conditions": [{"type": "flag_equals", "flag": "drawer_open", "value": false}],
       "effects": [
         {
@@ -432,8 +415,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "drawer",
+      "say": ["drawer"],
       "effects": [
         {
           "type": "display_message",
@@ -446,8 +428,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "drawer",
+      "say": ["open", "drawer"],
       "conditions": [{"type": "flag_equals", "flag": "drawer_open", "value": false}],
       "effects": [
         {"type": "set_flag", "flag": "drawer_open", "value": true},
@@ -463,8 +444,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "drawer",
+      "say": ["open", "drawer"],
       "effects": [
         {
           "type": "display_message",
@@ -477,8 +457,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "pots",
+      "say": ["pots"],
       "effects": [
         {
           "type": "display_message",
@@ -491,8 +470,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "door",
+      "say": ["door"],
       "effects": [
         {
           "type": "display_message",
@@ -505,8 +483,7 @@
       ]
     },
     {
-      "verb": "open",
-      "object": "door",
+      "say": ["open", "door"],
       "effects": [
         {
           "type": "display_message",
@@ -519,9 +496,7 @@
       ]
     },
     {
-      "verb": "use",
-      "item": "hall_key",
-      "object": "door",
+      "say": ["hall_key", "door"],
       "effects": [
         {
           "type": "display_message",
@@ -535,8 +510,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "kettle",
+      "say": ["kettle"],
       "effects": [
         {
           "type": "display_message",
@@ -549,8 +523,7 @@
       ]
     },
     {
-      "verb": "inspect",
-      "object": "window",
+      "say": ["window"],
       "effects": [
         {
           "type": "display_message",

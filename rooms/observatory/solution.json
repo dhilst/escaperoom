@@ -1,35 +1,35 @@
 {
   "en-US": [
-    "inspect star chart",
+    "star chart",
     "open birdcage",
     "turn",
-    "use crank music box",
+    "crank music box",
     "turn",
-    "use lens telescope",
-    "inspect telescope",
+    "lens telescope",
+    "telescope",
     "turn",
-    "use 2618 hatch"
+    "2618 hatch"
   ],
   "pt-BR": [
-    "examinar a carta celeste",
-    "abrir a gaiola",
+    "carta celeste",
+    "abrir gaiola",
     "virar",
-    "usar a manivela na caixa de música",
+    "manivela caixa de música",
     "virar",
-    "usar a lente no telescópio",
-    "examinar o telescópio",
+    "lente telescópio",
+    "telescópio",
     "virar",
-    "usar 2618 no alçapão"
+    "2618 alçapão"
   ],
   "es": [
-    "examinar la carta estelar",
-    "abrir la jaula",
+    "carta estelar",
+    "abrir jaula",
     "girar",
-    "usar la manivela en la caja de música",
+    "manivela caja de música",
     "girar",
-    "usar la lente en el telescopio",
-    "examinar el telescopio",
+    "lente telescopio",
+    "telescopio",
     "girar",
-    "usar 2618 en la trampilla"
+    "2618 trampilla"
   ]
 }

@@ -4,29 +4,29 @@
     "turn",
     "open drawer",
     "turn",
-    "use matches stove",
-    "use ice block stove",
+    "matches stove",
+    "ice block stove",
     "turn",
-    "use key door"
+    "key door"
   ],
   "pt-BR": [
-    "abrir a geladeira",
+    "abrir geladeira",
     "virar",
-    "abrir a gaveta",
+    "abrir gaveta",
     "virar",
-    "usar os fósforos no fogão",
-    "usar o bloco de gelo no fogão",
+    "fósforos fogão",
+    "bloco de gelo fogão",
     "virar",
-    "usar a chave na porta"
+    "chave porta"
   ],
   "es": [
-    "abrir la nevera",
+    "abrir nevera",
     "girar",
-    "abrir el cajón",
+    "abrir cajón",
     "girar",
-    "usar las cerillas en el fogón",
-    "usar el bloque de hielo en el fogón",
+    "cerillas fogón",
+    "bloque de hielo fogón",
     "girar",
-    "usar la llave en la puerta"
+    "llave puerta"
   ]
 }

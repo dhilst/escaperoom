@@ -63,14 +63,21 @@ with the language.
 
 ## How to play
 
-| English               | Português              | Español                  | Effect                          |
-| --------------------- | ---------------------- | ------------------------ | ------------------------------- |
-| `look`                | `olhar`                | `mirar`                  | Describe the current camera view |
-| `turn`                | `virar`                | `girar`                  | Switch to the opposite camera   |
-| `inspect <object>`    | `examinar <objeto>`    | `examinar <objeto>`      | Examine something               |
-| `open <object>`       | `abrir <objeto>`       | `abrir <objeto>`         | Try to open something           |
-| `use <item> <target>` | `usar <item> <alvo>`   | `usar <objeto> <destino>` | Use an item, or enter a code (`use 1234 safe`) |
-| `inventory`           | `inventário`           | `inventario`             | List what you carry             |
+You play by saying phrases: words in a fixed order. The more you know, the
+longer your phrases get.
+
+| You type | Effect |
+| --- | --- |
+| a name: `clock` | Look at something in view, or at something you carry |
+| an item and a target: `key door` | Use what you carry on what you see |
+| a code and a target: `0315 drawer` | Enter a code |
+| `open` and a name: `open toolbox` | Open something |
+| `look` · `turn` · `inventory` | Describe the view · switch camera · list what you carry |
+
+In Portuguese the global words are `olhar`, `virar`, `abrir` and
+`inventário`, and in Spanish `mirar`, `girar`, `abrir` and `inventario`.
+Objects and items go by their names in the player's language (`chave porta`,
+`llave puerta`). Rooms can add their own verbs too.
 
 Responses appear as subtitles over the bottom of the camera view, typed out
 like the old Resident Evil games. Each one stays for 5 seconds after it
@@ -78,19 +85,21 @@ finishes typing, and a new command replaces it immediately. Screen readers
 get the full text at once, and with reduced motion enabled the text appears
 without the typing effect.
 
-Portuguese also accepts `inspecionar`, and Spanish accepts `inspeccionar`.
-Articles and prepositions are ignored, so `use the key on the door`,
-`usar a chave na porta` and `usar la llave en la puerta` all work. So do the
-shorter `use key door`, `usar chave porta` and `usar llave puerta`. Accents are
-optional, so `relogio` matches `relógio`.
-
-Commands are case-insensitive and ignore extra whitespace. Press Enter to
+Every word counts, so filler words are not ignored: `key on the door` is a
+different phrase from `key door`, and so is `door key`. Case, accents and
+extra spaces don't matter, so `relogio` matches `relógio`. Press Enter to
 submit, and use Up/Down to recall earlier commands. Items are picked up
 automatically, and each level starts with an empty inventory. The game never
 lists objects for you, so work out what's there from the picture and the
-descriptions. If you name something that isn't in the room, the game says so
-(`There is no such painting.`). If it's in the room but only visible from the
-other camera, you get `You don't see any door here.`
+descriptions.
+
+Naming one thing is always safe. If it isn't in the room, the game says so
+(`There is no such painting.`), and if it's only visible from the other
+camera, you get `You don't see any door here.` A longer phrase either works
+or gets `Nothing happens.`, whatever was wrong with it. A failed attempt never
+reveals which of its words were right. Guessing a phrase of n words from a
+room's vocabulary of V words therefore costs about V^n tries, not n·V, so
+longer phrases protect the later puzzles.
 
 ### Hidden commands
 
@@ -169,8 +178,8 @@ tools/rooms/<id>.py    per-room art for the renderer (rooms 4-10)
 const lang = LANGUAGES["pt-BR"];
 const game = loadGame("pt-BR");                     // validated, text already in Portuguese
 let state = createGameState(game);                  // first room in game.json
-const aliases = buildAliasMap(game.rooms[state.roomId], lang.parser);
-const parsed = parse("usar a chave na porta", aliases, lang.parser);
+const vocabulary = buildVocabulary(game.rooms[state.roomId], lang.parser);
+const parsed = parse("chave porta", vocabulary, lang.parser); // { words: ["brass_key", "door"], typed }
 if (parsed.ok) ({ state, events } = stepGame(state, parsed.command, game, lang.engine)); // pure
 ```
 
@@ -204,14 +213,15 @@ A `failure` event has a `reason`, and its text depends on that reason:
 | --- | --- |
 | `unknown_object` | `There is no such <what they typed>.` |
 | `not_visible` (other camera, or an item not carried) | `You don't see any <what they typed> here.` |
-| `item_not_held`, `no_interaction`, `conditions_unmet` | `Nothing special.` for inspect, `Nothing happens.` otherwise |
+| `item_not_held`, `no_interaction`, `conditions_unmet` | `Nothing special.` for a single name, `Nothing happens.` otherwise |
 
-Wrong codes and wrong items stay vague on purpose, so players can't
-brute-force the puzzles by watching for a different message. Each command
-carries `typed`, the player's own wording of the object, so the explicit
-messages can echo it back. Malformed input never reaches the engine. The parser
-rejects it with a short usage message instead. The messages above are the
-English versions. Each language pack has its own.
+The two explicit messages are only given for a single word. Any phrase of two
+or more words that fails gets `Nothing happens.`, so failures never reveal
+partial correctness. A command is `{ words, typed }`: `words` holds ids, plus
+literal text for anything the room doesn't know, such as codes. `typed` holds
+the player's own wording of each word, so the explicit messages can echo it
+back. Only empty input is a parser error. The messages above are the English
+versions; each language pack has its own.
 
 ## Making a new room
 
@@ -226,7 +236,7 @@ English versions. Each language pack has its own.
 4. Add `rooms/<id>/solution.json` with the commands that solve the room in
    every language. `tests/rooms.test.ts` then checks the room automatically:
    the solution must work in each language with no failing step, and the room
-   must not be finishable with `open`/`inspect` alone.
+   must not be finishable by naming things and opening them.
 5. For art, add `tools/rooms/<id>.py` (see `load_room_modules` in
    `tools/render_rooms.py`) and run `python3 tools/render_rooms.py <id>`.
 
@@ -253,15 +263,13 @@ No code changes are needed. Room files and images are bundled automatically.
     "brass_key": {
       "name": { "en-US": "Brass key", "pt-BR": "Chave de latão", "es": "Llave de latón" },
       "aliases": { "en-US": ["key"], "pt-BR": ["chave"], "es": ["llave"] },
-      "description": { "en-US": "Shown by inspect when held.", "pt-BR": "...", "es": "..." }
+      "description": { "en-US": "Shown when named while carried.", "pt-BR": "...", "es": "..." }
     }
   },
   "initialFlags": { "drawer_open": false },
   "interactions": [
     {
-      "verb": "use",                   // inspect | open | use
-      "item": "0315",                  // use only: an item id, or a literal code
-      "object": "drawer",              // the object being inspected/opened/used on
+      "say": ["0315", "drawer"],       // the exact phrase: ids and literals, in order
       "conditions": [{ "type": "flag_equals", "flag": "drawer_open", "value": false }],
       "effects": [
         { "type": "set_flag", "flag": "drawer_open", "value": true },
@@ -281,14 +289,20 @@ No code changes are needed. Room files and images are bundled automatically.
 
 Rules:
 
-- An object can only be used from the cameras listed in its `cameras` field.
-  Items you carry can be inspected from either camera.
-- `interactions` are checked in order. The first one whose verb and arguments
-  match and whose `conditions` all pass is applied. To give an object a
+- Each rule's `say` is a phrase of words. Each word is an id (a global word
+  such as `open`, or one of the room's objects, items or `verbs`), or a
+  literal such as a code. Examples: `["clock"]` looks at the clock,
+  `["open", "drawer"]` opens it, `["brass_key", "door"]` uses the key on the
+  door, and `["dawn", "blood", "night", "altar"]` uses room verbs.
+- The last word of a phrase is its target. It must be visible from the current
+  camera (objects list their `cameras`) or be a carried item, and every item
+  word in the phrase must be carried. A single item word with no rule shows
+  the item's `description`.
+- `verbs` defines room-specific words: `{ "pray": { "name": {...}, "aliases": {...} } }`.
+- `interactions` are checked in order. The first one whose phrase matches
+  exactly and whose `conditions` all pass is applied. To give an object a
   different response depending on state, list the conditional rule first and
   the fallback after it.
-- When `use` names a real item, the player has to be holding it. Anything
-  else in that position is compared literally, which is how codes work.
 - Conditions: `flag_equals {flag, value}`, `has_item {item}`.
 - A camera can have `variants`, written as `[{ "when": [conditions], "description": ... }]`.
   The first variant whose conditions all hold replaces the camera's
@@ -299,8 +313,6 @@ Rules:
   override it, with the first match winning. When brightness goes up within a
   room, the image flickers like a bulb sputtering on. When it goes down, it
   fades. The cellar uses `0.45` until `power_on` is set.
-- `open <object> <code>` is understood as `use <code> <object>`, so
-  `open drawer 0315` works.
 - `hints` is revealed in order. A hint is skipped when all of its `skipIf`
   conditions hold, meaning the step it helps with is already done.
 - When an interaction reveals a code, also give the player a note item that
@@ -310,17 +322,20 @@ Rules:
 - Hints exist to get a stuck player moving again, not to solve the puzzle for
   them. Point at where to look or what to think about, and get a little more
   specific with each step, but never give a code, a number or a ready-made
-  command. A test rejects any hint that contains a digit or starts a sentence
-  with the `use` verb.
+  command. A test rejects any hint that contains a digit or a phrase that
+  solves one of the room's rules.
 - Effects: `set_flag {flag, value}`, `add_item {item}` (does nothing if the
   item is already held), `remove_item {item}` (for items used up),
   `display_message {text}`, `complete_game`, `change_room {room}` (next level).
   When a rule uses an item up and also hands out a reward, guard the rule with
   a flag. Otherwise repeating the action could give the reward again.
-- Each object or item can be reached by its id, its id with spaces in place of
-  underscores, its `name`, and its `aliases` for the current language. Case,
-  accents, articles and prepositions are ignored, so after that normalization
-  every name must still be unique within the room in every language.
+- Each object, item or room verb can be reached by its id, its id with spaces
+  in place of underscores, its `name`, and its `aliases` for the current
+  language. Case and accents are ignored. In every language, each of these
+  must mean exactly one thing in the room, global words included. Multi-word
+  names are read longest first, so `fuse box` wins over `fuse`, and every
+  rule's phrase must be typeable: writing its words by name must parse back
+  to exactly that phrase. Validation checks both.
 - Player-facing text (`title`, `description`, `name`, `text`, `aliases`) is an
   object with one entry per locale. Ids, flags, codes and image paths are
   never translated. Loading fails and names any text that is missing a
@@ -329,9 +344,9 @@ Rules:
 
 ### Adding a language
 
-1. Copy `src/i18n/locales/en-US.ts` and translate it. It contains the command
-   words (several per verb are allowed), the articles and prepositions to
-   ignore, the parser's error messages, the engine's built-in messages and the
+1. Copy `src/i18n/locales/en-US.ts` and translate it. It contains the global
+   words (`look`, `turn`, `open`, `inventory`, `help`, `hint`; several
+   spellings per word are allowed), the engine's built-in messages and the
    interface labels.
 2. Register it in `LANGUAGES` in `src/i18n/index.ts`.
 3. Add the new locale key to every localized entry in `rooms/game.json` and
@@ -339,7 +354,8 @@ Rules:
    every missing translation.
 
 `validateRoom()` checks the structure and every reference: unknown objects,
-items, verbs, condition or effect types, and names used twice. `validateGame()`
+items, condition or effect types, words with two meanings and phrases that
+can't be typed. `validateGame()`
 runs that on every room and also checks the manifest and that every
 `change_room` points at a listed room. All problems are reported together in
 one `RoomValidationError`.
