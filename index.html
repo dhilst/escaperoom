@@ -19,6 +19,7 @@
         <figure class="viewport">
           <img id="camera-image" alt="" width="320" height="240" />
           <figcaption id="camera-label"></figcaption>
+          <div id="subtitle" class="subtitle" aria-hidden="true" hidden></div>
           <div id="banner" class="banner" hidden>You escaped</div>
         </figure>
 
@@ -33,7 +34,7 @@
         <ol id="hint-list"></ol>
       </section>
 
-      <section id="log" class="log" aria-live="polite"></section>
+      <div id="subtitle-live" class="sr-only" aria-live="polite"></div>
 
       <form id="command-form" class="prompt" autocomplete="off">
         <label for="command-input">&gt;</label>

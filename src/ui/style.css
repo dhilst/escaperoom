@@ -29,12 +29,12 @@ body {
 }
 
 /*
- * The game always fits the window: the log takes whatever height is left and
- * scrolls internally, so the command input never leaves the screen. The camera
- * view shrinks on short windows to leave room for at least a few log lines.
+ * The game always fits the window. The camera view is sized once from the
+ * window, leaving room for the title, a full hint box (5 hints) and the input,
+ * so it never changes size during play and the input never leaves the screen.
  */
 .game {
-  --reserved: 300px; /* title bar + minimum log + prompt + gaps */
+  --reserved: 300px; /* title bar + full hint box + prompt + gaps */
   max-width: 980px;
   height: 100vh;
   height: 100dvh;
@@ -87,7 +87,7 @@ h2 {
 .viewport {
   position: relative;
   flex: 0 1 auto;
-  width: calc((100dvh - var(--reserved) - var(--hints-height, 0px)) * 4 / 3);
+  width: calc((100dvh - var(--reserved)) * 4 / 3);
   max-width: calc(100% - 190px);
   min-width: 0;
   margin: 0;
@@ -162,7 +162,7 @@ h2 {
   color: var(--accent);
 }
 
-/* --- Hints: a box above the log ------------------------------------------- */
+/* --- Hints: a box under the camera view ------------------------------------- */
 
 /* The newest hint is shown in full; older ones shrink to one line each so the
    box stays small (at most 5 hints). */
@@ -208,44 +208,66 @@ h2 {
   color: var(--hint);
 }
 
-.log {
-  flex: 1 1 0;
-  min-height: 3.5em;
-  overflow-y: auto;
-  background: var(--panel);
-  border: 2px solid var(--edge);
-  padding: 6px 10px;
+/* --- Subtitles: typed responses over the bottom of the camera view --------- */
+
+.subtitle {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  max-height: 70%;
+  overflow: hidden;
+  padding: 8px 14px 10px;
+  background: rgb(0 0 0 / 0.62);
+  font-size: 1.05rem;
+  line-height: 1.2;
+  text-shadow: 2px 2px 0 #000;
+  opacity: 1;
+  transition: opacity 400ms ease; /* FADE_MS in subtitles.ts */
 }
 
-.line {
-  margin: 0 0 2px;
+.subtitle[hidden] {
+  display: none;
+}
+
+.subtitle.fading {
+  opacity: 0;
+}
+
+.subtitle .line {
+  display: block;
   white-space: pre-wrap;
-  color: var(--dim);
+  color: #ece6d2;
 }
 
-.line.command {
-  color: #7d8a9a;
-  margin-top: 6px;
+.subtitle .rest {
+  visibility: hidden;
 }
 
-.line.latest {
-  color: var(--text);
-}
-
-.line.item.latest {
+.subtitle .item {
   color: var(--accent);
 }
 
-.line.error {
-  color: var(--error);
+.subtitle .error {
+  color: #e07a70;
 }
 
-.line.success {
+.subtitle .success {
   color: var(--success);
 }
 
-.line.hint {
+.subtitle .hint {
   color: var(--hint);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .prompt {
@@ -288,7 +310,7 @@ h2 {
   }
 
   .game {
-    --reserved: 250px;
+    --reserved: 380px; /* plus the items row; hints wrap more on phones */
     padding: 8px 12px 12px;
   }
 

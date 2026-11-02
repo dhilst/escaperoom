@@ -12,7 +12,7 @@ import {
   type GameState,
   type RoomDefinition,
 } from "./engine";
-import { Renderer, type LineKind } from "./ui/renderer";
+import { Renderer, type LineKind, type SubtitleLine } from "./ui/renderer";
 
 // Every image under rooms/<id>/ is bundled; room.json refers to them by file name.
 const roomImages = import.meta.glob<string>("../rooms/*/*.{png,webp,jpg}", {
@@ -76,20 +76,19 @@ function start(game: GameDefinition, language: Language): void {
     if (input.trim() === "") return;
     history.push(input);
     historyIndex = history.length;
-    ui.print(input.trim(), "command");
 
     const parsed = parse(input, aliases, language.parser);
     if (!parsed.ok) {
-      ui.print(parsed.error, "error");
+      ui.say([{ text: parsed.error, kind: "error" }]);
       return;
     }
     const result = stepGame(state, parsed.command, game, language.engine);
     state = result.state;
-    for (const event of result.events) {
-      // A restart (hidden "restart" command) starts the log afresh.
-      if (event.type === "restarted") ui.clearLog();
-      if ("text" in event) ui.print(event.text, lineKind(event));
-    }
+    // Everything one command produced becomes a single subtitle.
+    const lines: SubtitleLine[] = result.events.flatMap((event) =>
+      "text" in event ? [{ text: event.text, kind: lineKind(event) }] : [],
+    );
+    ui.say(lines);
     render();
   };
 
@@ -109,7 +108,7 @@ function start(game: GameDefinition, language: Language): void {
   });
 
   state = createGameState(game);
-  ui.print(currentRoom().cameras[state.camera].description, "response");
+  ui.say([{ text: currentRoom().cameras[state.camera].description, kind: "response" }]);
   render();
   ui.focusInput();
 }
@@ -119,6 +118,6 @@ try {
   const locale = localeFromParam(new URLSearchParams(location.search).get("lang"));
   start(loadGame(locale), LANGUAGES[locale]);
 } catch (error) {
-  ui.print(String(error instanceof Error ? error.message : error), "error");
+  ui.say([{ text: String(error instanceof Error ? error.message : error), kind: "error" }]);
   console.error(error);
 }

@@ -30,6 +30,12 @@ npm run build      # typecheck and build a static site into dist/
 The game is a static site, published with GitHub Pages at
 **https://dhilst.github.io/escaperoom/**.
 
+Publishing is automatic. On every push to `main`, the GitHub Actions workflow
+in `.github/workflows/publish.yml` runs the tests and the build and, if both
+pass, publishes `dist/` to the `gh-pages` branch, which Pages serves. Pull
+requests only run the tests and the build. To publish by hand from a local
+checkout:
+
 ```sh
 npm run deploy     # build, then force-push dist/ as the gh-pages branch
 ```
@@ -65,6 +71,12 @@ with the language.
 | `use <item> <target>` | `usar <item> <alvo>`   | `usar <objeto> <destino>` | Use an item, or enter a code (`use 1234 safe`) |
 | `inventory`           | `inventário`           | `inventario`             | List what you carry             |
 
+Responses appear as subtitles over the bottom of the camera view, typed out
+like the old Resident Evil games. Each one stays for 5 seconds after it
+finishes typing, and a new command replaces it immediately. Screen readers
+get the full text at once, and with reduced motion enabled the text appears
+without the typing effect.
+
 Portuguese also accepts `inspecionar`, and Spanish accepts `inspeccionar`.
 Articles and prepositions are ignored, so `use the key on the door`,
 `usar a chave na porta` and `usar la llave en la puerta` all work. So do the
@@ -93,11 +105,12 @@ expose or gate as it sees fit:
 **Hints.** Each room has up to 5 hints, ordered from vague to explicit, and
 only the next one can be revealed. A hint about a step the player has already
 solved is skipped, so every revealed hint is useful. Revealed hints stay on
-screen for the rest of the level, in a box above the log that appears with the
-first hint. The newest hint is shown in full, older ones are shortened to one
-line, and a `HINT n/5` counter heads the box. The camera image shrinks to make
-room, so the command input never leaves the screen. Hints reset when you enter a new room, but survive `restart`, so
-nothing that was paid for is lost.
+screen for the rest of the level, in a box under the camera view that appears
+with the first hint. The newest hint is shown in full, older ones are shortened
+to one line, and a `HINT n/5` counter heads the box. The layout always reserves
+room for a full box, so the camera view never changes size during play. Hints
+reset when you enter a new room, but survive `restart`, so nothing that was
+paid for is lost.
 
 <details>
 <summary>Solutions (spoilers)</summary>
@@ -150,6 +163,7 @@ src/
     locales/        en-US.ts, pt-BR.ts, es.ts
   ui/
     renderer.ts     the only module that touches the DOM
+    subtitles.ts    typed, timed subtitles for responses
     style.css
   content.ts        bundles the rooms and resolves them for one locale
   main.ts           wires the game, engine and renderer together
