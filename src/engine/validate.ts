@@ -1,4 +1,6 @@
-import type { GameDefinition, RoomDefinition } from "./types";
+import { enUS } from "../i18n/locales/en-US";
+import { phraseKey } from "./parser";
+import type { GameDefinition, ParserLanguage, RoomDefinition } from "./types";
 
 export class RoomValidationError extends Error {
   constructor(readonly problems: string[]) {
@@ -21,7 +23,7 @@ const VERBS = ["inspect", "open", "use"];
  * Check untrusted JSON against the room schema and cross-references.
  * Returns the data typed as a RoomDefinition, or throws listing every problem found.
  */
-export function validateRoom(data: unknown): RoomDefinition {
+export function validateRoom(data: unknown, language: ParserLanguage = enUS.parser): RoomDefinition {
   const problems: string[] = [];
   const err = (msg: string) => problems.push(msg);
 
@@ -55,7 +57,12 @@ export function validateRoom(data: unknown): RoomDefinition {
     const names = [id, id.replace(/_/g, " "), def.name, ...(isStrArray(def.aliases) ? def.aliases : [])];
     for (const raw of names) {
       if (typeof raw !== "string") continue;
-      const name = raw.trim().toLowerCase().replace(/\s+/g, " ");
+      // Compare names the way the parser will see them (case, accents and articles ignored).
+      const name = phraseKey(raw, language);
+      if (name === "") {
+        err(`${where}: name "${raw}" is empty once articles and prepositions are ignored`);
+        continue;
+      }
       const owner = aliasOwner.get(name);
       if (owner !== undefined && owner !== id) err(`name "${name}" is used by both "${owner}" and "${id}"`);
       aliasOwner.set(name, id);
@@ -145,13 +152,17 @@ export function validateRoom(data: unknown): RoomDefinition {
  * Validate a game manifest ({ title, rooms: [ids in level order] }) together
  * with every room file. Also checks that each change_room points at a listed room.
  */
-export function validateGame(manifest: unknown, roomData: unknown[]): GameDefinition {
+export function validateGame(
+  manifest: unknown,
+  roomData: unknown[],
+  language: ParserLanguage = enUS.parser,
+): GameDefinition {
   const problems: string[] = [];
   const rooms: Record<string, RoomDefinition> = {};
 
   for (const data of roomData) {
     try {
-      const room = validateRoom(data);
+      const room = validateRoom(data, language);
       if (room.id in rooms) problems.push(`room id "${room.id}" is defined twice`);
       rooms[room.id] = room;
     } catch (e) {

@@ -1,4 +1,13 @@
-import type { Command, Condition, Effect, GameEvent, GameState, Interaction, RoomDefinition } from "./types";
+import type {
+  Command,
+  Condition,
+  Effect,
+  EngineMessages,
+  GameEvent,
+  GameState,
+  Interaction,
+  RoomDefinition,
+} from "./types";
 
 export function checkCondition(state: GameState, condition: Condition): boolean {
   switch (condition.type) {
@@ -10,7 +19,12 @@ export function checkCondition(state: GameState, condition: Condition): boolean 
 }
 
 /** Apply one effect to `state` in place (the caller owns a fresh copy) and report what happened. */
-export function applyEffect(state: GameState, effect: Effect, room: RoomDefinition): GameEvent[] {
+export function applyEffect(
+  state: GameState,
+  effect: Effect,
+  room: RoomDefinition,
+  messages: EngineMessages,
+): GameEvent[] {
   switch (effect.type) {
     case "display_message":
       return [{ type: "message", text: effect.text }];
@@ -22,13 +36,13 @@ export function applyEffect(state: GameState, effect: Effect, room: RoomDefiniti
       if (state.inventory.includes(effect.item)) return [];
       state.inventory.push(effect.item);
       const name = room.items[effect.item]?.name ?? effect.item;
-      return [{ type: "item_added", item: effect.item, text: `[${name} added to inventory]` }];
+      return [{ type: "item_added", item: effect.item, text: messages.itemAdded(name) }];
     }
     case "remove_item": {
       if (!state.inventory.includes(effect.item)) return [];
       state.inventory = state.inventory.filter((id) => id !== effect.item);
       const name = room.items[effect.item]?.name ?? effect.item;
-      return [{ type: "item_removed", item: effect.item, text: `[${name} removed from inventory]` }];
+      return [{ type: "item_removed", item: effect.item, text: messages.itemRemoved(name) }];
     }
     case "change_room":
       state.roomId = effect.room;
@@ -36,7 +50,7 @@ export function applyEffect(state: GameState, effect: Effect, room: RoomDefiniti
       return [{ type: "room_changed", room: effect.room }];
     case "complete_game":
       state.completed = true;
-      return [{ type: "game_completed", text: "You escaped!" }];
+      return [{ type: "game_completed", text: messages.escaped }];
   }
 }
 

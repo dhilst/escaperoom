@@ -1,4 +1,4 @@
 {
-  "title": "The Hollow House",
+  "title": {"en-US": "The Hollow House", "pt-BR": "A Casa Vazia", "es": "La Casa Vacía"},
   "rooms": ["study", "cellar", "observatory"]
 }

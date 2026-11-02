@@ -1,8 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { createInitialState, RoomValidationError, step, validateGame, validateRoom } from "../src/engine";
 import type { GameEvent } from "../src/engine";
-import roomJson from "../rooms/study/room.json";
-import { play, room, texts } from "./helpers";
+import { play, room, studyJson as roomJson, texts } from "./helpers";
 
 const failure = (events: GameEvent[]) => events.find((e) => e.type === "failure");
 

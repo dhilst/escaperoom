@@ -1,5 +1,6 @@
 import "./ui/style.css";
 import { loadGame } from "./content";
+import { LANGUAGES, localeFromParam, type Language } from "./i18n";
 import {
   buildAliasMap,
   createGameState,
@@ -42,7 +43,8 @@ function lineKind(event: GameEvent): LineKind {
   }
 }
 
-function start(game: GameDefinition): void {
+function start(game: GameDefinition, language: Language): void {
+  ui.setLanguage(language.locale, language.ui);
   const history: string[] = [];
   let historyIndex = 0;
   let state: GameState;
@@ -54,7 +56,7 @@ function start(game: GameDefinition): void {
   const render = () => {
     const room = currentRoom();
     if (aliasesFor !== room.id) {
-      aliases = buildAliasMap(room);
+      aliases = buildAliasMap(room, language.parser);
       aliasesFor = room.id;
     }
     const camera = room.cameras[state.camera];
@@ -79,12 +81,12 @@ function start(game: GameDefinition): void {
     historyIndex = history.length;
     ui.print(input.trim(), "command");
 
-    const parsed = parse(input, aliases);
+    const parsed = parse(input, aliases, language.parser);
     if (!parsed.ok) {
       ui.print(parsed.error, "error");
       return;
     }
-    const result = stepGame(state, parsed.command, game);
+    const result = stepGame(state, parsed.command, game, language.engine);
     state = result.state;
     for (const event of result.events) {
       if ("text" in event) ui.print(event.text, lineKind(event));
@@ -114,7 +116,9 @@ function start(game: GameDefinition): void {
 }
 
 try {
-  start(loadGame());
+  // The language is chosen with ?lang=en-US | pt-BR | es (default: en-US).
+  const locale = localeFromParam(new URLSearchParams(location.search).get("lang"));
+  start(loadGame(locale), LANGUAGES[locale]);
 } catch (error) {
   ui.print(String(error instanceof Error ? error.message : error), "error");
   console.error(error);

@@ -1,5 +1,6 @@
+import { enUS } from "../i18n/locales/en-US";
 import { createInitialState, step } from "./state";
-import type { Command, GameDefinition, GameState, RoomDefinition, StepResult } from "./types";
+import type { Command, EngineMessages, GameDefinition, GameState, RoomDefinition, StepResult } from "./types";
 
 export function createGameState(game: GameDefinition): GameState {
   return createInitialState(game.rooms[game.order[0]]);
@@ -17,11 +18,16 @@ export function enterRoom(state: GameState, room: RoomDefinition): GameState {
  * Like step(), but across a whole game: when a change_room effect fires, the
  * player is moved into the next room and a room_entered event describes it.
  */
-export function stepGame(state: GameState, command: Command, game: GameDefinition): StepResult {
+export function stepGame(
+  state: GameState,
+  command: Command,
+  game: GameDefinition,
+  messages: EngineMessages = enUS.engine,
+): StepResult {
   const room = game.rooms[state.roomId];
   if (!room) throw new Error(`Unknown room "${state.roomId}"`);
 
-  const result = step(state, command, room);
+  const result = step(state, command, room, messages);
   if (result.state.roomId === state.roomId) return result;
 
   const next = game.rooms[result.state.roomId];

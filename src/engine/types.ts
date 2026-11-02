@@ -17,6 +17,30 @@ export type Command =
 
 export type Verb = Command["verb"];
 
+/** Everything the parser needs to understand one human language. */
+export interface ParserLanguage {
+  /** Typed word -> canonical verb. Several words may map to the same verb. */
+  verbs: Record<string, Verb>;
+  /** Articles and prepositions ignored in object phrases ("the", "on", "na", "la"...). */
+  stopwords: string[];
+  empty: string;
+  unknown(word: string): string;
+  /** Full usage message per verb, e.g. "Usage: inspect <object>". */
+  usage: Record<Verb, string>;
+}
+
+/** Player-facing text produced by the engine itself (room text comes from room data). */
+export interface EngineMessages {
+  nothingSpecial: string;
+  nothingHappens: string;
+  turned: string;
+  emptyInventory: string;
+  itemAdded(name: string): string;
+  itemRemoved(name: string): string;
+  escaped: string;
+  alreadyEscaped: string;
+}
+
 export type ParseResult =
   | { ok: true; command: Command }
   | { ok: false; error: string };

@@ -1,61 +1,79 @@
-import type { ParseResult, RoomDefinition } from "./types";
+import { enUS } from "../i18n/locales/en-US";
+import type { ParseResult, ParserLanguage, RoomDefinition } from "./types";
 
-/** Lower-cased name/alias -> logical id. */
+/** Normalized name/alias -> logical id. */
 export type AliasMap = ReadonlyMap<string, string>;
 
-const USAGE: Record<string, string> = {
-  look: "look",
-  turn: "turn",
-  inventory: "inventory",
-  inspect: "inspect <object>",
-  open: "open <object>",
-  use: "use <item> <target>",
-};
+/**
+ * Split text into comparable words: lower case, accents removed ("relógio" ->
+ * "relogio"), punctuation dropped. Codes such as "03:15" are left intact.
+ */
+export function words(text: string): string[] {
+  return text
+    .normalize("NFD")
+    .replace(/\p{M}/gu, "")
+    .toLowerCase()
+    .replace(/[.,;!?¡¿"]/g, " ")
+    .split(/\s+/)
+    .filter(Boolean);
+}
+
+/** The lookup key for an object phrase: normalized words without articles/prepositions. */
+export function phraseKey(text: string, language: ParserLanguage = enUS.parser): string {
+  const stop = new Set(language.stopwords.flatMap(words));
+  return words(text)
+    .filter((w) => !stop.has(w))
+    .join(" ");
+}
 
 /** Build the alias table for a room: ids, display names and declared aliases. */
-export function buildAliasMap(room: RoomDefinition): AliasMap {
+export function buildAliasMap(room: RoomDefinition, language: ParserLanguage = enUS.parser): AliasMap {
   const map = new Map<string, string>();
   const entries = [...Object.entries(room.objects), ...Object.entries(room.items)];
   for (const [id, def] of entries) {
     const names = [id, id.replace(/_/g, " "), def.name, ...(def.aliases ?? [])];
-    for (const name of names) map.set(normalize(name), id);
+    for (const name of names) {
+      const key = phraseKey(name, language);
+      if (key) map.set(key, id);
+    }
   }
   return map;
 }
 
-function normalize(text: string): string {
-  return text.trim().toLowerCase().replace(/\s+/g, " ");
-}
-
-function resolve(words: string[], aliases: AliasMap): string | undefined {
-  return aliases.get(words.join(" "));
+function resolve(phrase: string[], aliases: AliasMap): string | undefined {
+  return aliases.get(phrase.join(" "));
 }
 
 /** Resolve a phrase to a logical id, or keep it verbatim (e.g. a code like "0315"). */
-function resolveOrRaw(words: string[], aliases: AliasMap): string {
-  return resolve(words, aliases) ?? words.join(" ");
+function resolveOrRaw(phrase: string[], aliases: AliasMap): string {
+  return resolve(phrase, aliases) ?? phrase.join(" ");
 }
 
 /**
  * Parse raw player input into a structured command. Does not touch game state.
  * Unknown object names are passed through; the engine decides what they mean.
  */
-export function parse(input: string, aliases: AliasMap = new Map()): ParseResult {
-  const words = normalize(input).split(" ").filter(Boolean);
-  if (words.length === 0) return { ok: false, error: "Type a command." };
+export function parse(
+  input: string,
+  aliases: AliasMap = new Map(),
+  language: ParserLanguage = enUS.parser,
+): ParseResult {
+  const all = words(input);
+  if (all.length === 0) return { ok: false, error: language.empty };
 
-  const [verb, ...args] = words;
-  const usage = USAGE[verb];
-  if (usage === undefined) {
-    return { ok: false, error: `Unknown command "${verb}". Try: look, turn, inspect, open, use, inventory.` };
-  }
-  const fail = (): ParseResult => ({ ok: false, error: `Usage: ${usage}` });
+  const [typed, ...rest] = all;
+  const verb = Object.entries(language.verbs).find(([word]) => words(word).join(" ") === typed)?.[1];
+  if (verb === undefined) return { ok: false, error: language.unknown(typed) };
+  const fail = (): ParseResult => ({ ok: false, error: language.usage[verb] });
+
+  const stop = new Set(language.stopwords.flatMap(words));
+  const args = rest.filter((w) => !stop.has(w));
 
   switch (verb) {
     case "look":
     case "turn":
     case "inventory":
-      return args.length === 0 ? { ok: true, command: { verb } } : fail();
+      return rest.length === 0 ? { ok: true, command: { verb } } : fail();
 
     case "inspect":
     case "open":
@@ -86,5 +104,4 @@ export function parse(input: string, aliases: AliasMap = new Map()): ParseResult
       };
     }
   }
-  return fail();
 }

@@ -1,198 +1,427 @@
 {
   "id": "cellar",
-  "title": "The Flooded Cellar",
+  "title": {"en-US": "The Flooded Cellar", "pt-BR": "O Porão Alagado", "es": "El Sótano Inundado"},
   "cameras": {
     "A": {
       "image": "camera_a.png",
-      "description": "A rusted workbench stands beside a fuse box.\nShelves of murky jars line the wall. Water drips somewhere."
+      "description": {
+        "en-US": "A rusted workbench stands beside a fuse box.\nShelves of murky jars line the wall. Water drips somewhere.",
+        "pt-BR": "Uma bancada enferrujada fica ao lado de uma caixa de fusíveis.\nPrateleiras de potes turvos cobrem a parede. Água pinga em algum lugar.",
+        "es": "Un banco de trabajo oxidado está junto a una caja de fusibles.\nEstantes con frascos turbios cubren la pared. El agua gotea en algún lugar."
+      }
     },
     "C": {
       "image": "camera_c.png",
-      "description": "Crates sit in black, ankle-deep water.\nA steel door with a keypad is set in the wall."
+      "description": {
+        "en-US": "Crates sit in black, ankle-deep water.\nA steel door with a keypad is set in the wall.",
+        "pt-BR": "Caixotes repousam em água negra na altura dos tornozelos.\nUma porta de aço com um teclado numérico está embutida na parede.",
+        "es": "Unas cajas reposan en agua negra que llega a los tobillos.\nUna puerta de acero con un teclado numérico está empotrada en la pared."
+      }
     }
   },
   "objects": {
     "workbench": {
-      "name": "workbench",
-      "aliases": ["bench", "work bench", "tools"],
+      "name": {"en-US": "workbench", "pt-BR": "bancada", "es": "banco de trabajo"},
+      "aliases": {
+        "en-US": ["bench", "work bench", "tools"],
+        "pt-BR": ["mesa de trabalho", "ferramentas"],
+        "es": ["banco", "mesa de trabajo", "herramientas"]
+      },
       "cameras": ["A"]
     },
     "toolbox": {
-      "name": "toolbox",
-      "aliases": ["tool box", "metal toolbox"],
+      "name": {
+        "en-US": "toolbox",
+        "pt-BR": "caixa de ferramentas",
+        "es": "caja de herramientas"
+      },
+      "aliases": {
+        "en-US": ["tool box", "metal toolbox"],
+        "pt-BR": ["maleta de ferramentas"],
+        "es": ["caja de herramientas de metal"]
+      },
       "cameras": ["A"]
     },
     "fuse_box": {
-      "name": "fuse box",
-      "aliases": ["fusebox", "breaker", "panel", "slot"],
+      "name": {
+        "en-US": "fuse box",
+        "pt-BR": "caixa de fusíveis",
+        "es": "caja de fusibles"
+      },
+      "aliases": {
+        "en-US": ["fusebox", "breaker", "panel", "slot"],
+        "pt-BR": [
+          "quadro de luz",
+          "quadro",
+          "disjuntor",
+          "painel",
+          "encaixe"
+        ],
+        "es": ["cuadro eléctrico", "cuadro", "panel", "hueco"]
+      },
       "cameras": ["A"]
     },
     "shelves": {
-      "name": "shelves",
-      "aliases": ["shelf", "jars", "jar"],
+      "name": {"en-US": "shelves", "pt-BR": "prateleiras", "es": "estantes"},
+      "aliases": {
+        "en-US": ["shelf", "jars", "jar"],
+        "pt-BR": ["prateleira", "potes", "pote"],
+        "es": ["estante", "frascos", "frasco"]
+      },
       "cameras": ["A"]
     },
     "crates": {
-      "name": "crates",
-      "aliases": ["crate", "wooden crates", "lid"],
+      "name": {"en-US": "crates", "pt-BR": "caixotes", "es": "cajas"},
+      "aliases": {
+        "en-US": ["crate", "wooden crates", "lid"],
+        "pt-BR": ["caixote", "tampa"],
+        "es": ["caja", "cajas de madera", "tapa"]
+      },
       "cameras": ["C"]
     },
     "wall": {
-      "name": "wall",
-      "aliases": ["writing", "numbers", "paint", "red paint", "red"],
+      "name": {"en-US": "wall", "pt-BR": "parede", "es": "pared"},
+      "aliases": {
+        "en-US": ["writing", "numbers", "paint", "red paint", "red"],
+        "pt-BR": ["números", "tinta", "tinta vermelha", "escrita"],
+        "es": ["números", "pintura", "pintura roja", "escritura"]
+      },
       "cameras": ["C"]
     },
     "door": {
-      "name": "door",
-      "aliases": ["steel door", "keypad", "exit"],
+      "name": {"en-US": "door", "pt-BR": "porta", "es": "puerta"},
+      "aliases": {
+        "en-US": ["steel door", "keypad", "exit"],
+        "pt-BR": ["porta de aço", "teclado", "saída"],
+        "es": ["puerta de acero", "teclado", "salida"]
+      },
       "cameras": ["C"]
     },
     "water": {
-      "name": "water",
-      "aliases": ["puddle", "floor"],
+      "name": {"en-US": "water", "pt-BR": "água", "es": "agua"},
+      "aliases": {
+        "en-US": ["puddle", "floor"],
+        "pt-BR": ["poça", "chão"],
+        "es": ["charco", "suelo"]
+      },
       "cameras": ["C"]
     }
   },
   "items": {
     "crowbar": {
-      "name": "Crowbar",
-      "aliases": ["bar", "pry bar"],
-      "description": "Heavy, cold, and spotted with rust."
+      "name": {"en-US": "Crowbar", "pt-BR": "Pé de cabra", "es": "Palanca"},
+      "aliases": {
+        "en-US": ["bar", "pry bar"],
+        "pt-BR": ["alavanca", "pé-de-cabra"],
+        "es": ["palanqueta", "barra"]
+      },
+      "description": {
+        "en-US": "Heavy, cold, and spotted with rust.",
+        "pt-BR": "Pesado, frio e manchado de ferrugem.",
+        "es": "Pesada, fría y salpicada de óxido."
+      }
     },
     "fuse": {
-      "name": "Fuse",
-      "aliases": ["glass fuse"],
-      "description": "A glass fuse. The filament looks intact."
+      "name": {"en-US": "Fuse", "pt-BR": "Fusível", "es": "Fusible"},
+      "aliases": {
+        "en-US": ["glass fuse"],
+        "pt-BR": ["fusível de vidro"],
+        "es": ["fusible de cristal"]
+      },
+      "description": {
+        "en-US": "A glass fuse. The filament looks intact.",
+        "pt-BR": "Um fusível de vidro. O filamento parece intacto.",
+        "es": "Un fusible de cristal. El filamento parece intacto."
+      }
     }
   },
-  "initialFlags": {
-    "toolbox_open": false,
-    "crate_open": false,
-    "power_on": false
-  },
+  "initialFlags": {"toolbox_open": false, "crate_open": false, "power_on": false},
   "interactions": [
     {
       "verb": "inspect",
       "object": "workbench",
-      "effects": [{ "type": "display_message", "text": "Tools rusted solid to the bench.\nA dented toolbox sits among them." }]
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Tools rusted solid to the bench.\nA dented toolbox sits among them.",
+            "pt-BR": "Ferramentas enferrujadas, grudadas na bancada.\nUma caixa de ferramentas amassada está entre elas.",
+            "es": "Herramientas oxidadas, pegadas al banco.\nEntre ellas hay una caja de herramientas abollada."
+          }
+        }
+      ]
     },
     {
       "verb": "inspect",
       "object": "toolbox",
-      "conditions": [{ "type": "flag_equals", "flag": "toolbox_open", "value": false }],
-      "effects": [{ "type": "display_message", "text": "A dented metal toolbox. The latch is stiff, but not locked." }]
+      "conditions": [{"type": "flag_equals", "flag": "toolbox_open", "value": false}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A dented metal toolbox. The latch is stiff, but not locked.",
+            "pt-BR": "Uma caixa de ferramentas de metal amassada. A trava está dura, mas não trancada.",
+            "es": "Una caja de herramientas de metal abollada. El pestillo está duro, pero no tiene llave."
+          }
+        }
+      ]
     },
     {
       "verb": "inspect",
       "object": "toolbox",
-      "effects": [{ "type": "display_message", "text": "The toolbox is empty." }]
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The toolbox is empty.",
+            "pt-BR": "A caixa de ferramentas está vazia.",
+            "es": "La caja de herramientas está vacía."
+          }
+        }
+      ]
     },
     {
       "verb": "open",
       "object": "toolbox",
-      "conditions": [{ "type": "flag_equals", "flag": "toolbox_open", "value": false }],
+      "conditions": [{"type": "flag_equals", "flag": "toolbox_open", "value": false}],
       "effects": [
-        { "type": "set_flag", "flag": "toolbox_open", "value": true },
-        { "type": "display_message", "text": "The latch gives way with a screech.\nYou found a crowbar!" },
-        { "type": "add_item", "item": "crowbar" }
+        {"type": "set_flag", "flag": "toolbox_open", "value": true},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The latch gives way with a screech.\nYou found a crowbar!",
+            "pt-BR": "A trava cede com um guincho.\nVocê encontrou um pé de cabra!",
+            "es": "El pestillo cede con un chirrido.\n¡Encontraste una palanca!"
+          }
+        },
+        {"type": "add_item", "item": "crowbar"}
       ]
     },
     {
       "verb": "inspect",
       "object": "fuse_box",
-      "conditions": [{ "type": "flag_equals", "flag": "power_on", "value": false }],
-      "effects": [{ "type": "display_message", "text": "A rusted fuse box. One fuse slot is empty." }]
+      "conditions": [{"type": "flag_equals", "flag": "power_on", "value": false}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A rusted fuse box. One fuse slot is empty.",
+            "pt-BR": "Uma caixa de fusíveis enferrujada. Um dos encaixes está vazio.",
+            "es": "Una caja de fusibles oxidada. Uno de los huecos está vacío."
+          }
+        }
+      ]
     },
     {
       "verb": "inspect",
       "object": "fuse_box",
-      "effects": [{ "type": "display_message", "text": "The fuse box hums quietly." }]
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The fuse box hums quietly.",
+            "pt-BR": "A caixa de fusíveis zumbe baixinho.",
+            "es": "La caja de fusibles zumba suavemente."
+          }
+        }
+      ]
     },
     {
       "verb": "use",
       "item": "fuse",
       "object": "fuse_box",
-      "conditions": [{ "type": "flag_equals", "flag": "power_on", "value": false }],
+      "conditions": [{"type": "flag_equals", "flag": "power_on", "value": false}],
       "effects": [
-        { "type": "set_flag", "flag": "power_on", "value": true },
-        { "type": "display_message", "text": "You push the fuse into the slot. The bare bulb sputters to life.\nSomething red gleams on the wall behind you." },
-        { "type": "remove_item", "item": "fuse" }
+        {"type": "set_flag", "flag": "power_on", "value": true},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You push the fuse into the slot. The bare bulb sputters to life.\nSomething red gleams on the wall behind you.",
+            "pt-BR": "Você encaixa o fusível. A lâmpada nua acende, crepitando.\nAlgo vermelho brilha na parede atrás de você.",
+            "es": "Encajas el fusible en su hueco. La bombilla desnuda se enciende chisporroteando.\nAlgo rojo brilla en la pared detrás de ti."
+          }
+        },
+        {"type": "remove_item", "item": "fuse"}
       ]
     },
     {
       "verb": "inspect",
       "object": "shelves",
-      "effects": [{ "type": "display_message", "text": "Jars of something pickled, long since gone black." }]
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Jars of something pickled, long since gone black.",
+            "pt-BR": "Potes de alguma conserva que há muito ficou preta.",
+            "es": "Frascos de algún encurtido que hace tiempo se volvió negro."
+          }
+        }
+      ]
     },
     {
       "verb": "inspect",
       "object": "crates",
-      "conditions": [{ "type": "flag_equals", "flag": "crate_open", "value": false }],
-      "effects": [{ "type": "display_message", "text": "Wooden crates, nailed shut.\nThe top one is stamped ELECTRICAL SPARES." }]
+      "conditions": [{"type": "flag_equals", "flag": "crate_open", "value": false}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Wooden crates, nailed shut.\nThe top one is stamped ELECTRICAL SPARES.",
+            "pt-BR": "Caixotes de madeira, pregados.\nO de cima tem o carimbo PEÇAS ELÉTRICAS.",
+            "es": "Cajas de madera, clavadas.\nLa de arriba lleva el sello REPUESTOS ELÉCTRICOS."
+          }
+        }
+      ]
     },
     {
       "verb": "inspect",
       "object": "crates",
-      "effects": [{ "type": "display_message", "text": "The top crate is pried open. Only damp straw is left." }]
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The top crate is pried open. Only damp straw is left.",
+            "pt-BR": "O caixote de cima foi arrombado. Só restou palha úmida.",
+            "es": "La caja de arriba está forzada. Solo queda paja húmeda."
+          }
+        }
+      ]
     },
     {
       "verb": "open",
       "object": "crates",
-      "conditions": [{ "type": "flag_equals", "flag": "crate_open", "value": false }],
-      "effects": [{ "type": "display_message", "text": "The lid is nailed shut. You'd need something to pry it open." }]
+      "conditions": [{"type": "flag_equals", "flag": "crate_open", "value": false}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The lid is nailed shut. You'd need something to pry it open.",
+            "pt-BR": "A tampa está pregada. Você precisaria de algo para forçá-la.",
+            "es": "La tapa está clavada. Necesitarías algo para forzarla."
+          }
+        }
+      ]
     },
     {
       "verb": "use",
       "item": "crowbar",
       "object": "crates",
-      "conditions": [{ "type": "flag_equals", "flag": "crate_open", "value": false }],
+      "conditions": [{"type": "flag_equals", "flag": "crate_open", "value": false}],
       "effects": [
-        { "type": "set_flag", "flag": "crate_open", "value": true },
-        { "type": "display_message", "text": "You lever the lid off. The crowbar slips into the water.\nYou found a fuse!" },
-        { "type": "remove_item", "item": "crowbar" },
-        { "type": "add_item", "item": "fuse" }
+        {"type": "set_flag", "flag": "crate_open", "value": true},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You lever the lid off. The crowbar slips into the water.\nYou found a fuse!",
+            "pt-BR": "Você força a tampa. O pé de cabra escorrega para dentro da água.\nVocê encontrou um fusível!",
+            "es": "Haces palanca y arrancas la tapa. La palanca se te resbala al agua.\n¡Encontraste un fusible!"
+          }
+        },
+        {"type": "remove_item", "item": "crowbar"},
+        {"type": "add_item", "item": "fuse"}
       ]
     },
     {
       "verb": "inspect",
       "object": "wall",
-      "conditions": [{ "type": "flag_equals", "flag": "power_on", "value": false }],
-      "effects": [{ "type": "display_message", "text": "Too dark to make anything out." }]
+      "conditions": [{"type": "flag_equals", "flag": "power_on", "value": false}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Too dark to make anything out.",
+            "pt-BR": "Escuro demais para distinguir qualquer coisa.",
+            "es": "Demasiado oscuro para distinguir nada."
+          }
+        }
+      ]
     },
     {
       "verb": "inspect",
       "object": "wall",
-      "effects": [{ "type": "display_message", "text": "Numbers in dripping red paint:\n7 4 1 9" }]
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Numbers in dripping red paint:\n7 4 1 9",
+            "pt-BR": "Números em tinta vermelha escorrida:\n7 4 1 9",
+            "es": "Números en pintura roja chorreante:\n7 4 1 9"
+          }
+        }
+      ]
     },
     {
       "verb": "inspect",
       "object": "water",
-      "effects": [{ "type": "display_message", "text": "Cold and black. You'd rather not reach in." }]
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Cold and black. You'd rather not reach in.",
+            "pt-BR": "Fria e negra. Melhor não enfiar a mão.",
+            "es": "Fría y negra. Mejor no meter la mano."
+          }
+        }
+      ]
     },
     {
       "verb": "inspect",
       "object": "door",
-      "conditions": [{ "type": "flag_equals", "flag": "power_on", "value": false }],
-      "effects": [{ "type": "display_message", "text": "A steel door. Its keypad is dark and dead." }]
+      "conditions": [{"type": "flag_equals", "flag": "power_on", "value": false}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A steel door. Its keypad is dark and dead.",
+            "pt-BR": "Uma porta de aço. O teclado está apagado, sem vida.",
+            "es": "Una puerta de acero. Su teclado está apagado, sin vida."
+          }
+        }
+      ]
     },
     {
       "verb": "inspect",
       "object": "door",
-      "effects": [{ "type": "display_message", "text": "A steel door. The keypad glows a faint green, waiting for a code." }]
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A steel door. The keypad glows a faint green, waiting for a code.",
+            "pt-BR": "Uma porta de aço. O teclado brilha num verde fraco, esperando um código.",
+            "es": "Una puerta de acero. El teclado brilla con un verde tenue, esperando un código."
+          }
+        }
+      ]
     },
     {
       "verb": "open",
       "object": "door",
-      "effects": [{ "type": "display_message", "text": "It won't budge. The keypad controls the bolts." }]
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "It won't budge. The keypad controls the bolts.",
+            "pt-BR": "Não se mexe. O teclado controla as trancas.",
+            "es": "No se mueve. El teclado controla los cerrojos."
+          }
+        }
+      ]
     },
     {
       "verb": "use",
       "item": "7419",
       "object": "door",
-      "conditions": [{ "type": "flag_equals", "flag": "power_on", "value": true }],
+      "conditions": [{"type": "flag_equals", "flag": "power_on", "value": true}],
       "effects": [
-        { "type": "display_message", "text": "The keypad beeps twice. The bolts slide back.\nA narrow staircase spirals upward." },
-        { "type": "change_room", "room": "observatory" }
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The keypad beeps twice. The bolts slide back.\nA narrow staircase spirals upward.",
+            "pt-BR": "O teclado apita duas vezes. As trancas recuam.\nUma escada estreita sobe em espiral.",
+            "es": "El teclado pita dos veces. Los cerrojos se retiran.\nUna estrecha escalera de caracol sube."
+          }
+        },
+        {"type": "change_room", "room": "observatory"}
       ]
     }
   ]

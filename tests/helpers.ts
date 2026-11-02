@@ -1,13 +1,18 @@
 import { loadGame } from "../src/content";
 import { buildAliasMap, createGameState, createInitialState, parse, step, stepGame } from "../src/engine";
-import type { GameEvent, GameState } from "../src/engine";
+import type { GameDefinition, GameEvent, GameState } from "../src/engine";
+import { LANGUAGES, localize, type Locale } from "../src/i18n";
+import rawStudy from "../rooms/study/room.json";
 
-export const game = loadGame();
+export const game = loadGame("en-US");
 export const room = game.rooms.study;
 export const aliases = buildAliasMap(room);
+/** The study's room.json with English text, for building variants in tests. */
+export const studyJson = localize(rawStudy, "en-US");
 
-function parseOrThrow(line: string, roomId: string) {
-  const parsed = parse(line, buildAliasMap(game.rooms[roomId]));
+function parseOrThrow(line: string, roomId: string, g: GameDefinition = game, locale: Locale = "en-US") {
+  const language = LANGUAGES[locale].parser;
+  const parsed = parse(line, buildAliasMap(g.rooms[roomId], language), language);
   if (!parsed.ok) throw new Error(`parse failed for "${line}": ${parsed.error}`);
   return parsed.command;
 }
@@ -25,11 +30,12 @@ export function play(lines: string[], start: GameState = createInitialState(room
 }
 
 /** Run raw input lines through the whole game, following room changes. */
-export function playGame(lines: string[], start: GameState = createGameState(game)) {
+export function playGame(lines: string[], start: GameState = createGameState(game), locale: Locale = "en-US") {
+  const g = loadGame(locale);
   let state = start;
   const log: GameEvent[][] = [];
   for (const line of lines) {
-    const result = stepGame(state, parseOrThrow(line, state.roomId), game);
+    const result = stepGame(state, parseOrThrow(line, state.roomId, g, locale), g, LANGUAGES[locale].engine);
     state = result.state;
     log.push(result.events);
   }

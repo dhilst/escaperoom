@@ -25,16 +25,38 @@ npm run typecheck  # tsc --noEmit
 npm run build      # typecheck and build a static site into dist/
 ```
 
+## Languages
+
+The game is available in US English (the default), Brazilian Portuguese and
+Spanish. Choose one with the `lang` query parameter:
+
+```text
+http://localhost:5173/              English (US)
+http://localhost:5173/?lang=pt-BR   Português (Brasil)
+http://localhost:5173/?lang=es      Español
+```
+
+The value is forgiving: `pt_BR`, `pt-br` and `pt` all select Portuguese, and
+`es-MX` selects Spanish. A missing or unknown value falls back to English. Room
+text, interface labels, engine messages and the commands themselves all change
+with the language.
+
 ## How to play
 
-| Command               | Effect                                 |
-| --------------------- | -------------------------------------- |
-| `look`                | Describe the current camera view       |
-| `turn`                | Switch to the opposite camera          |
-| `inspect <object>`    | Examine something                      |
-| `open <object>`       | Try to open something                  |
-| `use <item> <target>` | Use an item, or enter a code (`use 1234 safe`) |
-| `inventory`           | List what you carry                    |
+| English               | Português              | Español                  | Effect                          |
+| --------------------- | ---------------------- | ------------------------ | ------------------------------- |
+| `look`                | `olhar`                | `mirar`                  | Describe the current camera view |
+| `turn`                | `virar`                | `girar`                  | Switch to the opposite camera   |
+| `inspect <object>`    | `examinar <objeto>`    | `examinar <objeto>`      | Examine something               |
+| `open <object>`       | `abrir <objeto>`       | `abrir <objeto>`         | Try to open something           |
+| `use <item> <target>` | `usar <item> <alvo>`   | `usar <objeto> <destino>` | Use an item, or enter a code (`use 1234 safe`) |
+| `inventory`           | `inventário`           | `inventario`             | List what you carry             |
+
+Portuguese also accepts `inspecionar`, and Spanish accepts `inspeccionar`.
+Articles and prepositions are ignored, so `use the key on the door`,
+`usar a chave na porta` and `usar la llave en la puerta` all work. So do the
+shorter `use key door`, `usar chave porta` and `usar llave puerta`. Accents are
+optional, so `relogio` matches `relógio`.
 
 Commands are case-insensitive and ignore extra whitespace. Press Enter to
 submit, and use Up/Down to recall earlier commands. The **Restart** button
@@ -89,26 +111,37 @@ src/
     rules.ts        condition checks and effect application
     validate.ts     load-time validation of rooms and the game manifest
     index.ts        public exports
+  i18n/
+    index.ts        locale list, ?lang= resolution, localize() for room data
+    language.ts     the Language type: parser words, engine messages, UI labels
+    locales/        en-US.ts, pt-BR.ts, es.ts
   ui/
     renderer.ts     the only module that touches the DOM
     style.css
-  content.ts        bundles rooms/game.json and every rooms/*/room.json
+  content.ts        bundles the rooms and resolves them for one locale
   main.ts           wires the game, engine and renderer together
 rooms/
   game.json         title and level order
   <id>/             room.json + camera_a.png + camera_c.png
-tests/              parser, engine, per-room and full-game tests
+tests/              parser, engine, per-room, full-game and i18n tests
 tools/render_rooms.py  generates the placeholder camera images
 ```
 
 ### Engine contract
 
 ```ts
-const game = loadGame();                                      // validated GameDefinition
-let state = createGameState(game);                            // first room in game.json
-const parsed = parse("use key door", buildAliasMap(game.rooms[state.roomId]));
-if (parsed.ok) ({ state, events } = stepGame(state, parsed.command, game)); // pure
+const lang = LANGUAGES["pt-BR"];
+const game = loadGame("pt-BR");                     // validated, text already in Portuguese
+let state = createGameState(game);                  // first room in game.json
+const aliases = buildAliasMap(game.rooms[state.roomId], lang.parser);
+const parsed = parse("usar a chave na porta", aliases, lang.parser);
+if (parsed.ok) ({ state, events } = stepGame(state, parsed.command, game, lang.engine)); // pure
 ```
+
+The language arguments are optional and default to English. The engine itself
+has no idea which language is in use: rooms are translated before validation,
+and commands and `GameState` contain only ids, flags and codes. As a result,
+the same game played in different languages produces identical states.
 
 `step(state, command, room)` is the same thing for a single room. `stepGame`
 calls it and, when a `change_room` effect fires, moves the player into the next
@@ -121,7 +154,8 @@ loads the new room's `initialFlags`.
 `text`.
 
 A `failure` event always shows the player `Nothing special.` (for inspect) or
-`Nothing happens.` (for everything else). Its `reason` field is for debugging
+`Nothing happens.` (for everything else), or the translation of those
+messages. Its `reason` field is for debugging
 and tests only: `unknown_object`, `not_visible`, `item_not_held`,
 `no_interaction` or `conditions_unmet`. Malformed input never reaches the
 engine. The parser rejects it with a short usage message instead.
@@ -144,16 +178,24 @@ No code changes are needed. Room files and images are bundled automatically.
 ```jsonc
 {
   "id": "study",                       // must match the folder name
-  "title": "The Locked Study",
+  "title": { "en-US": "The Locked Study", "pt-BR": "O Escritório Trancado", "es": "El Estudio Cerrado" },
   "cameras": {
-    "A": { "image": "camera_a.png", "description": "Text shown by look." },
-    "C": { "image": "camera_c.png", "description": "..." }
+    "A": { "image": "camera_a.png", "description": { "en-US": "Text shown by look.", "pt-BR": "...", "es": "..." } },
+    "C": { "image": "camera_c.png", "description": { "en-US": "...", "pt-BR": "...", "es": "..." } }
   },
   "objects": {                         // things in the room
-    "clock": { "name": "clock", "aliases": ["wall clock"], "cameras": ["A"] }
+    "clock": {
+      "name": { "en-US": "clock", "pt-BR": "relógio", "es": "reloj" },
+      "aliases": { "en-US": ["wall clock"], "pt-BR": ["relógio de parede"], "es": ["reloj de pared"] },
+      "cameras": ["A"]
+    }
   },
   "items": {                           // things that can be carried
-    "brass_key": { "name": "Brass key", "aliases": ["key"], "description": "Shown by inspect when held." }
+    "brass_key": {
+      "name": { "en-US": "Brass key", "pt-BR": "Chave de latão", "es": "Llave de latón" },
+      "aliases": { "en-US": ["key"], "pt-BR": ["chave"], "es": ["llave"] },
+      "description": { "en-US": "Shown by inspect when held.", "pt-BR": "...", "es": "..." }
+    }
   },
   "initialFlags": { "drawer_open": false },
   "interactions": [
@@ -164,7 +206,7 @@ No code changes are needed. Room files and images are bundled automatically.
       "conditions": [{ "type": "flag_equals", "flag": "drawer_open", "value": false }],
       "effects": [
         { "type": "set_flag", "flag": "drawer_open", "value": true },
-        { "type": "display_message", "text": "The drawer opens." },
+        { "type": "display_message", "text": { "en-US": "The drawer opens.", "pt-BR": "A gaveta se abre.", "es": "El cajón se abre." } },
         { "type": "add_item", "item": "brass_key" }
       ]
     }
@@ -189,8 +231,25 @@ Rules:
   When a rule uses an item up and also hands out a reward, guard the rule with
   a flag. Otherwise repeating the action could give the reward again.
 - Each object or item can be reached by its id, its id with spaces in place of
-  underscores, its `name`, and its `aliases`. These are case-insensitive and
-  must be unique across the whole room.
+  underscores, its `name`, and its `aliases` for the current language. Case,
+  accents, articles and prepositions are ignored, so after that normalization
+  every name must still be unique within the room in every language.
+- Player-facing text (`title`, `description`, `name`, `text`, `aliases`) is an
+  object with one entry per locale. Ids, flags, codes and image paths are
+  never translated. Loading fails and names any text that is missing a
+  translation, and a test checks that no player-facing text was left as a
+  plain string.
+
+### Adding a language
+
+1. Copy `src/i18n/locales/en-US.ts` and translate it. It contains the command
+   words (several per verb are allowed), the articles and prepositions to
+   ignore, the parser's error messages, the engine's built-in messages and the
+   interface labels.
+2. Register it in `LANGUAGES` in `src/i18n/index.ts`.
+3. Add the new locale key to every localized entry in `rooms/game.json` and
+   each `rooms/*/room.json`. Until you do, the game refuses to load and lists
+   every missing translation.
 
 `validateRoom()` checks the structure and every reference: unknown objects,
 items, verbs, condition or effect types, and names used twice. `validateGame()`

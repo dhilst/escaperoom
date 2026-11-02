@@ -1,4 +1,5 @@
 import type { CameraId } from "../engine";
+import type { UiStrings } from "../i18n";
 
 export type LineKind = "command" | "response" | "item" | "error" | "success";
 
@@ -14,10 +15,23 @@ export class Renderer {
   readonly form = byId<HTMLFormElement>("command-form");
   readonly input = byId<HTMLInputElement>("command-input");
   readonly restartButton = byId<HTMLButtonElement>("restart");
+  private readonly inventoryHeading = byId<HTMLElement>("inventory-heading");
+  private strings!: UiStrings;
+
+  /** Apply the interface language: static labels and the document language. */
+  setLanguage(locale: string, strings: UiStrings): void {
+    this.strings = strings;
+    document.documentElement.lang = locale;
+    this.restartButton.textContent = strings.restart;
+    this.restartButton.title = strings.restartTitle;
+    this.inventoryHeading.textContent = strings.items;
+    this.input.placeholder = strings.placeholder;
+    this.banner.textContent = strings.banner;
+  }
 
   setTitle(gameTitle: string, roomTitle: string, level: number, levels: number): void {
     this.title.textContent = roomTitle;
-    this.level.textContent = `${gameTitle} · Level ${level}/${levels}`;
+    this.level.textContent = `${gameTitle} · ${this.strings.level(level, levels)}`;
     document.title = `${roomTitle} — ${gameTitle}`;
   }
 

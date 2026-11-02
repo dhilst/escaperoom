@@ -1,165 +1,351 @@
 {
   "id": "observatory",
-  "title": "The Observatory",
+  "title": {"en-US": "The Observatory", "pt-BR": "O Observatório", "es": "El Observatorio"},
   "cameras": {
     "A": {
       "image": "camera_a.png",
-      "description": "A brass telescope stands beneath a star chart.\nAn old birdcage hangs from a hook."
+      "description": {
+        "en-US": "A brass telescope stands beneath a star chart.\nAn old birdcage hangs from a hook.",
+        "pt-BR": "Um telescópio de latão fica sob uma carta celeste.\nUma velha gaiola pende de um gancho.",
+        "es": "Un telescopio de latón se alza bajo una carta estelar.\nUna vieja jaula cuelga de un gancho."
+      }
     },
     "C": {
       "image": "camera_c.png",
-      "description": "A music box rests on a table by a round window.\nA ladder climbs to a hatch in the ceiling."
+      "description": {
+        "en-US": "A music box rests on a table by a round window.\nA ladder climbs to a hatch in the ceiling.",
+        "pt-BR": "Uma caixa de música repousa numa mesa junto a uma janela redonda.\nUma escada sobe até um alçapão no teto.",
+        "es": "Una caja de música descansa en una mesa junto a una ventana redonda.\nUna escalera sube hasta una trampilla en el techo."
+      }
     }
   },
   "objects": {
     "telescope": {
-      "name": "telescope",
-      "aliases": ["scope", "brass telescope", "eyepiece"],
+      "name": {"en-US": "telescope", "pt-BR": "telescópio", "es": "telescopio"},
+      "aliases": {
+        "en-US": ["scope", "brass telescope", "eyepiece"],
+        "pt-BR": ["luneta", "ocular", "telescópio de latão"],
+        "es": ["ocular", "telescopio de latón"]
+      },
       "cameras": ["A"]
     },
     "star_chart": {
-      "name": "star chart",
-      "aliases": ["chart", "starchart", "map", "constellations"],
+      "name": {
+        "en-US": "star chart",
+        "pt-BR": "carta celeste",
+        "es": "carta estelar"
+      },
+      "aliases": {
+        "en-US": ["chart", "starchart", "map", "constellations"],
+        "pt-BR": ["mapa", "mapa estelar", "carta", "constelações"],
+        "es": ["mapa", "mapa estelar", "carta", "constelaciones"]
+      },
       "cameras": ["A"]
     },
     "birdcage": {
-      "name": "birdcage",
-      "aliases": ["cage", "bird cage", "feathers"],
+      "name": {"en-US": "birdcage", "pt-BR": "gaiola", "es": "jaula"},
+      "aliases": {
+        "en-US": ["cage", "bird cage", "feathers"],
+        "pt-BR": ["penas"],
+        "es": ["plumas"]
+      },
       "cameras": ["A"]
     },
     "music_box": {
-      "name": "music box",
-      "aliases": ["musicbox", "box", "table"],
+      "name": {
+        "en-US": "music box",
+        "pt-BR": "caixa de música",
+        "es": "caja de música"
+      },
+      "aliases": {
+        "en-US": ["musicbox", "box", "table"],
+        "pt-BR": ["caixinha de música", "caixa", "mesa"],
+        "es": ["caja", "mesa"]
+      },
       "cameras": ["C"]
     },
     "window": {
-      "name": "window",
-      "aliases": ["round window", "sky", "stars"],
+      "name": {"en-US": "window", "pt-BR": "janela", "es": "ventana"},
+      "aliases": {
+        "en-US": ["round window", "sky", "stars"],
+        "pt-BR": ["janela redonda", "céu", "estrelas"],
+        "es": ["ventana redonda", "cielo", "estrellas"]
+      },
       "cameras": ["C"]
     },
     "hatch": {
-      "name": "hatch",
-      "aliases": ["ladder", "padlock", "lock", "trapdoor", "ceiling", "roof hatch"],
+      "name": {"en-US": "hatch", "pt-BR": "alçapão", "es": "trampilla"},
+      "aliases": {
+        "en-US": [
+          "ladder",
+          "padlock",
+          "lock",
+          "trapdoor",
+          "ceiling",
+          "roof hatch"
+        ],
+        "pt-BR": ["escada", "cadeado", "teto"],
+        "es": ["escalera", "candado", "techo", "escotilla"]
+      },
       "cameras": ["C"]
     }
   },
   "items": {
     "crank": {
-      "name": "Winding crank",
-      "aliases": ["winding crank", "handle"],
-      "description": "A small brass crank, worn smooth by fingers."
+      "name": {
+        "en-US": "Winding crank",
+        "pt-BR": "Manivela de corda",
+        "es": "Manivela de cuerda"
+      },
+      "aliases": {
+        "en-US": ["winding crank", "handle"],
+        "pt-BR": ["manivela"],
+        "es": ["manivela"]
+      },
+      "description": {
+        "en-US": "A small brass crank, worn smooth by fingers.",
+        "pt-BR": "Uma pequena manivela de latão, polida pelo uso.",
+        "es": "Una pequeña manivela de latón, pulida por el uso."
+      }
     },
     "lens": {
-      "name": "Glass lens",
-      "aliases": ["glass lens"],
-      "description": "A thick, perfectly clear lens."
+      "name": {"en-US": "Glass lens", "pt-BR": "Lente de vidro", "es": "Lente de cristal"},
+      "aliases": {"en-US": ["glass lens"], "pt-BR": ["lente"], "es": ["lente"]},
+      "description": {
+        "en-US": "A thick, perfectly clear lens.",
+        "pt-BR": "Uma lente grossa, perfeitamente límpida.",
+        "es": "Una lente gruesa, perfectamente transparente."
+      }
     }
   },
-  "initialFlags": {
-    "cage_open": false,
-    "box_open": false,
-    "lens_fitted": false
-  },
+  "initialFlags": {"cage_open": false, "box_open": false, "lens_fitted": false},
   "interactions": [
     {
       "verb": "inspect",
       "object": "telescope",
-      "conditions": [{ "type": "flag_equals", "flag": "lens_fitted", "value": false }],
-      "effects": [{ "type": "display_message", "text": "Aimed at a gap in the roof boards.\nThe eyepiece lens is missing." }]
+      "conditions": [{"type": "flag_equals", "flag": "lens_fitted", "value": false}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Aimed at a gap in the roof boards.\nThe eyepiece lens is missing.",
+            "pt-BR": "Apontado para uma fresta nas tábuas do telhado.\nFalta a lente da ocular.",
+            "es": "Apunta a una rendija entre las tablas del tejado.\nFalta la lente del ocular."
+          }
+        }
+      ]
     },
     {
       "verb": "inspect",
       "object": "telescope",
-      "effects": [{ "type": "display_message", "text": "Through the eyepiece, the Swan blazes.\nSomeone inked a number beside four of its stars: 2, 6, 1, 8." }]
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Through the eyepiece, the Swan blazes.\nSomeone inked a number beside four of its stars: 2, 6, 1, 8.",
+            "pt-BR": "Pela ocular, o Cisne brilha intensamente.\nAlguém escreveu a tinta um número ao lado de quatro de suas estrelas: 2, 6, 1, 8.",
+            "es": "A través del ocular, el Cisne resplandece.\nAlguien escribió con tinta un número junto a cuatro de sus estrellas: 2, 6, 1, 8."
+          }
+        }
+      ]
     },
     {
       "verb": "use",
       "item": "lens",
       "object": "telescope",
-      "conditions": [{ "type": "flag_equals", "flag": "lens_fitted", "value": false }],
+      "conditions": [{"type": "flag_equals", "flag": "lens_fitted", "value": false}],
       "effects": [
-        { "type": "set_flag", "flag": "lens_fitted", "value": true },
-        { "type": "display_message", "text": "The lens clicks into the eyepiece.\nThe stars above swim into focus." },
-        { "type": "remove_item", "item": "lens" }
+        {"type": "set_flag", "flag": "lens_fitted", "value": true},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The lens clicks into the eyepiece.\nThe stars above swim into focus.",
+            "pt-BR": "A lente se encaixa na ocular com um clique.\nAs estrelas lá em cima entram em foco.",
+            "es": "La lente encaja en el ocular con un clic.\nLas estrellas de arriba se enfocan."
+          }
+        },
+        {"type": "remove_item", "item": "lens"}
       ]
     },
     {
       "verb": "inspect",
       "object": "star_chart",
-      "effects": [{ "type": "display_message", "text": "Constellations in faded ink. Beside the Swan, a note:\n'She only sings when wound.'" }]
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Constellations in faded ink. Beside the Swan, a note:\n'She only sings when wound.'",
+            "pt-BR": "Constelações em tinta desbotada. Ao lado do Cisne, um bilhete:\n'Ela só canta quando lhe dão corda.'",
+            "es": "Constelaciones en tinta desvaída. Junto al Cisne, una nota:\n'Solo canta cuando le dan cuerda.'"
+          }
+        }
+      ]
     },
     {
       "verb": "inspect",
       "object": "birdcage",
-      "conditions": [{ "type": "flag_equals", "flag": "cage_open", "value": false }],
-      "effects": [{ "type": "display_message", "text": "A rusted birdcage. Something metal glints among the old feathers." }]
+      "conditions": [{"type": "flag_equals", "flag": "cage_open", "value": false}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A rusted birdcage. Something metal glints among the old feathers.",
+            "pt-BR": "Uma gaiola enferrujada. Algo metálico reluz entre as penas velhas.",
+            "es": "Una jaula oxidada. Algo metálico reluce entre las plumas viejas."
+          }
+        }
+      ]
     },
     {
       "verb": "inspect",
       "object": "birdcage",
-      "effects": [{ "type": "display_message", "text": "Nothing left but feathers." }]
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Nothing left but feathers.",
+            "pt-BR": "Só restam penas.",
+            "es": "Solo quedan plumas."
+          }
+        }
+      ]
     },
     {
       "verb": "open",
       "object": "birdcage",
-      "conditions": [{ "type": "flag_equals", "flag": "cage_open", "value": false }],
+      "conditions": [{"type": "flag_equals", "flag": "cage_open", "value": false}],
       "effects": [
-        { "type": "set_flag", "flag": "cage_open", "value": true },
-        { "type": "display_message", "text": "The tiny door creaks open.\nYou found a winding crank!" },
-        { "type": "add_item", "item": "crank" }
+        {"type": "set_flag", "flag": "cage_open", "value": true},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The tiny door creaks open.\nYou found a winding crank!",
+            "pt-BR": "A portinhola se abre rangendo.\nVocê encontrou uma manivela de corda!",
+            "es": "La puertecita se abre chirriando.\n¡Encontraste una manivela de cuerda!"
+          }
+        },
+        {"type": "add_item", "item": "crank"}
       ]
     },
     {
       "verb": "inspect",
       "object": "music_box",
-      "conditions": [{ "type": "flag_equals", "flag": "box_open", "value": false }],
-      "effects": [{ "type": "display_message", "text": "A lacquered music box. Its winding crank is missing." }]
+      "conditions": [{"type": "flag_equals", "flag": "box_open", "value": false}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A lacquered music box. Its winding crank is missing.",
+            "pt-BR": "Uma caixa de música laqueada. Falta a manivela de corda.",
+            "es": "Una caja de música lacada. Le falta la manivela de cuerda."
+          }
+        }
+      ]
     },
     {
       "verb": "inspect",
       "object": "music_box",
-      "effects": [{ "type": "display_message", "text": "The lid stands open. A tinny waltz still plays." }]
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The lid stands open. A tinny waltz still plays.",
+            "pt-BR": "A tampa está aberta. Uma valsa metálica ainda toca.",
+            "es": "La tapa está abierta. Todavía suena un vals metálico."
+          }
+        }
+      ]
     },
     {
       "verb": "open",
       "object": "music_box",
-      "conditions": [{ "type": "flag_equals", "flag": "box_open", "value": false }],
-      "effects": [{ "type": "display_message", "text": "The lid won't lift. Something inside holds it shut." }]
+      "conditions": [{"type": "flag_equals", "flag": "box_open", "value": false}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The lid won't lift. Something inside holds it shut.",
+            "pt-BR": "A tampa não levanta. Algo por dentro a mantém fechada.",
+            "es": "La tapa no se levanta. Algo dentro la mantiene cerrada."
+          }
+        }
+      ]
     },
     {
       "verb": "use",
       "item": "crank",
       "object": "music_box",
-      "conditions": [{ "type": "flag_equals", "flag": "box_open", "value": false }],
+      "conditions": [{"type": "flag_equals", "flag": "box_open", "value": false}],
       "effects": [
-        { "type": "set_flag", "flag": "box_open", "value": true },
-        { "type": "display_message", "text": "You wind the box. A tinny waltz plays and the lid springs open.\nYou found a glass lens!" },
-        { "type": "remove_item", "item": "crank" },
-        { "type": "add_item", "item": "lens" }
+        {"type": "set_flag", "flag": "box_open", "value": true},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You wind the box. A tinny waltz plays and the lid springs open.\nYou found a glass lens!",
+            "pt-BR": "Você dá corda na caixa. Uma valsa metálica toca e a tampa se abre de repente.\nVocê encontrou uma lente de vidro!",
+            "es": "Le das cuerda a la caja. Suena un vals metálico y la tapa se abre de golpe.\n¡Encontraste una lente de cristal!"
+          }
+        },
+        {"type": "remove_item", "item": "crank"},
+        {"type": "add_item", "item": "lens"}
       ]
     },
     {
       "verb": "inspect",
       "object": "window",
-      "effects": [{ "type": "display_message", "text": "A round window full of stars.\nThe sky has never looked so close." }]
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A round window full of stars.\nThe sky has never looked so close.",
+            "pt-BR": "Uma janela redonda cheia de estrelas.\nO céu nunca pareceu tão perto.",
+            "es": "Una ventana redonda llena de estrellas.\nEl cielo nunca pareció tan cerca."
+          }
+        }
+      ]
     },
     {
       "verb": "inspect",
       "object": "hatch",
-      "effects": [{ "type": "display_message", "text": "The ladder leads to a roof hatch.\nIt's held shut by a four-digit padlock." }]
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The ladder leads to a roof hatch.\nIt's held shut by a four-digit padlock.",
+            "pt-BR": "A escada leva a um alçapão no telhado.\nEle está preso por um cadeado de quatro dígitos.",
+            "es": "La escalera lleva a una trampilla en el tejado.\nLa mantiene cerrada un candado de cuatro dígitos."
+          }
+        }
+      ]
     },
     {
       "verb": "open",
       "object": "hatch",
-      "effects": [{ "type": "display_message", "text": "The padlock holds it shut." }]
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The padlock holds it shut.",
+            "pt-BR": "O cadeado o mantém fechado.",
+            "es": "El candado la mantiene cerrada."
+          }
+        }
+      ]
     },
     {
       "verb": "use",
       "item": "2618",
       "object": "hatch",
       "effects": [
-        { "type": "display_message", "text": "The padlock clicks open. You climb the ladder\nand push the hatch into the cold night air." },
-        { "type": "complete_game" }
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The padlock clicks open. You climb the ladder\nand push the hatch into the cold night air.",
+            "pt-BR": "O cadeado se abre com um clique. Você sobe a escada\ne empurra o alçapão para o ar frio da noite.",
+            "es": "El candado se abre con un clic. Subes la escalera\ny empujas la trampilla hacia el frío aire nocturno."
+          }
+        },
+        {"type": "complete_game"}
       ]
     }
   ]

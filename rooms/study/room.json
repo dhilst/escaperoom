@@ -1,124 +1,248 @@
 {
   "id": "study",
-  "title": "The Locked Study",
+  "title": {"en-US": "The Locked Study", "pt-BR": "O Escritório Trancado", "es": "El Estudio Cerrado"},
   "cameras": {
     "A": {
       "image": "camera_a.png",
-      "description": "An old wooden desk stands beneath a dusty clock.\nThe room smells of damp wood."
+      "description": {
+        "en-US": "An old wooden desk stands beneath a dusty clock.\nThe room smells of damp wood.",
+        "pt-BR": "Uma velha escrivaninha de madeira fica sob um relógio empoeirado.\nO cômodo cheira a madeira úmida.",
+        "es": "Un viejo escritorio de madera descansa bajo un reloj polvoriento.\nLa habitación huele a madera húmeda."
+      }
     },
     "C": {
       "image": "camera_c.png",
-      "description": "A tall bookshelf leans beside a heavy door.\nCold air seeps in under it."
+      "description": {
+        "en-US": "A tall bookshelf leans beside a heavy door.\nCold air seeps in under it.",
+        "pt-BR": "Uma estante alta se inclina ao lado de uma porta pesada.\nUm ar frio entra por baixo dela.",
+        "es": "Una estantería alta se inclina junto a una puerta pesada.\nUn aire frío se cuela por debajo."
+      }
     }
   },
   "objects": {
     "desk": {
-      "name": "desk",
-      "aliases": ["old desk", "wooden desk", "old wooden desk", "table"],
+      "name": {"en-US": "desk", "pt-BR": "escrivaninha", "es": "escritorio"},
+      "aliases": {
+        "en-US": ["old desk", "wooden desk", "old wooden desk", "table"],
+        "pt-BR": ["mesa", "escrivaninha de madeira"],
+        "es": ["mesa", "escritorio de madera"]
+      },
       "cameras": ["A"]
     },
     "drawer": {
-      "name": "drawer",
-      "aliases": ["desk drawer", "lock", "combination lock"],
+      "name": {"en-US": "drawer", "pt-BR": "gaveta", "es": "cajón"},
+      "aliases": {
+        "en-US": ["desk drawer", "lock", "combination lock"],
+        "pt-BR": ["gaveta da escrivaninha", "trava", "discos", "combinação"],
+        "es": ["diales", "cerradura de combinación", "combinación"]
+      },
       "cameras": ["A"]
     },
     "clock": {
-      "name": "clock",
-      "aliases": ["dusty clock", "wall clock", "hands"],
+      "name": {"en-US": "clock", "pt-BR": "relógio", "es": "reloj"},
+      "aliases": {
+        "en-US": ["dusty clock", "wall clock", "hands"],
+        "pt-BR": ["relógio de parede", "ponteiros"],
+        "es": ["reloj de pared", "manecillas"]
+      },
       "cameras": ["A"]
     },
     "bookshelf": {
-      "name": "bookshelf",
-      "aliases": ["shelf", "shelves", "books", "bookcase"],
+      "name": {"en-US": "bookshelf", "pt-BR": "estante", "es": "estantería"},
+      "aliases": {
+        "en-US": ["shelf", "shelves", "books", "bookcase"],
+        "pt-BR": ["livros", "prateleira", "prateleiras"],
+        "es": ["estante", "libros", "librería"]
+      },
       "cameras": ["C"]
     },
     "door": {
-      "name": "door",
-      "aliases": ["exit", "exit door", "heavy door"],
+      "name": {"en-US": "door", "pt-BR": "porta", "es": "puerta"},
+      "aliases": {
+        "en-US": ["exit", "exit door", "heavy door"],
+        "pt-BR": ["saída", "porta pesada", "fechadura"],
+        "es": ["salida", "puerta pesada", "cerradura"]
+      },
       "cameras": ["C"]
     }
   },
   "items": {
     "brass_key": {
-      "name": "Brass key",
-      "aliases": ["key"],
-      "description": "A small brass key, cold to the touch."
+      "name": {"en-US": "Brass key", "pt-BR": "Chave de latão", "es": "Llave de latón"},
+      "aliases": {"en-US": ["key"], "pt-BR": ["chave"], "es": ["llave"]},
+      "description": {
+        "en-US": "A small brass key, cold to the touch.",
+        "pt-BR": "Uma pequena chave de latão, fria ao toque.",
+        "es": "Una pequeña llave de latón, fría al tacto."
+      }
     }
   },
-  "initialFlags": {
-    "drawer_open": false,
-    "door_unlocked": false
-  },
+  "initialFlags": {"drawer_open": false, "door_unlocked": false},
   "interactions": [
     {
       "verb": "inspect",
       "object": "clock",
-      "effects": [{ "type": "display_message", "text": "A dusty wall clock.\nThe hands are stopped at 03:15." }]
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A dusty wall clock.\nThe hands are stopped at 03:15.",
+            "pt-BR": "Um relógio de parede empoeirado.\nOs ponteiros estão parados em 03:15.",
+            "es": "Un reloj de pared polvoriento.\nLas manecillas están detenidas en las 03:15."
+          }
+        }
+      ]
     },
     {
       "verb": "inspect",
       "object": "desk",
-      "conditions": [{ "type": "flag_equals", "flag": "drawer_open", "value": false }],
-      "effects": [{ "type": "display_message", "text": "The wood is warped by damp.\nOne drawer has a four-digit combination lock." }]
+      "conditions": [{"type": "flag_equals", "flag": "drawer_open", "value": false}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The wood is warped by damp.\nOne drawer has a four-digit combination lock.",
+            "pt-BR": "A madeira está empenada pela umidade.\nUma gaveta tem uma trava de combinação de quatro dígitos.",
+            "es": "La madera está combada por la humedad.\nUn cajón tiene una cerradura de combinación de cuatro dígitos."
+          }
+        }
+      ]
     },
     {
       "verb": "inspect",
       "object": "desk",
-      "effects": [{ "type": "display_message", "text": "The wood is warped by damp.\nIts drawer hangs open, empty." }]
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The wood is warped by damp.\nIts drawer hangs open, empty.",
+            "pt-BR": "A madeira está empenada pela umidade.\nA gaveta está aberta, vazia.",
+            "es": "La madera está combada por la humedad.\nSu cajón cuelga abierto, vacío."
+          }
+        }
+      ]
     },
     {
       "verb": "inspect",
       "object": "drawer",
-      "conditions": [{ "type": "flag_equals", "flag": "drawer_open", "value": false }],
-      "effects": [{ "type": "display_message", "text": "Four rusty dials hold the drawer shut." }]
+      "conditions": [{"type": "flag_equals", "flag": "drawer_open", "value": false}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Four rusty dials hold the drawer shut.",
+            "pt-BR": "Quatro discos enferrujados mantêm a gaveta fechada.",
+            "es": "Cuatro diales oxidados mantienen el cajón cerrado."
+          }
+        }
+      ]
     },
     {
       "verb": "inspect",
       "object": "drawer",
-      "effects": [{ "type": "display_message", "text": "The drawer is open and empty." }]
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The drawer is open and empty.",
+            "pt-BR": "A gaveta está aberta e vazia.",
+            "es": "El cajón está abierto y vacío."
+          }
+        }
+      ]
     },
     {
       "verb": "open",
       "object": "drawer",
-      "conditions": [{ "type": "flag_equals", "flag": "drawer_open", "value": false }],
-      "effects": [{ "type": "display_message", "text": "It's locked. The dials need a four-digit code." }]
+      "conditions": [{"type": "flag_equals", "flag": "drawer_open", "value": false}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "It's locked. The dials need a four-digit code.",
+            "pt-BR": "Está trancada. Os discos pedem um código de quatro dígitos.",
+            "es": "Está cerrado. Los diales piden un código de cuatro dígitos."
+          }
+        }
+      ]
     },
     {
       "verb": "use",
       "item": "0315",
       "object": "drawer",
-      "conditions": [{ "type": "flag_equals", "flag": "drawer_open", "value": false }],
+      "conditions": [{"type": "flag_equals", "flag": "drawer_open", "value": false}],
       "effects": [
-        { "type": "set_flag", "flag": "drawer_open", "value": true },
-        { "type": "display_message", "text": "The dials click into place. The drawer opens.\nYou found a brass key!" },
-        { "type": "add_item", "item": "brass_key" }
+        {"type": "set_flag", "flag": "drawer_open", "value": true},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The dials click into place. The drawer opens.\nYou found a brass key!",
+            "pt-BR": "Os discos se encaixam com um clique. A gaveta se abre.\nVocê encontrou uma chave de latão!",
+            "es": "Los diales encajan con un clic. El cajón se abre.\n¡Encontraste una llave de latón!"
+          }
+        },
+        {"type": "add_item", "item": "brass_key"}
       ]
     },
     {
       "verb": "inspect",
       "object": "bookshelf",
-      "effects": [{ "type": "display_message", "text": "Swollen, rotting books.\nTheir titles have bled into illegibility." }]
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Swollen, rotting books.\nTheir titles have bled into illegibility.",
+            "pt-BR": "Livros inchados e apodrecidos.\nOs títulos borraram até ficarem ilegíveis.",
+            "es": "Libros hinchados y podridos.\nSus títulos se han corrido hasta volverse ilegibles."
+          }
+        }
+      ]
     },
     {
       "verb": "inspect",
       "object": "door",
-      "effects": [{ "type": "display_message", "text": "A heavy wooden door with a tarnished brass lock." }]
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A heavy wooden door with a tarnished brass lock.",
+            "pt-BR": "Uma pesada porta de madeira com uma fechadura de latão manchada.",
+            "es": "Una pesada puerta de madera con una cerradura de latón deslustrada."
+          }
+        }
+      ]
     },
     {
       "verb": "open",
       "object": "door",
-      "conditions": [{ "type": "flag_equals", "flag": "door_unlocked", "value": false }],
-      "effects": [{ "type": "display_message", "text": "The door is locked." }]
+      "conditions": [{"type": "flag_equals", "flag": "door_unlocked", "value": false}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The door is locked.",
+            "pt-BR": "A porta está trancada.",
+            "es": "La puerta está cerrada con llave."
+          }
+        }
+      ]
     },
     {
       "verb": "use",
       "item": "brass_key",
       "object": "door",
-      "conditions": [{ "type": "has_item", "item": "brass_key" }],
+      "conditions": [{"type": "has_item", "item": "brass_key"}],
       "effects": [
-        { "type": "set_flag", "flag": "door_unlocked", "value": true },
-        { "type": "display_message", "text": "The key turns with a groan. The door unlocks.\nStone steps lead down into the dark." },
-        { "type": "change_room", "room": "cellar" }
+        {"type": "set_flag", "flag": "door_unlocked", "value": true},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The key turns with a groan. The door unlocks.\nStone steps lead down into the dark.",
+            "pt-BR": "A chave gira com um rangido. A porta se destranca.\nDegraus de pedra descem para a escuridão.",
+            "es": "La llave gira con un chirrido. La puerta se abre.\nUnos escalones de piedra bajan hacia la oscuridad."
+          }
+        },
+        {"type": "change_room", "room": "cellar"}
       ]
     }
   ]
