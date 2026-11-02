@@ -51,7 +51,7 @@ export function step(
 
 function run(state: GameState, command: Command, room: RoomDefinition, messages: EngineMessages): GameEvent[] {
   if (command.verb === "restart") {
-    // Restart the level. Hints already revealed here are kept: they may have been paid for.
+    // Restart the level. Hints already revealed here are kept.
     Object.assign(state, createInitialState(room), { hints: state.hints });
     return [
       { type: "restarted", text: messages.restarted },

@@ -93,9 +93,7 @@ other camera, you get `You don't see any door here.`
 
 ### Hidden commands
 
-Two commands appear neither in the in-game help nor in the table above. They
-exist for the host, such as the future streaming and monetization layer, to
-expose or gate as it sees fit:
+Two commands appear neither in the in-game help nor in the table above:
 
 | English   | Português   | Español     | Effect |
 | --------- | ----------- | ----------- | ------ |
@@ -109,8 +107,7 @@ screen for the rest of the level, in a box under the camera view that appears
 with the first hint. The newest hint is shown in full, older ones are shortened
 to one line, and a `HINT n/5` counter heads the box. The layout always reserves
 room for a full box, so the camera view never changes size during play. Hints
-reset when you enter a new room, but survive `restart`, so nothing that was
-paid for is lost.
+reset when you enter a new room, but survive `restart`.
 
 <details>
 <summary>Solutions (spoilers)</summary>
@@ -199,8 +196,7 @@ loads the new room's `initialFlags`.
 `item_removed`, `inventory`, `flag_set`, `room_changed`, `room_entered`,
 `game_completed`, `hint_revealed`, `restarted`, `failure`). Every event that
 the player should see has a `text`. `GameState.hints` lists the indices of the
-current room's revealed hints in reveal order. A host that charges for hints
-only needs to decide whether to pass a `hint` command on to the engine.
+current room's revealed hints in reveal order.
 
 A `failure` event has a `reason`, and its text depends on that reason:
 
