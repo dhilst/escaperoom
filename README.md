@@ -80,9 +80,15 @@ Objects and items go by their names in the player's language (`chave porta`,
 `llave puerta`). Rooms can add their own verbs too.
 
 Responses appear as subtitles over the bottom of the camera view, typed out
-like the old Resident Evil games. Each one stays for 10 seconds after it
-finishes typing (the `help` text for 15), and a new command replaces it
-immediately. Screen readers
+like the old Resident Evil games, at 200 words per minute by default. Long
+texts scroll on their own so the newest words stay in view. Each one stays
+for 10 seconds after it finishes typing (the `help` text for 15), and a new
+command replaces it immediately.
+
+The typing speed can be changed with `?wpm=N` (words per minute, with the
+usual 5 characters per word; any value from 10 to 5000), for example
+`https://dhilst.github.io/escaperoom/?wpm=120`. Unlike the testing aids
+below, this one works on the published site too. Screen readers
 get the full text at once, and with reduced motion enabled the text appears
 without the typing effect.
 

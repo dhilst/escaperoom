@@ -7,20 +7,35 @@ export interface SubtitleLine {
   live?: () => string;
 }
 
-/** Milliseconds per typed character. */
-export const TYPE_MS = 30;
+/** Default typing speed, in words per minute (a word = 5 characters, the usual convention). */
+export const DEFAULT_WPM = 200;
+const CHARS_PER_WORD = 5;
+
+/** Milliseconds per typed character at `wpm` words per minute. */
+export function charDelayMs(wpm: number): number {
+  return 60_000 / (wpm * CHARS_PER_WORD);
+}
+
+/** The ?wpm= query parameter: a number from 10 to 5000, otherwise the default. */
+export function wpmFromParam(value: string | null | undefined): number {
+  const wpm = Number(value);
+  return value && Number.isFinite(wpm) && wpm >= 10 && wpm <= 5000 ? wpm : DEFAULT_WPM;
+}
 /** How long a fully typed subtitle stays on screen. */
 export const HOLD_MS = 10_000;
 /** The help text is longer and worth reading twice: it stays up longer. */
 export const HELP_HOLD_MS = 15_000;
 /** Fade-out duration; keep in sync with the .subtitle transition in style.css. */
 export const FADE_MS = 400;
+/** Bottom padding of the band, kept clear below the line being typed (see .subtitle in style.css). */
+const BAND_PADDING_PX = 10;
 /** Refresh rate for live lines once typing is done. */
 const LIVE_MS = 250;
 
 /**
  * Resident Evil-style subtitles: the response types itself out over the bottom
- * of the camera view, stays for HOLD_MS (or `holdMs`) once complete, then fades. A new
+ * of the camera view at `wpm` words per minute, scrolling to follow the text
+ * when it's longer than the band, stays for HOLD_MS (or `holdMs`) once complete, then fades. A new
  * subtitle replaces the current one immediately. All lines of a response flow
  * as one paragraph (line breaks become spaces); each keeps its color.
  *
@@ -32,6 +47,8 @@ export class Subtitles {
   private frame = 0;
   private timer = 0;
   private ticker = 0;
+  /** Typing speed in words per minute. */
+  wpm = DEFAULT_WPM;
 
   constructor(
     private readonly box: HTMLElement,
@@ -63,6 +80,17 @@ export class Subtitles {
     this.box.replaceChildren(...parts.map((p) => p.el));
     this.box.classList.remove("fading");
     this.box.hidden = false;
+    this.box.scrollTop = 0;
+
+    // Long texts don't fit the band: keep the line being typed in view.
+    const follow = () => {
+      const active = parts.find((p) => p.rest.textContent !== "") ?? parts[parts.length - 1];
+      const rects = active.typed.getClientRects();
+      const last = rects[rects.length - 1];
+      if (!last) return;
+      const overflow = last.bottom - this.box.getBoundingClientRect().bottom + BAND_PADDING_PX;
+      if (overflow > 0) this.box.scrollTop += overflow;
+    };
 
     const render = (shown: number) => {
       for (const { typed, rest, current } of parts) {
@@ -78,8 +106,9 @@ export class Subtitles {
     const start = performance.now();
     const tick = (now: number) => {
       const total = parts.reduce((n, p) => n + p.current().length, 0);
-      const shown = instant ? total : Math.floor((now - start) / TYPE_MS);
+      const shown = instant ? total : Math.floor((now - start) / charDelayMs(this.wpm));
       render(shown);
+      follow();
       if (shown < total) {
         this.frame = requestAnimationFrame(tick);
         return;

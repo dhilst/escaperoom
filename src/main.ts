@@ -17,7 +17,7 @@ import {
   type GameState,
   type RoomDefinition,
 } from "./engine";
-import { HELP_HOLD_MS, Renderer, type LineKind, type SubtitleLine } from "./ui/renderer";
+import { HELP_HOLD_MS, Renderer, wpmFromParam, type LineKind, type SubtitleLine } from "./ui/renderer";
 
 // Every image under rooms/<id>/ is bundled; room.json refers to them by file name.
 const roomImages = import.meta.glob<string>("../rooms/*/*.{png,webp,jpg}", {
@@ -131,6 +131,9 @@ function start(game: GameDefinition, language: Language): void {
 }
 
 const params = new URLSearchParams(location.search);
+
+// ?wpm=N sets the subtitle typing speed in words per minute (works everywhere, production included).
+ui.setTypingSpeed(wpmFromParam(params.get("wpm")));
 
 // Testing aid, dev server only: ?hintTimer=off unlocks every hint immediately.
 // import.meta.env.DEV is false in production builds, so the published game ignores it.

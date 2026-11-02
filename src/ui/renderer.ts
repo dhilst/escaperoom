@@ -4,7 +4,7 @@ import type { UiStrings } from "../i18n";
 import { Subtitles, type SubtitleLine } from "./subtitles";
 
 export type { LineKind, SubtitleLine } from "./subtitles";
-export { HELP_HOLD_MS } from "./subtitles";
+export { HELP_HOLD_MS, wpmFromParam } from "./subtitles";
 
 /** A revealed hint: its position in the room's ladder (1-based) and its text. */
 export interface ShownHint {
@@ -122,6 +122,11 @@ export class Renderer {
   }
 
   /** Show one command's response as a typed subtitle over the camera view. */
+  /** Typing speed of the subtitles, in words per minute. */
+  setTypingSpeed(wpm: number): void {
+    this.subtitles.wpm = wpm;
+  }
+
   say(lines: SubtitleLine[], holdMs?: number): void {
     this.subtitles.show(lines, holdMs);
   }
