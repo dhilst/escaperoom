@@ -5,30 +5,482 @@
     "A": {
       "image": "camera_a.png",
       "description": {
-        "en-US": "Placeholder room.",
-        "pt-BR": "Sala provisória.",
-        "es": "Sala provisional."
-      }
+        "en-US": "Great iron gears hang frozen above a still pendulum.\nOn a beam overhead, a bird's nest sits in the soot.",
+        "pt-BR": "Grandes engrenagens de ferro pendem paradas sobre um pêndulo imóvel.\nNuma viga lá no alto, há um ninho de passarinho na fuligem.",
+        "es": "Grandes engranajes de hierro cuelgan inmóviles sobre un péndulo quieto.\nEn una viga, en lo alto, hay un nido de pájaro entre el hollín."
+      },
+      "variants": [
+        {
+          "when": [{"type": "flag_equals", "flag": "running", "value": true}],
+          "description": {
+            "en-US": "The great gears grind round with a heavy tick.\nBelow them the pendulum swings, slow as a heartbeat.",
+            "pt-BR": "As grandes engrenagens giram com um tique pesado.\nLogo abaixo, o pêndulo balança, lento como um coração.",
+            "es": "Los grandes engranajes giran con un tictac pesado.\nDebajo, el péndulo oscila, lento como un latido."
+          }
+        }
+      ]
     },
     "C": {
       "image": "camera_c.png",
       "description": {
-        "en-US": "Placeholder room.",
-        "pt-BR": "Sala provisória.",
-        "es": "Sala provisional."
-      }
+        "en-US": "Moonlight seeps through the back of the huge clock face.\nA tool cupboard stands beside a door barred with iron rods.",
+        "pt-BR": "O luar atravessa o verso do enorme mostrador do relógio.\nUm armário de ferramentas fica ao lado de uma porta trancada por barras de ferro.",
+        "es": "La luz de la luna se filtra por el reverso de la enorme esfera del reloj.\nUn armario de herramientas está junto a una puerta atrancada con barras de hierro."
+      },
+      "variants": [
+        {
+          "when": [{"type": "flag_equals", "flag": "running", "value": true}],
+          "description": {
+            "en-US": "Moonlight seeps through the clock face. The great hands crawl.\nThe iron rods have drawn back from the stair door.",
+            "pt-BR": "O luar atravessa o mostrador. Os grandes ponteiros se arrastam.\nAs barras de ferro recuaram da porta da escada.",
+            "es": "La luz de la luna se filtra por la esfera. Las grandes manecillas avanzan.\nLas barras de hierro se han retirado de la puerta de la escalera."
+          }
+        }
+      ]
     }
   },
   "objects": {
+    "mechanism": {
+      "name": {"en-US": "mechanism", "pt-BR": "mecanismo", "es": "mecanismo"},
+      "aliases": {
+        "en-US": ["gears", "axle", "clockwork", "clock", "cogs", "machinery", "wheels"],
+        "pt-BR": ["engrenagens", "eixo", "relógio", "maquinário", "rodas dentadas"],
+        "es": ["engranajes", "eje", "reloj", "maquinaria", "ruedas dentadas", "mecanismo del reloj"]
+      },
+      "cameras": ["A"]
+    },
+    "nest": {
+      "name": {"en-US": "nest", "pt-BR": "ninho", "es": "nido"},
+      "aliases": {
+        "en-US": ["bird's nest", "birds nest", "twigs", "glint"],
+        "pt-BR": ["ninho de passarinho", "gravetos", "brilho"],
+        "es": ["nido de pájaro", "ramitas", "brillo"]
+      },
+      "cameras": ["A"]
+    },
+    "beam": {
+      "name": {"en-US": "beam", "pt-BR": "viga", "es": "viga"},
+      "aliases": {
+        "en-US": ["beams", "rafter", "rafters", "soot"],
+        "pt-BR": ["vigas", "caibro", "caibros", "fuligem"],
+        "es": ["vigas", "travesaño", "hollín"]
+      },
+      "cameras": ["A"]
+    },
+    "pendulum": {
+      "name": {"en-US": "pendulum", "pt-BR": "pêndulo", "es": "péndulo"},
+      "aliases": {
+        "en-US": ["weight", "bob"],
+        "pt-BR": ["peso"],
+        "es": ["pesa", "contrapeso"]
+      },
+      "cameras": ["A"]
+    },
+    "clock_face": {
+      "name": {"en-US": "clock face", "pt-BR": "mostrador", "es": "esfera"},
+      "aliases": {
+        "en-US": ["face", "dial", "glass", "moonlight", "moon", "hands", "numerals"],
+        "pt-BR": ["mostrador do relógio", "vidro", "luar", "lua", "ponteiros", "algarismos"],
+        "es": ["esfera del reloj", "cristal", "luz de luna", "luna", "manecillas", "números"]
+      },
+      "cameras": ["C"]
+    },
+    "cupboard": {
+      "name": {"en-US": "cupboard", "pt-BR": "armário", "es": "armario"},
+      "aliases": {
+        "en-US": ["tool cupboard", "cabinet", "locker"],
+        "pt-BR": ["armário de ferramentas", "gabinete"],
+        "es": ["armario de herramientas", "alacena"]
+      },
+      "cameras": ["C"]
+    },
     "door": {
       "name": {"en-US": "door", "pt-BR": "porta", "es": "puerta"},
-      "aliases": {"en-US": [], "pt-BR": [], "es": []},
-      "cameras": ["A", "C"]
+      "aliases": {
+        "en-US": ["stair door", "bars", "rods", "iron rods", "iron bars", "exit", "stairs"],
+        "pt-BR": ["porta da escada", "barras", "hastes", "barras de ferro", "saída", "escada"],
+        "es": ["puerta de la escalera", "barras", "varillas", "barras de hierro", "salida", "escalera"]
+      },
+      "cameras": ["C"]
     }
   },
-  "items": {},
-  "initialFlags": {},
+  "items": {
+    "brass_gear": {
+      "name": {"en-US": "Brass gear", "pt-BR": "Engrenagem de latão", "es": "Engranaje de latón"},
+      "aliases": {
+        "en-US": ["gear", "small gear", "cog"],
+        "pt-BR": ["engrenagem", "engrenagem pequena"],
+        "es": ["engranaje", "engranaje pequeño"]
+      },
+      "description": {
+        "en-US": "A small brass gear. Its teeth are bright and unworn.",
+        "pt-BR": "Uma pequena engrenagem de latão. Os dentes estão limpos e sem desgaste.",
+        "es": "Un pequeño engranaje de latón. Sus dientes están brillantes, sin desgaste."
+      }
+    },
+    "oil_can": {
+      "name": {"en-US": "Oil can", "pt-BR": "Lata de óleo", "es": "Aceitera"},
+      "aliases": {
+        "en-US": ["oil", "oiler", "can"],
+        "pt-BR": ["óleo", "almotolia", "lata"],
+        "es": ["aceite", "lata de aceite", "lata"]
+      },
+      "description": {
+        "en-US": "A dented oil can with a long spout. Something still sloshes inside.",
+        "pt-BR": "Uma lata de óleo amassada, de bico comprido. Ainda há algo balançando lá dentro.",
+        "es": "Una aceitera abollada de pico largo. Todavía chapotea algo dentro."
+      }
+    }
+  },
+  "initialFlags": {"gear_taken": false, "cupboard_open": false, "gear_fitted": false, "oiled": false, "running": false},
   "interactions": [
+    {
+      "verb": "inspect",
+      "object": "nest",
+      "conditions": [{"type": "flag_equals", "flag": "gear_taken", "value": false}],
+      "effects": [
+        {"type": "set_flag", "flag": "gear_taken", "value": true},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Twigs, feathers, tiny bones. Something brass glints among them.\nYou take a small brass gear.",
+            "pt-BR": "Gravetos, penas, ossinhos. Algo de latão brilha no meio deles.\nVocê pega uma pequena engrenagem de latão.",
+            "es": "Ramitas, plumas, huesecillos. Algo de latón brilla entre ellos.\nTomas un pequeño engranaje de latón."
+          }
+        },
+        {"type": "add_item", "item": "brass_gear"}
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "nest",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "An abandoned nest of twigs and feathers. Nothing else shines in it.",
+            "pt-BR": "Um ninho abandonado de gravetos e penas. Nada mais brilha ali.",
+            "es": "Un nido abandonado de ramitas y plumas. Ya no brilla nada en él."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "beam",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Old oak beams, black with soot and droppings.\nSomething nested up there.",
+            "pt-BR": "Velhas vigas de carvalho, pretas de fuligem e excrementos.\nAlgum bicho fez ninho ali em cima.",
+            "es": "Viejas vigas de roble, negras de hollín y excrementos.\nAlgo anidó allí arriba."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "mechanism",
+      "conditions": [{"type": "flag_equals", "flag": "running", "value": true}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The gears turn, tooth by tooth. The whole tower ticks with them.",
+            "pt-BR": "As engrenagens giram, dente a dente. A torre inteira faz tique-taque com elas.",
+            "es": "Los engranajes giran, diente a diente. Toda la torre hace tictac con ellos."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "mechanism",
+      "conditions": [{"type": "flag_equals", "flag": "gear_fitted", "value": true}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The brass gear sits on its axle.\nBut the axles are crusted with rust. Nothing will turn.",
+            "pt-BR": "A engrenagem de latão está no eixo.\nMas os eixos estão cobertos de ferrugem. Nada gira.",
+            "es": "El engranaje de latón está en su eje.\nPero los ejes están cubiertos de óxido. Nada gira."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "mechanism",
+      "conditions": [{"type": "flag_equals", "flag": "oiled", "value": true}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The axles gleam with fresh oil.\nOne of them still stands empty, waiting for a small wheel.",
+            "pt-BR": "Os eixos brilham com óleo fresco.\nUm deles continua vazio, à espera de uma roda pequena.",
+            "es": "Los ejes brillan con aceite fresco.\nUno de ellos sigue vacío, esperando una rueda pequeña."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "mechanism",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Great iron gears, frozen mid-turn. One small axle stands empty.\nEverything is crusted with rust.",
+            "pt-BR": "Grandes engrenagens de ferro, paradas no meio do giro. Um eixo pequeno está vazio.\nTudo está coberto de ferrugem.",
+            "es": "Grandes engranajes de hierro, detenidos a media vuelta. Un eje pequeño está vacío.\nTodo está cubierto de óxido."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "use",
+      "item": "brass_gear",
+      "object": "mechanism",
+      "conditions": [
+        {"type": "flag_equals", "flag": "gear_fitted", "value": false},
+        {"type": "flag_equals", "flag": "oiled", "value": true}
+      ],
+      "effects": [
+        {"type": "set_flag", "flag": "gear_fitted", "value": true},
+        {"type": "set_flag", "flag": "running", "value": true},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The gear slides onto the oiled axle and the teeth bite.\nWith a shudder, the clock starts. Somewhere behind you, iron grinds back.",
+            "pt-BR": "A engrenagem desliza no eixo lubrificado e os dentes se encaixam.\nCom um tremor, o relógio volta a andar. Em algum lugar atrás de você, ferro range e recua.",
+            "es": "El engranaje se desliza en el eje aceitado y los dientes muerden.\nCon una sacudida, el reloj arranca. En algún lugar detrás de ti, el hierro chirría y retrocede."
+          }
+        },
+        {"type": "remove_item", "item": "brass_gear"}
+      ]
+    },
+    {
+      "verb": "use",
+      "item": "brass_gear",
+      "object": "mechanism",
+      "conditions": [{"type": "flag_equals", "flag": "gear_fitted", "value": false}],
+      "effects": [
+        {"type": "set_flag", "flag": "gear_fitted", "value": true},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The gear slides onto the empty axle and locks into the teeth.\nYou push. Nothing moves. The axles are rusted solid.",
+            "pt-BR": "A engrenagem desliza no eixo vazio e se encaixa nos dentes.\nVocê empurra. Nada se mexe. Os eixos estão travados de ferrugem.",
+            "es": "El engranaje se desliza en el eje vacío y encaja en los dientes.\nEmpujas. Nada se mueve. Los ejes están agarrotados por el óxido."
+          }
+        },
+        {"type": "remove_item", "item": "brass_gear"}
+      ]
+    },
+    {
+      "verb": "use",
+      "item": "oil_can",
+      "object": "mechanism",
+      "conditions": [
+        {"type": "flag_equals", "flag": "oiled", "value": false},
+        {"type": "flag_equals", "flag": "gear_fitted", "value": true}
+      ],
+      "effects": [
+        {"type": "set_flag", "flag": "oiled", "value": true},
+        {"type": "set_flag", "flag": "running", "value": true},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You oil the rusted axles. They loosen with a groan.\nWith a shudder, the clock starts. Somewhere behind you, iron grinds back.",
+            "pt-BR": "Você lubrifica os eixos enferrujados. Eles se soltam com um gemido.\nCom um tremor, o relógio volta a andar. Em algum lugar atrás de você, ferro range e recua.",
+            "es": "Aceitas los ejes oxidados. Se aflojan con un gemido.\nCon una sacudida, el reloj arranca. En algún lugar detrás de ti, el hierro chirría y retrocede."
+          }
+        },
+        {"type": "remove_item", "item": "oil_can"}
+      ]
+    },
+    {
+      "verb": "use",
+      "item": "oil_can",
+      "object": "mechanism",
+      "conditions": [{"type": "flag_equals", "flag": "oiled", "value": false}],
+      "effects": [
+        {"type": "set_flag", "flag": "oiled", "value": true},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You oil the rusted axles. They loosen with a groan.\nThe gears shift, then catch. A wheel is still missing.",
+            "pt-BR": "Você lubrifica os eixos enferrujados. Eles se soltam com um gemido.\nAs engrenagens se movem um pouco e travam. Ainda falta uma roda.",
+            "es": "Aceitas los ejes oxidados. Se aflojan con un gemido.\nLos engranajes se mueven un poco y se traban. Todavía falta una rueda."
+          }
+        },
+        {"type": "remove_item", "item": "oil_can"}
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "pendulum",
+      "conditions": [{"type": "flag_equals", "flag": "running", "value": true}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The pendulum swings, slow and heavy. Each beat shakes the floor.",
+            "pt-BR": "O pêndulo balança, lento e pesado. Cada batida faz o chão tremer.",
+            "es": "El péndulo oscila, lento y pesado. Cada golpe sacude el suelo."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "pendulum",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A long pendulum hangs dead still. Dust has settled on its weight.",
+            "pt-BR": "Um pêndulo comprido pende totalmente imóvel. A poeira cobre o peso.",
+            "es": "Un péndulo largo cuelga totalmente quieto. El polvo cubre su pesa."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "clock_face",
+      "conditions": [{"type": "flag_equals", "flag": "running", "value": true}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Behind the milky glass, the great hands crawl again.\nTheir shadows sweep across the floor.",
+            "pt-BR": "Atrás do vidro leitoso, os grandes ponteiros voltaram a se arrastar.\nSuas sombras varrem o chão.",
+            "es": "Tras el cristal lechoso, las grandes manecillas vuelven a avanzar.\nSus sombras barren el suelo."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "clock_face",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The back of the great clock face. The moon glows through its milky glass.\nThe numerals read backwards. The hands do not move.",
+            "pt-BR": "O verso do grande mostrador. A lua brilha através do vidro leitoso.\nOs algarismos aparecem ao contrário. Os ponteiros não se mexem.",
+            "es": "El reverso de la gran esfera del reloj. La luna brilla a través del cristal lechoso.\nLos números se leen al revés. Las manecillas no se mueven."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "cupboard",
+      "conditions": [{"type": "flag_equals", "flag": "cupboard_open", "value": false}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A narrow tool cupboard. Its door is warped, but not locked.",
+            "pt-BR": "Um armário estreito de ferramentas. A porta está empenada, mas não trancada.",
+            "es": "Un armario estrecho de herramientas. Su puerta está combada, pero no cerrada con llave."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "cupboard",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Empty shelves that still smell of machine oil.",
+            "pt-BR": "Prateleiras vazias que ainda cheiram a óleo de máquina.",
+            "es": "Estantes vacíos que aún huelen a aceite de máquina."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "open",
+      "object": "cupboard",
+      "conditions": [{"type": "flag_equals", "flag": "cupboard_open", "value": false}],
+      "effects": [
+        {"type": "set_flag", "flag": "cupboard_open", "value": true},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The warped door scrapes open.\nYou found an oil can!",
+            "pt-BR": "A porta empenada se abre, raspando.\nVocê encontrou uma lata de óleo!",
+            "es": "La puerta combada se abre con un roce.\n¡Encontraste una aceitera!"
+          }
+        },
+        {"type": "add_item", "item": "oil_can"}
+      ]
+    },
+    {
+      "verb": "open",
+      "object": "cupboard",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "It's already open. Nothing else is inside.",
+            "pt-BR": "Já está aberto. Não há mais nada dentro.",
+            "es": "Ya está abierto. No queda nada dentro."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "door",
+      "conditions": [{"type": "flag_equals", "flag": "running", "value": true}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The iron rods have drawn back into the wall. The door hangs free.",
+            "pt-BR": "As barras de ferro recuaram para dentro da parede. A porta está livre.",
+            "es": "Las barras de hierro se han retirado dentro de la pared. La puerta está libre."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "door",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A low door to a stairway, barred by iron rods.\nThe rods run up the wall and into the clockwork.",
+            "pt-BR": "Uma porta baixa para uma escada, trancada por barras de ferro.\nAs barras sobem pela parede e entram no mecanismo do relógio.",
+            "es": "Una puerta baja hacia una escalera, atrancada con barras de hierro.\nLas barras suben por la pared y entran en el mecanismo del reloj."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "open",
+      "object": "door",
+      "conditions": [{"type": "flag_equals", "flag": "running", "value": true}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The door swings open on the beat of the clock.\nA servants' stair winds down into darkness. It smells of old bread.",
+            "pt-BR": "A porta se abre no compasso do relógio.\nUma escada de serviço desce em espiral para a escuridão. Cheira a pão velho.",
+            "es": "La puerta se abre al compás del reloj.\nUna escalera de servicio baja en espiral hacia la oscuridad. Huele a pan viejo."
+          }
+        },
+        {"type": "change_room", "room": "kitchen"}
+      ]
+    },
     {
       "verb": "open",
       "object": "door",
@@ -36,49 +488,52 @@
         {
           "type": "display_message",
           "text": {
-            "en-US": "The door opens.",
-            "pt-BR": "A porta se abre.",
-            "es": "La puerta se abre."
+            "en-US": "The bars hold fast. They're locked into the clock's mechanism.",
+            "pt-BR": "As barras não cedem. Estão presas ao mecanismo do relógio.",
+            "es": "Las barras no ceden. Están trabadas en el mecanismo del reloj."
           }
-        },
-        {"type": "change_room", "room": "kitchen"}
+        }
       ]
     }
   ],
   "hints": [
     {
       "text": {
-        "en-US": "Placeholder hint a.",
-        "pt-BR": "Dica provisória a.",
-        "es": "Pista provisional a."
-      }
+        "en-US": "Time has stopped in this tower. Perhaps the way out waits for it to start again.",
+        "pt-BR": "O tempo parou nesta torre. Talvez a saída espere que ele volte a correr.",
+        "es": "El tiempo se detuvo en esta torre. Quizá la salida espera a que vuelva a correr."
+      },
+      "skipIf": [{"type": "flag_equals", "flag": "running", "value": true}]
     },
     {
       "text": {
-        "en-US": "Placeholder hint b.",
-        "pt-BR": "Dica provisória b.",
-        "es": "Pista provisional b."
-      }
+        "en-US": "Look closely at the clockwork. Something is missing, and what is left is seized.",
+        "pt-BR": "Olhe com atenção o mecanismo. Falta uma peça, e o que sobrou está travado.",
+        "es": "Mira con atención el mecanismo. Falta una pieza, y lo que queda está agarrotado."
+      },
+      "skipIf": [{"type": "flag_equals", "flag": "running", "value": true}]
     },
     {
       "text": {
-        "en-US": "Placeholder hint c.",
-        "pt-BR": "Dica provisória c.",
-        "es": "Pista provisional c."
-      }
+        "en-US": "Birds love shiny things. See what has been gathered up among the beams.",
+        "pt-BR": "Pássaros adoram coisas brilhantes. Veja o que foi juntado entre as vigas.",
+        "es": "A los pájaros les encantan las cosas brillantes. Mira qué se ha juntado entre las vigas."
+      },
+      "skipIf": [{"type": "flag_equals", "flag": "gear_taken", "value": true}]
     },
     {
       "text": {
-        "en-US": "Placeholder hint d.",
-        "pt-BR": "Dica provisória d.",
-        "es": "Pista provisional d."
-      }
+        "en-US": "Rust gives way to oil, not force. Whoever kept this clock kept supplies near the stair.",
+        "pt-BR": "Ferrugem cede ao óleo, não à força. Quem cuidava deste relógio guardava material perto da escada.",
+        "es": "El óxido cede al aceite, no a la fuerza. Quien cuidaba este reloj guardaba material cerca de la escalera."
+      },
+      "skipIf": [{"type": "flag_equals", "flag": "cupboard_open", "value": true}]
     },
     {
       "text": {
-        "en-US": "Placeholder hint e.",
-        "pt-BR": "Dica provisória e.",
-        "es": "Pista provisional e."
+        "en-US": "The rods on the door move with the clock. Once it runs, try the door again.",
+        "pt-BR": "As barras da porta se movem com o relógio. Quando ele andar, tente a porta de novo.",
+        "es": "Las barras de la puerta se mueven con el reloj. Cuando funcione, vuelve a probar la puerta."
       }
     }
   ]

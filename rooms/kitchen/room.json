@@ -5,30 +5,505 @@
     "A": {
       "image": "camera_a.png",
       "description": {
-        "en-US": "Placeholder room.",
-        "pt-BR": "Sala provisória.",
-        "es": "Sala provisional."
-      }
+        "en-US": "A cold iron stove squats beside a stone sink.\nA white icebox stands in the corner, frost on its latch.",
+        "pt-BR": "Um fogão de ferro frio está ao lado de uma pia de pedra.\nUma geladeira branca fica no canto, com geada no trinco.",
+        "es": "Un fogón de hierro frío está junto a un fregadero de piedra.\nUna nevera blanca está en el rincón, con escarcha en el pestillo."
+      },
+      "variants": [
+        {
+          "when": [{"type": "flag_equals", "flag": "stove_lit", "value": true}],
+          "description": {
+            "en-US": "The iron stove burns, its glow licking the stone sink.\nThe white icebox drips in the sudden warmth.",
+            "pt-BR": "O fogão de ferro arde, e o brilho lambe a pia de pedra.\nA geladeira branca goteja com o calor repentino.",
+            "es": "El fogón de hierro arde y su brillo lame el fregadero de piedra.\nLa nevera blanca gotea con el calor repentino."
+          }
+        }
+      ]
     },
     "C": {
       "image": "camera_c.png",
       "description": {
-        "en-US": "Placeholder room.",
-        "pt-BR": "Sala provisória.",
-        "es": "Sala provisional."
-      }
+        "en-US": "Copper pots hang from a rack above an old dresser.\nThe door to the hall is shut tight.",
+        "pt-BR": "Panelas de cobre pendem de um suporte sobre um velho aparador.\nA porta para o salão está bem fechada.",
+        "es": "Ollas de cobre cuelgan de un soporte sobre un viejo aparador.\nLa puerta al salón está bien cerrada."
+      },
+      "variants": [
+        {
+          "when": [{"type": "flag_equals", "flag": "stove_lit", "value": true}],
+          "description": {
+            "en-US": "Copper pots glint in the firelight above an old dresser.\nThe door to the hall is shut tight.",
+            "pt-BR": "Panelas de cobre reluzem à luz do fogo sobre um velho aparador.\nA porta para o salão está bem fechada.",
+            "es": "Ollas de cobre relucen a la luz del fuego sobre un viejo aparador.\nLa puerta al salón está bien cerrada."
+          }
+        }
+      ]
     }
   },
   "objects": {
+    "stove": {
+      "name": {"en-US": "stove", "pt-BR": "fogão", "es": "fogón"},
+      "aliases": {
+        "en-US": [
+          "iron stove",
+          "burner",
+          "oven",
+          "range",
+          "chimney",
+          "pipe",
+          "chimney pipe",
+          "fire"
+        ],
+        "pt-BR": [
+          "fogão de ferro",
+          "boca",
+          "queimador",
+          "forno",
+          "chaminé",
+          "cano",
+          "fogo"
+        ],
+        "es": [
+          "fogón de hierro",
+          "estufa",
+          "hornilla",
+          "quemador",
+          "horno",
+          "chimenea",
+          "tubo",
+          "fuego"
+        ]
+      },
+      "cameras": ["A"]
+    },
+    "icebox": {
+      "name": {"en-US": "icebox", "pt-BR": "geladeira", "es": "nevera"},
+      "aliases": {
+        "en-US": [
+          "ice box",
+          "fridge",
+          "refrigerator",
+          "cooler",
+          "white icebox",
+          "latch"
+        ],
+        "pt-BR": [
+          "caixa de gelo",
+          "refrigerador",
+          "geladeira branca",
+          "trinco"
+        ],
+        "es": [
+          "caja de hielo",
+          "heladera",
+          "refrigerador",
+          "nevera blanca",
+          "pestillo"
+        ]
+      },
+      "cameras": ["A"]
+    },
+    "sink": {
+      "name": {"en-US": "sink", "pt-BR": "pia", "es": "fregadero"},
+      "aliases": {
+        "en-US": ["stone sink", "basin", "drain", "tap", "faucet"],
+        "pt-BR": ["pia de pedra", "ralo", "torneira", "tanque"],
+        "es": ["fregadero de piedra", "pila", "desagüe", "grifo"]
+      },
+      "cameras": ["A"]
+    },
+    "dresser": {
+      "name": {"en-US": "dresser", "pt-BR": "aparador", "es": "aparador"},
+      "aliases": {
+        "en-US": [
+          "cupboard",
+          "cabinet",
+          "sideboard",
+          "hutch",
+          "old dresser",
+          "plates"
+        ],
+        "pt-BR": ["armário", "cômoda", "velho aparador", "pratos"],
+        "es": ["alacena", "armario", "cómoda", "viejo aparador", "platos"]
+      },
+      "cameras": ["C"]
+    },
+    "drawer": {
+      "name": {"en-US": "drawer", "pt-BR": "gaveta", "es": "cajón"},
+      "aliases": {
+        "en-US": ["drawers", "top drawer"],
+        "pt-BR": ["gavetas", "gaveta de cima"],
+        "es": ["cajones", "cajón de arriba"]
+      },
+      "cameras": ["C"]
+    },
     "door": {
       "name": {"en-US": "door", "pt-BR": "porta", "es": "puerta"},
-      "aliases": {"en-US": [], "pt-BR": [], "es": []},
-      "cameras": ["A", "C"]
+      "aliases": {
+        "en-US": ["hall door", "exit", "lock", "keyhole"],
+        "pt-BR": ["porta do salão", "saída", "fechadura"],
+        "es": ["puerta del salón", "salida", "cerradura"]
+      },
+      "cameras": ["C"]
+    },
+    "pots": {
+      "name": {"en-US": "copper pots", "pt-BR": "panelas de cobre", "es": "ollas de cobre"},
+      "aliases": {
+        "en-US": ["pots", "pot", "pans", "pan", "rack", "copper"],
+        "pt-BR": ["panelas", "panela", "suporte", "cobre"],
+        "es": ["ollas", "olla", "cacerolas", "soporte", "cobre"]
+      },
+      "cameras": ["C"]
+    },
+    "kettle": {
+      "name": {"en-US": "kettle", "pt-BR": "chaleira", "es": "tetera"},
+      "aliases": {
+        "en-US": ["teakettle", "tea kettle"],
+        "pt-BR": ["bule"],
+        "es": ["hervidor", "pava"]
+      },
+      "cameras": ["A"]
+    },
+    "window": {
+      "name": {"en-US": "window", "pt-BR": "janela", "es": "ventana"},
+      "aliases": {
+        "en-US": ["small window", "glass"],
+        "pt-BR": ["janelinha", "vidro"],
+        "es": ["ventanita", "vidrio"]
+      },
+      "cameras": ["A"]
     }
   },
-  "items": {},
-  "initialFlags": {},
+  "items": {
+    "ice_block": {
+      "name": {"en-US": "Ice block", "pt-BR": "Bloco de gelo", "es": "Bloque de hielo"},
+      "aliases": {
+        "en-US": ["ice", "block of ice", "block"],
+        "pt-BR": ["gelo", "bloco"],
+        "es": ["hielo", "bloque"]
+      },
+      "description": {
+        "en-US": "Cloudy ice that burns your fingers. A key is frozen in its heart.",
+        "pt-BR": "Gelo turvo que queima os dedos. Há uma chave congelada lá dentro.",
+        "es": "Hielo turbio que quema los dedos. Hay una llave congelada en su interior."
+      }
+    },
+    "matches": {
+      "name": {"en-US": "Matches", "pt-BR": "Fósforos", "es": "Cerillas"},
+      "aliases": {
+        "en-US": ["box of matches", "matchbox", "match"],
+        "pt-BR": ["caixa de fósforos", "fósforo"],
+        "es": ["caja de cerillas", "cerilla", "fósforos"]
+      },
+      "description": {
+        "en-US": "A small box of matches. It rattles: only a few left.",
+        "pt-BR": "Uma caixinha de fósforos. Ela chacoalha: restam poucos.",
+        "es": "Una cajita de cerillas. Suena al agitarla: quedan pocas."
+      }
+    },
+    "hall_key": {
+      "name": {"en-US": "Hall key", "pt-BR": "Chave do salão", "es": "Llave del salón"},
+      "aliases": {
+        "en-US": ["key", "wet key", "iron key"],
+        "pt-BR": ["chave", "chave molhada"],
+        "es": ["llave", "llave mojada"]
+      },
+      "description": {
+        "en-US": "A heavy iron key, still wet and cold.",
+        "pt-BR": "Uma chave de ferro pesada, ainda molhada e fria.",
+        "es": "Una pesada llave de hierro, todavía mojada y fría."
+      }
+    }
+  },
+  "initialFlags": {"icebox_open": false, "drawer_open": false, "stove_lit": false, "key_thawed": false},
+  "brightness": 0.4,
+  "lighting": [{"when": [{"type": "flag_equals", "flag": "stove_lit", "value": true}], "brightness": 1.05}],
   "interactions": [
+    {
+      "verb": "inspect",
+      "object": "stove",
+      "conditions": [{"type": "flag_equals", "flag": "stove_lit", "value": false}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "An old iron stove, cold as a grave.\nKindling is stacked under the burner. It only needs a flame.",
+            "pt-BR": "Um velho fogão de ferro, frio como um túmulo.\nHá gravetos empilhados sob a boca. Só falta uma chama.",
+            "es": "Un viejo fogón de hierro, frío como una tumba.\nHay astillas apiladas bajo el quemador. Solo falta una llama."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "stove",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The burner roars. Heat rolls off the black iron.",
+            "pt-BR": "A boca ruge. O calor emana do ferro negro.",
+            "es": "El quemador ruge. El calor brota del hierro negro."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "open",
+      "object": "stove",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The firebox door squeals open. Dry kindling waits inside.",
+            "pt-BR": "A portinhola da fornalha range ao abrir. Gravetos secos esperam lá dentro.",
+            "es": "La portezuela del hogar chirría al abrirse. Dentro esperan astillas secas."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "use",
+      "item": "matches",
+      "object": "stove",
+      "conditions": [{"type": "flag_equals", "flag": "stove_lit", "value": false}],
+      "effects": [
+        {"type": "set_flag", "flag": "stove_lit", "value": true},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The match flares. The kindling catches, and the burner wakes with a roar.\nWarm light floods the kitchen.",
+            "pt-BR": "O fósforo se acende. Os gravetos pegam fogo, e a boca desperta com um rugido.\nUma luz quente inunda a cozinha.",
+            "es": "La cerilla se enciende. Las astillas prenden y el quemador despierta con un rugido.\nUna luz cálida inunda la cocina."
+          }
+        },
+        {"type": "remove_item", "item": "matches"}
+      ]
+    },
+    {
+      "verb": "use",
+      "item": "ice_block",
+      "object": "stove",
+      "conditions": [{"type": "flag_equals", "flag": "stove_lit", "value": false}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The stove is cold.",
+            "pt-BR": "O fogão está frio.",
+            "es": "El fogón está frío."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "use",
+      "item": "ice_block",
+      "object": "stove",
+      "conditions": [{"type": "flag_equals", "flag": "key_thawed", "value": false}],
+      "effects": [
+        {"type": "set_flag", "flag": "key_thawed", "value": true},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You set the ice on the burner. It hisses, sweats, and splits apart.\nYou found the hall key!",
+            "pt-BR": "Você põe o gelo sobre a boca. Ele chia, sua e se parte.\nVocê encontrou a chave do salão!",
+            "es": "Pones el hielo sobre el quemador. Sisea, suda y se parte.\n¡Encontraste la llave del salón!"
+          }
+        },
+        {"type": "remove_item", "item": "ice_block"},
+        {"type": "add_item", "item": "hall_key"}
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "icebox",
+      "conditions": [{"type": "flag_equals", "flag": "icebox_open", "value": false}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A white enamel icebox. Frost has crept out around the latch.",
+            "pt-BR": "Uma geladeira de esmalte branco. A geada se espalhou em volta do trinco.",
+            "es": "Una nevera de esmalte blanco. La escarcha se ha extendido alrededor del pestillo."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "icebox",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Empty. Only a smell of old meat remains.",
+            "pt-BR": "Vazia. Só restou um cheiro de carne velha.",
+            "es": "Vacía. Solo queda un olor a carne vieja."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "open",
+      "object": "icebox",
+      "conditions": [{"type": "flag_equals", "flag": "icebox_open", "value": false}],
+      "effects": [
+        {"type": "set_flag", "flag": "icebox_open", "value": true},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Cold air spills out. Inside sits a block of ice, a key trapped in its heart.\nYou took the ice block!",
+            "pt-BR": "Um ar gelado escapa. Lá dentro há um bloco de gelo, com uma chave presa no meio.\nVocê pegou o bloco de gelo!",
+            "es": "Sale un aire helado. Dentro hay un bloque de hielo con una llave atrapada en su interior.\n¡Tomaste el bloque de hielo!"
+          }
+        },
+        {"type": "add_item", "item": "ice_block"}
+      ]
+    },
+    {
+      "verb": "open",
+      "object": "icebox",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Nothing else inside but the cold.",
+            "pt-BR": "Não há mais nada lá dentro além do frio.",
+            "es": "Dentro no queda nada más que el frío."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "sink",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A stone sink, dry and cracked. Something dark is caked in the drain.",
+            "pt-BR": "Uma pia de pedra, seca e rachada. Algo escuro está grudado no ralo.",
+            "es": "Un fregadero de piedra, seco y agrietado. Algo oscuro está pegado en el desagüe."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "dresser",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "An old dresser stacked with chipped plates.\nIts top drawer sits slightly crooked.",
+            "pt-BR": "Um velho aparador cheio de pratos lascados.\nA gaveta de cima está um pouco torta.",
+            "es": "Un viejo aparador lleno de platos desportillados.\nEl cajón de arriba está un poco torcido."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "open",
+      "object": "dresser",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The cupboard doors hold only broken crockery. Try the drawer.",
+            "pt-BR": "As portas do armário só guardam louça quebrada. Tente a gaveta.",
+            "es": "Las puertas del armario solo guardan loza rota. Prueba el cajón."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "drawer",
+      "conditions": [{"type": "flag_equals", "flag": "drawer_open", "value": false}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The top drawer is swollen with damp. It sticks, but it isn't locked.",
+            "pt-BR": "A gaveta de cima está inchada de umidade. Emperra, mas não está trancada.",
+            "es": "El cajón de arriba está hinchado por la humedad. Se atasca, pero no tiene llave."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "drawer",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Bent forks and a nest of string. Nothing else.",
+            "pt-BR": "Garfos tortos e um emaranhado de barbante. Nada mais.",
+            "es": "Tenedores torcidos y un ovillo de cordel. Nada más."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "open",
+      "object": "drawer",
+      "conditions": [{"type": "flag_equals", "flag": "drawer_open", "value": false}],
+      "effects": [
+        {"type": "set_flag", "flag": "drawer_open", "value": true},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The drawer gives with a jolt. Among bent forks, something rattles.\nYou found a box of matches!",
+            "pt-BR": "A gaveta cede num tranco. Entre garfos tortos, algo chacoalha.\nVocê encontrou uma caixa de fósforos!",
+            "es": "El cajón cede de golpe. Entre tenedores torcidos, algo suena.\n¡Encontraste una caja de cerillas!"
+          }
+        },
+        {"type": "add_item", "item": "matches"}
+      ]
+    },
+    {
+      "verb": "open",
+      "object": "drawer",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Only bent forks and string are left.",
+            "pt-BR": "Só restaram garfos tortos e barbante.",
+            "es": "Solo quedan tenedores torcidos y cordel."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "pots",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Copper pots, green with age. They sway faintly, though there is no draft.",
+            "pt-BR": "Panelas de cobre, esverdeadas pelo tempo. Balançam de leve, embora não haja vento.",
+            "es": "Ollas de cobre, verdes por los años. Se mecen apenas, aunque no hay corriente."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "door",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A heavy oak door to the hall. The lock is old iron.",
+            "pt-BR": "Uma pesada porta de carvalho para o salão. A fechadura é de ferro antigo.",
+            "es": "Una pesada puerta de roble hacia el salón. La cerradura es de hierro viejo."
+          }
+        }
+      ]
+    },
     {
       "verb": "open",
       "object": "door",
@@ -36,50 +511,98 @@
         {
           "type": "display_message",
           "text": {
-            "en-US": "The door opens.",
-            "pt-BR": "A porta se abre.",
-            "es": "La puerta se abre."
+            "en-US": "It's locked.",
+            "pt-BR": "Está trancada.",
+            "es": "Está cerrada con llave."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "use",
+      "item": "hall_key",
+      "object": "door",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The key turns with a groan. The door opens onto a grand hall.\nFar ahead, in the gloom, waits the front door.",
+            "pt-BR": "A chave gira com um gemido. A porta se abre para um grande salão.\nLá longe, na penumbra, espera a porta da frente.",
+            "es": "La llave gira con un quejido. La puerta se abre a un gran salón.\nA lo lejos, en la penumbra, espera la puerta principal."
           }
         },
         {"type": "change_room", "room": "foyer"}
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "kettle",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A dented kettle, its water long since boiled away.",
+            "pt-BR": "Uma chaleira amassada. A água evaporou há muito tempo.",
+            "es": "Una tetera abollada. El agua se evaporó hace mucho."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "window",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Night presses against the grimy glass. Nothing moves outside.",
+            "pt-BR": "A noite pressiona o vidro encardido. Nada se move lá fora.",
+            "es": "La noche se aprieta contra el vidrio mugriento. Nada se mueve afuera."
+          }
+        }
       ]
     }
   ],
   "hints": [
     {
       "text": {
-        "en-US": "Placeholder hint a.",
-        "pt-BR": "Dica provisória a.",
-        "es": "Pista provisional a."
-      }
+        "en-US": "Something here has been frozen for a long time. Cold keeps secrets.",
+        "pt-BR": "Algo aqui está congelado há muito tempo. O frio guarda segredos.",
+        "es": "Algo aquí lleva mucho tiempo congelado. El frío guarda secretos."
+      },
+      "skipIf": [{"type": "flag_equals", "flag": "icebox_open", "value": true}]
     },
     {
       "text": {
-        "en-US": "Placeholder hint b.",
-        "pt-BR": "Dica provisória b.",
-        "es": "Pista provisional b."
-      }
+        "en-US": "This kitchen is too dark and too cold. It needs a fire.",
+        "pt-BR": "Esta cozinha está escura e fria demais. Ela precisa de fogo.",
+        "es": "Esta cocina está demasiado oscura y fría. Necesita fuego."
+      },
+      "skipIf": [{"type": "flag_equals", "flag": "stove_lit", "value": true}]
     },
     {
       "text": {
-        "en-US": "Placeholder hint c.",
-        "pt-BR": "Dica provisória c.",
-        "es": "Pista provisional c."
-      }
+        "en-US": "Every kitchen keeps something to strike a flame. Search the dresser.",
+        "pt-BR": "Toda cozinha guarda algo para acender uma chama. Procure no aparador.",
+        "es": "Toda cocina guarda algo para encender una llama. Busca en el aparador."
+      },
+      "skipIf": [{"type": "flag_equals", "flag": "drawer_open", "value": true}]
     },
     {
       "text": {
-        "en-US": "Placeholder hint d.",
-        "pt-BR": "Dica provisória d.",
-        "es": "Pista provisional d."
-      }
+        "en-US": "The old stove has kindling under its burner. It only wants a flame.",
+        "pt-BR": "O velho fogão tem gravetos sob a boca. Só falta uma chama.",
+        "es": "El viejo fogón tiene astillas bajo el quemador. Solo le falta una llama."
+      },
+      "skipIf": [{"type": "flag_equals", "flag": "stove_lit", "value": true}]
     },
     {
       "text": {
-        "en-US": "Placeholder hint e.",
-        "pt-BR": "Dica provisória e.",
-        "es": "Pista provisional e."
-      }
+        "en-US": "Ice does not last long over an open flame.",
+        "pt-BR": "O gelo não dura muito sobre uma chama aberta.",
+        "es": "El hielo no dura mucho sobre una llama abierta."
+      },
+      "skipIf": [{"type": "flag_equals", "flag": "key_thawed", "value": true}]
     }
   ]
 }

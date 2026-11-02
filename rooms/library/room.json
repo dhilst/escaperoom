@@ -5,80 +5,492 @@
     "A": {
       "image": "camera_a.png",
       "description": {
-        "en-US": "Placeholder room.",
-        "pt-BR": "Sala provisória.",
-        "es": "Sala provisional."
+        "en-US": "Tall bookshelves climb into the dark. One shelf gapes like a missing tooth.\nA portrait of the old librarian hangs above a cold fireplace.",
+        "pt-BR": "Estantes altas sobem até a escuridão. Uma prateleira tem um vão, como um dente arrancado.\nUm retrato do velho bibliotecário pende sobre uma lareira fria.",
+        "es": "Altas estanterías se pierden en la oscuridad. Un estante tiene un hueco, como un diente arrancado.\nUn retrato del viejo bibliotecario cuelga sobre una chimenea fría."
       }
     },
     "C": {
       "image": "camera_c.png",
       "description": {
-        "en-US": "Placeholder room.",
-        "pt-BR": "Sala provisória.",
-        "es": "Sala provisional."
-      }
+        "en-US": "A huge atlas lies chained to a reading table.\nA cart of returned books waits beneath a tall window.",
+        "pt-BR": "Um atlas enorme está acorrentado a uma mesa de leitura.\nUm carrinho de livros devolvidos espera sob uma janela alta.",
+        "es": "Un atlas enorme está encadenado a una mesa de lectura.\nUn carrito de libros devueltos espera bajo una ventana alta."
+      },
+      "variants": [
+        {
+          "when": [{"type": "flag_equals", "flag": "atlas_taken", "value": true}],
+          "description": {
+            "en-US": "A loose chain lies coiled on the reading table.\nA cart of returned books waits beneath a tall window.",
+            "pt-BR": "Uma corrente solta jaz enrolada sobre a mesa de leitura.\nUm carrinho de livros devolvidos espera sob uma janela alta.",
+            "es": "Una cadena suelta yace enrollada sobre la mesa de lectura.\nUn carrito de libros devueltos espera bajo una ventana alta."
+          }
+        }
+      ]
     }
   },
   "objects": {
-    "door": {
-      "name": {"en-US": "door", "pt-BR": "porta", "es": "puerta"},
-      "aliases": {"en-US": [], "pt-BR": [], "es": []},
-      "cameras": ["A", "C"]
+    "shelves": {
+      "name": {"en-US": "shelves", "pt-BR": "estantes", "es": "estanterías"},
+      "aliases": {
+        "en-US": ["shelf", "bookshelves", "bookshelf", "bookcase", "books", "gap", "label", "brass label", "astronomy"],
+        "pt-BR": ["estante", "prateleiras", "prateleira", "livros", "vão", "etiqueta", "plaquinha", "placa de latão", "astronomia"],
+        "es": ["estantería", "estantes", "estante", "libros", "hueco", "etiqueta", "placa de latón", "astronomía"]
+      },
+      "cameras": ["A"]
+    },
+    "fireplace": {
+      "name": {"en-US": "fireplace", "pt-BR": "lareira", "es": "chimenea"},
+      "aliases": {
+        "en-US": ["hearth", "fire", "ashes", "grate", "mantel", "candles"],
+        "pt-BR": ["fogo", "cinzas", "grelha", "cornija", "velas"],
+        "es": ["hogar", "fuego", "cenizas", "rejilla", "repisa", "velas"]
+      },
+      "cameras": ["A"]
+    },
+    "portrait": {
+      "name": {"en-US": "portrait", "pt-BR": "retrato", "es": "retrato"},
+      "aliases": {
+        "en-US": ["painting", "picture", "librarian", "old librarian"],
+        "pt-BR": ["quadro", "pintura", "bibliotecário", "velho bibliotecário"],
+        "es": ["cuadro", "pintura", "bibliotecario", "viejo bibliotecario"]
+      },
+      "cameras": ["A"]
+    },
+    "table": {
+      "name": {"en-US": "table", "pt-BR": "mesa", "es": "mesa"},
+      "aliases": {
+        "en-US": ["reading table", "desk", "chair"],
+        "pt-BR": ["mesa de leitura", "escrivaninha", "cadeira"],
+        "es": ["mesa de lectura", "escritorio", "silla"]
+      },
+      "cameras": ["C"]
+    },
+    "atlas": {
+      "name": {"en-US": "atlas", "pt-BR": "atlas", "es": "atlas"},
+      "aliases": {
+        "en-US": ["huge atlas", "chained atlas", "chain", "padlock", "small padlock", "lock"],
+        "pt-BR": ["atlas enorme", "atlas acorrentado", "corrente", "cadeado", "cadeadinho"],
+        "es": ["atlas enorme", "atlas encadenado", "cadena", "candado", "candadito"]
+      },
+      "cameras": ["C"]
+    },
+    "cart": {
+      "name": {"en-US": "cart", "pt-BR": "carrinho", "es": "carrito"},
+      "aliases": {
+        "en-US": ["book cart", "trolley", "returns", "returned books"],
+        "pt-BR": ["carrinho de livros", "devoluções", "livros devolvidos"],
+        "es": ["carrito de libros", "devoluciones", "libros devueltos"]
+      },
+      "cameras": ["C"]
+    },
+    "book": {
+      "name": {"en-US": "book", "pt-BR": "livro", "es": "libro"},
+      "aliases": {
+        "en-US": ["light book", "hollow book", "odd book", "pale book"],
+        "pt-BR": ["livro leve", "livro oco", "livro estranho", "livro claro"],
+        "es": ["libro ligero", "libro hueco", "libro raro", "libro claro"]
+      },
+      "cameras": ["C"]
+    },
+    "window": {
+      "name": {"en-US": "window", "pt-BR": "janela", "es": "ventana"},
+      "aliases": {
+        "en-US": ["tall window", "glass", "rain"],
+        "pt-BR": ["janela alta", "vidro", "chuva"],
+        "es": ["ventana alta", "cristal", "lluvia"]
+      },
+      "cameras": ["C"]
     }
   },
-  "items": {},
-  "initialFlags": {},
+  "items": {
+    "small_key": {
+      "name": {"en-US": "Small key", "pt-BR": "Chave pequena", "es": "Llave pequeña"},
+      "aliases": {
+        "en-US": ["key", "tiny key"],
+        "pt-BR": ["chave", "chavinha"],
+        "es": ["llave", "llavecita"]
+      },
+      "description": {
+        "en-US": "A tiny brass key, warm from its hiding place.",
+        "pt-BR": "Uma chavinha de latão, ainda morna do esconderijo.",
+        "es": "Una llavecita de latón, aún tibia de su escondite."
+      }
+    },
+    "star_atlas": {
+      "name": {"en-US": "Star atlas", "pt-BR": "Atlas celeste", "es": "Atlas celeste"},
+      "aliases": {
+        "en-US": ["atlas of stars", "heavy atlas"],
+        "pt-BR": ["atlas estelar", "atlas das estrelas", "atlas pesado"],
+        "es": ["atlas estelar", "atlas de estrellas", "atlas pesado"]
+      },
+      "description": {
+        "en-US": "A heavy volume of star charts. The spine reads ASTRONOMY.",
+        "pt-BR": "Um volume pesado de cartas celestes. A lombada diz ASTRONOMIA.",
+        "es": "Un pesado volumen de cartas celestes. El lomo dice ASTRONOMÍA."
+      }
+    },
+    "label_note": {
+      "name": {"en-US": "Shelf label: ASTRONOMY", "pt-BR": "Etiqueta da estante: ASTRONOMIA", "es": "Etiqueta del estante: ASTRONOMÍA"},
+      "aliases": {
+        "en-US": ["label note", "shelf note"],
+        "pt-BR": ["anotação da etiqueta", "anotação da estante"],
+        "es": ["nota de la etiqueta", "nota del estante"]
+      },
+      "description": {
+        "en-US": "You noted the brass label under the empty shelf: ASTRONOMY.",
+        "pt-BR": "Você anotou a plaquinha de latão sob a prateleira vazia: ASTRONOMIA.",
+        "es": "Anotaste la placa de latón bajo el estante vacío: ASTRONOMÍA."
+      }
+    }
+  },
+  "initialFlags": {"gap_seen": false, "book_open": false, "atlas_taken": false},
   "interactions": [
     {
+      "verb": "inspect",
+      "object": "shelves",
+      "effects": [
+        {"type": "set_flag", "flag": "gap_seen", "value": true},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Rows of crumbling books, floor to ceiling. One shelf has a gap the width of a large volume.\nA small brass label beneath it reads ASTRONOMY.",
+            "pt-BR": "Fileiras de livros se desfazendo, do chão ao teto. Uma prateleira tem um vão do tamanho de um volume grande.\nUma plaquinha de latão logo abaixo diz ASTRONOMIA.",
+            "es": "Hileras de libros que se deshacen, del suelo al techo. Un estante tiene un hueco del ancho de un volumen grande.\nUna placa de latón debajo dice ASTRONOMÍA."
+          }
+        },
+        {"type": "add_item", "item": "label_note"}
+      ]
+    },
+    {
       "verb": "open",
-      "object": "door",
+      "object": "shelves",
       "effects": [
         {
           "type": "display_message",
           "text": {
-            "en-US": "The door opens.",
-            "pt-BR": "A porta se abre.",
-            "es": "La puerta se abre."
+            "en-US": "You pull at the books. The bookcase doesn't move,\nbut somewhere behind it, wood creaks.",
+            "pt-BR": "Você puxa os livros. A estante não se mexe,\nmas, em algum lugar atrás dela, a madeira range.",
+            "es": "Tiras de los libros. La estantería no se mueve,\npero en algún lugar detrás de ella cruje la madera."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "use",
+      "item": "star_atlas",
+      "object": "shelves",
+      "conditions": [{"type": "has_item", "item": "star_atlas"}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You slide the atlas into the gap. Something clicks deep in the wall.\nThe bookshelf swings inward on a hidden hinge. A cold draft smelling of incense blows through.",
+            "pt-BR": "Você encaixa o atlas no vão. Algo estala no fundo da parede.\nA estante gira para dentro sobre uma dobradiça oculta. Uma corrente de ar frio, com cheiro de incenso, sopra lá de dentro.",
+            "es": "Deslizas el atlas en el hueco. Algo chasquea en lo hondo de la pared.\nLa estantería gira hacia dentro sobre una bisagra oculta. Una corriente de aire frío, con olor a incienso, sopla desde dentro."
           }
         },
+        {"type": "remove_item", "item": "star_atlas"},
         {"type": "change_room", "room": "chapel"}
+      ]
+    },
+    {
+      "verb": "use",
+      "item": "atlas",
+      "object": "shelves",
+      "conditions": [{"type": "has_item", "item": "star_atlas"}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You slide the atlas into the gap. Something clicks deep in the wall.\nThe bookshelf swings inward on a hidden hinge. A cold draft smelling of incense blows through.",
+            "pt-BR": "Você encaixa o atlas no vão. Algo estala no fundo da parede.\nA estante gira para dentro sobre uma dobradiça oculta. Uma corrente de ar frio, com cheiro de incenso, sopra lá de dentro.",
+            "es": "Deslizas el atlas en el hueco. Algo chasquea en lo hondo de la pared.\nLa estantería gira hacia dentro sobre una bisagra oculta. Una corriente de aire frío, con olor a incienso, sopla desde dentro."
+          }
+        },
+        {"type": "remove_item", "item": "star_atlas"},
+        {"type": "change_room", "room": "chapel"}
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "fireplace",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Cold ashes behind a blackened grate.\nNo one has lit it in years.",
+            "pt-BR": "Cinzas frias atrás de uma grelha enegrecida.\nNinguém a acende há anos.",
+            "es": "Cenizas frías tras una rejilla ennegrecida.\nNadie la ha encendido en años."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "portrait",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The old librarian, stern and white-haired.\nHis painted eyes seem fixed on the shelves.",
+            "pt-BR": "O velho bibliotecário, severo, de cabelos brancos.\nSeus olhos pintados parecem fixos nas estantes.",
+            "es": "El viejo bibliotecario, severo y de pelo blanco.\nSus ojos pintados parecen fijos en las estanterías."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "table",
+      "conditions": [{"type": "flag_equals", "flag": "atlas_taken", "value": false}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A long reading table, scarred by years of elbows.\nA huge atlas is chained to it with a small padlock.",
+            "pt-BR": "Uma longa mesa de leitura, marcada por anos de cotovelos.\nUm atlas enorme está preso a ela por uma corrente com um cadeado pequeno.",
+            "es": "Una larga mesa de lectura, marcada por años de codos.\nUn atlas enorme está sujeto a ella con una cadena y un candado pequeño."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "table",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Only the loose chain remains on the table.",
+            "pt-BR": "Só restou a corrente solta sobre a mesa.",
+            "es": "Solo queda la cadena suelta sobre la mesa."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "atlas",
+      "conditions": [{"type": "flag_equals", "flag": "atlas_taken", "value": false}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A huge star atlas, open to a map of the northern sky.\nIt's chained to the table. The chain ends in a small padlock.",
+            "pt-BR": "Um enorme atlas celeste, aberto num mapa do céu do norte.\nEstá acorrentado à mesa. A corrente termina num cadeado pequeno.",
+            "es": "Un enorme atlas celeste, abierto en un mapa del cielo del norte.\nEstá encadenado a la mesa. La cadena acaba en un candado pequeño."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "atlas",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Only the loose chain remains on the table.",
+            "pt-BR": "Só restou a corrente solta sobre a mesa.",
+            "es": "Solo queda la cadena suelta sobre la mesa."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "open",
+      "object": "atlas",
+      "conditions": [{"type": "flag_equals", "flag": "atlas_taken", "value": false}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You tug at the atlas. The chain snaps taut.\nA small padlock holds it to the table.",
+            "pt-BR": "Você puxa o atlas. A corrente se estica de repente.\nUm cadeado pequeno o prende à mesa.",
+            "es": "Tiras del atlas. La cadena se tensa de golpe.\nUn candado pequeño lo sujeta a la mesa."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "open",
+      "object": "atlas",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Only the loose chain remains on the table.",
+            "pt-BR": "Só restou a corrente solta sobre a mesa.",
+            "es": "Solo queda la cadena suelta sobre la mesa."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "use",
+      "item": "small_key",
+      "object": "atlas",
+      "conditions": [{"type": "flag_equals", "flag": "atlas_taken", "value": false}],
+      "effects": [
+        {"type": "set_flag", "flag": "atlas_taken", "value": true},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The key turns with a dry click. The chain slithers off the table.\nYou take the star atlas. It's heavier than it looks.",
+            "pt-BR": "A chave gira com um estalo seco. A corrente escorrega da mesa.\nVocê pega o atlas celeste. É mais pesado do que parece.",
+            "es": "La llave gira con un chasquido seco. La cadena resbala de la mesa.\nTomas el atlas celeste. Pesa más de lo que parece."
+          }
+        },
+        {"type": "remove_item", "item": "small_key"},
+        {"type": "add_item", "item": "star_atlas"}
+      ]
+    },
+    {
+      "verb": "use",
+      "item": "small_key",
+      "object": "table",
+      "conditions": [{"type": "flag_equals", "flag": "atlas_taken", "value": false}],
+      "effects": [
+        {"type": "set_flag", "flag": "atlas_taken", "value": true},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The key turns with a dry click. The chain slithers off the table.\nYou take the star atlas. It's heavier than it looks.",
+            "pt-BR": "A chave gira com um estalo seco. A corrente escorrega da mesa.\nVocê pega o atlas celeste. É mais pesado do que parece.",
+            "es": "La llave gira con un chasquido seco. La cadena resbala de la mesa.\nTomas el atlas celeste. Pesa más de lo que parece."
+          }
+        },
+        {"type": "remove_item", "item": "small_key"},
+        {"type": "add_item", "item": "star_atlas"}
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "cart",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Returned books, never shelved. Dust lies thick on every cover.\nOne pale book sits on top of the pile.",
+            "pt-BR": "Livros devolvidos que nunca voltaram à estante. A poeira cobre cada capa.\nUm livro claro está no alto da pilha.",
+            "es": "Libros devueltos que nunca volvieron a su estante. El polvo cubre cada tapa.\nUn libro claro descansa encima del montón."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "book",
+      "conditions": [{"type": "flag_equals", "flag": "book_open", "value": false}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A thick book that weighs almost nothing.\nThe pages don't riffle. They're stuck together.",
+            "pt-BR": "Um livro grosso que quase não pesa nada.\nAs páginas não se folheiam. Estão grudadas.",
+            "es": "Un libro grueso que casi no pesa nada.\nLas páginas no se pasan. Están pegadas."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "book",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A hollow carved into the pages. It's empty now.",
+            "pt-BR": "Um buraco escavado nas páginas. Agora está vazio.",
+            "es": "Un hueco tallado en las páginas. Ahora está vacío."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "open",
+      "object": "book",
+      "conditions": [{"type": "flag_equals", "flag": "book_open", "value": false}],
+      "effects": [
+        {"type": "set_flag", "flag": "book_open", "value": true},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The cover lifts on a hollow cut into the pages.\nYou found a small key!",
+            "pt-BR": "A capa se abre sobre um buraco escavado nas páginas.\nVocê encontrou uma chave pequena!",
+            "es": "La tapa se abre sobre un hueco tallado en las páginas.\n¡Encontraste una llave pequeña!"
+          }
+        },
+        {"type": "add_item", "item": "small_key"}
+      ]
+    },
+    {
+      "verb": "open",
+      "object": "book",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The hollow is empty.",
+            "pt-BR": "O buraco está vazio.",
+            "es": "El hueco está vacío."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "window",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Rain crawls down the tall panes.\nBeyond them, only darkness.",
+            "pt-BR": "A chuva escorre pelas vidraças altas.\nLá fora, só escuridão.",
+            "es": "La lluvia resbala por los altos cristales.\nAfuera, solo oscuridad."
+          }
+        }
       ]
     }
   ],
   "hints": [
     {
       "text": {
-        "en-US": "Placeholder hint a.",
-        "pt-BR": "Dica provisória a.",
-        "es": "Pista provisional a."
+        "en-US": "A library keeps everything in its place. Look for the place where something is missing.",
+        "pt-BR": "Uma biblioteca guarda tudo em seu lugar. Procure o lugar onde algo está faltando.",
+        "es": "Una biblioteca guarda todo en su sitio. Busca el sitio donde falta algo."
+      },
+      "skipIf": [{"type": "flag_equals", "flag": "gap_seen", "value": true}]
+    },
+    {
+      "text": {
+        "en-US": "Not every returned book is as heavy as it looks.",
+        "pt-BR": "Nem todo livro devolvido é tão pesado quanto parece.",
+        "es": "No todos los libros devueltos pesan lo que aparentan."
+      },
+      "skipIf": [{"type": "flag_equals", "flag": "book_open", "value": true}]
+    },
+    {
+      "text": {
+        "en-US": "A chain is only as strong as the little lock that holds it.",
+        "pt-BR": "Uma corrente é tão forte quanto o cadeadinho que a prende.",
+        "es": "Una cadena es tan fuerte como el candadito que la sujeta."
+      },
+      "skipIf": [{"type": "flag_equals", "flag": "atlas_taken", "value": true}]
+    },
+    {
+      "text": {
+        "en-US": "The empty shelf is waiting for one particular subject. Read its label again.",
+        "pt-BR": "A prateleira vazia espera um assunto específico. Leia de novo a plaquinha.",
+        "es": "El estante vacío espera un tema concreto. Vuelve a leer su placa."
       }
     },
     {
       "text": {
-        "en-US": "Placeholder hint b.",
-        "pt-BR": "Dica provisória b.",
-        "es": "Pista provisional b."
-      }
-    },
-    {
-      "text": {
-        "en-US": "Placeholder hint c.",
-        "pt-BR": "Dica provisória c.",
-        "es": "Pista provisional c."
-      }
-    },
-    {
-      "text": {
-        "en-US": "Placeholder hint d.",
-        "pt-BR": "Dica provisória d.",
-        "es": "Pista provisional d."
-      }
-    },
-    {
-      "text": {
-        "en-US": "Placeholder hint e.",
-        "pt-BR": "Dica provisória e.",
-        "es": "Pista provisional e."
+        "en-US": "Return the stars to where the label says they belong.",
+        "pt-BR": "Devolva as estrelas ao lugar que a plaquinha indica.",
+        "es": "Devuelve las estrellas al lugar que indica la placa."
       }
     }
   ]

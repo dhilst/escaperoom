@@ -1,11 +1,38 @@
 {
   "en-US": [
-    "open door"
+    "open candle box",
+    "turn",
+    "use taper lamp",
+    "inspect hymnal",
+    "turn",
+    "use taper white candle",
+    "use taper red candle",
+    "use taper black candle",
+    "turn",
+    "open confessional"
   ],
   "pt-BR": [
-    "abrir a porta"
+    "abrir a caixa de velas",
+    "virar",
+    "usar o pavio na lamparina",
+    "examinar o hinário",
+    "virar",
+    "usar o pavio na vela branca",
+    "usar o pavio na vela vermelha",
+    "usar o pavio na vela preta",
+    "virar",
+    "abrir o confessionário"
   ],
   "es": [
-    "abrir la puerta"
+    "abrir la caja de velas",
+    "girar",
+    "usar la mecha en la lámpara",
+    "examinar el himnario",
+    "girar",
+    "usar la mecha en la vela blanca",
+    "usar la mecha en la vela roja",
+    "usar la mecha en la vela negra",
+    "girar",
+    "abrir el confesionario"
   ]
 }

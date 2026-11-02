@@ -1,11 +1,26 @@
 {
   "en-US": [
-    "open door"
+    "inspect shelves",
+    "turn",
+    "open book",
+    "use small key atlas",
+    "turn",
+    "use atlas shelves"
   ],
   "pt-BR": [
-    "abrir a porta"
+    "examinar as estantes",
+    "virar",
+    "abrir o livro",
+    "usar a chave pequena no atlas",
+    "virar",
+    "usar o atlas nas estantes"
   ],
   "es": [
-    "abrir la puerta"
+    "examinar las estanterías",
+    "girar",
+    "abrir el libro",
+    "usar la llave pequeña en el atlas",
+    "girar",
+    "usar el atlas en las estanterías"
   ]
 }

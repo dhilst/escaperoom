@@ -4,6 +4,7 @@ import { LANGUAGES, localeFromParam, type Language } from "./i18n";
 import {
   buildAliasMap,
   createGameState,
+  createInitialState,
   describeCamera,
   formatCountdown,
   HINT_UNLOCK_MS,
@@ -119,7 +120,7 @@ function start(game: GameDefinition, language: Language): void {
     ui.input.value = history[historyIndex] ?? "";
   });
 
-  state = createGameState(game, Date.now());
+  state = startState(game);
   ui.say([
     { text: describeCamera(state, currentRoom()), kind: "response" },
     { text: language.ui.helpTip, kind: "hint" },
@@ -132,6 +133,16 @@ const params = new URLSearchParams(location.search);
 
 // Testing aid, dev server only: ?hintTimer=off unlocks every hint immediately.
 // import.meta.env.DEV is false in production builds, so the published game ignores it.
+/**
+ * Testing aid, dev server only: ?room=N starts at level N (1-based; a room id
+ * such as ?room=cellar works too). Production builds ignore it.
+ */
+function startState(game: GameDefinition): GameState {
+  const wanted = import.meta.env.DEV ? params.get("room") : null;
+  const roomId = wanted && (game.order[Number(wanted) - 1] ?? (wanted in game.rooms ? wanted : undefined));
+  return roomId ? createInitialState(game.rooms[roomId], Date.now()) : createGameState(game, Date.now());
+}
+
 const hintUnlockMs =
   import.meta.env.DEV && params.get("hintTimer") === "off" ? HINT_UNLOCK_MS.map(() => 0) : HINT_UNLOCK_MS;
 

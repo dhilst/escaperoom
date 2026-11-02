@@ -1,11 +1,32 @@
 {
   "en-US": [
+    "inspect nest",
+    "turn",
+    "open cupboard",
+    "turn",
+    "use oil can mechanism",
+    "use gear mechanism",
+    "turn",
     "open door"
   ],
   "pt-BR": [
+    "examinar o ninho",
+    "virar",
+    "abrir o armário",
+    "virar",
+    "usar a lata de óleo no mecanismo",
+    "usar a engrenagem no mecanismo",
+    "virar",
     "abrir a porta"
   ],
   "es": [
+    "examinar el nido",
+    "girar",
+    "abrir el armario",
+    "girar",
+    "usar la aceitera en el mecanismo",
+    "usar el engranaje en el mecanismo",
+    "girar",
     "abrir la puerta"
   ]
 }

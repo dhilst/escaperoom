@@ -2,9 +2,10 @@
 
 A small browser escape room in the style of late-90s PlayStation survival horror.
 You play by typing commands. There's no movement and no clicking. *The Hollow
-House* has three rooms, played as levels: **The Locked Study**, **The Flooded
-Cellar** and **The Observatory**. Each room has two fixed camera shots, and
-`turn` switches between them.
+House* has ten rooms, played as levels: the Locked Study, the Flooded Cellar,
+the Observatory, the Rooftop Greenhouse, the Nursery, the Library, the
+Chapel, the Clock Tower, the Kitchen and the Grand Foyer. Each room has two
+fixed camera shots, and `turn` switches between them.
 
 The game logic is a pure, deterministic engine driven by JSON room data. The
 browser UI only draws what the engine returns, so the engine can be reused by
@@ -118,43 +119,19 @@ and the 5th after 6h. Asking earlier shows `Next hint available in HH:MM:SS`,
 and the seconds tick down while the subtitle is on screen. The schedule is `HINT_UNLOCK_MS` in
 `src/engine/types.ts`.
 
-For testing, add `?hintTimer=off` to unlock every hint immediately, for
-example `http://localhost:5173/?hintTimer=off&lang=pt-BR`. This only works on
-the dev server (`npm run dev`). Production builds ignore it, and the published
-site contains none of its code.
+Testing aids, which only work on the dev server (`npm run dev`). Production
+builds ignore them, and the published site contains none of their code:
 
-<details>
-<summary>Solutions (spoilers)</summary>
+- `?hintTimer=off` unlocks every hint immediately.
+- `?room=N` starts at level N (1-based). A room id such as `?room=cellar`
+  works too.
 
-```text
-# The Locked Study
-inspect clock         -> hands stopped at 03:15
-use 0315 drawer       -> brass key
-turn
-use key door          -> down to the cellar
+They can be combined, for example
+`http://localhost:5173/?room=5&hintTimer=off&lang=pt-BR`.
 
-# The Flooded Cellar
-open toolbox          -> crowbar
-turn
-use crowbar crate     -> fuse
-turn
-use fuse fuse box     -> the lights come on
-turn
-inspect wall          -> 7 4 1 9
-use 7419 door         -> up to the observatory
-
-# The Observatory
-inspect star chart    -> "She only sings when wound."
-open birdcage         -> winding crank
-turn
-use crank music box   -> glass lens
-turn
-use lens telescope
-inspect telescope     -> 2, 6, 1, 8
-turn
-use 2618 hatch        -> escape
-```
-</details>
+**Solutions (spoilers):** each room's solution is in `rooms/<id>/solution.json`,
+in every language. The tests play them, both room by room and chained
+through the whole game.
 
 ## Layout
 
@@ -180,9 +157,10 @@ src/
   main.ts           wires the game, engine and renderer together
 rooms/
   game.json         title and level order
-  <id>/             room.json + camera_a.png + camera_c.png
+  <id>/             room.json, solution.json, camera_a.png, camera_c.png
 tests/              parser, engine, per-room, full-game and i18n tests
-tools/render_rooms.py  generates the placeholder camera images
+tools/render_rooms.py  generates the camera images
+tools/rooms/<id>.py    per-room art for the renderer (rooms 4-10)
 ```
 
 ### Engine contract
@@ -245,6 +223,12 @@ English versions. Each language pack has its own.
 3. Link it in. The previous room needs an interaction with a
    `{ "type": "change_room", "room": "<id>" }` effect. The last room ends the
    game with `complete_game`.
+4. Add `rooms/<id>/solution.json` with the commands that solve the room in
+   every language. `tests/rooms.test.ts` then checks the room automatically:
+   the solution must work in each language with no failing step, and the room
+   must not be finishable with `open`/`inspect` alone.
+5. For art, add `tools/rooms/<id>.py` (see `load_room_modules` in
+   `tools/render_rooms.py`) and run `python3 tools/render_rooms.py <id>`.
 
 No code changes are needed. Room files and images are bundled automatically.
 

@@ -1,34 +1,430 @@
 {
   "id": "nursery",
-  "title": {"en-US": "The Nursery", "pt-BR": "O Quarto das Crianças", "es": "El Cuarto de los Niños"},
+  "title": {
+    "en-US": "The Nursery",
+    "pt-BR": "O Quarto das Crianças",
+    "es": "El Cuarto de los Niños"
+  },
   "cameras": {
     "A": {
       "image": "camera_a.png",
       "description": {
-        "en-US": "Placeholder room.",
-        "pt-BR": "Sala provisória.",
-        "es": "Sala provisional."
+        "en-US": "Wooden blocks sit on a toy shelf beside a rocking horse.\nAn empty crib stands against the wall, a rattle left inside.",
+        "pt-BR": "Blocos de madeira repousam numa estante de brinquedos, ao lado de um cavalinho de balanço.\nUm berço vazio encosta na parede, com um chocalho esquecido dentro.",
+        "es": "Unos bloques de madera descansan en una estantería de juguetes, junto a un caballito balancín.\nUna cuna vacía está contra la pared, con un sonajero olvidado dentro."
       }
     },
     "C": {
       "image": "camera_c.png",
       "description": {
-        "en-US": "Placeholder room.",
-        "pt-BR": "Sala provisória.",
-        "es": "Sala provisional."
+        "en-US": "A faded mural of the sky stretches across the wall.\nA mobile turns slowly beside a small door with a brass lock.",
+        "pt-BR": "Um mural desbotado do céu se estende pela parede.\nUm móbile gira devagar ao lado de uma portinha com um cadeado de latão.",
+        "es": "Un mural desvaído del cielo se extiende por la pared.\nUn móvil gira despacio junto a una puertita con un candado de latón."
       }
     }
   },
   "objects": {
+    "blocks": {
+      "name": {
+        "en-US": "blocks",
+        "pt-BR": "blocos",
+        "es": "bloques"
+      },
+      "aliases": {
+        "en-US": [
+          "block",
+          "wooden blocks",
+          "picture blocks",
+          "toy blocks",
+          "cubes"
+        ],
+        "pt-BR": [
+          "bloco",
+          "blocos de madeira",
+          "cubos",
+          "cubinhos"
+        ],
+        "es": [
+          "bloque",
+          "bloques de madera",
+          "cubos",
+          "cubitos"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "shelf": {
+      "name": {
+        "en-US": "shelf",
+        "pt-BR": "estante",
+        "es": "estantería"
+      },
+      "aliases": {
+        "en-US": [
+          "toy shelf",
+          "shelves",
+          "toys"
+        ],
+        "pt-BR": [
+          "estante de brinquedos",
+          "prateleira",
+          "brinquedos"
+        ],
+        "es": [
+          "estantería de juguetes",
+          "repisa",
+          "juguetes"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "rocking_horse": {
+      "name": {
+        "en-US": "rocking horse",
+        "pt-BR": "cavalinho de balanço",
+        "es": "caballito balancín"
+      },
+      "aliases": {
+        "en-US": [
+          "horse",
+          "toy horse"
+        ],
+        "pt-BR": [
+          "cavalinho",
+          "cavalo",
+          "cavalo de balanço"
+        ],
+        "es": [
+          "caballito",
+          "caballo",
+          "caballo balancín",
+          "caballito de madera"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "crib": {
+      "name": {
+        "en-US": "crib",
+        "pt-BR": "berço",
+        "es": "cuna"
+      },
+      "aliases": {
+        "en-US": [
+          "cot",
+          "cradle",
+          "rattle",
+          "bed"
+        ],
+        "pt-BR": [
+          "chocalho",
+          "cama",
+          "caminha"
+        ],
+        "es": [
+          "sonajero",
+          "cama",
+          "camita"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "mural": {
+      "name": {
+        "en-US": "mural",
+        "pt-BR": "mural",
+        "es": "mural"
+      },
+      "aliases": {
+        "en-US": [
+          "painting",
+          "wall",
+          "sky",
+          "sun",
+          "moon",
+          "star",
+          "stars",
+          "story"
+        ],
+        "pt-BR": [
+          "pintura",
+          "parede",
+          "céu",
+          "sol",
+          "lua",
+          "estrela",
+          "estrelas",
+          "história"
+        ],
+        "es": [
+          "pintura",
+          "pared",
+          "cielo",
+          "sol",
+          "luna",
+          "estrella",
+          "estrellas",
+          "historia"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
     "door": {
-      "name": {"en-US": "door", "pt-BR": "porta", "es": "puerta"},
-      "aliases": {"en-US": [], "pt-BR": [], "es": []},
-      "cameras": ["A", "C"]
+      "name": {
+        "en-US": "door",
+        "pt-BR": "porta",
+        "es": "puerta"
+      },
+      "aliases": {
+        "en-US": [
+          "lock",
+          "brass lock",
+          "dials",
+          "dial",
+          "small door",
+          "exit"
+        ],
+        "pt-BR": [
+          "portinha",
+          "cadeado",
+          "cadeado de latão",
+          "discos",
+          "disco",
+          "saída"
+        ],
+        "es": [
+          "puertita",
+          "candado",
+          "candado de latón",
+          "ruedas",
+          "rueda",
+          "salida"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "mobile": {
+      "name": {
+        "en-US": "mobile",
+        "pt-BR": "móbile",
+        "es": "móvil"
+      },
+      "aliases": {
+        "en-US": [
+          "hanging mobile",
+          "birds",
+          "paper birds"
+        ],
+        "pt-BR": [
+          "passarinhos",
+          "pássaros de papel"
+        ],
+        "es": [
+          "pajaritos",
+          "pájaros de papel",
+          "colgante"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
     }
   },
-  "items": {},
-  "initialFlags": {},
+  "items": {
+    "blocks_note": {
+      "name": {
+        "en-US": "Blocks: star 2, sun 4, moon 7",
+        "pt-BR": "Blocos: estrela 2, sol 4, lua 7",
+        "es": "Bloques: estrella 2, sol 4, luna 7"
+      },
+      "aliases": {
+        "en-US": [
+          "blocks note"
+        ],
+        "pt-BR": [
+          "anotação dos blocos"
+        ],
+        "es": [
+          "nota de los bloques"
+        ]
+      },
+      "description": {
+        "en-US": "You noted the blocks, left to right: star 2, sun 4, moon 7.",
+        "pt-BR": "Você anotou os blocos, da esquerda para a direita: estrela 2, sol 4, lua 7.",
+        "es": "Anotaste los bloques, de izquierda a derecha: estrella 2, sol 4, luna 7."
+      }
+    },
+    "mural_note": {
+      "name": {
+        "en-US": "Mural: sun, moon, star",
+        "pt-BR": "Mural: sol, lua, estrela",
+        "es": "Mural: sol, luna, estrella"
+      },
+      "aliases": {
+        "en-US": [
+          "mural note"
+        ],
+        "pt-BR": [
+          "anotação do mural"
+        ],
+        "es": [
+          "nota del mural"
+        ]
+      },
+      "description": {
+        "en-US": "You noted the story on the mural: first the sun, then the moon, then a star.",
+        "pt-BR": "Você anotou a história do mural: primeiro o sol, depois a lua, depois uma estrela.",
+        "es": "Anotaste la historia del mural: primero el sol, luego la luna, luego una estrella."
+      }
+    }
+  },
+  "initialFlags": {
+    "blocks_seen": false,
+    "mural_seen": false
+  },
   "interactions": [
+    {
+      "verb": "inspect",
+      "object": "blocks",
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "blocks_seen",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Three wooden blocks, painted by a child's hand. Left to right:\na star with a 2, a sun with a 4, a moon with a 7.",
+            "pt-BR": "Três blocos de madeira, pintados por mão de criança. Da esquerda para a direita:\numa estrela com um 2, um sol com um 4, uma lua com um 7.",
+            "es": "Tres bloques de madera, pintados por una mano infantil. De izquierda a derecha:\nuna estrella con un 2, un sol con un 4, una luna con un 7."
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "blocks_note"
+        }
+      ]
+    },
+    {
+      "verb": "open",
+      "object": "blocks",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Solid wood. There's nothing inside.",
+            "pt-BR": "Madeira maciça. Não há nada dentro.",
+            "es": "Madera maciza. No hay nada dentro."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "shelf",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A small shelf of broken toys under a skin of dust.\nOnly the wooden blocks were set out with care.",
+            "pt-BR": "Uma estantezinha de brinquedos quebrados sob uma camada de poeira.\nSó os blocos de madeira foram arrumados com cuidado.",
+            "es": "Una pequeña estantería de juguetes rotos bajo una capa de polvo.\nSolo los bloques de madera fueron colocados con cuidado."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "rocking_horse",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Its paint is flaking. It rocks a little, though nobody touched it.",
+            "pt-BR": "A tinta está descascando. Ele balança um pouco, embora ninguém tenha tocado nele.",
+            "es": "La pintura se descascara. Se mece un poco, aunque nadie lo ha tocado."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "crib",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The mattress is gone. A tin rattle lies on the slats.\nYou don't pick it up.",
+            "pt-BR": "O colchão sumiu. Um chocalho de lata repousa sobre as ripas.\nVocê não o pega.",
+            "es": "El colchón ya no está. Un sonajero de hojalata yace sobre los listones.\nNo lo recoges."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "mural",
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "mural_seen",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A sky painted like a bedtime story, left to right:\nfirst the sun, then the moon, then a single star.",
+            "pt-BR": "Um céu pintado como uma história de ninar, da esquerda para a direita:\nprimeiro o sol, depois a lua, depois uma única estrela.",
+            "es": "Un cielo pintado como un cuento para dormir, de izquierda a derecha:\nprimero el sol, luego la luna, luego una sola estrella."
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "mural_note"
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "mobile",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Paper birds on threads. They turn, though the air is still.",
+            "pt-BR": "Pássaros de papel presos em linhas. Eles giram, embora o ar esteja parado.",
+            "es": "Pájaros de papel colgados de hilos. Giran, aunque el aire está quieto."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "door",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A small white door, too low for a grown-up.\nA brass lock with three numbered dials holds it shut.",
+            "pt-BR": "Uma portinha branca, baixa demais para um adulto.\nUm cadeado de latão com três discos numerados a mantém fechada.",
+            "es": "Una puertita blanca, demasiado baja para un adulto.\nUn candado de latón con tres ruedas numeradas la mantiene cerrada."
+          }
+        }
+      ]
+    },
     {
       "verb": "open",
       "object": "door",
@@ -36,49 +432,81 @@
         {
           "type": "display_message",
           "text": {
-            "en-US": "The door opens.",
-            "pt-BR": "A porta se abre.",
-            "es": "La puerta se abre."
+            "en-US": "It won't open. The brass lock has three dials, waiting for a code.",
+            "pt-BR": "Não abre. O cadeado de latão tem três discos, esperando um código.",
+            "es": "No se abre. El candado de latón tiene tres ruedas, esperando un código."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "use",
+      "item": "472",
+      "object": "door",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The last dial clicks into place. The lock falls open.\nYou crawl through into a narrow corridor lined with books.",
+            "pt-BR": "O último disco se encaixa com um clique. O cadeado se abre.\nVocê passa engatinhando para um corredor estreito, forrado de livros.",
+            "es": "La última rueda encaja con un clic. El candado se abre.\nPasas a gatas a un pasillo estrecho, cubierto de libros."
           }
         },
-        {"type": "change_room", "room": "library"}
+        {
+          "type": "change_room",
+          "room": "library"
+        }
       ]
     }
   ],
   "hints": [
     {
       "text": {
-        "en-US": "Placeholder hint a.",
-        "pt-BR": "Dica provisória a.",
-        "es": "Pista provisional a."
+        "en-US": "The children left their toys arranged with care. Look closely at what sits on the shelf.",
+        "pt-BR": "As crianças deixaram os brinquedos arrumados com cuidado. Olhe de perto o que está na estante.",
+        "es": "Los niños dejaron sus juguetes ordenados con cuidado. Mira de cerca lo que hay en la estantería."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "blocks_seen",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "The wall on the other side tells a story. Take it in from the beginning.",
+        "pt-BR": "A parede do outro lado conta uma história. Observe-a desde o começo.",
+        "es": "La pared del otro lado cuenta una historia. Obsérvala desde el principio."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "mural_seen",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "The lock wants three numbers. The blocks have them, but not in the right order.",
+        "pt-BR": "O cadeado pede três números. Os blocos os têm, mas não na ordem certa.",
+        "es": "El candado pide tres números. Los bloques los tienen, pero no en el orden correcto."
       }
     },
     {
       "text": {
-        "en-US": "Placeholder hint b.",
-        "pt-BR": "Dica provisória b.",
-        "es": "Pista provisional b."
+        "en-US": "The pictures on the blocks also appear in the sky on the mural.",
+        "pt-BR": "As figuras dos blocos também aparecem no céu do mural.",
+        "es": "Las figuras de los bloques también aparecen en el cielo del mural."
       }
     },
     {
       "text": {
-        "en-US": "Placeholder hint c.",
-        "pt-BR": "Dica provisória c.",
-        "es": "Pista provisional c."
-      }
-    },
-    {
-      "text": {
-        "en-US": "Placeholder hint d.",
-        "pt-BR": "Dica provisória d.",
-        "es": "Pista provisional d."
-      }
-    },
-    {
-      "text": {
-        "en-US": "Placeholder hint e.",
-        "pt-BR": "Dica provisória e.",
-        "es": "Pista provisional e."
+        "en-US": "Follow the mural's story in order, and for each picture take the number painted on its block.",
+        "pt-BR": "Siga a história do mural em ordem e, para cada figura, pegue o número pintado no seu bloco.",
+        "es": "Sigue la historia del mural en orden y, para cada figura, toma el número pintado en su bloque."
       }
     }
   ]

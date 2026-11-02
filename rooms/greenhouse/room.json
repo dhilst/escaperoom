@@ -9,30 +9,398 @@
     "A": {
       "image": "camera_a.png",
       "description": {
-        "en-US": "Placeholder room.",
-        "pt-BR": "Sala provisória.",
-        "es": "Sala provisional."
-      }
+        "en-US": "Clay pots line a potting bench beneath dead vines.\nA small cabinet hides under the bench.",
+        "pt-BR": "Vasos de barro se enfileiram numa bancada sob trepadeiras mortas.\nUm pequeno armário se esconde sob a bancada.",
+        "es": "Macetas de barro se alinean en una mesa de cultivo bajo enredaderas muertas.\nUn pequeño armario se esconde bajo la mesa."
+      },
+      "variants": [
+        {
+          "when": [{"type": "flag_equals", "flag": "key_found", "value": true}],
+          "description": {
+            "en-US": "Clay pots line a potting bench beneath dead vines.\nA small cabinet hides under the bench. One pot's soil lies dark and wet.",
+            "pt-BR": "Vasos de barro se enfileiram numa bancada sob trepadeiras mortas.\nUm pequeno armário se esconde sob a bancada. A terra de um dos vasos está escura e molhada.",
+            "es": "Macetas de barro se alinean en una mesa de cultivo bajo enredaderas muertas.\nUn pequeño armario se esconde bajo la mesa. La tierra de una maceta está oscura y mojada."
+          }
+        }
+      ]
     },
     "C": {
       "image": "camera_c.png",
       "description": {
-        "en-US": "Placeholder room.",
-        "pt-BR": "Sala provisória.",
-        "es": "Sala provisional."
+        "en-US": "Moonlight falls through broken panes onto a rain barrel.\nA glass door with an iron lock leads to the stairwell.",
+        "pt-BR": "O luar entra pelas vidraças quebradas e cai sobre um barril de chuva.\nUma porta de vidro com uma fechadura de ferro dá para a escada.",
+        "es": "La luz de la luna entra por los cristales rotos y cae sobre un barril de lluvia.\nUna puerta de cristal con una cerradura de hierro da a la escalera."
       }
     }
   },
   "objects": {
+    "bench": {
+      "name": {"en-US": "potting bench", "pt-BR": "bancada", "es": "mesa de cultivo"},
+      "aliases": {
+        "en-US": ["bench", "pots", "clay pots", "planters", "row of pots"],
+        "pt-BR": ["bancada de plantio", "vasos", "vasos de barro", "floreiras", "jardineiras"],
+        "es": ["mesa", "macetas", "macetas de barro", "jardineras", "banco"]
+      },
+      "cameras": ["A"]
+    },
+    "pot": {
+      "name": {"en-US": "pot", "pt-BR": "vaso", "es": "maceta"},
+      "aliases": {
+        "en-US": ["clay pot", "soil", "dirt", "earth", "cracked soil", "glint", "metal"],
+        "pt-BR": ["vaso de barro", "terra", "solo", "terra rachada", "brilho", "metal"],
+        "es": ["maceta de barro", "tierra", "suelo", "tierra agrietada", "brillo", "metal"]
+      },
+      "cameras": ["A"]
+    },
+    "cabinet": {
+      "name": {"en-US": "cabinet", "pt-BR": "armário", "es": "armario"},
+      "aliases": {
+        "en-US": ["cupboard", "potting cabinet", "cabinet doors"],
+        "pt-BR": ["armarinho", "portinhas", "gabinete"],
+        "es": ["alacena", "gabinete", "puertecitas"]
+      },
+      "cameras": ["A"]
+    },
+    "vines": {
+      "name": {"en-US": "vines", "pt-BR": "trepadeiras", "es": "enredaderas"},
+      "aliases": {
+        "en-US": ["vine", "dead vines", "plants", "leaves"],
+        "pt-BR": ["trepadeira", "trepadeiras mortas", "plantas", "folhas"],
+        "es": ["enredadera", "enredaderas muertas", "plantas", "hojas"]
+      },
+      "cameras": ["A"]
+    },
+    "barrel": {
+      "name": {"en-US": "rain barrel", "pt-BR": "barril", "es": "barril"},
+      "aliases": {
+        "en-US": ["barrel", "rainwater", "water", "rain"],
+        "pt-BR": ["barril de chuva", "tonel", "água", "água da chuva", "chuva"],
+        "es": ["barril de lluvia", "tonel", "agua", "agua de lluvia", "lluvia"]
+      },
+      "cameras": ["C"]
+    },
     "door": {
       "name": {"en-US": "door", "pt-BR": "porta", "es": "puerta"},
-      "aliases": {"en-US": [], "pt-BR": [], "es": []},
-      "cameras": ["A", "C"]
+      "aliases": {
+        "en-US": ["glass door", "stairwell door", "lock", "iron lock", "keyhole", "stairwell", "stairs", "exit"],
+        "pt-BR": ["porta de vidro", "fechadura", "fechadura de ferro", "escada", "escadaria", "saída"],
+        "es": ["puerta de cristal", "cerradura", "cerradura de hierro", "escalera", "salida"]
+      },
+      "cameras": ["C"]
+    },
+    "panes": {
+      "name": {"en-US": "broken panes", "pt-BR": "vidraças", "es": "cristales"},
+      "aliases": {
+        "en-US": ["panes", "pane", "glass", "broken glass", "shards", "roof", "window", "windows", "moonlight", "moon", "sky"],
+        "pt-BR": ["vidraça", "vidraças quebradas", "vidro", "vidros", "cacos", "telhado", "teto", "janela", "luar", "lua", "céu"],
+        "es": ["cristal", "cristales rotos", "vidrio", "vidrios", "techo", "ventana", "luz de luna", "luna", "cielo"]
+      },
+      "cameras": ["C"]
     }
   },
-  "items": {},
-  "initialFlags": {},
+  "items": {
+    "watering_can": {
+      "name": {"en-US": "Watering can", "pt-BR": "Regador", "es": "Regadera"},
+      "aliases": {
+        "en-US": ["can", "tin can"],
+        "pt-BR": ["regador de lata"],
+        "es": ["regadera de lata"]
+      },
+      "description": {
+        "en-US": "A dented tin watering can with a long spout.",
+        "pt-BR": "Um regador de lata amassado, de bico comprido.",
+        "es": "Una regadera de lata abollada, de pico largo."
+      }
+    },
+    "iron_key": {
+      "name": {"en-US": "Iron key", "pt-BR": "Chave de ferro", "es": "Llave de hierro"},
+      "aliases": {
+        "en-US": ["key"],
+        "pt-BR": ["chave"],
+        "es": ["llave"]
+      },
+      "description": {
+        "en-US": "A heavy iron key, still caked with mud.",
+        "pt-BR": "Uma chave de ferro pesada, ainda suja de lama.",
+        "es": "Una llave de hierro pesada, todavía cubierta de barro."
+      }
+    }
+  },
+  "initialFlags": {"cabinet_open": false, "can_full": false, "key_found": false},
   "interactions": [
+    {
+      "verb": "inspect",
+      "object": "bench",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A row of clay pots, every plant long dead.\nOne pot's soil looks different from the rest.",
+            "pt-BR": "Uma fileira de vasos de barro, todas as plantas mortas há muito tempo.\nA terra de um dos vasos parece diferente das outras.",
+            "es": "Una fila de macetas de barro, todas las plantas muertas hace tiempo.\nLa tierra de una maceta se ve distinta a las demás."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "pot",
+      "conditions": [{"type": "flag_equals", "flag": "key_found", "value": false}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The soil is cracked and baked hard as stone.\nSomething metal glints beneath the crust.",
+            "pt-BR": "A terra está rachada e dura feito pedra.\nAlgo de metal brilha sob a crosta.",
+            "es": "La tierra está agrietada y dura como la piedra.\nAlgo de metal brilla bajo la costra."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "pot",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Wet, black soil. Nothing else is buried here.",
+            "pt-BR": "Terra preta e molhada. Não há mais nada enterrado aqui.",
+            "es": "Tierra negra y mojada. Aquí no hay nada más enterrado."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "open",
+      "object": "pot",
+      "conditions": [{"type": "flag_equals", "flag": "key_found", "value": false}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You claw at the soil. It's baked hard as stone.\nYour nails break before it does.",
+            "pt-BR": "Você arranha a terra. Está dura feito pedra.\nSuas unhas quebram antes dela.",
+            "es": "Escarbas en la tierra. Está dura como la piedra.\nTus uñas se rompen antes que ella."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "open",
+      "object": "pot",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Only mud is left.",
+            "pt-BR": "Só restou lama.",
+            "es": "Solo queda barro."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "use",
+      "item": "watering_can",
+      "object": "pot",
+      "conditions": [
+        {"type": "flag_equals", "flag": "key_found", "value": false},
+        {"type": "flag_equals", "flag": "can_full", "value": true}
+      ],
+      "effects": [
+        {"type": "set_flag", "flag": "key_found", "value": true},
+        {"type": "set_flag", "flag": "can_full", "value": false},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You pour the rainwater over the cracked soil. It drinks, darkens, softens.\nYou dig in with your fingers. You found an iron key!",
+            "pt-BR": "Você despeja a água da chuva sobre a terra rachada. Ela bebe, escurece, amolece.\nVocê cava com os dedos. Você encontrou uma chave de ferro!",
+            "es": "Viertes el agua de lluvia sobre la tierra agrietada. Bebe, se oscurece, se ablanda.\nEscarbas con los dedos. ¡Encontraste una llave de hierro!"
+          }
+        },
+        {"type": "add_item", "item": "iron_key"}
+      ]
+    },
+    {
+      "verb": "use",
+      "item": "watering_can",
+      "object": "pot",
+      "conditions": [{"type": "flag_equals", "flag": "key_found", "value": true}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The soil is already soaked.",
+            "pt-BR": "A terra já está encharcada.",
+            "es": "La tierra ya está empapada."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "use",
+      "item": "watering_can",
+      "object": "pot",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You tip the watering can. It's empty. Not a drop comes out.",
+            "pt-BR": "Você inclina o regador. Está vazio. Não sai uma gota.",
+            "es": "Inclinas la regadera. Está vacía. No sale ni una gota."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "cabinet",
+      "conditions": [{"type": "flag_equals", "flag": "cabinet_open", "value": false}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A low cabinet under the bench.\nIts little doors are swollen with damp, but not locked.",
+            "pt-BR": "Um armário baixo sob a bancada.\nAs portinhas estão inchadas de umidade, mas não trancadas.",
+            "es": "Un armario bajo la mesa.\nSus puertecitas están hinchadas por la humedad, pero no tienen llave."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "cabinet",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Nothing left inside but cobwebs.",
+            "pt-BR": "Não sobrou nada lá dentro além de teias de aranha.",
+            "es": "Dentro no queda nada más que telarañas."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "open",
+      "object": "cabinet",
+      "conditions": [{"type": "flag_equals", "flag": "cabinet_open", "value": false}],
+      "effects": [
+        {"type": "set_flag", "flag": "cabinet_open", "value": true},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The swollen doors scrape open.\nYou found an old watering can! It's bone dry.",
+            "pt-BR": "As portinhas inchadas se abrem, raspando.\nVocê encontrou um velho regador! Está completamente seco.",
+            "es": "Las puertecitas hinchadas se abren rascando.\n¡Encontraste una vieja regadera! Está completamente seca."
+          }
+        },
+        {"type": "add_item", "item": "watering_can"}
+      ]
+    },
+    {
+      "verb": "open",
+      "object": "cabinet",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Only cobwebs left.",
+            "pt-BR": "Só restaram teias de aranha.",
+            "es": "Solo quedan telarañas."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "vines",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Dead vines claw at the glass, dry as paper.\nNothing has been watered here in years.",
+            "pt-BR": "Trepadeiras mortas arranham o vidro, secas como papel.\nNada é regado aqui há anos.",
+            "es": "Enredaderas muertas arañan el cristal, secas como el papel.\nAquí no se riega nada desde hace años."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "barrel",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A wooden barrel brimming with black rainwater.\nMoonlight trembles on the surface.",
+            "pt-BR": "Um barril de madeira cheio até a borda de água da chuva, negra.\nO luar treme na superfície.",
+            "es": "Un barril de madera lleno hasta el borde de agua de lluvia, negra.\nLa luz de la luna tiembla en la superficie."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "open",
+      "object": "barrel",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "It has no lid. Just cold rainwater, up to the brim.",
+            "pt-BR": "Não tem tampa. Só água da chuva, fria, até a borda.",
+            "es": "No tiene tapa. Solo agua de lluvia fría, hasta el borde."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "use",
+      "item": "watering_can",
+      "object": "barrel",
+      "conditions": [{"type": "flag_equals", "flag": "can_full", "value": false}],
+      "effects": [
+        {"type": "set_flag", "flag": "can_full", "value": true},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You sink the watering can into the barrel.\nIt comes up heavy and full, dripping cold water.",
+            "pt-BR": "Você afunda o regador no barril.\nEle sai pesado e cheio, pingando água gelada.",
+            "es": "Hundes la regadera en el barril.\nSale pesada y llena, goteando agua helada."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "use",
+      "item": "watering_can",
+      "object": "barrel",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The watering can is already full.",
+            "pt-BR": "O regador já está cheio.",
+            "es": "La regadera ya está llena."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "door",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A glass door onto the stairwell, its panes webbed with cracks.\nA heavy iron lock holds it shut.",
+            "pt-BR": "Uma porta de vidro para a escada, com os vidros cheios de rachaduras.\nUma pesada fechadura de ferro a mantém fechada.",
+            "es": "Una puerta de cristal hacia la escalera, con los vidrios llenos de grietas.\nUna pesada cerradura de hierro la mantiene cerrada."
+          }
+        }
+      ]
+    },
     {
       "verb": "open",
       "object": "door",
@@ -40,49 +408,82 @@
         {
           "type": "display_message",
           "text": {
-            "en-US": "The door opens.",
-            "pt-BR": "A porta se abre.",
-            "es": "La puerta se abre."
+            "en-US": "Locked. The iron lock won't give.",
+            "pt-BR": "Trancada. A fechadura de ferro não cede.",
+            "es": "Cerrada con llave. La cerradura de hierro no cede."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "use",
+      "item": "iron_key",
+      "object": "door",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The iron key grinds in the lock. The glass door swings open.\nNarrow stairs lead down into the house.",
+            "pt-BR": "A chave de ferro range na fechadura. A porta de vidro se abre.\nUma escada estreita desce para dentro da casa.",
+            "es": "La llave de hierro chirría en la cerradura. La puerta de cristal se abre.\nUna escalera estrecha baja hacia el interior de la casa."
           }
         },
         {"type": "change_room", "room": "nursery"}
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "panes",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Broken panes let the cold moonlight in.\nShards of glass crunch underfoot.",
+            "pt-BR": "As vidraças quebradas deixam entrar o luar frio.\nCacos de vidro estalam sob seus pés.",
+            "es": "Los cristales rotos dejan entrar la fría luz de la luna.\nLos trozos de vidrio crujen bajo tus pies."
+          }
+        }
       ]
     }
   ],
   "hints": [
     {
       "text": {
-        "en-US": "Placeholder hint a.",
-        "pt-BR": "Dica provisória a.",
-        "es": "Pista provisional a."
-      }
+        "en-US": "Nothing has been watered here in a long time.",
+        "pt-BR": "Nada é regado aqui há muito tempo.",
+        "es": "Aquí no se riega nada desde hace mucho tiempo."
+      },
+      "skipIf": [{"type": "flag_equals", "flag": "key_found", "value": true}]
     },
     {
       "text": {
-        "en-US": "Placeholder hint b.",
-        "pt-BR": "Dica provisória b.",
-        "es": "Pista provisional b."
-      }
+        "en-US": "A gardener keeps the tools close to the bench.",
+        "pt-BR": "Um jardineiro guarda as ferramentas perto da bancada.",
+        "es": "Un jardinero guarda sus herramientas cerca de la mesa."
+      },
+      "skipIf": [{"type": "flag_equals", "flag": "cabinet_open", "value": true}]
     },
     {
       "text": {
-        "en-US": "Placeholder hint c.",
-        "pt-BR": "Dica provisória c.",
-        "es": "Pista provisional c."
-      }
+        "en-US": "Something glints in the hardest pot. Bare hands won't break that soil.",
+        "pt-BR": "Algo brilha no vaso mais seco. Só com as mãos você não quebra aquela terra.",
+        "es": "Algo brilla en la maceta más seca. Con las manos no romperás esa tierra."
+      },
+      "skipIf": [{"type": "flag_equals", "flag": "key_found", "value": true}]
     },
     {
       "text": {
-        "en-US": "Placeholder hint d.",
-        "pt-BR": "Dica provisória d.",
-        "es": "Pista provisional d."
-      }
+        "en-US": "The rain left water behind. Carry some of it to the dry soil.",
+        "pt-BR": "A chuva deixou água para trás. Leve um pouco até a terra seca.",
+        "es": "La lluvia dejó agua atrás. Lleva un poco hasta la tierra seca."
+      },
+      "skipIf": [{"type": "flag_equals", "flag": "key_found", "value": true}]
     },
     {
       "text": {
-        "en-US": "Placeholder hint e.",
-        "pt-BR": "Dica provisória e.",
-        "es": "Pista provisional e."
+        "en-US": "What the soil gives up may fit the lock on the stairwell door.",
+        "pt-BR": "O que a terra devolver pode servir na fechadura da porta da escada.",
+        "es": "Lo que la tierra devuelva puede servir en la cerradura de la puerta de la escalera."
       }
     }
   ]

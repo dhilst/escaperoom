@@ -1,11 +1,35 @@
 {
   "en-US": [
-    "open door"
+    "open coat",
+    "inspect umbrella stand",
+    "open grandfather clock",
+    "turn",
+    "use handle winch",
+    "inspect chandelier",
+    "use iron key door",
+    "use silver key door",
+    "use gold key door"
   ],
   "pt-BR": [
-    "abrir a porta"
+    "abrir o sobretudo",
+    "examinar o porta-guarda-chuva",
+    "abrir o relógio de pêndulo",
+    "virar",
+    "usar a manivela no guincho",
+    "examinar o lustre",
+    "usar a chave de ferro na porta",
+    "usar a chave de prata na porta",
+    "usar a chave de ouro na porta"
   ],
   "es": [
-    "abrir la puerta"
+    "abrir el abrigo",
+    "examinar el paragüero",
+    "abrir el reloj de péndulo",
+    "girar",
+    "usar la manivela en el cabrestante",
+    "examinar el candelabro",
+    "usar la llave de hierro en la puerta",
+    "usar la llave de plata en la puerta",
+    "usar la llave de oro en la puerta"
   ]
 }

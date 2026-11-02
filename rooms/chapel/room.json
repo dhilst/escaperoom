@@ -5,81 +5,687 @@
     "A": {
       "image": "camera_a.png",
       "description": {
-        "en-US": "Placeholder room.",
-        "pt-BR": "Sala provisória.",
-        "es": "Sala provisional."
-      }
+        "en-US": "A stone altar stands beneath a stained-glass window.\nThree tall candles wait on it, cold, beside a small box.",
+        "pt-BR": "Um altar de pedra se ergue sob um vitral.\nTrês velas altas esperam sobre ele, frias, ao lado de uma caixinha.",
+        "es": "Un altar de piedra se alza bajo un vitral.\nTres velas altas esperan sobre él, frías, junto a una cajita."
+      },
+      "variants": [
+        {
+          "when": [{"type": "flag_equals", "flag": "lit", "value": 1}],
+          "description": {
+            "en-US": "A stone altar stands beneath a stained-glass window.\nOne candle burns on it. The other two stay cold.",
+            "pt-BR": "Um altar de pedra se ergue sob um vitral.\nUma vela queima sobre ele. As outras duas continuam frias.",
+            "es": "Un altar de piedra se alza bajo un vitral.\nUna vela arde sobre él. Las otras dos siguen frías."
+          }
+        },
+        {
+          "when": [{"type": "flag_equals", "flag": "lit", "value": 2}],
+          "description": {
+            "en-US": "A stone altar stands beneath a stained-glass window.\nTwo candles burn on it. One is still cold.",
+            "pt-BR": "Um altar de pedra se ergue sob um vitral.\nDuas velas queimam sobre ele. Uma ainda está fria.",
+            "es": "Un altar de piedra se alza bajo un vitral.\nDos velas arden sobre él. Una sigue fría."
+          }
+        },
+        {
+          "when": [{"type": "flag_equals", "flag": "lit", "value": 3}],
+          "description": {
+            "en-US": "A stone altar stands beneath a stained-glass window.\nAll three candles burn. The glass glows above them.",
+            "pt-BR": "Um altar de pedra se ergue sob um vitral.\nAs três velas queimam. O vitral brilha acima delas.",
+            "es": "Un altar de piedra se alza bajo un vitral.\nLas tres velas arden. El vitral brilla sobre ellas."
+          }
+        }
+      ]
     },
     "C": {
       "image": "camera_c.png",
       "description": {
-        "en-US": "Placeholder room.",
-        "pt-BR": "Sala provisória.",
-        "es": "Sala provisional."
-      }
+        "en-US": "A red lamp hangs on a chain above a lectern and its open hymnal.\nA wooden confessional stands against the wall.",
+        "pt-BR": "Uma lamparina vermelha pende de uma corrente sobre um atril com um hinário aberto.\nUm confessionário de madeira está encostado na parede.",
+        "es": "Una lámpara roja cuelga de una cadena sobre un atril con un himnario abierto.\nUn confesionario de madera está apoyado contra la pared."
+      },
+      "variants": [
+        {
+          "when": [{"type": "flag_equals", "flag": "panel_open", "value": true}],
+          "description": {
+            "en-US": "A red lamp hangs on a chain above a lectern and its open hymnal.\nThe confessional stands against the wall. Cold air seeps from it.",
+            "pt-BR": "Uma lamparina vermelha pende de uma corrente sobre um atril com um hinário aberto.\nO confessionário está encostado na parede. Um ar frio escapa dele.",
+            "es": "Una lámpara roja cuelga de una cadena sobre un atril con un himnario abierto.\nEl confesionario está apoyado contra la pared. De él sale un aire frío."
+          }
+        }
+      ]
     }
   },
   "objects": {
-    "door": {
-      "name": {"en-US": "door", "pt-BR": "porta", "es": "puerta"},
-      "aliases": {"en-US": [], "pt-BR": [], "es": []},
-      "cameras": ["A", "C"]
+    "altar": {
+      "name": {"en-US": "altar", "pt-BR": "altar", "es": "altar"},
+      "aliases": {
+        "en-US": ["stone altar", "candles", "altar cloth", "carpet", "runner"],
+        "pt-BR": ["altar de pedra", "velas", "toalha do altar", "tapete"],
+        "es": ["altar de piedra", "velas", "mantel", "alfombra"]
+      },
+      "cameras": ["A"]
+    },
+    "white_candle": {
+      "name": {"en-US": "white candle", "pt-BR": "vela branca", "es": "vela blanca"},
+      "aliases": {"en-US": ["white"], "pt-BR": ["branca"], "es": ["blanca"]},
+      "cameras": ["A"]
+    },
+    "red_candle": {
+      "name": {"en-US": "red candle", "pt-BR": "vela vermelha", "es": "vela roja"},
+      "aliases": {"en-US": ["red"], "pt-BR": ["vermelha"], "es": ["roja"]},
+      "cameras": ["A"]
+    },
+    "black_candle": {
+      "name": {"en-US": "black candle", "pt-BR": "vela preta", "es": "vela negra"},
+      "aliases": {"en-US": ["black"], "pt-BR": ["preta", "vela negra", "negra"], "es": ["negra"]},
+      "cameras": ["A"]
+    },
+    "candle_box": {
+      "name": {"en-US": "candle box", "pt-BR": "caixa de velas", "es": "caja de velas"},
+      "aliases": {
+        "en-US": ["box", "small box", "tin box"],
+        "pt-BR": ["caixa", "caixinha", "caixa de lata"],
+        "es": ["caja", "cajita", "caja de lata"]
+      },
+      "cameras": ["A"]
+    },
+    "window": {
+      "name": {"en-US": "stained-glass window", "pt-BR": "vitral", "es": "vitral"},
+      "aliases": {
+        "en-US": ["stained glass", "window", "glass"],
+        "pt-BR": ["janela", "vidro", "vitrais"],
+        "es": ["vidriera", "ventana", "vidrio"]
+      },
+      "cameras": ["A"]
+    },
+    "lamp": {
+      "name": {"en-US": "lamp", "pt-BR": "lamparina", "es": "lámpara"},
+      "aliases": {
+        "en-US": ["red lamp", "sanctuary lamp", "red light", "flame", "chain"],
+        "pt-BR": ["lamparina vermelha", "lâmpada", "luz vermelha", "chama", "corrente"],
+        "es": ["lámpara roja", "lámpara del santísimo", "luz roja", "llama", "cadena"]
+      },
+      "cameras": ["C"]
+    },
+    "lectern": {
+      "name": {"en-US": "lectern", "pt-BR": "atril", "es": "atril"},
+      "aliases": {
+        "en-US": ["stand", "reading stand"],
+        "pt-BR": ["púlpito", "estante"],
+        "es": ["facistol", "pupitre"]
+      },
+      "cameras": ["C"]
+    },
+    "hymnal": {
+      "name": {"en-US": "hymnal", "pt-BR": "hinário", "es": "himnario"},
+      "aliases": {
+        "en-US": ["hymn book", "hymnbook", "book", "verse", "page"],
+        "pt-BR": ["livro de hinos", "livro", "verso", "página"],
+        "es": ["libro de himnos", "libro", "verso", "página"]
+      },
+      "cameras": ["C"]
+    },
+    "confessional": {
+      "name": {"en-US": "confessional", "pt-BR": "confessionário", "es": "confesionario"},
+      "aliases": {
+        "en-US": ["booth", "panel", "back panel", "curtain", "exit"],
+        "pt-BR": ["cabine", "painel", "painel do fundo", "cortina", "saída"],
+        "es": ["cabina", "panel", "panel del fondo", "cortina", "salida"]
+      },
+      "cameras": ["C"]
     }
   },
-  "items": {},
-  "initialFlags": {},
+  "items": {
+    "taper": {
+      "name": {"en-US": "Taper", "pt-BR": "Pavio de cera", "es": "Mecha de cera"},
+      "aliases": {
+        "en-US": ["wax taper", "long taper", "spill"],
+        "pt-BR": ["pavio", "vela fina", "acendedor"],
+        "es": ["mecha", "vela larga", "encendedor"]
+      },
+      "description": {
+        "en-US": "A long wax taper, made for reaching high wicks.",
+        "pt-BR": "Um pavio de cera comprido, feito para alcançar mechas altas.",
+        "es": "Una larga mecha de cera, hecha para alcanzar pabilos altos."
+      }
+    },
+    "hymnal_note": {
+      "name": {
+        "en-US": "Hymnal: dawn, blood, night",
+        "pt-BR": "Hinário: aurora, sangue, noite",
+        "es": "Himnario: alba, sangre, noche"
+      },
+      "aliases": {
+        "en-US": ["hymnal note", "verse note", "note"],
+        "pt-BR": ["anotação do hinário", "anotação do verso", "anotação"],
+        "es": ["nota del himnario", "nota del verso", "nota"]
+      },
+      "description": {
+        "en-US": "You noted the underlined verse: \"First the dawn, then the blood, then the night.\"",
+        "pt-BR": "Você anotou o verso sublinhado: \"Primeiro a aurora, depois o sangue, depois a noite.\"",
+        "es": "Anotaste el verso subrayado: \"Primero el alba, luego la sangre, luego la noche.\""
+      }
+    }
+  },
+  "initialFlags": {"box_open": false, "taper_lit": false, "lit": 0, "panel_open": false},
+  "brightness": 0.5,
+  "lighting": [
+    {"when": [{"type": "flag_equals", "flag": "lit", "value": 1}], "brightness": 0.7},
+    {"when": [{"type": "flag_equals", "flag": "lit", "value": 2}], "brightness": 0.85},
+    {"when": [{"type": "flag_equals", "flag": "lit", "value": 3}], "brightness": 1.05}
+  ],
   "interactions": [
     {
-      "verb": "open",
-      "object": "door",
+      "verb": "inspect",
+      "object": "altar",
       "effects": [
         {
           "type": "display_message",
           "text": {
-            "en-US": "The door opens.",
-            "pt-BR": "A porta se abre.",
-            "es": "La puerta se abre."
+            "en-US": "A slab of cold stone under a yellowed cloth.\nThree tall candles stand on it: black, white and red.",
+            "pt-BR": "Uma laje de pedra fria sob uma toalha amarelada.\nTrês velas altas estão sobre ela: preta, branca e vermelha.",
+            "es": "Una losa de piedra fría bajo un mantel amarillento.\nSobre ella hay tres velas altas: negra, blanca y roja."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "window",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Stained glass, dark with night outside.\nA faceless saint holds up a candle.",
+            "pt-BR": "Um vitral, escuro com a noite lá fora.\nUma santa sem rosto ergue uma vela.",
+            "es": "Un vitral, oscuro por la noche de afuera.\nUna santa sin rostro sostiene una vela en alto."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "white_candle",
+      "conditions": [{"type": "flag_equals", "flag": "lit", "value": 0}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A tall white candle. Its wick is cold, out of reach of your fingers.",
+            "pt-BR": "Uma vela branca e alta. O pavio está frio, fora do alcance dos seus dedos.",
+            "es": "Una vela blanca y alta. Su pabilo está frío, fuera del alcance de tus dedos."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "white_candle",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The white candle burns with a pale, steady flame.",
+            "pt-BR": "A vela branca queima com uma chama pálida e firme.",
+            "es": "La vela blanca arde con una llama pálida y firme."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "red_candle",
+      "conditions": [{"type": "flag_equals", "flag": "lit", "value": 2}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The red candle burns. Wax runs down it like a wound.",
+            "pt-BR": "A vela vermelha queima. A cera escorre por ela como uma ferida.",
+            "es": "La vela roja arde. La cera le chorrea como una herida."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "red_candle",
+      "conditions": [{"type": "flag_equals", "flag": "lit", "value": 3}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The red candle burns. Wax runs down it like a wound.",
+            "pt-BR": "A vela vermelha queima. A cera escorre por ela como uma ferida.",
+            "es": "La vela roja arde. La cera le chorrea como una herida."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "red_candle",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A tall red candle, the color of old blood. The wick is cold.",
+            "pt-BR": "Uma vela vermelha e alta, da cor de sangue velho. O pavio está frio.",
+            "es": "Una vela roja y alta, del color de la sangre vieja. El pabilo está frío."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "black_candle",
+      "conditions": [{"type": "flag_equals", "flag": "lit", "value": 3}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The black candle burns low and still, as if holding its breath.",
+            "pt-BR": "A vela preta queima baixa e imóvel, como se prendesse a respiração.",
+            "es": "La vela negra arde baja y quieta, como si contuviera el aliento."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "black_candle",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A tall black candle. It seems to drink the light around it.",
+            "pt-BR": "Uma vela preta e alta. Parece beber a luz ao redor.",
+            "es": "Una vela negra y alta. Parece beberse la luz a su alrededor."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "candle_box",
+      "conditions": [{"type": "flag_equals", "flag": "box_open", "value": false}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A small tin box for candles, its lid shut. Something shifts inside.",
+            "pt-BR": "Uma caixinha de lata para velas, com a tampa fechada. Algo se mexe lá dentro.",
+            "es": "Una cajita de lata para velas, con la tapa cerrada. Algo se mueve dentro."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "candle_box",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The candle box is empty. Only wax crumbs remain.",
+            "pt-BR": "A caixa de velas está vazia. Só restam farelos de cera.",
+            "es": "La caja de velas está vacía. Solo quedan migas de cera."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "open",
+      "object": "candle_box",
+      "conditions": [{"type": "flag_equals", "flag": "box_open", "value": false}],
+      "effects": [
+        {"type": "set_flag", "flag": "box_open", "value": true},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The tin lid creaks open. Inside lies a long wax taper.\nYou found a taper!",
+            "pt-BR": "A tampa de lata range ao abrir. Lá dentro há um pavio de cera comprido.\nVocê encontrou um pavio de cera!",
+            "es": "La tapa de lata cruje al abrirse. Dentro hay una larga mecha de cera.\n¡Encontraste una mecha de cera!"
+          }
+        },
+        {"type": "add_item", "item": "taper"}
+      ]
+    },
+    {
+      "verb": "open",
+      "object": "candle_box",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The candle box is empty.",
+            "pt-BR": "A caixa de velas está vazia.",
+            "es": "La caja de velas está vacía."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "lamp",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A sanctuary lamp of red glass, hanging on a long chain.\nIts small flame has never been allowed to die.",
+            "pt-BR": "Uma lamparina de vidro vermelho, pendurada numa corrente comprida.\nSua pequena chama nunca pôde se apagar.",
+            "es": "Una lámpara de vidrio rojo, colgada de una larga cadena.\nSu pequeña llama nunca ha podido apagarse."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "use",
+      "item": "taper",
+      "object": "lamp",
+      "conditions": [{"type": "flag_equals", "flag": "taper_lit", "value": false}],
+      "effects": [
+        {"type": "set_flag", "flag": "taper_lit", "value": true},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You raise the taper to the red glass. The wick catches.\nA small flame trembles in your hand.",
+            "pt-BR": "Você ergue o pavio até o vidro vermelho. A ponta pega fogo.\nUma chama pequena treme na sua mão.",
+            "es": "Acercas la mecha al vidrio rojo. La punta prende.\nUna llama pequeña tiembla en tu mano."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "use",
+      "item": "taper",
+      "object": "lamp",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The taper already burns.",
+            "pt-BR": "O pavio já está aceso.",
+            "es": "La mecha ya está encendida."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "lectern",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A carved wooden lectern, worn smooth by hands.\nA hymnal lies open on it.",
+            "pt-BR": "Um atril de madeira entalhada, gasto pelas mãos.\nUm hinário está aberto sobre ele.",
+            "es": "Un atril de madera tallada, gastado por las manos.\nSobre él hay un himnario abierto."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "hymnal",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A ribbon marks the page. One verse is underlined in ink:\n\"First the dawn, then the blood, then the night.\"",
+            "pt-BR": "Uma fita marca a página. Um verso está sublinhado a tinta:\n\"Primeiro a aurora, depois o sangue, depois a noite.\"",
+            "es": "Una cinta marca la página. Un verso está subrayado con tinta:\n\"Primero el alba, luego la sangre, luego la noche.\""
+          }
+        },
+        {"type": "add_item", "item": "hymnal_note"}
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "confessional",
+      "conditions": [{"type": "flag_equals", "flag": "panel_open", "value": false}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A wooden confessional with a moth-eaten curtain.\nThe wood is old, but its back panel looks oddly new.",
+            "pt-BR": "Um confessionário de madeira com uma cortina roída por traças.\nA madeira é velha, mas o painel do fundo parece estranhamente novo.",
+            "es": "Un confesionario de madera con una cortina apolillada.\nLa madera es vieja, pero el panel del fondo parece extrañamente nuevo."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "confessional",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The confessional's back panel stands ajar.\nCold air seeps through the gap.",
+            "pt-BR": "O painel do fundo do confessionário está entreaberto.\nUm ar frio passa pela fresta.",
+            "es": "El panel del fondo del confesionario está entreabierto.\nUn aire frío se cuela por la rendija."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "open",
+      "object": "confessional",
+      "conditions": [{"type": "flag_equals", "flag": "panel_open", "value": false}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You draw the curtain. Empty: a worn kneeler, nothing more.\nThe back panel is solid and won't move.",
+            "pt-BR": "Você abre a cortina. Vazio: um genuflexório gasto, nada mais.\nO painel do fundo é maciço e não se mexe.",
+            "es": "Corres la cortina. Vacío: un reclinatorio gastado, nada más.\nEl panel del fondo es macizo y no se mueve."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "open",
+      "object": "confessional",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You push the loose panel aside. Behind the confessional,\na spiral stair climbs into the tower.",
+            "pt-BR": "Você empurra o painel solto para o lado. Atrás do confessionário,\numa escada em espiral sobe para a torre.",
+            "es": "Apartas el panel suelto. Detrás del confesionario,\nuna escalera de caracol sube hacia la torre."
           }
         },
         {"type": "change_room", "room": "clocktower"}
+      ]
+    },
+
+    {
+      "verb": "use",
+      "item": "taper",
+      "object": "white_candle",
+      "conditions": [{"type": "flag_equals", "flag": "panel_open", "value": true}],
+      "effects": [{"type": "display_message", "text": {"en-US": "All three candles already burn. Better leave them be.", "pt-BR": "As três velas já estão acesas. Melhor deixá-las em paz.", "es": "Las tres velas ya arden. Mejor dejarlas en paz."}}]
+    },
+    {
+      "verb": "use",
+      "item": "taper",
+      "object": "red_candle",
+      "conditions": [{"type": "flag_equals", "flag": "panel_open", "value": true}],
+      "effects": [{"type": "display_message", "text": {"en-US": "All three candles already burn. Better leave them be.", "pt-BR": "As três velas já estão acesas. Melhor deixá-las em paz.", "es": "Las tres velas ya arden. Mejor dejarlas en paz."}}]
+    },
+    {
+      "verb": "use",
+      "item": "taper",
+      "object": "black_candle",
+      "conditions": [{"type": "flag_equals", "flag": "panel_open", "value": true}],
+      "effects": [{"type": "display_message", "text": {"en-US": "All three candles already burn. Better leave them be.", "pt-BR": "As três velas já estão acesas. Melhor deixá-las em paz.", "es": "Las tres velas ya arden. Mejor dejarlas en paz."}}]
+    },
+
+    {
+      "verb": "use",
+      "item": "taper",
+      "object": "white_candle",
+      "conditions": [{"type": "flag_equals", "flag": "taper_lit", "value": false}],
+      "effects": [{"type": "display_message", "text": {"en-US": "The taper isn't lit.", "pt-BR": "O pavio não está aceso.", "es": "La mecha no está encendida."}}]
+    },
+    {
+      "verb": "use",
+      "item": "taper",
+      "object": "red_candle",
+      "conditions": [{"type": "flag_equals", "flag": "taper_lit", "value": false}],
+      "effects": [{"type": "display_message", "text": {"en-US": "The taper isn't lit.", "pt-BR": "O pavio não está aceso.", "es": "La mecha no está encendida."}}]
+    },
+    {
+      "verb": "use",
+      "item": "taper",
+      "object": "black_candle",
+      "conditions": [{"type": "flag_equals", "flag": "taper_lit", "value": false}],
+      "effects": [{"type": "display_message", "text": {"en-US": "The taper isn't lit.", "pt-BR": "O pavio não está aceso.", "es": "La mecha no está encendida."}}]
+    },
+
+    {
+      "verb": "use",
+      "item": "taper",
+      "object": "white_candle",
+      "conditions": [{"type": "flag_equals", "flag": "lit", "value": 0}],
+      "effects": [
+        {"type": "set_flag", "flag": "lit", "value": 1},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The white candle takes the flame.\nPale light spreads across the altar.",
+            "pt-BR": "A vela branca pega fogo.\nUma luz pálida se espalha pelo altar.",
+            "es": "La vela blanca prende.\nUna luz pálida se extiende por el altar."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "use",
+      "item": "taper",
+      "object": "red_candle",
+      "conditions": [{"type": "flag_equals", "flag": "lit", "value": 1}],
+      "effects": [
+        {"type": "set_flag", "flag": "lit", "value": 2},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The red candle catches.\nIts light stains the stone the color of rust.",
+            "pt-BR": "A vela vermelha acende.\nSua luz tinge a pedra da cor da ferrugem.",
+            "es": "La vela roja prende.\nSu luz tiñe la piedra del color del óxido."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "use",
+      "item": "taper",
+      "object": "black_candle",
+      "conditions": [{"type": "flag_equals", "flag": "lit", "value": 2}],
+      "effects": [
+        {"type": "set_flag", "flag": "lit", "value": 3},
+        {"type": "set_flag", "flag": "panel_open", "value": true},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The black candle burns with a low, still flame.\nBehind you, wood gives a sharp click.",
+            "pt-BR": "A vela preta queima com uma chama baixa e imóvel.\nAtrás de você, a madeira dá um estalo seco.",
+            "es": "La vela negra arde con una llama baja y quieta.\nDetrás de ti, la madera da un chasquido seco."
+          }
+        }
+      ]
+    },
+
+    {
+      "verb": "use",
+      "item": "taper",
+      "object": "white_candle",
+      "effects": [
+        {"type": "set_flag", "flag": "lit", "value": 0},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The wick flares, then a cold draft sweeps the altar.\nEvery flame there gutters out. Only the taper still burns.",
+            "pt-BR": "O pavio da vela se inflama, e uma corrente fria varre o altar.\nTodas as chamas ali se apagam. Só o seu pavio continua aceso.",
+            "es": "El pabilo se aviva y una corriente fría barre el altar.\nTodas las llamas se apagan. Solo tu mecha sigue encendida."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "use",
+      "item": "taper",
+      "object": "red_candle",
+      "effects": [
+        {"type": "set_flag", "flag": "lit", "value": 0},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The wick flares, then a cold draft sweeps the altar.\nEvery flame there gutters out. Only the taper still burns.",
+            "pt-BR": "O pavio da vela se inflama, e uma corrente fria varre o altar.\nTodas as chamas ali se apagam. Só o seu pavio continua aceso.",
+            "es": "El pabilo se aviva y una corriente fría barre el altar.\nTodas las llamas se apagan. Solo tu mecha sigue encendida."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "use",
+      "item": "taper",
+      "object": "black_candle",
+      "effects": [
+        {"type": "set_flag", "flag": "lit", "value": 0},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The wick flares, then a cold draft sweeps the altar.\nEvery flame there gutters out. Only the taper still burns.",
+            "pt-BR": "O pavio da vela se inflama, e uma corrente fria varre o altar.\nTodas as chamas ali se apagam. Só o seu pavio continua aceso.",
+            "es": "El pabilo se aviva y una corriente fría barre el altar.\nTodas las llamas se apagan. Solo tu mecha sigue encendida."
+          }
+        }
       ]
     }
   ],
   "hints": [
     {
       "text": {
-        "en-US": "Placeholder hint a.",
-        "pt-BR": "Dica provisória a.",
-        "es": "Pista provisional a."
-      }
+        "en-US": "The candles on the altar are cold. Any flame here has to be carried to them.",
+        "pt-BR": "As velas do altar estão frias. Qualquer chama aqui precisa ser levada até elas.",
+        "es": "Las velas del altar están frías. Cualquier llama de aquí tiene que llevarse hasta ellas."
+      },
+      "skipIf": [{"type": "flag_equals", "flag": "taper_lit", "value": true}]
     },
     {
       "text": {
-        "en-US": "Placeholder hint b.",
-        "pt-BR": "Dica provisória b.",
-        "es": "Pista provisional b."
-      }
+        "en-US": "Candles that tall are not lit by hand. Look at what sits beside them on the altar.",
+        "pt-BR": "Velas tão altas não se acendem com a mão. Veja o que está ao lado delas no altar.",
+        "es": "Velas tan altas no se encienden con la mano. Mira lo que hay junto a ellas en el altar."
+      },
+      "skipIf": [{"type": "flag_equals", "flag": "box_open", "value": true}]
     },
     {
       "text": {
-        "en-US": "Placeholder hint c.",
-        "pt-BR": "Dica provisória c.",
-        "es": "Pista provisional c."
-      }
+        "en-US": "Only one flame in this chapel was never allowed to go out. It hangs on a chain.",
+        "pt-BR": "Só uma chama nesta capela nunca pôde se apagar. Ela pende de uma corrente.",
+        "es": "Solo una llama de esta capilla nunca ha podido apagarse. Cuelga de una cadena."
+      },
+      "skipIf": [{"type": "flag_equals", "flag": "taper_lit", "value": true}]
     },
     {
       "text": {
-        "en-US": "Placeholder hint d.",
-        "pt-BR": "Dica provisória d.",
-        "es": "Pista provisional d."
-      }
+        "en-US": "The candles want an order. The book on the lectern sings of one.",
+        "pt-BR": "As velas pedem uma ordem. O livro no atril canta uma.",
+        "es": "Las velas piden un orden. El libro del atril canta uno."
+      },
+      "skipIf": [{"type": "flag_equals", "flag": "panel_open", "value": true}]
     },
     {
       "text": {
-        "en-US": "Placeholder hint e.",
-        "pt-BR": "Dica provisória e.",
-        "es": "Pista provisional e."
-      }
+        "en-US": "Each word of the verse is a color on the altar. A mistake snuffs them all, so begin again from the first.",
+        "pt-BR": "Cada palavra do verso é uma cor no altar. Um erro apaga todas, então recomece do início.",
+        "es": "Cada palabra del verso es un color del altar. Un error las apaga todas, así que vuelve a empezar desde el principio."
+      },
+      "skipIf": [{"type": "flag_equals", "flag": "panel_open", "value": true}]
     }
   ]
 }

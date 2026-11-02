@@ -1,11 +1,29 @@
 {
   "en-US": [
-    "open door"
+    "open cabinet",
+    "turn",
+    "use watering can barrel",
+    "turn",
+    "use watering can pot",
+    "turn",
+    "use key door"
   ],
   "pt-BR": [
-    "abrir a porta"
+    "abrir o armário",
+    "virar",
+    "usar o regador no barril",
+    "virar",
+    "usar o regador no vaso",
+    "virar",
+    "usar a chave na porta"
   ],
   "es": [
-    "abrir la puerta"
+    "abrir el armario",
+    "girar",
+    "usar la regadera en el barril",
+    "girar",
+    "usar la regadera en la maceta",
+    "girar",
+    "usar la llave en la puerta"
   ]
 }
