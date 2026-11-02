@@ -4,7 +4,6 @@ import { LANGUAGES, localeFromParam, type Language } from "./i18n";
 import {
   buildAliasMap,
   createGameState,
-  createInitialState,
   parse,
   stepGame,
   type AliasMap,
@@ -38,6 +37,8 @@ function lineKind(event: GameEvent): LineKind {
     case "room_entered":
     case "game_completed":
       return "success";
+    case "hint_revealed":
+      return "hint";
     default:
       return "response";
   }
@@ -63,16 +64,12 @@ function start(game: GameDefinition, language: Language): void {
     ui.setTitle(game.title, room.title, game.order.indexOf(room.id) + 1, game.order.length);
     ui.showCamera(state.camera, imageUrl(room, camera.image), camera.description);
     ui.setInventory(state.inventory.map((id) => room.items[id]?.name ?? id));
+    const hints = room.hints ?? [];
+    ui.setHints(
+      state.hints.map((i) => ({ number: i + 1, text: hints[i].text })),
+      hints.length,
+    );
     ui.setCompleted(state.completed);
-  };
-
-  /** Restart the current level, or the whole game once it has been won. */
-  const restart = (fresh: GameState) => {
-    state = fresh;
-    ui.clearLog();
-    ui.print(currentRoom().cameras[state.camera].description, "response");
-    render();
-    ui.focusInput();
   };
 
   const submit = (input: string) => {
@@ -89,6 +86,8 @@ function start(game: GameDefinition, language: Language): void {
     const result = stepGame(state, parsed.command, game, language.engine);
     state = result.state;
     for (const event of result.events) {
+      // A restart (hidden "restart" command) starts the log afresh.
+      if (event.type === "restarted") ui.clearLog();
       if ("text" in event) ui.print(event.text, lineKind(event));
     }
     render();
@@ -109,10 +108,10 @@ function start(game: GameDefinition, language: Language): void {
     ui.input.value = history[historyIndex] ?? "";
   });
 
-  ui.restartButton.addEventListener("click", () =>
-    restart(state.completed ? createGameState(game) : createInitialState(currentRoom())),
-  );
-  restart(createGameState(game));
+  state = createGameState(game);
+  ui.print(currentRoom().cameras[state.camera].description, "response");
+  render();
+  ui.focusInput();
 }
 
 try {

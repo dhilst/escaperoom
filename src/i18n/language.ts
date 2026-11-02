@@ -1,9 +1,9 @@
 import type { EngineMessages, ParserLanguage } from "../engine/types";
 
 export interface UiStrings {
-  restart: string;
-  restartTitle: string;
   items: string;
+  /** Hint counter label, e.g. "Hint" in "HINT 2/5". */
+  hints: string;
   level(level: number, levels: number): string;
   placeholder: string;
   banner: string;

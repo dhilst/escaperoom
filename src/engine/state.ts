@@ -17,11 +17,21 @@ export function createInitialState(room: RoomDefinition): GameState {
     inventory: [],
     flags: { ...room.initialFlags },
     completed: false,
+    hints: [],
   };
 }
 
 function cloneState(state: GameState): GameState {
-  return { ...state, inventory: [...state.inventory], flags: { ...state.flags } };
+  return { ...state, inventory: [...state.inventory], flags: { ...state.flags }, hints: [...state.hints] };
+}
+
+/** The next hint to reveal: the first one not yet shown whose step isn't already done. */
+export function nextHint(state: GameState, room: RoomDefinition): number | undefined {
+  const index = (room.hints ?? []).findIndex(
+    (hint, i) =>
+      !state.hints.includes(i) && !(hint.skipIf?.length && hint.skipIf.every((c) => checkCondition(state, c))),
+  );
+  return index < 0 ? undefined : index;
 }
 
 /**
@@ -40,6 +50,15 @@ export function step(
 }
 
 function run(state: GameState, command: Command, room: RoomDefinition, messages: EngineMessages): GameEvent[] {
+  if (command.verb === "restart") {
+    // Restart the level. Hints already revealed here are kept: they may have been paid for.
+    Object.assign(state, createInitialState(room), { hints: state.hints });
+    return [
+      { type: "restarted", text: messages.restarted },
+      { type: "message", text: room.cameras[state.camera].description },
+    ];
+  }
+
   if (state.completed) {
     return [{ type: "message", text: messages.alreadyEscaped }];
   }
@@ -62,6 +81,14 @@ function run(state: GameState, command: Command, room: RoomDefinition, messages:
       return [{ type: "inventory", items: [...state.inventory], text }];
     }
 
+    case "hint": {
+      const hints = room.hints ?? [];
+      const next = nextHint(state, room);
+      if (next === undefined) return [{ type: "message", text: messages.noMoreHints }];
+      state.hints.push(next);
+      return [{ type: "hint_revealed", hint: next, text: messages.hint(next + 1, hints.length, hints[next].text) }];
+    }
+
     case "inspect":
     case "open":
     case "use":
@@ -75,11 +102,20 @@ function interact(
   room: RoomDefinition,
   messages: EngineMessages,
 ): GameEvent[] {
-  const fail = (reason: FailureReason): GameEvent[] => [
-    { type: "failure", reason, text: command.verb === "inspect" ? messages.nothingSpecial : messages.nothingHappens },
-  ];
-
   const targetId = command.verb === "use" ? command.target : command.object;
+  const said = () => command.typed ?? room.objects[targetId]?.name ?? room.items[targetId]?.name ?? targetId;
+
+  const fail = (reason: FailureReason): GameEvent[] => {
+    const text =
+      reason === "unknown_object"
+        ? messages.noSuchObject(said())
+        : reason === "not_visible"
+          ? messages.notVisible(said())
+          : command.verb === "inspect"
+            ? messages.nothingSpecial
+            : messages.nothingHappens;
+    return [{ type: "failure", reason, text }];
+  };
 
   // Carried items can be inspected from anywhere.
   if (command.verb === "inspect" && state.inventory.includes(targetId)) {
@@ -88,7 +124,8 @@ function interact(
   }
 
   const target = room.objects[targetId];
-  if (!target) return fail("unknown_object");
+  // An item that exists in this room but isn't carried is "not here", not unknown.
+  if (!target) return fail(targetId in room.items ? "not_visible" : "unknown_object");
   if (!target.cameras.includes(state.camera)) return fail("not_visible");
 
   // Real items must be held to be used; anything else is treated as a literal code.

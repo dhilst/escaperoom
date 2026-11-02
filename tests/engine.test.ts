@@ -22,7 +22,7 @@ describe("engine: cameras", () => {
   it("restricts interactions to objects of the active camera", () => {
     expect(texts(play(["inspect clock"]).last)).toEqual(["A dusty wall clock.\nThe hands are stopped at 03:15."]);
     const fromC = play(["turn", "inspect clock"]).last;
-    expect(texts(fromC)).toEqual(["Nothing special."]);
+    expect(texts(fromC)).toEqual(["You don't see any clock here."]);
     expect(failure(fromC)).toMatchObject({ reason: "not_visible" });
 
     expect(failure(play(["inspect door"]).last)).toMatchObject({ reason: "not_visible" });
@@ -31,13 +31,24 @@ describe("engine: cameras", () => {
 });
 
 describe("engine: generic failures", () => {
-  it("unknown objects give the generic message", () => {
+  it("unknown objects are reported explicitly, in the player's words", () => {
     const inspect = play(["inspect painting"]).last;
-    expect(texts(inspect)).toEqual(["Nothing special."]);
+    expect(texts(inspect)).toEqual(["There is no such painting."]);
     expect(failure(inspect)).toMatchObject({ reason: "unknown_object" });
 
-    const open = play(["open painting"]).last;
-    expect(texts(open)).toEqual(["Nothing happens."]);
+    expect(texts(play(["open the old painting"]).last)).toEqual(["There is no such old painting."]);
+    expect(texts(play(["use key on painting"]).last)).toEqual(["There is no such painting."]);
+  });
+
+  it("objects on the other camera are reported as not here", () => {
+    const { last } = play(["open door"]);
+    expect(texts(last)).toEqual(["You don't see any door here."]);
+    expect(failure(last)).toMatchObject({ reason: "not_visible" });
+  });
+
+  it("wrong codes and items stay vague", () => {
+    expect(texts(play(["use 9999 drawer"]).last)).toEqual(["Nothing happens."]);
+    expect(texts(play(["use banana drawer"]).last)).toEqual(["Nothing happens."]);
   });
 
   it("known objects without a matching rule give the generic message", () => {
@@ -121,7 +132,7 @@ describe("engine: state changes", () => {
     expect(texts(play(["use 0315 drawer", "turn", "inspect key"]).last)).toEqual([
       "A small brass key, cold to the touch.",
     ]);
-    expect(texts(play(["inspect key"]).last)).toEqual(["Nothing special."]);
+    expect(texts(play(["inspect key"]).last)).toEqual(["You don't see any key here."]);
   });
 });
 
@@ -148,6 +159,7 @@ describe("engine: purity, determinism and reset", () => {
       inventory: [],
       flags: { drawer_open: false, door_unlocked: false },
       completed: false,
+      hints: [],
     });
     expect(state.inventory).toEqual(["brass_key"]);
     // A new game must not share flags with the room definition.

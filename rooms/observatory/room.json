@@ -348,5 +348,46 @@
         {"type": "complete_game"}
       ]
     }
+  ],
+  "hints": [
+    {
+      "text": {
+        "en-US": "The note on the star chart is a riddle. What in this room could sing?",
+        "pt-BR": "O bilhete na carta celeste é um enigma. O que neste cômodo poderia cantar?",
+        "es": "La nota de la carta estelar es un acertijo. ¿Qué podría cantar en esta habitación?"
+      },
+      "skipIf": [{"type": "flag_equals", "flag": "box_open", "value": true}]
+    },
+    {
+      "text": {
+        "en-US": "Something is missing from the music box. Birds aren't the only things kept in cages.",
+        "pt-BR": "Falta algo na caixa de música. Pássaros não são as únicas coisas guardadas em gaiolas.",
+        "es": "Le falta algo a la caja de música. Los pájaros no son lo único que se guarda en jaulas."
+      },
+      "skipIf": [{"type": "flag_equals", "flag": "cage_open", "value": true}]
+    },
+    {
+      "text": {
+        "en-US": "A music box won't play until it's wound.",
+        "pt-BR": "Uma caixa de música só toca depois de receber corda.",
+        "es": "Una caja de música no suena hasta que le dan cuerda."
+      },
+      "skipIf": [{"type": "flag_equals", "flag": "box_open", "value": true}]
+    },
+    {
+      "text": {
+        "en-US": "The telescope can't show anything while a part is missing.",
+        "pt-BR": "O telescópio não mostra nada enquanto falta uma peça.",
+        "es": "El telescopio no puede mostrar nada mientras le falte una pieza."
+      },
+      "skipIf": [{"type": "flag_equals", "flag": "lens_fitted", "value": true}]
+    },
+    {
+      "text": {
+        "en-US": "Whatever the telescope shows matters for the way out.",
+        "pt-BR": "O que o telescópio mostra importa para a saída.",
+        "es": "Lo que muestra el telescopio importa para la salida."
+      }
+    }
   ]
 }

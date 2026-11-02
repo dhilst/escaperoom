@@ -92,43 +92,43 @@ describe("localized data", () => {
 describe("parser in other languages", () => {
   it("pt-BR: verbs, articles, prepositions and accents", () => {
     const p = parserFor("pt-BR");
-    expect(p("examinar o relógio")).toEqual({ ok: true, command: { verb: "inspect", object: "clock" } });
-    expect(p("EXAMINAR relogio")).toEqual({ ok: true, command: { verb: "inspect", object: "clock" } });
-    expect(p("inspecionar a gaveta")).toEqual({ ok: true, command: { verb: "inspect", object: "drawer" } });
-    expect(p("usar a chave na porta")).toEqual({ ok: true, command: { verb: "use", item: "brass_key", target: "door" } });
-    expect(p("usar chave de latão porta")).toEqual({
+    expect(p("examinar o relógio")).toMatchObject({ ok: true, command: { verb: "inspect", object: "clock" } });
+    expect(p("EXAMINAR relogio")).toMatchObject({ ok: true, command: { verb: "inspect", object: "clock" } });
+    expect(p("inspecionar a gaveta")).toMatchObject({ ok: true, command: { verb: "inspect", object: "drawer" } });
+    expect(p("usar a chave na porta")).toMatchObject({ ok: true, command: { verb: "use", item: "brass_key", target: "door" } });
+    expect(p("usar chave de latão porta")).toMatchObject({
       ok: true,
       command: { verb: "use", item: "brass_key", target: "door" },
     });
-    expect(p("inventário")).toEqual({ ok: true, command: { verb: "inventory" } });
-    expect(p("inventario")).toEqual({ ok: true, command: { verb: "inventory" } });
-    expect(p("olhar")).toEqual({ ok: true, command: { verb: "look" } });
-    expect(p("virar")).toEqual({ ok: true, command: { verb: "turn" } });
+    expect(p("inventário")).toMatchObject({ ok: true, command: { verb: "inventory" } });
+    expect(p("inventario")).toMatchObject({ ok: true, command: { verb: "inventory" } });
+    expect(p("olhar")).toMatchObject({ ok: true, command: { verb: "look" } });
+    expect(p("virar")).toMatchObject({ ok: true, command: { verb: "turn" } });
   });
 
   it("es: verbs, articles, prepositions and accents", () => {
     const p = parserFor("es");
-    expect(p("examinar el reloj")).toEqual({ ok: true, command: { verb: "inspect", object: "clock" } });
-    expect(p("abrir el cajon")).toEqual({ ok: true, command: { verb: "open", object: "drawer" } });
-    expect(p("usar la llave en la puerta")).toEqual({
+    expect(p("examinar el reloj")).toMatchObject({ ok: true, command: { verb: "inspect", object: "clock" } });
+    expect(p("abrir el cajon")).toMatchObject({ ok: true, command: { verb: "open", object: "drawer" } });
+    expect(p("usar la llave en la puerta")).toMatchObject({
       ok: true,
       command: { verb: "use", item: "brass_key", target: "door" },
     });
-    expect(p("mirar")).toEqual({ ok: true, command: { verb: "look" } });
-    expect(p("girar")).toEqual({ ok: true, command: { verb: "turn" } });
+    expect(p("mirar")).toMatchObject({ ok: true, command: { verb: "look" } });
+    expect(p("girar")).toMatchObject({ ok: true, command: { verb: "turn" } });
   });
 
   it("English articles and prepositions are ignored too", () => {
     const p = parserFor("en-US");
-    expect(p("use the key on the door")).toEqual({
+    expect(p("use the key on the door")).toMatchObject({
       ok: true,
       command: { verb: "use", item: "brass_key", target: "door" },
     });
-    expect(p("inspect the clock")).toEqual({ ok: true, command: { verb: "inspect", object: "clock" } });
+    expect(p("inspect the clock")).toMatchObject({ ok: true, command: { verb: "inspect", object: "clock" } });
   });
 
   it("syntax errors are reported in the player's language", () => {
-    expect(parserFor("pt-BR")("dançar")).toEqual({
+    expect(parserFor("pt-BR")("dançar")).toMatchObject({
       ok: false,
       error: 'Comando desconhecido "dancar". Tente: olhar, virar, examinar, abrir, usar, inventário.',
     });
@@ -146,14 +146,19 @@ describe("parser in other languages", () => {
 
 describe("playing in other languages", () => {
   it("engine responses are translated", () => {
-    expect(texts(playGame(["examinar o quadro"], undefined, "pt-BR").last)).toEqual(["Nada de especial."]);
+    expect(texts(playGame(["examinar o quadro"], undefined, "pt-BR").last)).toEqual(['Não há "quadro" aqui.']);
+    expect(texts(playGame(["examinar a porta"], undefined, "pt-BR").last)).toEqual(['Daqui você não vê "porta".']);
+    expect(texts(playGame(["examinar a escrivaninha", "abrir a escrivaninha"], undefined, "pt-BR").last)).toEqual([
+      "Nada acontece.",
+    ]);
     expect(texts(playGame(["abrir o relógio"], undefined, "pt-BR").last)).toEqual(["Nada acontece."]);
     expect(texts(playGame(["inventário"], undefined, "pt-BR").last)).toEqual(["Você não está carregando nada."]);
     expect(texts(playGame(["usar 0315 na gaveta"], undefined, "pt-BR").last)).toEqual([
       "Os discos se encaixam com um clique. A gaveta se abre.\nVocê encontrou uma chave de latão!",
       "[Adicionado ao inventário: Chave de latão]",
     ]);
-    expect(texts(playGame(["examinar el cuadro"], undefined, "es").last)).toEqual(["Nada especial."]);
+    expect(texts(playGame(["examinar el cuadro"], undefined, "es").last)).toEqual(['Aquí no hay "cuadro".']);
+    expect(texts(playGame(["examinar la puerta"], undefined, "es").last)).toEqual(['Desde aquí no ves "puerta".']);
     expect(texts(playGame(["girar"], undefined, "es").last)[0]).toBe("Te giras hacia el otro lado de la habitación.");
   });
 

@@ -2,10 +2,12 @@ import { describe, expect, it } from "vitest";
 import { parse } from "../src/engine";
 import { aliases } from "./helpers";
 
+/** The parsed command, minus `typed` (checked separately below). */
 const ok = (input: string) => {
   const r = parse(input, aliases);
   if (!r.ok) throw new Error(r.error);
-  return r.command;
+  const { typed: _typed, ...command } = r.command as { typed?: string };
+  return command;
 };
 
 describe("parser", () => {
@@ -46,6 +48,31 @@ describe("parser", () => {
     expect(ok("inspect painting")).toEqual({ verb: "inspect", object: "painting" });
   });
 
+  it("keeps the player's wording of the object, minus articles", () => {
+    const typed = (input: string) => {
+      const r = parse(input, aliases);
+      return r.ok && "typed" in r.command ? r.command.typed : undefined;
+    };
+    expect(typed("inspect the Old Painting")).toBe("old painting");
+    expect(typed("use key on the WOODEN chest")).toBe("wooden chest");
+    expect(typed("inspect clock")).toBe("clock");
+  });
+
+  it("parses the hidden hint and restart commands", () => {
+    expect(ok("hint")).toEqual({ verb: "hint" });
+    expect(ok("RESTART")).toEqual({ verb: "restart" });
+    expect(parse("hint please", aliases)).toEqual({ ok: false, error: "Usage: hint" });
+  });
+
+  it("does not advertise the hidden commands", () => {
+    const r = parse("dance", aliases);
+    expect(r.ok).toBe(false);
+    if (!r.ok) {
+      expect(r.error).not.toContain("hint");
+      expect(r.error).not.toContain("restart");
+    }
+  });
+
   it("rejects unknown verbs and empty input", () => {
     expect(parse("dance", aliases).ok).toBe(false);
     expect(parse("take key", aliases).ok).toBe(false);
@@ -62,6 +89,6 @@ describe("parser", () => {
   });
 
   it("works without an alias table", () => {
-    expect(parse("inspect clock")).toEqual({ ok: true, command: { verb: "inspect", object: "clock" } });
+    expect(parse("inspect clock")).toEqual({ ok: true, command: { verb: "inspect", object: "clock", typed: "clock" } });
   });
 });

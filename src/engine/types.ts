@@ -7,13 +7,19 @@ export type FlagValue = boolean | string | number;
 // Commands (parser output)
 // ---------------------------------------------------------------------------
 
+/**
+ * `typed` keeps the player's own words for the object/target (accents included,
+ * articles dropped) so messages like "There is no such ..." can echo them.
+ */
 export type Command =
   | { verb: "look" }
   | { verb: "turn" }
   | { verb: "inventory" }
-  | { verb: "inspect"; object: string }
-  | { verb: "open"; object: string }
-  | { verb: "use"; item: string; target: string };
+  | { verb: "hint" }
+  | { verb: "restart" }
+  | { verb: "inspect"; object: string; typed?: string }
+  | { verb: "open"; object: string; typed?: string }
+  | { verb: "use"; item: string; target: string; typed?: string };
 
 export type Verb = Command["verb"];
 
@@ -24,6 +30,7 @@ export interface ParserLanguage {
   /** Articles and prepositions ignored in object phrases ("the", "on", "na", "la"...). */
   stopwords: string[];
   empty: string;
+  /** Shown for unknown verbs. Lists the documented verbs only (not hint/restart). */
   unknown(word: string): string;
   /** Full usage message per verb, e.g. "Usage: inspect <object>". */
   usage: Record<Verb, string>;
@@ -37,6 +44,13 @@ export interface EngineMessages {
   emptyInventory: string;
   itemAdded(name: string): string;
   itemRemoved(name: string): string;
+  /** Unknown object name, e.g. "There is no such painting." */
+  noSuchObject(typed: string): string;
+  /** A real object that only the other camera can see, or an item not carried. */
+  notVisible(typed: string): string;
+  hint(number: number, total: number, text: string): string;
+  noMoreHints: string;
+  restarted: string;
   escaped: string;
   alreadyEscaped: string;
 }
@@ -55,6 +69,8 @@ export interface GameState {
   inventory: string[];
   flags: Record<string, FlagValue>;
   completed: boolean;
+  /** Indices into the current room's `hints`, in the order they were revealed. */
+  hints: number[];
 }
 
 // ---------------------------------------------------------------------------
@@ -77,6 +93,17 @@ export interface CameraDefinition {
   image: string;
   description: string;
 }
+
+/**
+ * One step of a room's hint ladder. When every `skipIf` condition holds (the
+ * step it helps with is already done), the hint is passed over.
+ */
+export interface Hint {
+  text: string;
+  skipIf?: Condition[];
+}
+
+export const MAX_HINTS = 5;
 
 export interface ObjectDefinition {
   name: string;
@@ -116,6 +143,8 @@ export interface RoomDefinition {
   items: Record<string, ItemDefinition>;
   initialFlags?: Record<string, FlagValue>;
   interactions: Interaction[];
+  /** Up to MAX_HINTS hints, from vaguest to most explicit. */
+  hints?: Hint[];
 }
 
 /** Several rooms played as levels, in the order listed by rooms/game.json. */
@@ -130,7 +159,10 @@ export interface GameDefinition {
 // Events (engine output)
 // ---------------------------------------------------------------------------
 
-/** Internal failure reasons. Players only ever see the generic text. */
+/**
+ * Failure reasons. unknown_object and not_visible get explicit messages; all
+ * others show only the generic "Nothing happens." / "Nothing special.".
+ */
 export type FailureReason =
   | "unknown_object"
   | "not_visible"
@@ -148,6 +180,8 @@ export type GameEvent =
   | { type: "room_changed"; room: string }
   | { type: "room_entered"; room: string; text: string }
   | { type: "game_completed"; text: string }
+  | { type: "hint_revealed"; hint: number; text: string }
+  | { type: "restarted"; text: string }
   | { type: "failure"; reason: FailureReason; text: string };
 
 export interface StepResult {

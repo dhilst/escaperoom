@@ -424,5 +424,46 @@
         {"type": "change_room", "room": "observatory"}
       ]
     }
+  ],
+  "hints": [
+    {
+      "text": {
+        "en-US": "It's too dark to read what matters here. Can you get the lights working?",
+        "pt-BR": "Está escuro demais para ler o que importa aqui. Dá para fazer a luz funcionar?",
+        "es": "Está demasiado oscuro para leer lo importante. ¿Puedes hacer que funcione la luz?"
+      },
+      "skipIf": [{"type": "flag_equals", "flag": "power_on", "value": true}]
+    },
+    {
+      "text": {
+        "en-US": "Something is missing from the fuse box. Read the labels on the crates.",
+        "pt-BR": "Falta algo na caixa de fusíveis. Leia os rótulos dos caixotes.",
+        "es": "Le falta algo a la caja de fusibles. Lee las etiquetas de las cajas."
+      },
+      "skipIf": [{"type": "flag_equals", "flag": "power_on", "value": true}]
+    },
+    {
+      "text": {
+        "en-US": "A workbench rarely comes without somewhere to keep the tools.",
+        "pt-BR": "Uma bancada raramente fica sem um lugar para guardar as ferramentas.",
+        "es": "Un banco de trabajo rara vez está sin un sitio donde guardar las herramientas."
+      },
+      "skipIf": [{"type": "flag_equals", "flag": "toolbox_open", "value": true}]
+    },
+    {
+      "text": {
+        "en-US": "Nailed-shut lids give way to a bit of leverage.",
+        "pt-BR": "Tampas pregadas cedem com um pouco de força no lugar certo.",
+        "es": "Las tapas clavadas ceden con un poco de fuerza en el lugar adecuado."
+      },
+      "skipIf": [{"type": "flag_equals", "flag": "crate_open", "value": true}]
+    },
+    {
+      "text": {
+        "en-US": "With the lights on, take another look at the wall you couldn't read.",
+        "pt-BR": "Com a luz acesa, olhe de novo a parede que você não conseguia ler.",
+        "es": "Con la luz encendida, vuelve a mirar la pared que no podías leer."
+      }
+    }
   ]
 }

@@ -59,12 +59,32 @@ shorter `use key door`, `usar chave porta` and `usar llave puerta`. Accents are
 optional, so `relogio` matches `relógio`.
 
 Commands are case-insensitive and ignore extra whitespace. Press Enter to
-submit, and use Up/Down to recall earlier commands. The **Restart** button
-(reachable with Tab) restarts the current level. After you win, it starts a
-new game from level 1. Items are picked up automatically, and each level
-starts with an empty inventory.
-The game never lists objects for you, so work out what's there from the
-picture and the descriptions.
+submit, and use Up/Down to recall earlier commands. Items are picked up
+automatically, and each level starts with an empty inventory. The game never
+lists objects for you, so work out what's there from the picture and the
+descriptions. If you name something that isn't in the room, the game says so
+(`There is no such painting.`). If it's in the room but only visible from the
+other camera, you get `You don't see any door here.`
+
+### Hidden commands
+
+Two commands appear neither in the in-game help nor in the table above. They
+exist for the host, such as the future streaming and monetization layer, to
+expose or gate as it sees fit:
+
+| English   | Português   | Español     | Effect |
+| --------- | ----------- | ----------- | ------ |
+| `hint`    | `dica`      | `pista`     | Reveal the next hint for this room |
+| `restart` | `reiniciar` | `reiniciar` | Restart the current level. After winning, start a new game |
+
+**Hints.** Each room has up to 5 hints, ordered from vague to explicit, and
+only the next one can be revealed. A hint about a step the player has already
+solved is skipped, so every revealed hint is useful. Revealed hints stay on
+screen for the rest of the level, in a box above the log that appears with the
+first hint. The newest hint is shown in full, older ones are shortened to one
+line, and a `HINT n/5` counter heads the box. The camera image shrinks to make
+room, so the command input never leaves the screen. Hints reset when you enter a new room, but survive `restart`, so
+nothing that was paid for is lost.
 
 <details>
 <summary>Solutions (spoilers)</summary>
@@ -150,15 +170,25 @@ loads the new room's `initialFlags`.
 
 `events` are semantic (`message`, `camera_changed`, `item_added`,
 `item_removed`, `inventory`, `flag_set`, `room_changed`, `room_entered`,
-`game_completed`, `failure`). Every event that the player should see has a
-`text`.
+`game_completed`, `hint_revealed`, `restarted`, `failure`). Every event that
+the player should see has a `text`. `GameState.hints` lists the indices of the
+current room's revealed hints in reveal order. A host that charges for hints
+only needs to decide whether to pass a `hint` command on to the engine.
 
-A `failure` event always shows the player `Nothing special.` (for inspect) or
-`Nothing happens.` (for everything else), or the translation of those
-messages. Its `reason` field is for debugging
-and tests only: `unknown_object`, `not_visible`, `item_not_held`,
-`no_interaction` or `conditions_unmet`. Malformed input never reaches the
-engine. The parser rejects it with a short usage message instead.
+A `failure` event has a `reason`, and its text depends on that reason:
+
+| reason | player sees |
+| --- | --- |
+| `unknown_object` | `There is no such <what they typed>.` |
+| `not_visible` (other camera, or an item not carried) | `You don't see any <what they typed> here.` |
+| `item_not_held`, `no_interaction`, `conditions_unmet` | `Nothing special.` for inspect, `Nothing happens.` otherwise |
+
+Wrong codes and wrong items stay vague on purpose, so players can't
+brute-force the puzzles by watching for a different message. Each command
+carries `typed`, the player's own wording of the object, so the explicit
+messages can echo it back. Malformed input never reaches the engine. The parser
+rejects it with a short usage message instead. The messages above are the
+English versions. Each language pack has its own.
 
 ## Making a new room
 
@@ -210,6 +240,12 @@ No code changes are needed. Room files and images are bundled automatically.
         { "type": "add_item", "item": "brass_key" }
       ]
     }
+  ],
+  "hints": [                           // optional, at most 5, vague -> explicit
+    {
+      "text": { "en-US": "Time seems to have stopped here.", "pt-BR": "...", "es": "..." },
+      "skipIf": [{ "type": "flag_equals", "flag": "drawer_open", "value": true }]  // optional
+    }
   ]
 }
 ```
@@ -225,6 +261,13 @@ Rules:
 - When `use` names a real item, the player has to be holding it. Anything
   else in that position is compared literally, which is how codes work.
 - Conditions: `flag_equals {flag, value}`, `has_item {item}`.
+- `hints` is revealed in order. A hint is skipped when all of its `skipIf`
+  conditions hold, meaning the step it helps with is already done.
+- Hints exist to get a stuck player moving again, not to solve the puzzle for
+  them. Point at where to look or what to think about, and get a little more
+  specific with each step, but never give a code, a number or a ready-made
+  command. A test rejects any hint that contains a digit or starts a sentence
+  with the `use` verb.
 - Effects: `set_flag {flag, value}`, `add_item {item}` (does nothing if the
   item is already held), `remove_item {item}` (for items used up),
   `display_message {text}`, `complete_game`, `change_room {room}` (next level).

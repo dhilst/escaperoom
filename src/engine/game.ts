@@ -24,6 +24,18 @@ export function stepGame(
   game: GameDefinition,
   messages: EngineMessages = enUS.engine,
 ): StepResult {
+  // After winning, restart begins a new game from the first room.
+  if (command.verb === "restart" && state.completed) {
+    const first = game.rooms[game.order[0]];
+    return {
+      state: createGameState(game),
+      events: [
+        { type: "restarted", text: messages.restarted },
+        { type: "room_entered", room: first.id, text: `— ${first.title} —\n${first.cameras.A.description}` },
+      ],
+    };
+  }
+
   const room = game.rooms[state.roomId];
   if (!room) throw new Error(`Unknown room "${state.roomId}"`);
 

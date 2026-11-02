@@ -245,5 +245,45 @@
         {"type": "change_room", "room": "cellar"}
       ]
     }
+  ],
+  "hints": [
+    {
+      "text": {
+        "en-US": "Time seems to have stopped in this room.",
+        "pt-BR": "O tempo parece ter parado neste cômodo.",
+        "es": "El tiempo parece haberse detenido en esta habitación."
+      },
+      "skipIf": [{"type": "flag_equals", "flag": "drawer_open", "value": true}]
+    },
+    {
+      "text": {
+        "en-US": "Something here is locked with a combination. Look around for numbers.",
+        "pt-BR": "Algo aqui está trancado com uma combinação. Procure números por perto.",
+        "es": "Algo aquí está cerrado con una combinación. Busca números a tu alrededor."
+      },
+      "skipIf": [{"type": "flag_equals", "flag": "drawer_open", "value": true}]
+    },
+    {
+      "text": {
+        "en-US": "A stopped clock still tells you something. How would you write its time as a code?",
+        "pt-BR": "Um relógio parado ainda diz alguma coisa. Como você escreveria a hora dele como um código?",
+        "es": "Un reloj parado todavía te dice algo. ¿Cómo escribirías su hora como un código?"
+      },
+      "skipIf": [{"type": "flag_equals", "flag": "drawer_open", "value": true}]
+    },
+    {
+      "text": {
+        "en-US": "Some things can't be seen from where you're standing. Try looking the other way.",
+        "pt-BR": "Algumas coisas não podem ser vistas de onde você está. Tente olhar para o outro lado.",
+        "es": "Algunas cosas no se ven desde donde estás. Prueba a mirar hacia el otro lado."
+      }
+    },
+    {
+      "text": {
+        "en-US": "What you found in the drawer belongs to something on the other side of the room.",
+        "pt-BR": "O que você achou na gaveta pertence a algo do outro lado do cômodo.",
+        "es": "Lo que encontraste en el cajón pertenece a algo del otro lado de la habitación."
+      }
+    }
   ]
 }

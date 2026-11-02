@@ -11,11 +11,8 @@
   <body>
     <main class="game">
       <header class="title-bar">
-        <div>
-          <p id="level" class="level"></p>
-          <h1 id="room-title">&nbsp;</h1>
-        </div>
-        <button id="restart" type="button" title="Restart this level">Restart</button>
+        <p id="level" class="level"></p>
+        <h1 id="room-title">&nbsp;</h1>
       </header>
 
       <div class="screen">
@@ -30,6 +27,11 @@
           <ul id="inventory-list"></ul>
         </aside>
       </div>
+
+      <section id="hints" class="hints" aria-labelledby="hint-heading" aria-live="polite" hidden>
+        <h2 id="hint-heading"></h2>
+        <ol id="hint-list"></ol>
+      </section>
 
       <section id="log" class="log" aria-live="polite"></section>
 

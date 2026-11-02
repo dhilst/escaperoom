@@ -98,18 +98,19 @@ describe("full game", () => {
       inventory: [],
       flags: { toolbox_open: false, crate_open: false, power_on: false },
       completed: false,
+      hints: [],
     });
   });
 
   it("objects from earlier rooms are no longer reachable", () => {
     const { last } = playGame([...STUDY_SOLUTION, "inspect clock"]);
-    expect(texts(last)).toEqual(["Nothing special."]);
+    expect(texts(last)).toEqual(["There is no such clock."]);
   });
 
   it("ignores further commands after winning", () => {
     const { state, last } = playGame([...all, "turn"]);
     expect(state.camera).toBe("C");
-    expect(texts(last)).toEqual(["You have already escaped. Restart to play again."]);
+    expect(texts(last)).toEqual(["You have already escaped. Type restart to play again."]);
   });
 
   it("enterRoom keeps the completion status", () => {

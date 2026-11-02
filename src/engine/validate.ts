@@ -1,6 +1,6 @@
 import { enUS } from "../i18n/locales/en-US";
 import { phraseKey } from "./parser";
-import type { GameDefinition, ParserLanguage, RoomDefinition } from "./types";
+import { MAX_HINTS, type GameDefinition, type ParserLanguage, type RoomDefinition } from "./types";
 
 export class RoomValidationError extends Error {
   constructor(readonly problems: string[]) {
@@ -47,6 +47,21 @@ export function validateRoom(data: unknown, language: ParserLanguage = enUS.pars
 
   const objects = isObj(data.objects) ? data.objects : (err("objects must be an object"), {});
   const items = isObj(data.items) ? data.items : (err("items must be an object"), {});
+
+  const checkConditions = (conditions: unknown, where: string) => {
+    if (conditions === undefined) return;
+    if (!Array.isArray(conditions)) return err(`${where} must be an array`);
+    conditions.forEach((c, j) => {
+      const at = `${where}[${j}]`;
+      if (!isObj(c)) return err(`${at} must be an object`);
+      if (c.type === "flag_equals") {
+        if (!isStr(c.flag)) err(`${at}.flag must be a non-empty string`);
+        if (!isFlagValue(c.value)) err(`${at}.value must be a boolean, string or number`);
+      } else if (c.type === "has_item") {
+        if (!isStr(c.item) || !(c.item in items)) err(`${at}.item "${c.item}" is not a known item`);
+      } else err(`${at}.type "${c.type}" is not a known condition`);
+    });
+  };
 
   const aliasOwner = new Map<string, string>();
   const checkNamed = (kind: string, id: string, def: unknown) => {
@@ -104,17 +119,7 @@ export function validateRoom(data: unknown, language: ParserLanguage = enUS.pars
       if (rule.verb === "use" && !isStr(rule.item)) err(`${where}.item is required for "use"`);
       if (rule.verb !== "use" && rule.item !== undefined) err(`${where}.item is only allowed for "use"`);
 
-      if (rule.conditions !== undefined && !Array.isArray(rule.conditions)) err(`${where}.conditions must be an array`);
-      (Array.isArray(rule.conditions) ? rule.conditions : []).forEach((c, j) => {
-        const at = `${where}.conditions[${j}]`;
-        if (!isObj(c)) return err(`${at} must be an object`);
-        if (c.type === "flag_equals") {
-          if (!isStr(c.flag)) err(`${at}.flag must be a non-empty string`);
-          if (!isFlagValue(c.value)) err(`${at}.value must be a boolean, string or number`);
-        } else if (c.type === "has_item") {
-          if (!isStr(c.item) || !(c.item in items)) err(`${at}.item "${c.item}" is not a known item`);
-        } else err(`${at}.type "${c.type}" is not a known condition`);
-      });
+      checkConditions(rule.conditions, `${where}.conditions`);
 
       if (!Array.isArray(rule.effects)) return err(`${where}.effects must be an array`);
       rule.effects.forEach((e, j) => {
@@ -142,6 +147,18 @@ export function validateRoom(data: unknown, language: ParserLanguage = enUS.pars
         }
       });
     });
+  }
+
+  if (data.hints !== undefined) {
+    if (!Array.isArray(data.hints)) err("hints must be an array");
+    else {
+      if (data.hints.length > MAX_HINTS) err(`hints has ${data.hints.length} entries; the maximum is ${MAX_HINTS}`);
+      data.hints.forEach((hint, i) => {
+        if (!isObj(hint)) return err(`hints[${i}] must be an object`);
+        if (!isStr(hint.text)) err(`hints[${i}].text must be a non-empty string`);
+        checkConditions(hint.skipIf, `hints[${i}].skipIf`);
+      });
+    }
   }
 
   if (problems.length > 0) throw new RoomValidationError(problems);
