@@ -358,12 +358,12 @@
         {
           "type": "display_message",
           "text": {
-            "en-US": "The padlock clicks open. You climb the ladder\nand push the hatch into the cold night air.",
-            "pt-BR": "O cadeado se abre com um clique. Você sobe a escada\ne empurra o alçapão para o ar frio da noite.",
-            "es": "El candado se abre con un clic. Subes la escalera\ny empujas la trampilla hacia el frío aire nocturno."
+            "en-US": "The padlock clicks open. You climb the ladder and push the hatch into the cold night air.\nAcross the roof, the glass door of a greenhouse stands ajar.",
+            "pt-BR": "O cadeado se abre com um clique. Você sobe a escada e empurra o alçapão para o ar frio da noite.\nDo outro lado do telhado, a porta de vidro de uma estufa está entreaberta.",
+            "es": "El candado se abre con un clic. Subes la escalera y empujas la trampilla hacia el frío aire nocturno.\nAl otro lado del tejado, la puerta de cristal de un invernadero está entreabierta."
           }
         },
-        {"type": "complete_game"}
+        {"type": "change_room", "room": "greenhouse"}
       ]
     }
   ],

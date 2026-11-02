@@ -1,0 +1,85 @@
+{
+  "id": "clocktower",
+  "title": {"en-US": "The Clock Tower", "pt-BR": "A Torre do Relógio", "es": "La Torre del Reloj"},
+  "cameras": {
+    "A": {
+      "image": "camera_a.png",
+      "description": {
+        "en-US": "Placeholder room.",
+        "pt-BR": "Sala provisória.",
+        "es": "Sala provisional."
+      }
+    },
+    "C": {
+      "image": "camera_c.png",
+      "description": {
+        "en-US": "Placeholder room.",
+        "pt-BR": "Sala provisória.",
+        "es": "Sala provisional."
+      }
+    }
+  },
+  "objects": {
+    "door": {
+      "name": {"en-US": "door", "pt-BR": "porta", "es": "puerta"},
+      "aliases": {"en-US": [], "pt-BR": [], "es": []},
+      "cameras": ["A", "C"]
+    }
+  },
+  "items": {},
+  "initialFlags": {},
+  "interactions": [
+    {
+      "verb": "open",
+      "object": "door",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The door opens.",
+            "pt-BR": "A porta se abre.",
+            "es": "La puerta se abre."
+          }
+        },
+        {"type": "change_room", "room": "kitchen"}
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "text": {
+        "en-US": "Placeholder hint a.",
+        "pt-BR": "Dica provisória a.",
+        "es": "Pista provisional a."
+      }
+    },
+    {
+      "text": {
+        "en-US": "Placeholder hint b.",
+        "pt-BR": "Dica provisória b.",
+        "es": "Pista provisional b."
+      }
+    },
+    {
+      "text": {
+        "en-US": "Placeholder hint c.",
+        "pt-BR": "Dica provisória c.",
+        "es": "Pista provisional c."
+      }
+    },
+    {
+      "text": {
+        "en-US": "Placeholder hint d.",
+        "pt-BR": "Dica provisória d.",
+        "es": "Pista provisional d."
+      }
+    },
+    {
+      "text": {
+        "en-US": "Placeholder hint e.",
+        "pt-BR": "Dica provisória e.",
+        "es": "Pista provisional e."
+      }
+    }
+  ]
+}

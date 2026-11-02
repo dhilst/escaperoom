@@ -7,6 +7,8 @@ dithering. Output is 320x240, meant to be upscaled with nearest-neighbour.
 
     python3 tools/render_rooms.py              # all rooms (requires Pillow)
     python3 tools/render_rooms.py cellar       # just one
+
+Rooms are defined here or in tools/rooms/<id>.py (see load_room_modules).
 """
 
 import math
@@ -523,6 +525,25 @@ ROOMS = {
 }
 
 
+def load_room_modules():
+    """Rooms can also live in tools/rooms/<id>.py. Such a module does
+    `import render_rooms as rr`, builds its scene with rr's helpers, and defines
+
+        ROOM = dict(a=[parts...], c=[parts...], light_a=(x, y), light_c=(x, y), light=rr.WARM)
+
+    where each part is a function taking the Scene. The file name is the room id."""
+    import importlib.util
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    for path in sorted((Path(__file__).resolve().parent / "rooms").glob("*.py")):
+        spec = importlib.util.spec_from_file_location(f"room_{path.stem}", path)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        r = module.ROOM
+        ROOMS[path.stem] = (lambda rid, r: lambda: render_room(
+            rid, r["a"], r["c"], r["light_a"], r["light_c"], r["light"]))(path.stem, r)
+
+
 if __name__ == "__main__":
+    load_room_modules()
     for room_id in sys.argv[1:] or ROOMS:
         ROOMS[room_id]()

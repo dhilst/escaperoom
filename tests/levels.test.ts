@@ -1,12 +1,13 @@
 import { describe, expect, it } from "vitest";
 import { createInitialState, enterRoom } from "../src/engine";
 import { CELLAR_SOLUTION, game, OBSERVATORY_SOLUTION, playGame, STUDY_SOLUTION, texts } from "./helpers";
+import { fullSolution } from "./solutions";
 
 const at = (roomId: string) => createInitialState(game.rooms[roomId]);
 
 describe("game manifest", () => {
-  it("plays study, cellar, observatory in order", () => {
-    expect(game.order).toEqual(["study", "cellar", "observatory"]);
+  it("starts with study, cellar, observatory", () => {
+    expect(game.order.slice(0, 3)).toEqual(["study", "cellar", "observatory"]);
   });
 });
 
@@ -55,13 +56,11 @@ describe("The Flooded Cellar", () => {
 });
 
 describe("The Observatory", () => {
-  it("can be solved and wins the game", () => {
+  it("can be solved and leads onto the roof", () => {
     const { state, last } = playGame(OBSERVATORY_SOLUTION, at("observatory"));
-    expect(texts(last)).toEqual([
-      "The padlock clicks open. You climb the ladder\nand push the hatch into the cold night air.",
-      "You escaped!",
-    ]);
-    expect(state.completed).toBe(true);
+    expect(texts(last)[0]).toMatch(/^The padlock clicks open/);
+    expect(last).toContainEqual(expect.objectContaining({ type: "room_entered", room: "greenhouse" }));
+    expect(state).toMatchObject({ roomId: "greenhouse", completed: false });
   });
 
   it("the telescope shows the code only once the lens is fitted", () => {
@@ -111,11 +110,11 @@ describe("codes are noted in the inventory", () => {
 });
 
 describe("full game", () => {
-  const all = [...STUDY_SOLUTION, ...CELLAR_SOLUTION, ...OBSERVATORY_SOLUTION];
+  const all = fullSolution();
 
   it("can be won from the first room", () => {
     const { state } = playGame(all);
-    expect(state).toMatchObject({ roomId: "observatory", completed: true });
+    expect(state).toMatchObject({ roomId: game.order.at(-1), completed: true });
   });
 
   it("is deterministic", () => {
@@ -141,8 +140,9 @@ describe("full game", () => {
   });
 
   it("ignores further commands after winning", () => {
-    const { state, last } = playGame([...all, "turn"]);
-    expect(state.camera).toBe("C");
+    const won = playGame(all).state;
+    const { state, last } = playGame(["turn"], won);
+    expect(state).toEqual(won);
     expect(texts(last)).toEqual(["You have already escaped. Reload the page to play again."]);
   });
 

@@ -3,6 +3,7 @@ import { loadGame, rawContent } from "../src/content";
 import { buildAliasMap, createGameState, parse } from "../src/engine";
 import { LANGUAGES, LOCALES, localeFromParam, localize, missingTranslations, type Locale } from "../src/i18n";
 import { playGame, texts } from "./helpers";
+import { fullSolution } from "./solutions";
 
 const parserFor = (locale: Locale, roomId = "study") => {
   const language = LANGUAGES[locale].parser;
@@ -10,28 +11,7 @@ const parserFor = (locale: Locale, roomId = "study") => {
   return (input: string) => parse(input, aliases, language);
 };
 
-const SOLUTIONS: Record<Locale, string[]> = {
-  "en-US": [
-    "use 0315 drawer", "turn", "use key door",
-    "open toolbox", "turn", "use crowbar crate", "turn", "use fuse fuse box", "turn", "inspect wall", "use 7419 door",
-    "open birdcage", "turn", "use crank music box", "turn", "use lens telescope", "inspect telescope", "turn",
-    "use 2618 hatch",
-  ],
-  "pt-BR": [
-    "usar 0315 na gaveta", "virar", "usar a chave na porta",
-    "abrir a caixa de ferramentas", "virar", "usar o pé de cabra nos caixotes", "virar",
-    "usar o fusível na caixa de fusíveis", "virar", "examinar a parede", "usar 7419 na porta",
-    "abrir a gaiola", "virar", "usar a manivela na caixa de música", "virar", "usar a lente no telescópio",
-    "examinar o telescópio", "virar", "usar 2618 no alçapão",
-  ],
-  es: [
-    "usar 0315 en el cajón", "girar", "usar la llave en la puerta",
-    "abrir la caja de herramientas", "girar", "usar la palanca en las cajas", "girar",
-    "usar el fusible en la caja de fusibles", "girar", "examinar la pared", "usar 7419 en la puerta",
-    "abrir la jaula", "girar", "usar la manivela en la caja de música", "girar", "usar la lente en el telescopio",
-    "examinar el telescopio", "girar", "usar 2618 en la trampilla",
-  ],
-};
+const SOLUTIONS = Object.fromEntries(LOCALES.map((l) => [l, fullSolution(l)])) as Record<Locale, string[]>;
 
 describe("locale selection (?lang=)", () => {
   it("defaults to US English", () => {
@@ -85,7 +65,7 @@ describe("localized data", () => {
 
   it.each(LOCALES)("%s: the game validates, including unique names for its parser", (locale) => {
     const game = loadGame(locale);
-    expect(game.order).toEqual(["study", "cellar", "observatory"]);
+    expect(game.order.slice(0, 3)).toEqual(["study", "cellar", "observatory"]);
   });
 });
 
@@ -170,7 +150,7 @@ describe("playing in other languages", () => {
 
   it("the game state is identical whatever the language", () => {
     const finals = LOCALES.map((locale) =>
-      playGame(SOLUTIONS[locale].slice(0, 9), createGameState(loadGame(locale)), locale).state,
+      playGame(SOLUTIONS[locale].slice(0, 10), createGameState(loadGame(locale)), locale).state,
     );
     expect(finals[1]).toEqual(finals[0]);
     expect(finals[2]).toEqual(finals[0]);
