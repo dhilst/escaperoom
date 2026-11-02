@@ -116,6 +116,23 @@
         "pt-BR": "Uma lente grossa, perfeitamente límpida.",
         "es": "Una lente gruesa, perfectamente transparente."
       }
+    },
+    "stars_note": {
+      "name": {
+        "en-US": "Stars: 2, 6, 1, 8",
+        "pt-BR": "Estrelas: 2, 6, 1, 8",
+        "es": "Estrellas: 2, 6, 1, 8"
+      },
+      "aliases": {
+        "en-US": ["stars note"],
+        "pt-BR": ["anotação das estrelas"],
+        "es": ["nota de las estrellas"]
+      },
+      "description": {
+        "en-US": "You noted the numbers inked beside the Swan's stars: 2, 6, 1, 8.",
+        "pt-BR": "Você anotou os números escritos ao lado das estrelas do Cisne: 2, 6, 1, 8.",
+        "es": "Anotaste los números escritos junto a las estrellas del Cisne: 2, 6, 1, 8."
+      }
     }
   },
   "initialFlags": {"cage_open": false, "box_open": false, "lens_fitted": false},
@@ -146,7 +163,8 @@
             "pt-BR": "Pela ocular, o Cisne brilha intensamente.\nAlguém escreveu a tinta um número ao lado de quatro de suas estrelas: 2, 6, 1, 8.",
             "es": "A través del ocular, el Cisne resplandece.\nAlguien escribió con tinta un número junto a cuatro de sus estrellas: 2, 6, 1, 8."
           }
-        }
+        },
+        {"type": "add_item", "item": "stars_note"}
       ]
     },
     {

@@ -20,7 +20,7 @@ describe("engine: cameras", () => {
   });
 
   it("restricts interactions to objects of the active camera", () => {
-    expect(texts(play(["inspect clock"]).last)).toEqual(["A dusty wall clock.\nThe hands are stopped at 03:15."]);
+    expect(texts(play(["inspect clock"]).last)[0]).toBe("A dusty wall clock.\nThe hands are stopped at 03:15.");
     const fromC = play(["turn", "inspect clock"]).last;
     expect(texts(fromC)).toEqual(["You don't see any clock here."]);
     expect(failure(fromC)).toMatchObject({ reason: "not_visible" });

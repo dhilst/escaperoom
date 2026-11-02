@@ -133,6 +133,23 @@
         "pt-BR": "Um fusível de vidro. O filamento parece intacto.",
         "es": "Un fusible de cristal. El filamento parece intacto."
       }
+    },
+    "wall_note": {
+      "name": {
+        "en-US": "Wall: 7 4 1 9",
+        "pt-BR": "Parede: 7 4 1 9",
+        "es": "Pared: 7 4 1 9"
+      },
+      "aliases": {
+        "en-US": ["wall note"],
+        "pt-BR": ["anotação da parede"],
+        "es": ["nota de la pared"]
+      },
+      "description": {
+        "en-US": "You noted the numbers painted on the wall: 7 4 1 9.",
+        "pt-BR": "Você anotou os números pintados na parede: 7 4 1 9.",
+        "es": "Anotaste los números pintados en la pared: 7 4 1 9."
+      }
     }
   },
   "initialFlags": {"toolbox_open": false, "crate_open": false, "power_on": false},
@@ -347,7 +364,8 @@
             "pt-BR": "Números em tinta vermelha escorrida:\n7 4 1 9",
             "es": "Números en pintura roja chorreante:\n7 4 1 9"
           }
-        }
+        },
+        {"type": "add_item", "item": "wall_note"}
       ]
     },
     {

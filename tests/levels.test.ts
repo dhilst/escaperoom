@@ -26,7 +26,11 @@ describe("The Flooded Cellar", () => {
   it("the wall can only be read once the power is on", () => {
     expect(texts(playGame(["turn", "inspect wall"], at("cellar")).last)).toEqual(["Too dark to make anything out."]);
     const lit = playGame([...CELLAR_SOLUTION.slice(0, 5), "turn", "inspect writing"], at("cellar"));
-    expect(texts(lit.last)).toEqual(["Numbers in dripping red paint:\n7 4 1 9"]);
+    expect(texts(lit.last)).toEqual(["Numbers in dripping red paint:\n7 4 1 9", "[Wall: 7 4 1 9 added to inventory]"]);
+  });
+
+  it("reading the wall in the dark notes nothing", () => {
+    expect(playGame(["turn", "inspect wall"], at("cellar")).state.inventory).toEqual([]);
   });
 
   it("the right code does nothing without power", () => {
@@ -75,6 +79,34 @@ describe("The Observatory", () => {
   it("the hatch rejects wrong codes", () => {
     const { state } = playGame(["turn", "use 1234 hatch", "use 0315 hatch", "use 7419 hatch"], at("observatory"));
     expect(state.completed).toBe(false);
+  });
+});
+
+describe("codes are noted in the inventory", () => {
+  it("once per room, with what the player saw", () => {
+    const study = playGame(["inspect clock", "inspect clock", "inventory"]);
+    expect(study.state.inventory).toEqual(["clock_note"]);
+    expect(texts(study.last)).toEqual(["- Clock: 03:15"]);
+
+    const cellar = playGame([...CELLAR_SOLUTION.slice(0, 5), "turn", "inspect wall"], at("cellar"));
+    expect(cellar.state.inventory).toEqual(["wall_note"]);
+
+    const obs = playGame([...OBSERVATORY_SOLUTION.slice(0, 5), "inspect telescope"], at("observatory"));
+    expect(obs.state.inventory).toEqual(["stars_note"]);
+  });
+
+  it("a note can be inspected from either camera", () => {
+    const { last } = playGame(["inspect clock", "turn", "inspect clock note"]);
+    expect(texts(last)).toEqual(["You noted the time on the stopped clock: 03:15."]);
+  });
+
+  it("notes are translated", () => {
+    expect(texts(playGame(["examinar o relógio"], undefined, "pt-BR").last)[1]).toBe(
+      "[Adicionado ao inventário: Relógio: 03:15]",
+    );
+    expect(texts(playGame(["examinar el reloj"], undefined, "es").last)[1]).toBe(
+      "[Añadido al inventario: Reloj: 03:15]",
+    );
   });
 });
 

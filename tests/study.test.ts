@@ -17,7 +17,11 @@ describe("The Locked Study", () => {
       "The dials click into place. The drawer opens.\nYou found a brass key!",
       "[Brass key added to inventory]",
     ]);
-    expect(texts(log[4])).toEqual(["- Brass key"]);
+    expect(texts(log[1])).toEqual([
+      "A dusty wall clock.\nThe hands are stopped at 03:15.",
+      "[Clock: 03:15 added to inventory]",
+    ]);
+    expect(texts(log[4])).toEqual(["- Clock: 03:15\n- Brass key"]);
     expect(texts(log[6])[0]).toBe("The key turns with a groan. The door unlocks.\nStone steps lead down into the dark.");
     expect(log[6]).toContainEqual(expect.objectContaining({ type: "room_entered", room: "cellar" }));
     expect(state).toMatchObject({ roomId: "cellar", camera: "A", inventory: [], completed: false });

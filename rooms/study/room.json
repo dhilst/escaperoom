@@ -75,6 +75,23 @@
         "pt-BR": "Uma pequena chave de latão, fria ao toque.",
         "es": "Una pequeña llave de latón, fría al tacto."
       }
+    },
+    "clock_note": {
+      "name": {
+        "en-US": "Clock: 03:15",
+        "pt-BR": "Relógio: 03:15",
+        "es": "Reloj: 03:15"
+      },
+      "aliases": {
+        "en-US": ["clock note"],
+        "pt-BR": ["anotação do relógio"],
+        "es": ["nota del reloj"]
+      },
+      "description": {
+        "en-US": "You noted the time on the stopped clock: 03:15.",
+        "pt-BR": "Você anotou a hora do relógio parado: 03:15.",
+        "es": "Anotaste la hora del reloj parado: 03:15."
+      }
     }
   },
   "initialFlags": {"drawer_open": false, "door_unlocked": false},
@@ -90,7 +107,8 @@
             "pt-BR": "Um relógio de parede empoeirado.\nOs ponteiros estão parados em 03:15.",
             "es": "Un reloj de pared polvoriento.\nLas manecillas están detenidas en las 03:15."
           }
-        }
+        },
+        {"type": "add_item", "item": "clock_note"}
       ]
     },
     {

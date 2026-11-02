@@ -306,6 +306,10 @@ Rules:
 - Conditions: `flag_equals {flag, value}`, `has_item {item}`.
 - `hints` is revealed in order. A hint is skipped when all of its `skipIf`
   conditions hold, meaning the step it helps with is already done.
+- When an interaction reveals a code, also give the player a note item that
+  records what they saw, such as `Clock: 03:15` or `Wall: 7 4 1 9`. Add it
+  with `add_item` next to the message, so the code stays in the inventory and
+  nobody has to remember it. Record the clue as seen, not the code to type.
 - Hints exist to get a stuck player moving again, not to solve the puzzle for
   them. Point at where to look or what to think about, and get a little more
   specific with each step, but never give a code, a number or a ready-made
