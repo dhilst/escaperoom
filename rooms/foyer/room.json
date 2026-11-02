@@ -204,6 +204,23 @@
         "pt-BR": "Uma manivela de ferro com encaixe quadrado. Feita para algum tipo de guincho.",
         "es": "Una manivela de hierro con encaje cuadrado. Hecha para algún tipo de cabrestante."
       }
+    },
+    "door_note": {
+      "name": {
+        "en-US": "Locks: iron top, silver middle, gold bottom; earth to sky",
+        "pt-BR": "Fechaduras: ferro no alto, prata no meio, ouro embaixo; da terra ao céu",
+        "es": "Cerraduras: hierro arriba, plata en medio, oro abajo; de la tierra al cielo"
+      },
+      "aliases": {
+        "en-US": ["door note", "locks note"],
+        "pt-BR": ["anotação da porta"],
+        "es": ["nota de la puerta"]
+      },
+      "description": {
+        "en-US": "You noted the order of the locks, top to bottom, and the words carved above them.",
+        "pt-BR": "Você anotou a ordem das fechaduras, de cima para baixo, e as palavras gravadas acima delas.",
+        "es": "Anotaste el orden de las cerraduras, de arriba abajo, y las palabras talladas encima."
+      }
     }
   },
   "initialFlags": {
@@ -212,9 +229,6 @@
     "clock_open": false,
     "chandelier_lowered": false,
     "gold_taken": false,
-    "iron_turned": false,
-    "silver_turned": false,
-    "gold_turned": false,
     "door_open": false
   },
   "brightness": 0.6,
@@ -389,57 +403,16 @@
     },
     {
       "say": ["front_door"],
-      "conditions": [{"type": "flag_equals", "flag": "iron_turned", "value": true}],
       "effects": [
         {
           "type": "display_message",
           "text": {
-            "en-US": "The great double door. Some of its locks hang open now; the rest still hold.",
-            "pt-BR": "A grande porta dupla. Algumas fechaduras já estão abertas; as outras ainda resistem.",
-            "es": "La gran puerta doble. Algunas cerraduras ya están abiertas; las demás aún resisten."
+            "en-US": "A great oak double door, swollen in its frame. Three locks run down the seam:\niron at the top, silver in the middle, gold at the bottom. Carved above them: FROM THE EARTH TO THE SKY.",
+            "pt-BR": "Uma grande porta dupla de carvalho, inchada no batente. Três fechaduras descem pela junta:\nferro no alto, prata no meio, ouro embaixo. Gravado acima delas: DA TERRA AO CÉU.",
+            "es": "Una gran puerta doble de roble, hinchada en su marco. Tres cerraduras bajan por la junta:\nhierro arriba, plata en medio, oro abajo. Tallado sobre ellas: DE LA TIERRA AL CIELO."
           }
-        }
-      ]
-    },
-    {
-      "say": ["front_door"],
-      "conditions": [{"type": "flag_equals", "flag": "silver_turned", "value": true}],
-      "effects": [
-        {
-          "type": "display_message",
-          "text": {
-            "en-US": "The great double door. Some of its locks hang open now; the rest still hold.",
-            "pt-BR": "A grande porta dupla. Algumas fechaduras já estão abertas; as outras ainda resistem.",
-            "es": "La gran puerta doble. Algunas cerraduras ya están abiertas; las demás aún resisten."
-          }
-        }
-      ]
-    },
-    {
-      "say": ["front_door"],
-      "conditions": [{"type": "flag_equals", "flag": "gold_turned", "value": true}],
-      "effects": [
-        {
-          "type": "display_message",
-          "text": {
-            "en-US": "The great double door. Some of its locks hang open now; the rest still hold.",
-            "pt-BR": "A grande porta dupla. Algumas fechaduras já estão abertas; as outras ainda resistem.",
-            "es": "La gran puerta doble. Algunas cerraduras ya están abiertas; las demás aún resisten."
-          }
-        }
-      ]
-    },
-    {
-      "say": ["front_door"],
-      "effects": [
-        {
-          "type": "display_message",
-          "text": {
-            "en-US": "A great oak double door, swollen in its frame.\nThree locks run down the seam: one iron, one silver, one gold.",
-            "pt-BR": "Uma grande porta dupla de carvalho, inchada no batente.\nTrês fechaduras descem pela junção: uma de ferro, uma de prata, uma de ouro.",
-            "es": "Una gran puerta doble de roble, hinchada en su marco.\nTres cerraduras bajan por la juntura: una de hierro, una de plata, una de oro."
-          }
-        }
+        },
+        {"type": "add_item", "item": "door_note"}
       ]
     },
     {
@@ -451,120 +424,6 @@
             "en-US": "It won't move. The locks hold it shut.",
             "pt-BR": "Não se mexe. As fechaduras a mantêm fechada.",
             "es": "No se mueve. Las cerraduras la mantienen cerrada."
-          }
-        }
-      ]
-    },
-    {
-      "say": ["iron_key", "front_door"],
-      "conditions": [
-        {"type": "flag_equals", "flag": "iron_turned", "value": false},
-        {"type": "flag_equals", "flag": "silver_turned", "value": true},
-        {"type": "flag_equals", "flag": "gold_turned", "value": true}
-      ],
-      "effects": [
-        {"type": "set_flag", "flag": "iron_turned", "value": true},
-        {"type": "set_flag", "flag": "door_open", "value": true},
-        {"type": "remove_item", "item": "iron_key"},
-        {
-          "type": "display_message",
-          "text": {
-            "en-US": "The last lock turns. The great door groans and swings wide onto a grey dawn.\nCold air, birdsong. You step out of the house.",
-            "pt-BR": "A última fechadura gira. A grande porta geme e se escancara para um amanhecer cinzento.\nAr frio, pássaros cantando. Você sai da casa.",
-            "es": "La última cerradura gira. La gran puerta gime y se abre de par en par a un amanecer gris.\nAire frío, cantos de pájaros. Sales de la casa."
-          }
-        },
-        {"type": "complete_game"}
-      ]
-    },
-    {
-      "say": ["iron_key", "front_door"],
-      "conditions": [{"type": "flag_equals", "flag": "iron_turned", "value": false}],
-      "effects": [
-        {"type": "set_flag", "flag": "iron_turned", "value": true},
-        {"type": "remove_item", "item": "iron_key"},
-        {
-          "type": "display_message",
-          "text": {
-            "en-US": "The iron key grinds in its lock and turns with a heavy clunk.",
-            "pt-BR": "A chave de ferro range na fechadura e gira com um baque pesado.",
-            "es": "La llave de hierro chirría en su cerradura y gira con un golpe sordo."
-          }
-        }
-      ]
-    },
-    {
-      "say": ["silver_key", "front_door"],
-      "conditions": [
-        {"type": "flag_equals", "flag": "silver_turned", "value": false},
-        {"type": "flag_equals", "flag": "iron_turned", "value": true},
-        {"type": "flag_equals", "flag": "gold_turned", "value": true}
-      ],
-      "effects": [
-        {"type": "set_flag", "flag": "silver_turned", "value": true},
-        {"type": "set_flag", "flag": "door_open", "value": true},
-        {"type": "remove_item", "item": "silver_key"},
-        {
-          "type": "display_message",
-          "text": {
-            "en-US": "The last lock turns. The great door groans and swings wide onto a grey dawn.\nCold air, birdsong. You step out of the house.",
-            "pt-BR": "A última fechadura gira. A grande porta geme e se escancara para um amanhecer cinzento.\nAr frio, pássaros cantando. Você sai da casa.",
-            "es": "La última cerradura gira. La gran puerta gime y se abre de par en par a un amanecer gris.\nAire frío, cantos de pájaros. Sales de la casa."
-          }
-        },
-        {"type": "complete_game"}
-      ]
-    },
-    {
-      "say": ["silver_key", "front_door"],
-      "conditions": [{"type": "flag_equals", "flag": "silver_turned", "value": false}],
-      "effects": [
-        {"type": "set_flag", "flag": "silver_turned", "value": true},
-        {"type": "remove_item", "item": "silver_key"},
-        {
-          "type": "display_message",
-          "text": {
-            "en-US": "The silver key slides in and turns with a thin, clean click.",
-            "pt-BR": "A chave de prata desliza e gira com um clique fino e limpo.",
-            "es": "La llave de plata entra suave y gira con un clic fino y limpio."
-          }
-        }
-      ]
-    },
-    {
-      "say": ["gold_key", "front_door"],
-      "conditions": [
-        {"type": "flag_equals", "flag": "gold_turned", "value": false},
-        {"type": "flag_equals", "flag": "iron_turned", "value": true},
-        {"type": "flag_equals", "flag": "silver_turned", "value": true}
-      ],
-      "effects": [
-        {"type": "set_flag", "flag": "gold_turned", "value": true},
-        {"type": "set_flag", "flag": "door_open", "value": true},
-        {"type": "remove_item", "item": "gold_key"},
-        {
-          "type": "display_message",
-          "text": {
-            "en-US": "The last lock turns. The great door groans and swings wide onto a grey dawn.\nCold air, birdsong. You step out of the house.",
-            "pt-BR": "A última fechadura gira. A grande porta geme e se escancara para um amanhecer cinzento.\nAr frio, pássaros cantando. Você sai da casa.",
-            "es": "La última cerradura gira. La gran puerta gime y se abre de par en par a un amanecer gris.\nAire frío, cantos de pájaros. Sales de la casa."
-          }
-        },
-        {"type": "complete_game"}
-      ]
-    },
-    {
-      "say": ["gold_key", "front_door"],
-      "conditions": [{"type": "flag_equals", "flag": "gold_turned", "value": false}],
-      "effects": [
-        {"type": "set_flag", "flag": "gold_turned", "value": true},
-        {"type": "remove_item", "item": "gold_key"},
-        {
-          "type": "display_message",
-          "text": {
-            "en-US": "The gold key fits its lock perfectly. Something inside the door gives way.",
-            "pt-BR": "A chave de ouro se encaixa perfeitamente. Algo dentro da porta cede.",
-            "es": "La llave de oro encaja a la perfección. Algo dentro de la puerta cede."
           }
         }
       ]
@@ -654,6 +513,64 @@
           }
         }
       ]
+    },
+    {
+      "say": ["iron_key", "front_door"],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The key slides in, but won't turn alone.\nThe three locks are linked: they want all three keys, in the right order.",
+            "pt-BR": "A chave entra, mas não gira sozinha.\nAs três fechaduras estão ligadas: querem as três chaves, na ordem certa.",
+            "es": "La llave entra, pero no gira sola.\nLas tres cerraduras están unidas: quieren las tres llaves, en el orden correcto."
+          }
+        }
+      ]
+    },
+    {
+      "say": ["silver_key", "front_door"],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The key slides in, but won't turn alone.\nThe three locks are linked: they want all three keys, in the right order.",
+            "pt-BR": "A chave entra, mas não gira sozinha.\nAs três fechaduras estão ligadas: querem as três chaves, na ordem certa.",
+            "es": "La llave entra, pero no gira sola.\nLas tres cerraduras están unidas: quieren las tres llaves, en el orden correcto."
+          }
+        }
+      ]
+    },
+    {
+      "say": ["gold_key", "front_door"],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The key slides in, but won't turn alone.\nThe three locks are linked: they want all three keys, in the right order.",
+            "pt-BR": "A chave entra, mas não gira sozinha.\nAs três fechaduras estão ligadas: querem as três chaves, na ordem certa.",
+            "es": "La llave entra, pero no gira sola.\nLas tres cerraduras están unidas: quieren las tres llaves, en el orden correcto."
+          }
+        }
+      ]
+    },
+    {
+      "say": ["gold_key", "silver_key", "iron_key", "front_door"],
+      "conditions": [{"type": "flag_equals", "flag": "door_open", "value": false}],
+      "effects": [
+        {"type": "set_flag", "flag": "door_open", "value": true},
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Gold, then silver, then iron: the locks give way from the floor up.\nThe last lock turns. The great door groans and swings wide onto a grey dawn.\nCold air, birdsong. You step out of the house.",
+            "pt-BR": "Ouro, depois prata, depois ferro: as fechaduras cedem de baixo para cima.\nA última fechadura gira. A grande porta geme e se escancara para um amanhecer cinzento.\nAr frio, pássaros cantando. Você sai da casa.",
+            "es": "Oro, luego plata, luego hierro: las cerraduras ceden de abajo arriba.\nLa última cerradura gira. La gran puerta gime y se abre de par en par a un amanecer gris.\nAire frío, cantos de pájaros. Sales de la casa."
+          }
+        },
+        {"type": "remove_item", "item": "iron_key"},
+        {"type": "remove_item", "item": "silver_key"},
+        {"type": "remove_item", "item": "gold_key"},
+        {"type": "complete_game"}
+      ]
     }
   ],
   "hints": [
@@ -697,9 +614,9 @@
     },
     {
       "text": {
-        "en-US": "Once the chandelier is within reach, search its crystals. After that, every key has its own lock.",
-        "pt-BR": "Com o lustre ao alcance, procure entre os cristais. Depois disso, cada chave tem sua fechadura.",
-        "es": "Con el candelabro a tu alcance, busca entre sus cristales. Después, cada llave tiene su cerradura."
+        "en-US": "Once the chandelier is within reach, search its crystals. Then read the door: it says how its locks want to be turned.",
+        "pt-BR": "Quando o lustre estiver ao alcance, procure entre os cristais. Depois leia a porta: ela diz como as fechaduras querem ser giradas.",
+        "es": "Cuando el candelabro esté a tu alcance, busca entre sus cristales. Luego lee la puerta: dice cómo quieren girar sus cerraduras."
       }
     }
   ]

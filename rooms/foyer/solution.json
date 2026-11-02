@@ -6,9 +6,8 @@
     "turn",
     "handle winch",
     "chandelier",
-    "iron key door",
-    "silver key door",
-    "gold key door"
+    "front door",
+    "gold silver iron door"
   ],
   "pt-BR": [
     "abrir sobretudo",
@@ -17,9 +16,8 @@
     "virar",
     "manivela guincho",
     "lustre",
-    "chave de ferro porta",
-    "chave de prata porta",
-    "chave de ouro porta"
+    "porta",
+    "ouro prata ferro porta"
   ],
   "es": [
     "abrir abrigo",
@@ -28,8 +26,7 @@
     "girar",
     "manivela cabrestante",
     "candelabro",
-    "llave de hierro puerta",
-    "llave de plata puerta",
-    "llave de oro puerta"
+    "puerta",
+    "oro plata hierro puerta"
   ]
 }

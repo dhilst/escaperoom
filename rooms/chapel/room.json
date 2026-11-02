@@ -11,22 +11,6 @@
       },
       "variants": [
         {
-          "when": [{"type": "flag_equals", "flag": "lit", "value": 1}],
-          "description": {
-            "en-US": "A stone altar stands beneath a stained-glass window.\nOne candle burns on it. The other two stay cold.",
-            "pt-BR": "Um altar de pedra se ergue sob um vitral.\nUma vela queima sobre ele. As outras duas continuam frias.",
-            "es": "Un altar de piedra se alza bajo un vitral.\nUna vela arde sobre él. Las otras dos siguen frías."
-          }
-        },
-        {
-          "when": [{"type": "flag_equals", "flag": "lit", "value": 2}],
-          "description": {
-            "en-US": "A stone altar stands beneath a stained-glass window.\nTwo candles burn on it. One is still cold.",
-            "pt-BR": "Um altar de pedra se ergue sob um vitral.\nDuas velas queimam sobre ele. Uma ainda está fria.",
-            "es": "Un altar de piedra se alza bajo un vitral.\nDos velas arden sobre él. Una sigue fría."
-          }
-        },
-        {
           "when": [{"type": "flag_equals", "flag": "lit", "value": 3}],
           "description": {
             "en-US": "A stone altar stands beneath a stained-glass window.\nAll three candles burn. The glass glows above them.",
@@ -209,11 +193,7 @@
   },
   "initialFlags": {"box_open": false, "taper_lit": false, "lit": 0, "panel_open": false},
   "brightness": 0.5,
-  "lighting": [
-    {"when": [{"type": "flag_equals", "flag": "lit", "value": 1}], "brightness": 0.7},
-    {"when": [{"type": "flag_equals", "flag": "lit", "value": 2}], "brightness": 0.85},
-    {"when": [{"type": "flag_equals", "flag": "lit", "value": 3}], "brightness": 1.05}
-  ],
+  "lighting": [{"when": [{"type": "flag_equals", "flag": "lit", "value": 3}], "brightness": 1.05}],
   "interactions": [
     {
       "say": ["altar"],
@@ -221,9 +201,9 @@
         {
           "type": "display_message",
           "text": {
-            "en-US": "A slab of cold stone under a yellowed cloth.\nThree tall candles stand on it: black, white and red.",
-            "pt-BR": "Uma laje de pedra fria sob uma toalha amarelada.\nTrês velas altas estão sobre ela: preta, branca e vermelha.",
-            "es": "Una losa de piedra fría bajo un mantel amarillento.\nSobre ella hay tres velas altas: negra, blanca y roja."
+            "en-US": "A slab of cold stone under a yellowed cloth.\nThree tall candles stand on it: black, white and red.\nCarved along its edge: NAME THE COLORS AS THE HYMN SINGS THEM.",
+            "pt-BR": "Uma laje de pedra fria sob uma toalha amarelada.\nTrês velas altas estão sobre ela: preta, branca e vermelha.\nGravado na borda: DIGA AS CORES COMO O HINO AS CANTA.",
+            "es": "Una losa de piedra fría bajo un mantel amarillento.\nSobre ella hay tres velas altas: negra, blanca y roja.\nTallado en el borde: NOMBRA LOS COLORES COMO LOS CANTA EL HIMNO."
           }
         }
       ]
@@ -601,88 +581,69 @@
     },
     {
       "say": ["taper", "white_candle"],
-      "conditions": [{"type": "flag_equals", "flag": "lit", "value": 0}],
       "effects": [
-        {"type": "set_flag", "flag": "lit", "value": 1},
         {
           "type": "display_message",
           "text": {
-            "en-US": "The white candle takes the flame.\nPale light spreads across the altar.",
-            "pt-BR": "A vela branca pega fogo.\nUma luz pálida se espalha pelo altar.",
-            "es": "La vela blanca prende.\nUna luz pálida se extiende por el altar."
+            "en-US": "The wick won't take a lone flame.\nThe altar wants all three candles, in the hymn's order.",
+            "pt-BR": "O pavio não aceita uma chama sozinha.\nO altar quer as três velas, na ordem do hino.",
+            "es": "La mecha no acepta una llama sola.\nEl altar quiere las tres velas, en el orden del himno."
           }
         }
       ]
     },
     {
       "say": ["taper", "red_candle"],
-      "conditions": [{"type": "flag_equals", "flag": "lit", "value": 1}],
       "effects": [
-        {"type": "set_flag", "flag": "lit", "value": 2},
         {
           "type": "display_message",
           "text": {
-            "en-US": "The red candle catches.\nIts light stains the stone the color of rust.",
-            "pt-BR": "A vela vermelha acende.\nSua luz tinge a pedra da cor da ferrugem.",
-            "es": "La vela roja prende.\nSu luz tiñe la piedra del color del óxido."
+            "en-US": "The wick won't take a lone flame.\nThe altar wants all three candles, in the hymn's order.",
+            "pt-BR": "O pavio não aceita uma chama sozinha.\nO altar quer as três velas, na ordem do hino.",
+            "es": "La mecha no acepta una llama sola.\nEl altar quiere las tres velas, en el orden del himno."
           }
         }
       ]
     },
     {
       "say": ["taper", "black_candle"],
-      "conditions": [{"type": "flag_equals", "flag": "lit", "value": 2}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The wick won't take a lone flame.\nThe altar wants all three candles, in the hymn's order.",
+            "pt-BR": "O pavio não aceita uma chama sozinha.\nO altar quer as três velas, na ordem do hino.",
+            "es": "La mecha no acepta una llama sola.\nEl altar quiere las tres velas, en el orden del himno."
+          }
+        }
+      ]
+    },
+    {
+      "say": ["white_candle", "red_candle", "black_candle", "altar"],
+      "conditions": [{"type": "flag_equals", "flag": "panel_open", "value": true}],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "All three candles already burn. Better leave them be.",
+            "pt-BR": "As três velas já ardem. Melhor deixá-las assim.",
+            "es": "Las tres velas ya arden. Mejor dejarlas así."
+          }
+        }
+      ]
+    },
+    {
+      "say": ["white_candle", "red_candle", "black_candle", "altar"],
+      "conditions": [{"type": "flag_equals", "flag": "taper_lit", "value": true}],
       "effects": [
         {"type": "set_flag", "flag": "lit", "value": 3},
         {"type": "set_flag", "flag": "panel_open", "value": true},
         {
           "type": "display_message",
           "text": {
-            "en-US": "The black candle burns with a low, still flame.\nBehind you, wood gives a sharp click.",
-            "pt-BR": "A vela preta queima com uma chama baixa e imóvel.\nAtrás de você, a madeira dá um estalo seco.",
-            "es": "La vela negra arde con una llama baja y quieta.\nDetrás de ti, la madera da un chasquido seco."
-          }
-        }
-      ]
-    },
-    {
-      "say": ["taper", "white_candle"],
-      "effects": [
-        {"type": "set_flag", "flag": "lit", "value": 0},
-        {
-          "type": "display_message",
-          "text": {
-            "en-US": "The wick flares, then a cold draft sweeps the altar.\nEvery flame there gutters out. Only the taper still burns.",
-            "pt-BR": "O pavio da vela se inflama, e uma corrente fria varre o altar.\nTodas as chamas ali se apagam. Só o seu pavio continua aceso.",
-            "es": "El pabilo se aviva y una corriente fría barre el altar.\nTodas las llamas se apagan. Solo tu mecha sigue encendida."
-          }
-        }
-      ]
-    },
-    {
-      "say": ["taper", "red_candle"],
-      "effects": [
-        {"type": "set_flag", "flag": "lit", "value": 0},
-        {
-          "type": "display_message",
-          "text": {
-            "en-US": "The wick flares, then a cold draft sweeps the altar.\nEvery flame there gutters out. Only the taper still burns.",
-            "pt-BR": "O pavio da vela se inflama, e uma corrente fria varre o altar.\nTodas as chamas ali se apagam. Só o seu pavio continua aceso.",
-            "es": "El pabilo se aviva y una corriente fría barre el altar.\nTodas las llamas se apagan. Solo tu mecha sigue encendida."
-          }
-        }
-      ]
-    },
-    {
-      "say": ["taper", "black_candle"],
-      "effects": [
-        {"type": "set_flag", "flag": "lit", "value": 0},
-        {
-          "type": "display_message",
-          "text": {
-            "en-US": "The wick flares, then a cold draft sweeps the altar.\nEvery flame there gutters out. Only the taper still burns.",
-            "pt-BR": "O pavio da vela se inflama, e uma corrente fria varre o altar.\nTodas as chamas ali se apagam. Só o seu pavio continua aceso.",
-            "es": "El pabilo se aviva y una corriente fría barre el altar.\nTodas las llamas se apagan. Solo tu mecha sigue encendida."
+            "en-US": "You touch the taper to the white candle, then the red, then the black.\nAll three burn. Behind you, wood gives with a dry click.",
+            "pt-BR": "Você encosta o pavio na vela branca, depois na vermelha, depois na preta.\nAs três ardem. Atrás de você, a madeira cede com um estalo seco.",
+            "es": "Acercas la mecha a la vela blanca, luego a la roja, luego a la negra.\nLas tres arden. Detrás de ti, la madera cede con un chasquido seco."
           }
         }
       ]
@@ -723,9 +684,9 @@
     },
     {
       "text": {
-        "en-US": "Each word of the verse is a color on the altar. A mistake snuffs them all, so begin again from the first.",
-        "pt-BR": "Cada palavra do verso é uma cor no altar. Um erro apaga todas, então recomece do início.",
-        "es": "Cada palabra del verso es un color del altar. Un error las apaga todas, así que vuelve a empezar desde el principio."
+        "en-US": "Each word of the verse is a color on the altar. Name all three at the altar, in the hymn's order.",
+        "pt-BR": "Cada palavra do verso é uma cor no altar. Diga as três ao altar, na ordem do hino.",
+        "es": "Cada palabra del verso es un color del altar. Nombra los tres ante el altar, en el orden del himno."
       },
       "skipIf": [{"type": "flag_equals", "flag": "panel_open", "value": true}]
     }

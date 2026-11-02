@@ -10,7 +10,6 @@ const run = (lines: string[]) => playGame(lines, start());
 
 /** Taper in hand and lit, standing at the altar (camera A). */
 const READY = ["open candle box", "turn", "taper lamp", "turn"];
-const GUTTER = "The wick flares, then a cold draft sweeps the altar.\nEvery flame there gutters out. Only the taper still burns.";
 
 describe("The Chapel", () => {
   it("is solved by its solution and leads to the clock tower", () => {
@@ -51,38 +50,36 @@ describe("The Chapel", () => {
     expect(texts(playGame(["turn", "hymnal", "turn", "note"], start()).last)[0]).toMatch(/underlined verse/);
   });
 
-  it("candles advance the count in the right order", () => {
-    const { state, log } = run([...READY, "taper white candle", "taper red candle"]);
-    expect(texts(log[4])[0]).toMatch(/^The white candle takes the flame/);
-    expect(texts(log[5])[0]).toMatch(/^The red candle catches/);
-    expect(state.flags).toMatchObject({ lit: 2, panel_open: false });
+  it("the altar asks for the colors in the hymn's order", () => {
+    expect(texts(run(["altar"]).last)[0]).toMatch(/NAME THE COLORS AS THE HYMN SINGS THEM/);
   });
 
-  it("a wrong order snuffs every flame and starts over", () => {
-    const wrongFirst = run([...READY, "taper red candle"]);
-    expect(texts(wrongFirst.last)).toEqual([GUTTER]);
-    expect(wrongFirst.state.flags.lit).toBe(0);
-
-    const late = run([...READY, "taper white candle", "taper black candle"]);
-    expect(late.state.flags.lit).toBe(0);
-    expect(late.state.flags.taper_lit).toBe(true);
-
-    const retry = run([...READY, "taper black candle", "taper white candle", "taper red candle",
-      "taper black candle"]);
-    expect(retry.state.flags).toMatchObject({ lit: 3, panel_open: true });
+  it("one candle at a time no longer works", () => {
+    const { state, last } = run([...READY, "taper white candle"]);
+    expect(texts(last)).toEqual(["The wick won't take a lone flame.\nThe altar wants all three candles, in the hymn's order."]);
+    expect(state.flags.lit).toBe(0);
   });
 
-  it("relighting a burning candle counts as a mistake", () => {
-    const twice = run([...READY, "taper white candle", "taper white candle"]);
-    expect(texts(twice.last)).toEqual([GUTTER]);
-    expect(twice.state.flags.lit).toBe(0);
-    const redTwice = run([...READY, "taper white candle", "taper red candle", "taper red candle"]);
-    expect(redTwice.state.flags.lit).toBe(0);
+  it("naming the three candles in the hymn's order at the altar opens the panel", () => {
+    const { state, last } = run([...READY, "white red black altar"]);
+    expect(texts(last)[0]).toMatch(/^You touch the taper to the white candle, then the red, then the black/);
+    expect(state.flags).toMatchObject({ lit: 3, panel_open: true });
+    // the full names work too
+    expect(run([...READY, "white candle red candle black candle altar"]).state.flags.panel_open).toBe(true);
+  });
+
+  it("any other order, a missing word, or no flame does nothing", () => {
+    for (const line of ["red white black altar", "black red white altar", "white red black", "white red altar"]) {
+      const { state, last } = run([...READY, line]);
+      expect(texts(last), line).toEqual(["Nothing happens."]);
+      expect(state.flags.panel_open, line).toBe(false);
+    }
+    expect(texts(run(["white red black altar"]).last)).toEqual(["Nothing happens."]); // no taper yet
+    expect(texts(run(["open candle box", "white red black altar"]).last)).toEqual(["Nothing happens."]); // unlit
   });
 
   it("once the panel opens, the candles stay lit", () => {
-    const done = [...READY, "taper white candle", "taper red candle", "taper black candle"];
-    const { state, last } = run([...done, "taper white candle", "taper black candle"]);
+    const { state, last } = run([...READY, "white red black altar", "taper red candle", "white red black altar"]);
     expect(texts(last)).toEqual(["All three candles already burn. Better leave them be."]);
     expect(state.flags).toMatchObject({ lit: 3, panel_open: true });
   });
@@ -93,29 +90,28 @@ describe("The Chapel", () => {
     expect(state.roomId).toBe("chapel");
   });
 
-  it("brightens with each candle and darkens again on a mistake", () => {
-    const at = (lines: string[]) => roomBrightness(run(lines).state, chapel);
-    expect(at([])).toBe(0.5);
-    expect(at([...READY, "taper white candle"])).toBe(0.7);
-    expect(at([...READY, "taper white candle", "taper red candle"])).toBe(0.85);
-    expect(at([...READY, "taper white candle", "taper red candle", "taper black candle"])).toBe(1.05);
-    expect(at([...READY, "taper white candle", "taper black candle"])).toBe(0.5);
+  it("is dark until the three candles burn together", () => {
+    expect(roomBrightness(start(), chapel)).toBe(0.5);
+    expect(roomBrightness(run(READY).state, chapel)).toBe(0.5);
+    expect(roomBrightness(run([...READY, "white red black altar"]).state, chapel)).toBe(1.05);
   });
 
-  it("the altar view tells how many candles burn", () => {
+  it("the altar view changes once all three candles burn", () => {
     const desc = (lines: string[]) => describeCamera(run(lines).state, chapel, "A");
-    expect(desc([])).toMatch(/cold/);
-    expect(desc([...READY, "taper white candle"])).toMatch(/One candle burns/);
-    expect(desc([...READY, "taper white candle", "taper red candle"])).toMatch(/Two candles burn/);
-    expect(desc([...READY, "taper white candle", "taper red candle", "taper black candle"])).toMatch(
-      /All three candles burn/,
-    );
+    expect(desc(READY)).not.toMatch(/All three candles burn/);
+    expect(desc([...READY, "white red black altar"])).toMatch(/All three candles burn/);
   });
 
   it("is translated", () => {
     const pt = playGame(["abrir caixa de velas", "pavio vela branca"], createInitialState(loadGame("pt-BR").rooms.chapel), "pt-BR");
     expect(texts(pt.log[0])).toContain("[Adicionado ao inventário: Pavio de cera]");
     expect(texts(pt.last)).toEqual(["O pavio não está aceso."]);
+    const ptWin = playGame(
+      ["abrir caixa de velas", "virar", "pavio lamparina", "virar", "branca vermelha preta altar"],
+      createInitialState(loadGame("pt-BR").rooms.chapel),
+      "pt-BR",
+    );
+    expect(ptWin.state.flags.panel_open).toBe(true);
     const es = playGame(["girar", "himnario"], createInitialState(loadGame("es").rooms.chapel), "es");
     expect(texts(es.last)).toEqual([
       "Una cinta marca la página. Un verso está subrayado con tinta:\n\"Primero el alba, luego la sangre, luego la noche.\"",

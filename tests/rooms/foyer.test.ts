@@ -11,56 +11,52 @@ const run = (lines: string[], from: GameState = start(), locale: Locale = "en-US
 
 /** All three keys in hand, standing at the door (camera C). */
 const KEYS = ["open coat", "umbrella stand", "open grandfather clock", "turn", "handle winch", "chandelier"];
-const LOCKS = ["iron key door", "silver key door", "gold key door"];
 
 describe("The Grand Foyer", () => {
   it("is the last level", () => {
     expect(game.order.at(-1)).toBe("foyer");
   });
 
-  it("collects three keys, then each key turns its own lock", () => {
+  it("collects three keys, then turns them together in the door's order", () => {
     const { state, log } = run(KEYS);
     expect(state.inventory).toEqual(["iron_key", "silver_key", "gold_key"]);
     expect(texts(log[0])).toContain("[Iron key added to inventory]");
     expect(texts(log[1])[0]).toMatch(/You found a silver key!/);
     expect(texts(log[4])).toContain("[Crank handle removed from inventory]");
 
-    const first = run(LOCKS.slice(0, 2), state);
-    expect(first.state.flags).toMatchObject({ iron_turned: true, silver_turned: true, gold_turned: false, door_open: false });
-    expect(first.state.completed).toBe(false);
-    expect(first.state.inventory).toEqual(["gold_key"]);
-
-    const last = run([LOCKS[2]], first.state);
-    expect(texts(last.last)[1]).toMatch(/^The last lock turns\. The great door groans and swings wide onto a grey dawn/);
-    expect(texts(last.last)).toContain("You escaped!");
-    expect(last.state).toMatchObject({ roomId: "foyer", completed: true });
+    const won = run(["gold silver iron door"], state);
+    expect(texts(won.last)[0]).toMatch(/^Gold, then silver, then iron: the locks give way from the floor up\./);
+    expect(texts(won.last)).toContain("You escaped!");
+    expect(won.state).toMatchObject({ roomId: "foyer", completed: true, inventory: [] });
   });
 
-  it.each([
-    [0, 1, 2],
-    [0, 2, 1],
-    [1, 0, 2],
-    [1, 2, 0],
-    [2, 0, 1],
-    [2, 1, 0],
-  ])("the locks can be turned in any order (%i %i %i)", (...order) => {
-    const keys = run(KEYS).state;
-    const { state, log } = run(order.map((i) => LOCKS[i]), keys);
-    expect(log.slice(0, 2).every((events) => !events.some((e) => e.type === "game_completed"))).toBe(true);
-    expect(state.completed).toBe(true);
-    expect(state.inventory).toEqual([]);
+  it("the door shows the locks' order and the inscription, and notes them", () => {
+    const { state, last } = run(["turn", "door", "door"]);
+    expect(texts(last)[0]).toMatch(/iron at the top, silver in the middle, gold at the bottom.*FROM THE EARTH TO THE SKY/s);
+    expect(state.inventory).toEqual(["door_note"]);
   });
 
-  it("the door does not open by hand, and a turned lock stays turned", () => {
-    const { state, last } = run([...KEYS, "open door", "iron key door", "iron key door"]);
-    expect(texts(last)).toEqual(["Nothing happens."]);
-    expect(state.flags.iron_turned).toBe(true);
+  it.each(["iron silver gold door", "gold iron silver door", "silver gold iron door", "gold silver door", "gold silver iron"])(
+    "any other order or a missing key does nothing: %s",
+    (line) => {
+      const { state, last } = run([line], run(KEYS).state);
+      expect(texts(last)).toEqual(["Nothing happens."]);
+      expect(state.completed).toBe(false);
+      expect(state.inventory).toEqual(["iron_key", "silver_key", "gold_key"]);
+    },
+  );
+
+  it("the door does not open by hand, and one key alone won't turn", () => {
+    const { state, log } = run([...KEYS, "open door", "iron key door"]);
+    expect(texts(log[KEYS.length])).toEqual(["It won't move. The locks hold it shut."]);
+    expect(texts(log[KEYS.length + 1])[0]).toMatch(/won't turn alone\.\nThe three locks are linked/);
     expect(state.completed).toBe(false);
+    expect(state.inventory).toEqual(["iron_key", "silver_key", "gold_key"]);
   });
 
-  it("keys must be held: no lock turns before they are found", () => {
-    const { state } = run(["turn", "iron key door", "silver key door", "gold key door"]);
-    expect(state.flags).toMatchObject({ iron_turned: false, silver_turned: false, gold_turned: false });
+  it("keys must be held: the phrase does nothing before they are found", () => {
+    const { state, last } = run(["turn", "gold silver iron door"]);
+    expect(texts(last)).toEqual(["Nothing happens."]);
     expect(state.completed).toBe(false);
   });
 
@@ -99,7 +95,7 @@ describe("The Grand Foyer", () => {
     const keys = run(KEYS).state;
     expect(roomBrightness(start(), foyer)).toBe(0.6);
     expect(roomBrightness(keys, foyer)).toBe(0.6);
-    expect(roomBrightness(run(LOCKS, keys).state, foyer)).toBe(1.25);
+    expect(roomBrightness(run(["gold silver iron door"], keys).state, foyer)).toBe(1.25);
   });
 
   it("camera C shows the chandelier lowered", () => {
@@ -120,12 +116,11 @@ describe("The Grand Foyer", () => {
       "Un candelabro de cristal en lo alto, fuera de tu alcance.\nAlgo dorado brilla entre los cristales.",
     ]);
     const ptWin = run(
-      ["abrir sobretudo", "guarda-chuvas", "abrir relógio", "virar", "manivela guincho",
-       "lustre", "chave de ouro fechaduras", "chave de prata porta", "ferro porta"],
+      ["abrir sobretudo", "guarda-chuvas", "abrir relógio", "virar", "manivela guincho", "lustre", "ouro prata ferro porta"],
       start("pt-BR"),
       "pt-BR",
     );
     expect(ptWin.state.completed).toBe(true);
-    expect(texts(ptWin.last)[1]).toMatch(/^A última fechadura gira\./);
+    expect(texts(ptWin.last)[0]).toMatch(/^Ouro, depois prata, depois ferro/);
   });
 });

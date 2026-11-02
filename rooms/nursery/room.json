@@ -74,36 +74,9 @@
     "mural": {
       "name": {"en-US": "mural", "pt-BR": "mural", "es": "mural"},
       "aliases": {
-        "en-US": [
-          "painting",
-          "wall",
-          "sky",
-          "sun",
-          "moon",
-          "star",
-          "stars",
-          "story"
-        ],
-        "pt-BR": [
-          "pintura",
-          "parede",
-          "céu",
-          "sol",
-          "lua",
-          "estrela",
-          "estrelas",
-          "história"
-        ],
-        "es": [
-          "pintura",
-          "pared",
-          "cielo",
-          "sol",
-          "luna",
-          "estrella",
-          "estrellas",
-          "historia"
-        ]
+        "en-US": ["painting", "wall", "sky", "stars", "story"],
+        "pt-BR": ["pintura", "parede", "céu", "estrelas", "história"],
+        "es": ["pintura", "pared", "cielo", "estrellas", "historia"]
       },
       "cameras": ["C"]
     },
@@ -279,9 +252,9 @@
         {
           "type": "display_message",
           "text": {
-            "en-US": "A small white door, too low for a grown-up.\nA brass lock with three numbered dials holds it shut.",
-            "pt-BR": "Uma portinha branca, baixa demais para um adulto.\nUm cadeado de latão com três discos numerados a mantém fechada.",
-            "es": "Una puertita blanca, demasiado baja para un adulto.\nUn candado de latón con tres ruedas numeradas la mantiene cerrada."
+            "en-US": "A small white door, too low for a grown-up.\nIts brass lock has three picture buttons, a sun, a moon and a star, above three number dials.",
+            "pt-BR": "Uma portinha branca, baixa demais para um adulto.\nO cadeado de latão tem três botões com figuras, um sol, uma lua e uma estrela, sobre três discos numerados.",
+            "es": "Una puertita blanca, demasiado baja para un adulto.\nSu candado de latón tiene tres botones con dibujos, un sol, una luna y una estrella, sobre tres ruedas numeradas."
           }
         }
       ]
@@ -292,22 +265,22 @@
         {
           "type": "display_message",
           "text": {
-            "en-US": "It won't open. The brass lock has three dials, waiting for a code.",
-            "pt-BR": "Não abre. O cadeado de latão tem três discos, esperando um código.",
-            "es": "No se abre. El candado de latón tiene tres ruedas, esperando un código."
+            "en-US": "It won't open. The lock wants its picture buttons pressed in order,\nthen a code on the dials.",
+            "pt-BR": "Não abre. O cadeado quer os botões de figuras apertados em ordem,\ne depois um código nos discos.",
+            "es": "No se abre. El candado quiere los botones de dibujos pulsados en orden,\ny luego un código en las ruedas."
           }
         }
       ]
     },
     {
-      "say": ["472", "door"],
+      "say": ["sun", "moon", "star", "472", "door"],
       "effects": [
         {
           "type": "display_message",
           "text": {
-            "en-US": "The last dial clicks into place. The lock falls open.\nYou crawl through into a narrow corridor lined with books.",
-            "pt-BR": "O último disco se encaixa com um clique. O cadeado se abre.\nVocê passa engatinhando para um corredor estreito, forrado de livros.",
-            "es": "La última rueda encaja con un clic. El candado se abre.\nPasas a gatas a un pasillo estrecho, cubierto de libros."
+            "en-US": "You press the sun, the moon, the star. The last dial clicks into place. The lock falls open.\nYou crawl through into a narrow corridor lined with books.",
+            "pt-BR": "Você aperta o sol, a lua, a estrela. O último disco se encaixa com um clique. O cadeado se abre.\nVocê passa engatinhando para um corredor estreito, forrado de livros.",
+            "es": "Pulsas el sol, la luna, la estrella. La última rueda encaja con un clic. El candado se abre.\nPasas a gatas a un pasillo estrecho, cubierto de libros."
           }
         },
         {"type": "change_room", "room": "library"}
@@ -333,9 +306,9 @@
     },
     {
       "text": {
-        "en-US": "The lock wants three numbers. The blocks have them, but not in the right order.",
-        "pt-BR": "O cadeado pede três números. Os blocos os têm, mas não na ordem certa.",
-        "es": "El candado pide tres números. Los bloques los tienen, pero no en el orden correcto."
+        "en-US": "The lock wants its pictures pressed in an order, then three numbers. The blocks have the numbers, but not in the right order.",
+        "pt-BR": "O cadeado quer as figuras apertadas numa ordem e depois três números. Os blocos têm os números, mas fora de ordem.",
+        "es": "El candado quiere los dibujos pulsados en un orden y luego tres números. Los bloques tienen los números, pero no en el orden correcto."
       }
     },
     {
@@ -347,10 +320,24 @@
     },
     {
       "text": {
-        "en-US": "Follow the mural's story in order, and for each picture take the number painted on its block.",
-        "pt-BR": "Siga a história do mural em ordem e, para cada figura, pegue o número pintado no seu bloco.",
-        "es": "Sigue la historia del mural en orden y, para cada figura, toma el número pintado en su bloque."
+        "en-US": "Follow the mural's story: press the pictures in that order, then dial each picture's number from its block, in that same order.",
+        "pt-BR": "Siga a história do mural: aperte as figuras nessa ordem e depois disque o número de cada figura, tirado do seu bloco, na mesma ordem.",
+        "es": "Sigue la historia del mural: pulsa los dibujos en ese orden y luego marca el número de cada dibujo, tomado de su bloque, en el mismo orden."
       }
     }
-  ]
+  ],
+  "verbs": {
+    "sun": {
+      "name": {"en-US": "sun", "pt-BR": "sol", "es": "sol"},
+      "aliases": {"en-US": [], "pt-BR": [], "es": []}
+    },
+    "moon": {
+      "name": {"en-US": "moon", "pt-BR": "lua", "es": "luna"},
+      "aliases": {"en-US": [], "pt-BR": [], "es": []}
+    },
+    "star": {
+      "name": {"en-US": "star", "pt-BR": "estrela", "es": "estrella"},
+      "aliases": {"en-US": [], "pt-BR": [], "es": []}
+    }
+  }
 }

@@ -101,6 +101,14 @@ reveals which of its words were right. Guessing a phrase of n words from a
 room's vocabulary of V words therefore costs about V^n tries, not n·V, so
 longer phrases protect the later puzzles.
 
+The game uses this as a difficulty curve. Early rooms are solved with
+two-word phrases. Later, a room's final unlock is a longer phrase built
+from everything you learned there. The nursery's lock wants its pictures
+pressed in the mural's order and then the code (five words). The chapel's
+altar wants the three candles named in the hymn's order (four words). The
+front door wants its three keys in the order carved above it (four words).
+Doing the parts one at a time doesn't work in those rooms.
+
 ### Hidden commands
 
 `help` (`ajuda`, `ayuda`) lists the commands above, and the game suggests it
