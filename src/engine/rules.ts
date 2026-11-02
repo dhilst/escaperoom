@@ -24,6 +24,12 @@ export function applyEffect(state: GameState, effect: Effect, room: RoomDefiniti
       const name = room.items[effect.item]?.name ?? effect.item;
       return [{ type: "item_added", item: effect.item, text: `[${name} added to inventory]` }];
     }
+    case "remove_item": {
+      if (!state.inventory.includes(effect.item)) return [];
+      state.inventory = state.inventory.filter((id) => id !== effect.item);
+      const name = room.items[effect.item]?.name ?? effect.item;
+      return [{ type: "item_removed", item: effect.item, text: `[${name} removed from inventory]` }];
+    }
     case "change_room":
       state.roomId = effect.room;
       state.camera = "A";

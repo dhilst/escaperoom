@@ -117,8 +117,8 @@
       "conditions": [{ "type": "has_item", "item": "brass_key" }],
       "effects": [
         { "type": "set_flag", "flag": "door_unlocked", "value": true },
-        { "type": "display_message", "text": "The key turns with a groan. The door unlocks." },
-        { "type": "complete_game" }
+        { "type": "display_message", "text": "The key turns with a groan. The door unlocks.\nStone steps lead down into the dark." },
+        { "type": "change_room", "room": "cellar" }
       ]
     }
   ]

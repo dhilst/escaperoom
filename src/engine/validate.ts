@@ -1,4 +1,4 @@
-import type { RoomDefinition } from "./types";
+import type { GameDefinition, RoomDefinition } from "./types";
 
 export class RoomValidationError extends Error {
   constructor(readonly problems: string[]) {
@@ -119,6 +119,7 @@ export function validateRoom(data: unknown): RoomDefinition {
             if (!isFlagValue(e.value)) err(`${at}.value must be a boolean, string or number`);
             break;
           case "add_item":
+          case "remove_item":
             if (!isStr(e.item) || !(e.item in items)) err(`${at}.item "${e.item}" is not a known item`);
             break;
           case "change_room":
@@ -138,4 +139,46 @@ export function validateRoom(data: unknown): RoomDefinition {
 
   if (problems.length > 0) throw new RoomValidationError(problems);
   return data as unknown as RoomDefinition;
+}
+
+/**
+ * Validate a game manifest ({ title, rooms: [ids in level order] }) together
+ * with every room file. Also checks that each change_room points at a listed room.
+ */
+export function validateGame(manifest: unknown, roomData: unknown[]): GameDefinition {
+  const problems: string[] = [];
+  const rooms: Record<string, RoomDefinition> = {};
+
+  for (const data of roomData) {
+    try {
+      const room = validateRoom(data);
+      if (room.id in rooms) problems.push(`room id "${room.id}" is defined twice`);
+      rooms[room.id] = room;
+    } catch (e) {
+      if (!(e instanceof RoomValidationError)) throw e;
+      const id = isObj(data) && isStr(data.id) ? data.id : "?";
+      problems.push(...e.problems.map((p) => `room "${id}": ${p}`));
+    }
+  }
+
+  if (!isObj(manifest)) throw new RoomValidationError([...problems, "game manifest must be a JSON object"]);
+  if (!isStr(manifest.title)) problems.push("game title must be a non-empty string");
+  const order = isStrArray(manifest.rooms) && manifest.rooms.length > 0 ? manifest.rooms : [];
+  if (order.length === 0) problems.push("game rooms must be a non-empty array of room ids");
+  for (const id of order) if (!(id in rooms) && problems.every((p) => !p.startsWith(`room "${id}"`))) {
+    problems.push(`game lists room "${id}" but no such room exists`);
+  }
+
+  for (const room of Object.values(rooms)) {
+    room.interactions.forEach((rule, i) => {
+      for (const effect of rule.effects) {
+        if (effect.type === "change_room" && !order.includes(effect.room)) {
+          problems.push(`room "${room.id}": interactions[${i}] changes to room "${effect.room}", which the game does not list`);
+        }
+      }
+    });
+  }
+
+  if (problems.length > 0) throw new RoomValidationError(problems);
+  return { title: manifest.title as string, order, rooms };
 }

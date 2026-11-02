@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { createInitialState, RoomValidationError, step, validateRoom } from "../src/engine";
+import { createInitialState, RoomValidationError, step, validateGame, validateRoom } from "../src/engine";
 import type { GameEvent } from "../src/engine";
 import roomJson from "../rooms/study/room.json";
 import { play, room, texts } from "./helpers";
@@ -81,6 +81,24 @@ describe("engine: state changes", () => {
   it("never duplicates unique items", () => {
     const { state } = play(["use 0315 drawer", "use 0315 drawer", "open drawer", "inspect drawer"]);
     expect(state.inventory).toEqual(["brass_key"]);
+  });
+
+  it("remove_item takes an item out of the inventory once", () => {
+    const custom = validateRoom({
+      ...roomJson,
+      interactions: [
+        { verb: "open", object: "desk", effects: [{ type: "add_item", item: "brass_key" }] },
+        { verb: "inspect", object: "desk", effects: [{ type: "remove_item", item: "brass_key" }] },
+      ],
+    });
+    let state = step(createInitialState(custom), { verb: "open", object: "desk" }, custom).state;
+    const removed = step(state, { verb: "inspect", object: "desk" }, custom);
+    expect(removed.state.inventory).toEqual([]);
+    expect(removed.events).toEqual([
+      { type: "item_removed", item: "brass_key", text: "[Brass key removed from inventory]" },
+    ]);
+    state = removed.state;
+    expect(step(state, { verb: "inspect", object: "desk" }, custom).events).toEqual([]);
   });
 
   it("add_item of a held item is a silent no-op", () => {
@@ -198,5 +216,18 @@ describe("room validation", () => {
 
   it("rejects non-objects", () => {
     expect(() => validateRoom(null)).toThrow(RoomValidationError);
+  });
+
+  it("checks the game manifest and links between rooms", () => {
+    const study = structuredClone(roomJson) as any;
+    expect(() => validateGame({ title: "T", rooms: ["study"] }, [study])).toThrow(
+      /changes to room "cellar", which the game does not list/,
+    );
+    expect(() => validateGame({ title: "T", rooms: ["study", "nowhere"] }, [study])).toThrow(
+      /game lists room "nowhere" but no such room exists/,
+    );
+    expect(() => validateGame({ title: "T", rooms: ["study"] }, [study, study])).toThrow(/defined twice/);
+    study.title = "";
+    expect(() => validateGame({ title: "T", rooms: ["study"] }, [study])).toThrow(/room "study": title/);
   });
 });

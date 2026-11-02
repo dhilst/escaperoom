@@ -1,0 +1,166 @@
+{
+  "id": "observatory",
+  "title": "The Observatory",
+  "cameras": {
+    "A": {
+      "image": "camera_a.png",
+      "description": "A brass telescope stands beneath a star chart.\nAn old birdcage hangs from a hook."
+    },
+    "C": {
+      "image": "camera_c.png",
+      "description": "A music box rests on a table by a round window.\nA ladder climbs to a hatch in the ceiling."
+    }
+  },
+  "objects": {
+    "telescope": {
+      "name": "telescope",
+      "aliases": ["scope", "brass telescope", "eyepiece"],
+      "cameras": ["A"]
+    },
+    "star_chart": {
+      "name": "star chart",
+      "aliases": ["chart", "starchart", "map", "constellations"],
+      "cameras": ["A"]
+    },
+    "birdcage": {
+      "name": "birdcage",
+      "aliases": ["cage", "bird cage", "feathers"],
+      "cameras": ["A"]
+    },
+    "music_box": {
+      "name": "music box",
+      "aliases": ["musicbox", "box", "table"],
+      "cameras": ["C"]
+    },
+    "window": {
+      "name": "window",
+      "aliases": ["round window", "sky", "stars"],
+      "cameras": ["C"]
+    },
+    "hatch": {
+      "name": "hatch",
+      "aliases": ["ladder", "padlock", "lock", "trapdoor", "ceiling", "roof hatch"],
+      "cameras": ["C"]
+    }
+  },
+  "items": {
+    "crank": {
+      "name": "Winding crank",
+      "aliases": ["winding crank", "handle"],
+      "description": "A small brass crank, worn smooth by fingers."
+    },
+    "lens": {
+      "name": "Glass lens",
+      "aliases": ["glass lens"],
+      "description": "A thick, perfectly clear lens."
+    }
+  },
+  "initialFlags": {
+    "cage_open": false,
+    "box_open": false,
+    "lens_fitted": false
+  },
+  "interactions": [
+    {
+      "verb": "inspect",
+      "object": "telescope",
+      "conditions": [{ "type": "flag_equals", "flag": "lens_fitted", "value": false }],
+      "effects": [{ "type": "display_message", "text": "Aimed at a gap in the roof boards.\nThe eyepiece lens is missing." }]
+    },
+    {
+      "verb": "inspect",
+      "object": "telescope",
+      "effects": [{ "type": "display_message", "text": "Through the eyepiece, the Swan blazes.\nSomeone inked a number beside four of its stars: 2, 6, 1, 8." }]
+    },
+    {
+      "verb": "use",
+      "item": "lens",
+      "object": "telescope",
+      "conditions": [{ "type": "flag_equals", "flag": "lens_fitted", "value": false }],
+      "effects": [
+        { "type": "set_flag", "flag": "lens_fitted", "value": true },
+        { "type": "display_message", "text": "The lens clicks into the eyepiece.\nThe stars above swim into focus." },
+        { "type": "remove_item", "item": "lens" }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "star_chart",
+      "effects": [{ "type": "display_message", "text": "Constellations in faded ink. Beside the Swan, a note:\n'She only sings when wound.'" }]
+    },
+    {
+      "verb": "inspect",
+      "object": "birdcage",
+      "conditions": [{ "type": "flag_equals", "flag": "cage_open", "value": false }],
+      "effects": [{ "type": "display_message", "text": "A rusted birdcage. Something metal glints among the old feathers." }]
+    },
+    {
+      "verb": "inspect",
+      "object": "birdcage",
+      "effects": [{ "type": "display_message", "text": "Nothing left but feathers." }]
+    },
+    {
+      "verb": "open",
+      "object": "birdcage",
+      "conditions": [{ "type": "flag_equals", "flag": "cage_open", "value": false }],
+      "effects": [
+        { "type": "set_flag", "flag": "cage_open", "value": true },
+        { "type": "display_message", "text": "The tiny door creaks open.\nYou found a winding crank!" },
+        { "type": "add_item", "item": "crank" }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "music_box",
+      "conditions": [{ "type": "flag_equals", "flag": "box_open", "value": false }],
+      "effects": [{ "type": "display_message", "text": "A lacquered music box. Its winding crank is missing." }]
+    },
+    {
+      "verb": "inspect",
+      "object": "music_box",
+      "effects": [{ "type": "display_message", "text": "The lid stands open. A tinny waltz still plays." }]
+    },
+    {
+      "verb": "open",
+      "object": "music_box",
+      "conditions": [{ "type": "flag_equals", "flag": "box_open", "value": false }],
+      "effects": [{ "type": "display_message", "text": "The lid won't lift. Something inside holds it shut." }]
+    },
+    {
+      "verb": "use",
+      "item": "crank",
+      "object": "music_box",
+      "conditions": [{ "type": "flag_equals", "flag": "box_open", "value": false }],
+      "effects": [
+        { "type": "set_flag", "flag": "box_open", "value": true },
+        { "type": "display_message", "text": "You wind the box. A tinny waltz plays and the lid springs open.\nYou found a glass lens!" },
+        { "type": "remove_item", "item": "crank" },
+        { "type": "add_item", "item": "lens" }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "window",
+      "effects": [{ "type": "display_message", "text": "A round window full of stars.\nThe sky has never looked so close." }]
+    },
+    {
+      "verb": "inspect",
+      "object": "hatch",
+      "effects": [{ "type": "display_message", "text": "The ladder leads to a roof hatch.\nIt's held shut by a four-digit padlock." }]
+    },
+    {
+      "verb": "open",
+      "object": "hatch",
+      "effects": [{ "type": "display_message", "text": "The padlock holds it shut." }]
+    },
+    {
+      "verb": "use",
+      "item": "2618",
+      "object": "hatch",
+      "effects": [
+        { "type": "display_message", "text": "The padlock clicks open. You climb the ladder\nand push the hatch into the cold night air." },
+        { "type": "complete_game" }
+      ]
+    }
+  ]
+}

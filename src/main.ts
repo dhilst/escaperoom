@@ -1,11 +1,13 @@
 import "./ui/style.css";
-import studyJson from "../rooms/study/room.json";
+import { loadGame } from "./content";
 import {
   buildAliasMap,
+  createGameState,
   createInitialState,
   parse,
-  step,
-  validateRoom,
+  stepGame,
+  type AliasMap,
+  type GameDefinition,
   type GameEvent,
   type GameState,
   type RoomDefinition,
@@ -30,7 +32,9 @@ function imageUrl(room: RoomDefinition, file: string): string {
 function lineKind(event: GameEvent): LineKind {
   switch (event.type) {
     case "item_added":
+    case "item_removed":
       return "item";
+    case "room_entered":
     case "game_completed":
       return "success";
     default:
@@ -38,24 +42,33 @@ function lineKind(event: GameEvent): LineKind {
   }
 }
 
-function start(room: RoomDefinition): void {
-  const aliases = buildAliasMap(room);
+function start(game: GameDefinition): void {
   const history: string[] = [];
   let historyIndex = 0;
   let state: GameState;
+  let aliases: AliasMap;
+  let aliasesFor = "";
+
+  const currentRoom = () => game.rooms[state.roomId];
 
   const render = () => {
+    const room = currentRoom();
+    if (aliasesFor !== room.id) {
+      aliases = buildAliasMap(room);
+      aliasesFor = room.id;
+    }
     const camera = room.cameras[state.camera];
+    ui.setTitle(game.title, room.title, game.order.indexOf(room.id) + 1, game.order.length);
     ui.showCamera(state.camera, imageUrl(room, camera.image), camera.description);
     ui.setInventory(state.inventory.map((id) => room.items[id]?.name ?? id));
     ui.setCompleted(state.completed);
   };
 
-  const reset = () => {
-    state = createInitialState(room);
+  /** Restart the current level, or the whole game once it has been won. */
+  const restart = (fresh: GameState) => {
+    state = fresh;
     ui.clearLog();
-    ui.setTitle(room.title);
-    ui.print(room.cameras[state.camera].description, "response");
+    ui.print(currentRoom().cameras[state.camera].description, "response");
     render();
     ui.focusInput();
   };
@@ -71,7 +84,7 @@ function start(room: RoomDefinition): void {
       ui.print(parsed.error, "error");
       return;
     }
-    const result = step(state, parsed.command, room);
+    const result = stepGame(state, parsed.command, game);
     state = result.state;
     for (const event of result.events) {
       if ("text" in event) ui.print(event.text, lineKind(event));
@@ -94,12 +107,14 @@ function start(room: RoomDefinition): void {
     ui.input.value = history[historyIndex] ?? "";
   });
 
-  ui.restartButton.addEventListener("click", reset);
-  reset();
+  ui.restartButton.addEventListener("click", () =>
+    restart(state.completed ? createGameState(game) : createInitialState(currentRoom())),
+  );
+  restart(createGameState(game));
 }
 
 try {
-  start(validateRoom(studyJson));
+  start(loadGame());
 } catch (error) {
   ui.print(String(error instanceof Error ? error.message : error), "error");
   console.error(error);

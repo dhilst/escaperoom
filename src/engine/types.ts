@@ -44,6 +44,7 @@ export type Condition =
 export type Effect =
   | { type: "set_flag"; flag: string; value: FlagValue }
   | { type: "add_item"; item: string }
+  | { type: "remove_item"; item: string }
   | { type: "change_room"; room: string }
   | { type: "complete_game" }
   | { type: "display_message"; text: string };
@@ -82,6 +83,7 @@ export interface Interaction {
   effects: Effect[];
 }
 
+/** A room is one level of the game. */
 export interface RoomDefinition {
   id: string;
   title: string;
@@ -90,6 +92,14 @@ export interface RoomDefinition {
   items: Record<string, ItemDefinition>;
   initialFlags?: Record<string, FlagValue>;
   interactions: Interaction[];
+}
+
+/** Several rooms played as levels, in the order listed by rooms/game.json. */
+export interface GameDefinition {
+  title: string;
+  /** Room ids in level order; the first one is where the game starts. */
+  order: string[];
+  rooms: Record<string, RoomDefinition>;
 }
 
 // ---------------------------------------------------------------------------
@@ -108,9 +118,11 @@ export type GameEvent =
   | { type: "message"; text: string }
   | { type: "camera_changed"; camera: CameraId; text: string }
   | { type: "item_added"; item: string; text: string }
+  | { type: "item_removed"; item: string; text: string }
   | { type: "inventory"; items: string[]; text: string }
   | { type: "flag_set"; flag: string; value: FlagValue }
   | { type: "room_changed"; room: string }
+  | { type: "room_entered"; room: string; text: string }
   | { type: "game_completed"; text: string }
   | { type: "failure"; reason: FailureReason; text: string };
 

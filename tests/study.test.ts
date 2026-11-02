@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { play, texts } from "./helpers";
+import { play, playGame, texts } from "./helpers";
 
 describe("The Locked Study", () => {
-  it("can be solved with the intended sequence", () => {
+  it("can be solved with the intended sequence and leads to the cellar", () => {
     const lines = [
       "look",
       "inspect clock",
@@ -12,31 +12,26 @@ describe("The Locked Study", () => {
       "turn",
       "use key door",
     ];
-    const { state, log } = play(lines);
+    const { state, log } = playGame(lines);
     expect(texts(log[3])).toEqual([
       "The dials click into place. The drawer opens.\nYou found a brass key!",
       "[Brass key added to inventory]",
     ]);
     expect(texts(log[4])).toEqual(["- Brass key"]);
-    expect(texts(log[6])).toEqual(["The key turns with a groan. The door unlocks.", "You escaped!"]);
-    expect(state.completed).toBe(true);
-    expect(state.flags.door_unlocked).toBe(true);
+    expect(texts(log[6])[0]).toBe("The key turns with a groan. The door unlocks.\nStone steps lead down into the dark.");
+    expect(log[6]).toContainEqual(expect.objectContaining({ type: "room_entered", room: "cellar" }));
+    expect(state).toMatchObject({ roomId: "cellar", camera: "A", inventory: [], completed: false });
   });
 
   it("cannot be escaped without the key", () => {
     const { state } = play(["turn", "open door", "use key door", "use 0315 door", "use brass key door"]);
-    expect(state.completed).toBe(false);
+    expect(state.roomId).toBe("study");
     expect(state.inventory).toEqual([]);
   });
 
   it("the door does not open from the desk camera even with the key", () => {
     const { state } = play(["use 0315 drawer", "use key door"]);
-    expect(state.completed).toBe(false);
+    expect(state.roomId).toBe("study");
   });
 
-  it("ignores further commands after escaping", () => {
-    const { state, last } = play(["use 0315 drawer", "turn", "use key door", "turn"]);
-    expect(state.camera).toBe("C");
-    expect(texts(last)).toEqual(["You have already escaped. Restart to play again."]);
-  });
 });

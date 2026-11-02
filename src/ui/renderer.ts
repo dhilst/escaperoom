@@ -5,6 +5,7 @@ export type LineKind = "command" | "response" | "item" | "error" | "success";
 /** All DOM access lives here. It knows nothing about game rules. */
 export class Renderer {
   private readonly title = byId<HTMLHeadingElement>("room-title");
+  private readonly level = byId<HTMLElement>("level");
   private readonly image = byId<HTMLImageElement>("camera-image");
   private readonly cameraLabel = byId<HTMLElement>("camera-label");
   private readonly banner = byId<HTMLElement>("banner");
@@ -14,9 +15,10 @@ export class Renderer {
   readonly input = byId<HTMLInputElement>("command-input");
   readonly restartButton = byId<HTMLButtonElement>("restart");
 
-  setTitle(title: string): void {
-    this.title.textContent = title;
-    document.title = title;
+  setTitle(gameTitle: string, roomTitle: string, level: number, levels: number): void {
+    this.title.textContent = roomTitle;
+    this.level.textContent = `${gameTitle} · Level ${level}/${levels}`;
+    document.title = `${roomTitle} — ${gameTitle}`;
   }
 
   showCamera(camera: CameraId, url: string, alt: string): void {

@@ -1,0 +1,199 @@
+{
+  "id": "cellar",
+  "title": "The Flooded Cellar",
+  "cameras": {
+    "A": {
+      "image": "camera_a.png",
+      "description": "A rusted workbench stands beside a fuse box.\nShelves of murky jars line the wall. Water drips somewhere."
+    },
+    "C": {
+      "image": "camera_c.png",
+      "description": "Crates sit in black, ankle-deep water.\nA steel door with a keypad is set in the wall."
+    }
+  },
+  "objects": {
+    "workbench": {
+      "name": "workbench",
+      "aliases": ["bench", "work bench", "tools"],
+      "cameras": ["A"]
+    },
+    "toolbox": {
+      "name": "toolbox",
+      "aliases": ["tool box", "metal toolbox"],
+      "cameras": ["A"]
+    },
+    "fuse_box": {
+      "name": "fuse box",
+      "aliases": ["fusebox", "breaker", "panel", "slot"],
+      "cameras": ["A"]
+    },
+    "shelves": {
+      "name": "shelves",
+      "aliases": ["shelf", "jars", "jar"],
+      "cameras": ["A"]
+    },
+    "crates": {
+      "name": "crates",
+      "aliases": ["crate", "wooden crates", "lid"],
+      "cameras": ["C"]
+    },
+    "wall": {
+      "name": "wall",
+      "aliases": ["writing", "numbers", "paint", "red paint", "red"],
+      "cameras": ["C"]
+    },
+    "door": {
+      "name": "door",
+      "aliases": ["steel door", "keypad", "exit"],
+      "cameras": ["C"]
+    },
+    "water": {
+      "name": "water",
+      "aliases": ["puddle", "floor"],
+      "cameras": ["C"]
+    }
+  },
+  "items": {
+    "crowbar": {
+      "name": "Crowbar",
+      "aliases": ["bar", "pry bar"],
+      "description": "Heavy, cold, and spotted with rust."
+    },
+    "fuse": {
+      "name": "Fuse",
+      "aliases": ["glass fuse"],
+      "description": "A glass fuse. The filament looks intact."
+    }
+  },
+  "initialFlags": {
+    "toolbox_open": false,
+    "crate_open": false,
+    "power_on": false
+  },
+  "interactions": [
+    {
+      "verb": "inspect",
+      "object": "workbench",
+      "effects": [{ "type": "display_message", "text": "Tools rusted solid to the bench.\nA dented toolbox sits among them." }]
+    },
+    {
+      "verb": "inspect",
+      "object": "toolbox",
+      "conditions": [{ "type": "flag_equals", "flag": "toolbox_open", "value": false }],
+      "effects": [{ "type": "display_message", "text": "A dented metal toolbox. The latch is stiff, but not locked." }]
+    },
+    {
+      "verb": "inspect",
+      "object": "toolbox",
+      "effects": [{ "type": "display_message", "text": "The toolbox is empty." }]
+    },
+    {
+      "verb": "open",
+      "object": "toolbox",
+      "conditions": [{ "type": "flag_equals", "flag": "toolbox_open", "value": false }],
+      "effects": [
+        { "type": "set_flag", "flag": "toolbox_open", "value": true },
+        { "type": "display_message", "text": "The latch gives way with a screech.\nYou found a crowbar!" },
+        { "type": "add_item", "item": "crowbar" }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "fuse_box",
+      "conditions": [{ "type": "flag_equals", "flag": "power_on", "value": false }],
+      "effects": [{ "type": "display_message", "text": "A rusted fuse box. One fuse slot is empty." }]
+    },
+    {
+      "verb": "inspect",
+      "object": "fuse_box",
+      "effects": [{ "type": "display_message", "text": "The fuse box hums quietly." }]
+    },
+    {
+      "verb": "use",
+      "item": "fuse",
+      "object": "fuse_box",
+      "conditions": [{ "type": "flag_equals", "flag": "power_on", "value": false }],
+      "effects": [
+        { "type": "set_flag", "flag": "power_on", "value": true },
+        { "type": "display_message", "text": "You push the fuse into the slot. The bare bulb sputters to life.\nSomething red gleams on the wall behind you." },
+        { "type": "remove_item", "item": "fuse" }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "shelves",
+      "effects": [{ "type": "display_message", "text": "Jars of something pickled, long since gone black." }]
+    },
+    {
+      "verb": "inspect",
+      "object": "crates",
+      "conditions": [{ "type": "flag_equals", "flag": "crate_open", "value": false }],
+      "effects": [{ "type": "display_message", "text": "Wooden crates, nailed shut.\nThe top one is stamped ELECTRICAL SPARES." }]
+    },
+    {
+      "verb": "inspect",
+      "object": "crates",
+      "effects": [{ "type": "display_message", "text": "The top crate is pried open. Only damp straw is left." }]
+    },
+    {
+      "verb": "open",
+      "object": "crates",
+      "conditions": [{ "type": "flag_equals", "flag": "crate_open", "value": false }],
+      "effects": [{ "type": "display_message", "text": "The lid is nailed shut. You'd need something to pry it open." }]
+    },
+    {
+      "verb": "use",
+      "item": "crowbar",
+      "object": "crates",
+      "conditions": [{ "type": "flag_equals", "flag": "crate_open", "value": false }],
+      "effects": [
+        { "type": "set_flag", "flag": "crate_open", "value": true },
+        { "type": "display_message", "text": "You lever the lid off. The crowbar slips into the water.\nYou found a fuse!" },
+        { "type": "remove_item", "item": "crowbar" },
+        { "type": "add_item", "item": "fuse" }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "wall",
+      "conditions": [{ "type": "flag_equals", "flag": "power_on", "value": false }],
+      "effects": [{ "type": "display_message", "text": "Too dark to make anything out." }]
+    },
+    {
+      "verb": "inspect",
+      "object": "wall",
+      "effects": [{ "type": "display_message", "text": "Numbers in dripping red paint:\n7 4 1 9" }]
+    },
+    {
+      "verb": "inspect",
+      "object": "water",
+      "effects": [{ "type": "display_message", "text": "Cold and black. You'd rather not reach in." }]
+    },
+    {
+      "verb": "inspect",
+      "object": "door",
+      "conditions": [{ "type": "flag_equals", "flag": "power_on", "value": false }],
+      "effects": [{ "type": "display_message", "text": "A steel door. Its keypad is dark and dead." }]
+    },
+    {
+      "verb": "inspect",
+      "object": "door",
+      "effects": [{ "type": "display_message", "text": "A steel door. The keypad glows a faint green, waiting for a code." }]
+    },
+    {
+      "verb": "open",
+      "object": "door",
+      "effects": [{ "type": "display_message", "text": "It won't budge. The keypad controls the bolts." }]
+    },
+    {
+      "verb": "use",
+      "item": "7419",
+      "object": "door",
+      "conditions": [{ "type": "flag_equals", "flag": "power_on", "value": true }],
+      "effects": [
+        { "type": "display_message", "text": "The keypad beeps twice. The bolts slide back.\nA narrow staircase spirals upward." },
+        { "type": "change_room", "room": "observatory" }
+      ]
+    }
+  ]
+}
