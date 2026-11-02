@@ -1,0 +1,257 @@
+:root {
+  --bg: #07080a;
+  --panel: #0e1013;
+  --edge: #2a2d33;
+  --text: #b9b4a4;
+  --dim: #6c6a62;
+  --accent: #c9a24a;
+  --error: #b5524a;
+  --success: #8fbf7a;
+  --font: "VT323", "Courier New", monospace;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 22px;
+  line-height: 1.15;
+}
+
+.game {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 12px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 100vh;
+}
+
+.title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: normal;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-shadow: 2px 2px 0 #000;
+}
+
+h2 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+  font-weight: normal;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+button {
+  font: inherit;
+  color: var(--text);
+  background: var(--panel);
+  border: 2px solid var(--edge);
+  padding: 2px 12px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+button:hover,
+button:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+  outline: none;
+}
+
+.screen {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 180px;
+  gap: 10px;
+}
+
+.viewport {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 4 / 3;
+  background: #000;
+  border: 2px solid var(--edge);
+  overflow: hidden;
+}
+
+.viewport img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: pixelated;
+}
+
+/* Subtle CRT scanlines and edge darkening. */
+.viewport::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(to bottom, rgb(0 0 0 / 0.22) 0 1px, transparent 1px 3px),
+    radial-gradient(ellipse at center, transparent 60%, rgb(0 0 0 / 0.45) 100%);
+}
+
+.viewport figcaption {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  z-index: 1;
+  color: #d8d3c0;
+  text-shadow: 2px 2px 0 #000;
+  letter-spacing: 0.1em;
+}
+
+.banner {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  font-size: clamp(2rem, 8vw, 4rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--success);
+  text-shadow: 3px 3px 0 #000;
+  background: rgb(0 0 0 / 0.55);
+}
+
+.banner[hidden] {
+  display: none;
+}
+
+.inventory {
+  background: var(--panel);
+  border: 2px solid var(--edge);
+  padding: 8px 10px;
+}
+
+.inventory ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.inventory li {
+  color: var(--accent);
+}
+
+.log {
+  flex: 1;
+  min-height: 7em;
+  max-height: 14em;
+  overflow-y: auto;
+  background: var(--panel);
+  border: 2px solid var(--edge);
+  padding: 6px 10px;
+}
+
+.line {
+  margin: 0 0 2px;
+  white-space: pre-wrap;
+  color: var(--dim);
+}
+
+.line.command {
+  color: #7d8a9a;
+  margin-top: 6px;
+}
+
+.line.latest {
+  color: var(--text);
+}
+
+.line.item.latest {
+  color: var(--accent);
+}
+
+.line.error {
+  color: var(--error);
+}
+
+.line.success {
+  color: var(--success);
+}
+
+.prompt {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--panel);
+  border: 2px solid var(--edge);
+  padding: 4px 10px;
+}
+
+.prompt:focus-within {
+  border-color: var(--accent);
+}
+
+.prompt label {
+  color: var(--accent);
+}
+
+.prompt input {
+  flex: 1;
+  min-width: 0;
+  font: inherit;
+  color: var(--text);
+  background: transparent;
+  border: none;
+  outline: none;
+  caret-color: var(--accent);
+}
+
+.prompt input::placeholder {
+  color: #44433f;
+}
+
+@media (max-width: 640px) {
+  html,
+  body {
+    font-size: 19px;
+  }
+
+  .screen {
+    grid-template-columns: 1fr;
+  }
+
+  .inventory h2 {
+    display: inline;
+    margin-right: 8px;
+  }
+
+  .inventory ul {
+    display: inline;
+  }
+
+  .inventory li {
+    display: inline;
+  }
+
+  .inventory li + li::before {
+    content: ", ";
+    color: var(--dim);
+  }
+}

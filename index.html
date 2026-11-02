@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Locked Study</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <main class="game">
+      <header class="title-bar">
+        <h1 id="room-title">&nbsp;</h1>
+        <button id="restart" type="button" title="Restart the game">Restart</button>
+      </header>
+
+      <div class="screen">
+        <figure class="viewport">
+          <img id="camera-image" alt="" width="320" height="240" />
+          <figcaption id="camera-label"></figcaption>
+          <div id="banner" class="banner" hidden>You escaped</div>
+        </figure>
+
+        <aside class="inventory" aria-labelledby="inventory-heading">
+          <h2 id="inventory-heading">Items</h2>
+          <ul id="inventory-list"></ul>
+        </aside>
+      </div>
+
+      <section id="log" class="log" aria-live="polite"></section>
+
+      <form id="command-form" class="prompt" autocomplete="off">
+        <label for="command-input">&gt;</label>
+        <input id="command-input" type="text" spellcheck="false" autocapitalize="off" autofocus
+          placeholder="type a command…" />
+      </form>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

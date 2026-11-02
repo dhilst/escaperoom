@@ -1,0 +1,93 @@
+import { applyEffect, checkCondition, matchingInteractions } from "./rules";
+import type { Command, FailureReason, GameEvent, GameState, RoomDefinition, StepResult } from "./types";
+
+export const NOTHING_SPECIAL = "Nothing special.";
+export const NOTHING_HAPPENS = "Nothing happens.";
+
+export function createInitialState(room: RoomDefinition): GameState {
+  return {
+    roomId: room.id,
+    camera: "A",
+    inventory: [],
+    flags: { ...room.initialFlags },
+    completed: false,
+  };
+}
+
+function cloneState(state: GameState): GameState {
+  return { ...state, inventory: [...state.inventory], flags: { ...state.flags } };
+}
+
+/**
+ * Pure, deterministic transition function. Never mutates `state`.
+ */
+export function step(state: GameState, command: Command, room: RoomDefinition): StepResult {
+  const next = cloneState(state);
+  const events = run(next, command, room);
+  return { state: next, events };
+}
+
+function run(state: GameState, command: Command, room: RoomDefinition): GameEvent[] {
+  if (state.completed) {
+    return [{ type: "message", text: "You have already escaped. Restart to play again." }];
+  }
+
+  switch (command.verb) {
+    case "look":
+      return [{ type: "message", text: room.cameras[state.camera].description }];
+
+    case "turn": {
+      state.camera = state.camera === "A" ? "C" : "A";
+      return [
+        { type: "camera_changed", camera: state.camera, text: "You turn to face the other side of the room." },
+        { type: "message", text: room.cameras[state.camera].description },
+      ];
+    }
+
+    case "inventory": {
+      const names = state.inventory.map((id) => `- ${room.items[id]?.name ?? id}`);
+      const text = names.length > 0 ? names.join("\n") : "You are carrying nothing.";
+      return [{ type: "inventory", items: [...state.inventory], text }];
+    }
+
+    case "inspect":
+    case "open":
+    case "use":
+      return interact(state, command, room);
+  }
+}
+
+function interact(
+  state: GameState,
+  command: Extract<Command, { verb: "inspect" | "open" | "use" }>,
+  room: RoomDefinition,
+): GameEvent[] {
+  const fail = (reason: FailureReason): GameEvent[] => [
+    { type: "failure", reason, text: command.verb === "inspect" ? NOTHING_SPECIAL : NOTHING_HAPPENS },
+  ];
+
+  const targetId = command.verb === "use" ? command.target : command.object;
+
+  // Carried items can be inspected from anywhere.
+  if (command.verb === "inspect" && state.inventory.includes(targetId)) {
+    const description = room.items[targetId]?.description;
+    return description ? [{ type: "message", text: description }] : fail("no_interaction");
+  }
+
+  const target = room.objects[targetId];
+  if (!target) return fail("unknown_object");
+  if (!target.cameras.includes(state.camera)) return fail("not_visible");
+
+  // Real items must be held to be used; anything else is treated as a literal code.
+  if (command.verb === "use" && command.item in room.items && !state.inventory.includes(command.item)) {
+    return fail("item_not_held");
+  }
+
+  const candidates = matchingInteractions(room, command);
+  if (candidates.length === 0) return fail("no_interaction");
+
+  const rule = candidates.find((r) => (r.conditions ?? []).every((c) => checkCondition(state, c)));
+  if (!rule) return fail("conditions_unmet");
+
+  return rule.effects.flatMap((effect) => applyEffect(state, effect, room));
+}

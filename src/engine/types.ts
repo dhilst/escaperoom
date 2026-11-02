@@ -1,0 +1,120 @@
+// Core types shared by the parser, the engine and the UI.
+
+export type CameraId = "A" | "C";
+export type FlagValue = boolean | string | number;
+
+// ---------------------------------------------------------------------------
+// Commands (parser output)
+// ---------------------------------------------------------------------------
+
+export type Command =
+  | { verb: "look" }
+  | { verb: "turn" }
+  | { verb: "inventory" }
+  | { verb: "inspect"; object: string }
+  | { verb: "open"; object: string }
+  | { verb: "use"; item: string; target: string };
+
+export type Verb = Command["verb"];
+
+export type ParseResult =
+  | { ok: true; command: Command }
+  | { ok: false; error: string };
+
+// ---------------------------------------------------------------------------
+// Game state
+// ---------------------------------------------------------------------------
+
+export interface GameState {
+  roomId: string;
+  camera: CameraId;
+  inventory: string[];
+  flags: Record<string, FlagValue>;
+  completed: boolean;
+}
+
+// ---------------------------------------------------------------------------
+// Room definitions (loaded from JSON)
+// ---------------------------------------------------------------------------
+
+export type Condition =
+  | { type: "flag_equals"; flag: string; value: FlagValue }
+  | { type: "has_item"; item: string };
+
+export type Effect =
+  | { type: "set_flag"; flag: string; value: FlagValue }
+  | { type: "add_item"; item: string }
+  | { type: "change_room"; room: string }
+  | { type: "complete_game" }
+  | { type: "display_message"; text: string };
+
+export interface CameraDefinition {
+  image: string;
+  description: string;
+}
+
+export interface ObjectDefinition {
+  name: string;
+  aliases?: string[];
+  /** Cameras from which this object can be interacted with. */
+  cameras: CameraId[];
+}
+
+export interface ItemDefinition {
+  name: string;
+  aliases?: string[];
+  description?: string;
+}
+
+/**
+ * One rule. Rules are tried in file order; the first rule whose verb and
+ * arguments match and whose conditions all hold is applied.
+ *
+ * - inspect/open: `object` is required.
+ * - use: `item` is either an item id (the player must hold it) or a literal
+ *   code such as "0315"; `object` is the target.
+ */
+export interface Interaction {
+  verb: "inspect" | "open" | "use";
+  object: string;
+  item?: string;
+  conditions?: Condition[];
+  effects: Effect[];
+}
+
+export interface RoomDefinition {
+  id: string;
+  title: string;
+  cameras: Record<CameraId, CameraDefinition>;
+  objects: Record<string, ObjectDefinition>;
+  items: Record<string, ItemDefinition>;
+  initialFlags?: Record<string, FlagValue>;
+  interactions: Interaction[];
+}
+
+// ---------------------------------------------------------------------------
+// Events (engine output)
+// ---------------------------------------------------------------------------
+
+/** Internal failure reasons. Players only ever see the generic text. */
+export type FailureReason =
+  | "unknown_object"
+  | "not_visible"
+  | "item_not_held"
+  | "no_interaction"
+  | "conditions_unmet";
+
+export type GameEvent =
+  | { type: "message"; text: string }
+  | { type: "camera_changed"; camera: CameraId; text: string }
+  | { type: "item_added"; item: string; text: string }
+  | { type: "inventory"; items: string[]; text: string }
+  | { type: "flag_set"; flag: string; value: FlagValue }
+  | { type: "room_changed"; room: string }
+  | { type: "game_completed"; text: string }
+  | { type: "failure"; reason: FailureReason; text: string };
+
+export interface StepResult {
+  state: GameState;
+  events: GameEvent[];
+}
