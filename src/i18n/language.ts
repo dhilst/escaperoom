@@ -7,6 +7,10 @@ export interface UiStrings {
   level(level: number, levels: number): string;
   placeholder: string;
   banner: string;
+  /** Under the banner once the game is won. */
+  bannerSub: string;
+  /** Shown once, with the first room description. */
+  helpTip: string;
   language: string;
 }
 

@@ -15,8 +15,8 @@ export type Command =
   | { verb: "look" }
   | { verb: "turn" }
   | { verb: "inventory" }
+  | { verb: "help" }
   | { verb: "hint" }
-  | { verb: "restart" }
   | { verb: "inspect"; object: string; typed?: string }
   | { verb: "open"; object: string; typed?: string }
   | { verb: "use"; item: string; target: string; typed?: string };
@@ -30,7 +30,7 @@ export interface ParserLanguage {
   /** Articles and prepositions ignored in object phrases ("the", "on", "na", "la"...). */
   stopwords: string[];
   empty: string;
-  /** Shown for unknown verbs. Lists the documented verbs only (not hint/restart). */
+  /** Shown for unknown verbs. Lists the documented verbs only (not hint). */
   unknown(word: string): string;
   /** Full usage message per verb, e.g. "Usage: inspect <object>". */
   usage: Record<Verb, string>;
@@ -48,11 +48,12 @@ export interface EngineMessages {
   noSuchObject(typed: string): string;
   /** A real object that only the other camera can see, or an item not carried. */
   notVisible(typed: string): string;
+  /** Answer to "help": the documented commands (not hint). */
+  help: string;
   hint(number: number, total: number, text: string): string;
   /** `countdown` is already formatted as HH:MM:SS. */
   hintLocked(countdown: string): string;
   noMoreHints: string;
-  restarted: string;
   escaped: string;
   alreadyEscaped: string;
 }
@@ -96,6 +97,14 @@ export type Effect =
 export interface CameraDefinition {
   image: string;
   description: string;
+  /** Alternative descriptions; the first whose conditions all hold replaces `description`. */
+  variants?: { when: Condition[]; description: string }[];
+}
+
+/** A brightness rule: when all conditions hold, the room is shown at `brightness`. */
+export interface LightingRule {
+  when: Condition[];
+  brightness: number;
 }
 
 /**
@@ -156,6 +165,13 @@ export interface RoomDefinition {
   interactions: Interaction[];
   /** Up to MAX_HINTS hints, from vaguest to most explicit. */
   hints?: Hint[];
+  /**
+   * How bright the camera images are drawn (1 = as painted, 0.5 = half as
+   * bright). `lighting` rules are checked in order and the first that holds
+   * wins, so e.g. a dark room can light up once a flag is set.
+   */
+  brightness?: number;
+  lighting?: LightingRule[];
 }
 
 /** Several rooms played as levels, in the order listed by rooms/game.json. */
@@ -194,7 +210,6 @@ export type GameEvent =
   | { type: "hint_revealed"; hint: number; text: string }
   /** The next hint isn't unlocked yet; `availableAt` is on the host clock, for a live countdown. */
   | { type: "hint_locked"; availableAt: number; text: string }
-  | { type: "restarted"; text: string }
   | { type: "failure"; reason: FailureReason; text: string };
 
 export interface StepResult {

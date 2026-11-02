@@ -130,7 +130,7 @@ describe("parser in other languages", () => {
   it("syntax errors are reported in the player's language", () => {
     expect(parserFor("pt-BR")("dançar")).toMatchObject({
       ok: false,
-      error: 'Comando desconhecido "dancar". Tente: olhar, virar, examinar, abrir, usar, inventário.',
+      error: 'Comando desconhecido "dancar". Tente: olhar, virar, examinar, abrir, usar, inventário, ajuda.',
     });
     expect(parserFor("pt-BR")("usar chave")).toEqual({ ok: false, error: "Uso: usar <item> <alvo>" });
     expect(parserFor("es")("examinar")).toEqual({ ok: false, error: "Uso: examinar <objeto>" });

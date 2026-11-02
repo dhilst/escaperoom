@@ -2,7 +2,6 @@ import { describe, expect, it } from "vitest";
 import { loadGame } from "../src/content";
 import {
   createGameState,
-  createInitialState,
   formatCountdown,
   HINT_UNLOCK_MS,
   MAX_HINTS,
@@ -121,13 +120,11 @@ describe("hint unlock times", () => {
     ]);
   });
 
-  it("count from each level's start, and restart does not reset the clock", () => {
+  it("count from each level's start", () => {
     const inCellar = at(20, STUDY_SOLUTION).state; // cellar entered at 20 min
     expect(inCellar.levelStartedAt).toBe(20 * MIN);
     expect(texts(at(29, ["hint"], inCellar).last)).toEqual(["Next hint available in 00:01:00"]);
     expect(at(30, ["hint"], inCellar).state.hints).toEqual([0]);
-    const restarted = at(25, ["restart"], inCellar).state;
-    expect(restarted.levelStartedAt).toBe(20 * MIN);
   });
 
   it("depend on how many hints were revealed, not which (skipped hints don't count)", () => {
@@ -156,35 +153,5 @@ describe("hint unlock times", () => {
     expect(formatCountdown(59_001)).toBe("00:01:00");
     expect(formatCountdown(360 * MIN)).toBe("06:00:00");
     expect(formatCountdown(-5)).toBe("00:00:00");
-  });
-});
-
-describe("restart", () => {
-  it("restarts the current level but keeps the hints revealed there", () => {
-    const { state, last } = playGame(["hint", "use 0315 drawer", "turn", "restart"], undefined, "en-US", LATER);
-    expect(state).toEqual({ ...createInitialState(study), hints: [0] });
-    expect(last[0]).toEqual({ type: "restarted", text: "Level restarted." });
-    expect(texts(last)[1]).toBe(study.cameras.A.description);
-  });
-
-  it("restarts only the current level, not the whole game", () => {
-    const { state } = playGame([...STUDY_SOLUTION, "open toolbox", "restart"]);
-    expect(state).toMatchObject({ roomId: "cellar", inventory: [], flags: { toolbox_open: false } });
-  });
-
-  it("after winning, starts a new game from the first room", () => {
-    const win = [
-      ...STUDY_SOLUTION,
-      "open toolbox", "turn", "use crowbar crate", "turn", "use fuse fuse box", "turn", "use 7419 door",
-      "open birdcage", "turn", "use crank music box", "turn", "use lens telescope", "turn", "use 2618 hatch",
-    ];
-    const { state, last } = playGame([...win, "hint", "restart"]);
-    expect(state).toEqual(createInitialState(study));
-    expect(last).toContainEqual(expect.objectContaining({ type: "room_entered", room: "study" }));
-  });
-
-  it("is translated", () => {
-    expect(texts(playGame(["reiniciar"], undefined, "pt-BR").last)[0]).toBe("Fase reiniciada.");
-    expect(texts(playGame(["reiniciar"], undefined, "es").last)[0]).toBe("Nivel reiniciado.");
   });
 });

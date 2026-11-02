@@ -8,7 +8,17 @@
         "en-US": "A rusted workbench stands beside a fuse box.\nShelves of murky jars line the wall. Water drips somewhere.",
         "pt-BR": "Uma bancada enferrujada fica ao lado de uma caixa de fusíveis.\nPrateleiras de potes turvos cobrem a parede. Água pinga em algum lugar.",
         "es": "Un banco de trabajo oxidado está junto a una caja de fusibles.\nEstantes con frascos turbios cubren la pared. El agua gotea en algún lugar."
-      }
+      },
+      "variants": [
+        {
+          "when": [{"type": "flag_equals", "flag": "power_on", "value": true}],
+          "description": {
+            "en-US": "A rusted workbench stands beside a fuse box.\nShelves of murky jars line the wall. The bare bulb buzzes overhead.",
+            "pt-BR": "Uma bancada enferrujada fica ao lado de uma caixa de fusíveis.\nPrateleiras de potes turvos cobrem a parede. A lâmpada nua zumbe lá em cima.",
+            "es": "Un banco de trabajo oxidado está junto a una caja de fusibles.\nEstantes con frascos turbios cubren la pared. La bombilla desnuda zumba en lo alto."
+          }
+        }
+      ]
     },
     "C": {
       "image": "camera_c.png",
@@ -16,7 +26,17 @@
         "en-US": "Crates sit in black, ankle-deep water.\nA steel door with a keypad is set in the wall.",
         "pt-BR": "Caixotes repousam em água negra na altura dos tornozelos.\nUma porta de aço com um teclado numérico está embutida na parede.",
         "es": "Unas cajas reposan en agua negra que llega a los tobillos.\nUna puerta de acero con un teclado numérico está empotrada en la pared."
-      }
+      },
+      "variants": [
+        {
+          "when": [{"type": "flag_equals", "flag": "power_on", "value": true}],
+          "description": {
+            "en-US": "Crates sit in black, ankle-deep water.\nA steel door with a keypad is set in the wall. Numbers are painted in red beside it.",
+            "pt-BR": "Caixotes repousam em água negra na altura dos tornozelos.\nUma porta de aço com um teclado numérico está embutida na parede. Há números pintados de vermelho ao lado.",
+            "es": "Unas cajas reposan en agua negra que llega a los tobillos.\nUna puerta de acero con un teclado numérico está empotrada en la pared. Junto a ella hay números pintados de rojo."
+          }
+        }
+      ]
     }
   },
   "objects": {
@@ -153,6 +173,8 @@
     }
   },
   "initialFlags": {"toolbox_open": false, "crate_open": false, "power_on": false},
+  "brightness": 0.45,
+  "lighting": [{"when": [{"type": "flag_equals", "flag": "power_on", "value": true}], "brightness": 1.1}],
   "interactions": [
     {
       "verb": "inspect",

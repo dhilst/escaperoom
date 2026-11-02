@@ -93,12 +93,15 @@ other camera, you get `You don't see any door here.`
 
 ### Hidden commands
 
-Two commands appear neither in the in-game help nor in the table above:
+`help` (`ajuda`, `ayuda`) lists the commands above, and the game suggests it
+once, when it starts.
 
-| English   | Português   | Español     | Effect |
-| --------- | ----------- | ----------- | ------ |
-| `hint`    | `dica`      | `pista`     | Reveal the next hint for this room |
-| `restart` | `reiniciar` | `reiniciar` | Restart the current level. After winning, start a new game |
+`hint` (`dica`, `pista`) is hidden: it appears neither in `help` nor in the
+table above, and it reveals the next hint for the current room.
+
+There is deliberately no restart command. In collective play, one player
+restarting would wipe out everyone's progress. When the game is won, the
+ending banner tells you to reload the page to play again.
 
 **Hints.** Each room has up to 5 hints, ordered from vague to explicit, and
 only the next one can be revealed. A hint about a step the player has already
@@ -107,13 +110,12 @@ screen for the rest of the level, in a box under the camera view that appears
 with the first hint. The newest hint is shown in full, older ones are shortened
 to one line, and a `HINT n/5` counter heads the box. The layout always reserves
 room for a full box, so the camera view never changes size during play. Hints
-reset when you enter a new room, but survive `restart`.
+reset when you enter a new room.
 
 Hints also unlock over time, counted from the moment you enter the level: the
 1st after 10 minutes, the 2nd after 30, the 3rd after 1h30, the 4th after 3h
 and the 5th after 6h. Asking earlier shows `Next hint available in HH:MM:SS`,
-and the seconds tick down while the subtitle is on screen. Restarting a level
-doesn't reset its clock. The schedule is `HINT_UNLOCK_MS` in
+and the seconds tick down while the subtitle is on screen. The schedule is `HINT_UNLOCK_MS` in
 `src/engine/types.ts`.
 
 For testing, add `?hintTimer=off` to unlock every hint immediately, for
@@ -206,7 +208,7 @@ loads the new room's `initialFlags`.
 
 `events` are semantic (`message`, `camera_changed`, `item_added`,
 `item_removed`, `inventory`, `flag_set`, `room_changed`, `room_entered`,
-`game_completed`, `hint_revealed`, `restarted`, `failure`). Every event that
+`game_completed`, `hint_revealed`, `hint_locked`, `failure`). Every event that
 the player should see has a `text`. `GameState.hints` lists the indices of the
 current room's revealed hints in reveal order.
 
@@ -304,6 +306,17 @@ Rules:
 - When `use` names a real item, the player has to be holding it. Anything
   else in that position is compared literally, which is how codes work.
 - Conditions: `flag_equals {flag, value}`, `has_item {item}`.
+- A camera can have `variants`, written as `[{ "when": [conditions], "description": ... }]`.
+  The first variant whose conditions all hold replaces the camera's
+  `description`, for `look`, `turn` and when entering the room. For example,
+  the cellar mentions the red numbers once the lights are on.
+- Lighting: `brightness` sets how bright the room's images are drawn
+  (1 = as painted, default), and `lighting` rules (`[{ "when": [...], "brightness": 1.1 }]`)
+  override it, with the first match winning. When brightness goes up within a
+  room, the image flickers like a bulb sputtering on. When it goes down, it
+  fades. The cellar uses `0.45` until `power_on` is set.
+- `open <object> <code>` is understood as `use <code> <object>`, so
+  `open drawer 0315` works.
 - `hints` is revealed in order. A hint is skipped when all of its `skipIf`
   conditions hold, meaning the step it helps with is already done.
 - When an interaction reveals a code, also give the player a note item that

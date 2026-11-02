@@ -18,6 +18,9 @@ export class Renderer {
   private readonly image = byId<HTMLImageElement>("camera-image");
   private readonly cameraLabel = byId<HTMLElement>("camera-label");
   private readonly banner = byId<HTMLElement>("banner");
+  private readonly bannerTitle = byId<HTMLElement>("banner-title");
+  private readonly bannerSub = byId<HTMLElement>("banner-sub");
+  private light?: { room: string; brightness: number };
   private readonly inventory = byId<HTMLUListElement>("inventory-list");
   private readonly subtitles = new Subtitles(byId("subtitle"), byId("subtitle-live"));
   readonly form = byId<HTMLFormElement>("command-form");
@@ -35,7 +38,8 @@ export class Renderer {
     document.documentElement.lang = locale;
     this.inventoryHeading.textContent = strings.items;
     this.input.placeholder = strings.placeholder;
-    this.banner.textContent = strings.banner;
+    this.bannerTitle.textContent = strings.banner;
+    this.bannerSub.textContent = strings.bannerSub;
   }
 
   setTitle(gameTitle: string, roomTitle: string, level: number, levels: number): void {
@@ -76,6 +80,40 @@ export class Renderer {
         return li;
       }),
     );
+  }
+
+  /**
+   * Draw the camera image at `brightness` (1 = as painted). Within a room,
+   * lights coming on flicker before settling and dimming fades; entering a
+   * new room just sets the level.
+   */
+  setBrightness(room: string, brightness: number): void {
+    const before = this.light;
+    this.light = { room, brightness };
+    const to = `brightness(${brightness})`;
+    this.image.style.filter = to;
+    if (!before || before.room !== room || before.brightness === brightness) return;
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const from = `brightness(${before.brightness})`;
+    if (brightness > before.brightness) {
+      // A bulb sputtering to life: on, off, on, half, on.
+      const step = "steps(1, end)";
+      this.image.animate(
+        [
+          { filter: from, easing: step },
+          { filter: to, offset: 0.12, easing: step },
+          { filter: from, offset: 0.24, easing: step },
+          { filter: to, offset: 0.4, easing: step },
+          { filter: `brightness(${(before.brightness + brightness) / 2})`, offset: 0.55, easing: step },
+          { filter: to, offset: 0.7 },
+          { filter: to },
+        ],
+        { duration: 1100 },
+      );
+    } else {
+      this.image.animate([{ filter: from }, { filter: to }], { duration: 800, easing: "ease-out" });
+    }
   }
 
   setCompleted(completed: boolean): void {

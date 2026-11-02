@@ -4,9 +4,11 @@ import { LANGUAGES, localeFromParam, type Language } from "./i18n";
 import {
   buildAliasMap,
   createGameState,
+  describeCamera,
   formatCountdown,
   HINT_UNLOCK_MS,
   parse,
+  roomBrightness,
   stepGame,
   type AliasMap,
   type GameDefinition,
@@ -67,7 +69,8 @@ function start(game: GameDefinition, language: Language): void {
     }
     const camera = room.cameras[state.camera];
     ui.setTitle(game.title, room.title, game.order.indexOf(room.id) + 1, game.order.length);
-    ui.showCamera(state.camera, imageUrl(room, camera.image), camera.description);
+    ui.showCamera(state.camera, imageUrl(room, camera.image), describeCamera(state, room));
+    ui.setBrightness(room.id, roomBrightness(state, room));
     ui.setInventory(state.inventory.map((id) => room.items[id]?.name ?? id));
     const hints = room.hints ?? [];
     ui.setHints(
@@ -117,7 +120,10 @@ function start(game: GameDefinition, language: Language): void {
   });
 
   state = createGameState(game, Date.now());
-  ui.say([{ text: currentRoom().cameras[state.camera].description, kind: "response" }]);
+  ui.say([
+    { text: describeCamera(state, currentRoom()), kind: "response" },
+    { text: language.ui.helpTip, kind: "hint" },
+  ]);
   render();
   ui.focusInput();
 }

@@ -24,6 +24,19 @@ export function createInitialState(room: RoomDefinition, now = 0): GameState {
   };
 }
 
+/** The camera's description for the current state (first matching variant, else the default). */
+export function describeCamera(state: GameState, room: RoomDefinition, camera = state.camera): string {
+  const def = room.cameras[camera];
+  const variant = def.variants?.find((v) => v.when.every((c) => checkCondition(state, c)));
+  return variant?.description ?? def.description;
+}
+
+/** How bright the room is drawn in the current state (first matching lighting rule, else `brightness`). */
+export function roomBrightness(state: GameState, room: RoomDefinition): number {
+  const rule = room.lighting?.find((r) => r.when.every((c) => checkCondition(state, c)));
+  return rule?.brightness ?? room.brightness ?? 1;
+}
+
 /** Format a duration as HH:MM:SS, rounding up to whole seconds. */
 export function formatCountdown(ms: number): string {
   const total = Math.max(0, Math.ceil(ms / 1000));
@@ -77,28 +90,22 @@ function run(
   now: number,
   hintUnlockMs: readonly number[],
 ): GameEvent[] {
-  if (command.verb === "restart") {
-    // Restart the level. Revealed hints and the level's hint clock are kept.
-    Object.assign(state, createInitialState(room), { hints: state.hints, levelStartedAt: state.levelStartedAt });
-    return [
-      { type: "restarted", text: messages.restarted },
-      { type: "message", text: room.cameras[state.camera].description },
-    ];
-  }
-
   if (state.completed) {
     return [{ type: "message", text: messages.alreadyEscaped }];
   }
 
   switch (command.verb) {
     case "look":
-      return [{ type: "message", text: room.cameras[state.camera].description }];
+      return [{ type: "message", text: describeCamera(state, room) }];
+
+    case "help":
+      return [{ type: "message", text: messages.help }];
 
     case "turn": {
       state.camera = state.camera === "A" ? "C" : "A";
       return [
         { type: "camera_changed", camera: state.camera, text: messages.turned },
-        { type: "message", text: room.cameras[state.camera].description },
+        { type: "message", text: describeCamera(state, room) },
       ];
     }
 

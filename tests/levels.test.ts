@@ -143,7 +143,7 @@ describe("full game", () => {
   it("ignores further commands after winning", () => {
     const { state, last } = playGame([...all, "turn"]);
     expect(state.camera).toBe("C");
-    expect(texts(last)).toEqual(["You have already escaped. Type restart to play again."]);
+    expect(texts(last)).toEqual(["You have already escaped. Reload the page to play again."]);
   });
 
   it("enterRoom keeps the completion status", () => {

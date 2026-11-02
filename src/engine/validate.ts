@@ -32,6 +32,7 @@ export function validateRoom(data: unknown, language: ParserLanguage = enUS.pars
   if (!isStr(data.id)) err("id must be a non-empty string");
   if (!isStr(data.title)) err("title must be a non-empty string");
 
+  const pendingConditions: [unknown, string, boolean][] = [];
   if (!isObj(data.cameras)) {
     err("cameras must be an object with keys A and C");
   } else {
@@ -41,6 +42,16 @@ export function validateRoom(data: unknown, language: ParserLanguage = enUS.pars
       else {
         if (!isStr(def.image)) err(`cameras.${cam}.image must be a non-empty string`);
         if (!isStr(def.description)) err(`cameras.${cam}.description must be a non-empty string`);
+        if (def.variants !== undefined) {
+          if (!Array.isArray(def.variants)) err(`cameras.${cam}.variants must be an array`);
+          else
+            def.variants.forEach((v, i) => {
+              const at = `cameras.${cam}.variants[${i}]`;
+              if (!isObj(v)) return err(`${at} must be an object`);
+              if (!isStr(v.description)) err(`${at}.description must be a non-empty string`);
+              pendingConditions.push([v.when, `${at}.when`, true]);
+            });
+        }
       }
     }
   }
@@ -48,8 +59,11 @@ export function validateRoom(data: unknown, language: ParserLanguage = enUS.pars
   const objects = isObj(data.objects) ? data.objects : (err("objects must be an object"), {});
   const items = isObj(data.items) ? data.items : (err("items must be an object"), {});
 
-  const checkConditions = (conditions: unknown, where: string) => {
-    if (conditions === undefined) return;
+  const checkConditions = (conditions: unknown, where: string, required = false) => {
+    if (conditions === undefined) {
+      if (required) err(`${where} must be an array of conditions`);
+      return;
+    }
     if (!Array.isArray(conditions)) return err(`${where} must be an array`);
     conditions.forEach((c, j) => {
       const at = `${where}[${j}]`;
@@ -147,6 +161,23 @@ export function validateRoom(data: unknown, language: ParserLanguage = enUS.pars
         }
       });
     });
+  }
+
+  // Camera variants are read before `items` exists; check their conditions now.
+  for (const [conditions, where, required] of pendingConditions) checkConditions(conditions, where, required);
+
+  const isBrightness = (v: unknown) => typeof v === "number" && v > 0 && v <= 3;
+  if (data.brightness !== undefined && !isBrightness(data.brightness)) {
+    err("brightness must be a number greater than 0 and at most 3");
+  }
+  if (data.lighting !== undefined) {
+    if (!Array.isArray(data.lighting)) err("lighting must be an array");
+    else
+      data.lighting.forEach((rule, i) => {
+        if (!isObj(rule)) return err(`lighting[${i}] must be an object`);
+        if (!isBrightness(rule.brightness)) err(`lighting[${i}].brightness must be a number greater than 0 and at most 3`);
+        checkConditions(rule.when, `lighting[${i}].when`, true);
+      });
   }
 
   if (data.hints !== undefined) {

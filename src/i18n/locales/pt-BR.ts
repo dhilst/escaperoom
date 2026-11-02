@@ -12,16 +12,16 @@ export const ptBR: Language = {
       abrir: "open",
       usar: "use",
       inventário: "inventory",
+      ajuda: "help",
       // Ocultos: fora da ajuda e da mensagem "Tente:".
       dica: "hint",
-      reiniciar: "restart",
     },
     stopwords: [
       "o", "a", "os", "as", "um", "uma", "uns", "umas",
       "de", "do", "da", "dos", "das", "no", "na", "nos", "nas", "em", "com", "para", "pra", "ao", "à",
     ],
     empty: "Digite um comando.",
-    unknown: (word) => `Comando desconhecido "${word}". Tente: olhar, virar, examinar, abrir, usar, inventário.`,
+    unknown: (word) => `Comando desconhecido "${word}". Tente: olhar, virar, examinar, abrir, usar, inventário, ajuda.`,
     usage: {
       look: "Uso: olhar",
       turn: "Uso: virar",
@@ -29,8 +29,8 @@ export const ptBR: Language = {
       inspect: "Uso: examinar <objeto>",
       open: "Uso: abrir <objeto>",
       use: "Uso: usar <item> <alvo>",
+      help: "Uso: ajuda",
       hint: "Uso: dica",
-      restart: "Uso: reiniciar",
     },
   },
   engine: {
@@ -42,12 +42,12 @@ export const ptBR: Language = {
     itemRemoved: (name) => `[Removido do inventário: ${name}]`,
     noSuchObject: (typed) => `Não há "${typed}" aqui.`,
     notVisible: (typed) => `Daqui você não vê "${typed}".`,
+    help: "Comandos: olhar · virar · examinar <objeto> · abrir <objeto> · usar <item> <alvo> · inventário",
     hint: (n, total, text) => `Dica ${n}/${total}: ${text}`,
     hintLocked: (countdown) => `Próxima dica disponível em ${countdown}`,
     noMoreHints: "Não há mais dicas para esta sala.",
-    restarted: "Fase reiniciada.",
     escaped: "Você escapou!",
-    alreadyEscaped: "Você já escapou. Digite reiniciar para jogar de novo.",
+    alreadyEscaped: "Você já escapou. Recarregue a página para jogar de novo.",
   },
   ui: {
     items: "Itens",
@@ -55,6 +55,8 @@ export const ptBR: Language = {
     level: (n, total) => `Fase ${n}/${total}`,
     placeholder: "digite um comando…",
     banner: "Você escapou",
+    bannerSub: "Fim · recarregue a página para jogar de novo",
+    helpTip: "Digite ajuda para ver os comandos.",
     language: "Idioma",
   },
 };

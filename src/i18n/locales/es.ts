@@ -12,16 +12,16 @@ export const es: Language = {
       abrir: "open",
       usar: "use",
       inventario: "inventory",
+      ayuda: "help",
       // Ocultos: fuera de la ayuda y del mensaje "Prueba:".
       pista: "hint",
-      reiniciar: "restart",
     },
     stopwords: [
       "el", "la", "los", "las", "un", "una", "unos", "unas",
       "de", "del", "en", "con", "a", "al", "para", "sobre",
     ],
     empty: "Escribe un comando.",
-    unknown: (word) => `Comando desconocido "${word}". Prueba: mirar, girar, examinar, abrir, usar, inventario.`,
+    unknown: (word) => `Comando desconocido "${word}". Prueba: mirar, girar, examinar, abrir, usar, inventario, ayuda.`,
     usage: {
       look: "Uso: mirar",
       turn: "Uso: girar",
@@ -29,8 +29,8 @@ export const es: Language = {
       inspect: "Uso: examinar <objeto>",
       open: "Uso: abrir <objeto>",
       use: "Uso: usar <objeto> <destino>",
+      help: "Uso: ayuda",
       hint: "Uso: pista",
-      restart: "Uso: reiniciar",
     },
   },
   engine: {
@@ -42,12 +42,12 @@ export const es: Language = {
     itemRemoved: (name) => `[Retirado del inventario: ${name}]`,
     noSuchObject: (typed) => `Aquí no hay "${typed}".`,
     notVisible: (typed) => `Desde aquí no ves "${typed}".`,
+    help: "Comandos: mirar · girar · examinar <objeto> · abrir <objeto> · usar <objeto> <destino> · inventario",
     hint: (n, total, text) => `Pista ${n}/${total}: ${text}`,
     hintLocked: (countdown) => `Próxima pista disponible en ${countdown}`,
     noMoreHints: "No hay más pistas para esta sala.",
-    restarted: "Nivel reiniciado.",
     escaped: "¡Has escapado!",
-    alreadyEscaped: "Ya has escapado. Escribe reiniciar para volver a jugar.",
+    alreadyEscaped: "Ya has escapado. Recarga la página para volver a jugar.",
   },
   ui: {
     items: "Objetos",
@@ -55,6 +55,8 @@ export const es: Language = {
     level: (n, total) => `Nivel ${n}/${total}`,
     placeholder: "escribe un comando…",
     banner: "Has escapado",
+    bannerSub: "Fin · recarga la página para volver a jugar",
+    helpTip: "Escribe ayuda para ver los comandos.",
     language: "Idioma",
   },
 };

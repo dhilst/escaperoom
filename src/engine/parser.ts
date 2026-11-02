@@ -84,14 +84,28 @@ export function parse(
     case "look":
     case "turn":
     case "inventory":
+    case "help":
     case "hint":
-    case "restart":
       return rest.length === 0 ? { ok: true, command: { verb } } : fail();
 
     case "inspect":
     case "open": {
       if (args.length === 0) return fail();
       const { id, typed } = lookup(0);
+      // "open drawer 0315" / "open drawer with 0315": a known object followed
+      // by something else means "use <something> <object>" (codes, items).
+      if (verb === "open" && resolve(args, aliases) === undefined) {
+        for (let i = args.length - 1; i >= 1; i--) {
+          const object = resolve(args.slice(0, i), aliases);
+          if (object !== undefined) {
+            const rest = lookup(i);
+            return {
+              ok: true,
+              command: { verb: "use", item: rest.id, target: object, typed: argsShown.slice(0, i).join(" ") },
+            };
+          }
+        }
+      }
       return { ok: true, command: { verb, object: id, typed } };
     }
 

@@ -1,5 +1,5 @@
 import { enUS } from "../i18n/locales/en-US";
-import { createInitialState, step } from "./state";
+import { createInitialState, describeCamera, step } from "./state";
 import {
   HINT_UNLOCK_MS,
   type Command,
@@ -35,18 +35,6 @@ export function stepGame(
   now = 0,
   hintUnlockMs: readonly number[] = HINT_UNLOCK_MS,
 ): StepResult {
-  // After winning, restart begins a new game from the first room.
-  if (command.verb === "restart" && state.completed) {
-    const first = game.rooms[game.order[0]];
-    return {
-      state: createGameState(game, now),
-      events: [
-        { type: "restarted", text: messages.restarted },
-        { type: "room_entered", room: first.id, text: `— ${first.title} —\n${first.cameras.A.description}` },
-      ],
-    };
-  }
-
   const room = game.rooms[state.roomId];
   if (!room) throw new Error(`Unknown room "${state.roomId}"`);
 
@@ -60,7 +48,7 @@ export function stepGame(
     state: entered,
     events: [
       ...result.events,
-      { type: "room_entered", room: next.id, text: `— ${next.title} —\n${next.cameras[entered.camera].description}` },
+      { type: "room_entered", room: next.id, text: `— ${next.title} —\n${describeCamera(entered, next)}` },
     ],
   };
 }

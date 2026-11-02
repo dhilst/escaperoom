@@ -58,10 +58,14 @@ describe("parser", () => {
     expect(typed("inspect clock")).toBe("clock");
   });
 
-  it("parses the hidden hint and restart commands", () => {
+  it("parses the hidden hint command and help", () => {
     expect(ok("hint")).toEqual({ verb: "hint" });
-    expect(ok("RESTART")).toEqual({ verb: "restart" });
+    expect(ok("HELP")).toEqual({ verb: "help" });
     expect(parse("hint please", aliases)).toEqual({ ok: false, error: "Usage: hint" });
+  });
+
+  it("has no restart command (it would undo everyone's progress in collective play)", () => {
+    expect(parse("restart", aliases).ok).toBe(false);
   });
 
   it("does not advertise the hidden commands", () => {
@@ -69,7 +73,6 @@ describe("parser", () => {
     expect(r.ok).toBe(false);
     if (!r.ok) {
       expect(r.error).not.toContain("hint");
-      expect(r.error).not.toContain("restart");
     }
   });
 

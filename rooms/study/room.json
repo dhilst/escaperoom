@@ -64,6 +64,24 @@
         "es": ["salida", "puerta pesada", "cerradura"]
       },
       "cameras": ["C"]
+    },
+    "papers": {
+      "name": {"en-US": "papers", "pt-BR": "papéis", "es": "papeles"},
+      "aliases": {
+        "en-US": ["paper", "pages", "page", "note", "notes", "sheets"],
+        "pt-BR": ["papel", "folhas", "folha", "bilhete", "anotações"],
+        "es": ["papel", "hojas", "hoja", "nota", "notas"]
+      },
+      "cameras": ["A"]
+    },
+    "candle": {
+      "name": {"en-US": "candle", "pt-BR": "vela", "es": "vela"},
+      "aliases": {
+        "en-US": ["candle stub", "wax"],
+        "pt-BR": ["toco de vela", "cera"],
+        "es": ["cabo de vela", "cera"]
+      },
+      "cameras": ["A"]
     }
   },
   "items": {
@@ -109,6 +127,34 @@
           }
         },
         {"type": "add_item", "item": "clock_note"}
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "papers",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Loose pages, swollen with damp. Whatever was written here has washed away.",
+            "pt-BR": "Folhas soltas, inchadas de umidade. O que estava escrito aqui se apagou.",
+            "es": "Hojas sueltas, hinchadas por la humedad. Lo que estaba escrito aquí se ha borrado."
+          }
+        }
+      ]
+    },
+    {
+      "verb": "inspect",
+      "object": "candle",
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A stub of candle, long burned out.",
+            "pt-BR": "Um toco de vela, apagado há muito tempo.",
+            "es": "Un cabo de vela, apagado hace mucho tiempo."
+          }
+        }
       ]
     },
     {
