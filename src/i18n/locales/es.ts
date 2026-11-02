@@ -43,6 +43,7 @@ export const es: Language = {
     noSuchObject: (typed) => `Aquí no hay "${typed}".`,
     notVisible: (typed) => `Desde aquí no ves "${typed}".`,
     hint: (n, total, text) => `Pista ${n}/${total}: ${text}`,
+    hintLocked: (countdown) => `Próxima pista disponible en ${countdown}`,
     noMoreHints: "No hay más pistas para esta sala.",
     restarted: "Nivel reiniciado.",
     escaped: "¡Has escapado!",

@@ -160,6 +160,7 @@ describe("engine: purity, determinism and reset", () => {
       flags: { drawer_open: false, door_unlocked: false },
       completed: false,
       hints: [],
+      levelStartedAt: 0,
     });
     expect(state.inventory).toEqual(["brass_key"]);
     // A new game must not share flags with the room definition.

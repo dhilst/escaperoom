@@ -99,6 +99,7 @@ describe("full game", () => {
       flags: { toolbox_open: false, crate_open: false, power_on: false },
       completed: false,
       hints: [],
+      levelStartedAt: 0,
     });
   });
 

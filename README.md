@@ -109,6 +109,18 @@ to one line, and a `HINT n/5` counter heads the box. The layout always reserves
 room for a full box, so the camera view never changes size during play. Hints
 reset when you enter a new room, but survive `restart`.
 
+Hints also unlock over time, counted from the moment you enter the level: the
+1st after 10 minutes, the 2nd after 30, the 3rd after 1h30, the 4th after 3h
+and the 5th after 6h. Asking earlier shows `Next hint available in HH:MM:SS`,
+and the seconds tick down while the subtitle is on screen. Restarting a level
+doesn't reset its clock. The schedule is `HINT_UNLOCK_MS` in
+`src/engine/types.ts`.
+
+For testing, add `?hintTimer=off` to unlock every hint immediately, for
+example `http://localhost:5173/?hintTimer=off&lang=pt-BR`. This only works on
+the dev server (`npm run dev`). Production builds ignore it, and the published
+site contains none of its code.
+
 <details>
 <summary>Solutions (spoilers)</summary>
 
@@ -197,6 +209,14 @@ loads the new room's `initialFlags`.
 `game_completed`, `hint_revealed`, `restarted`, `failure`). Every event that
 the player should see has a `text`. `GameState.hints` lists the indices of the
 current room's revealed hints in reveal order.
+
+Time enters the engine only as an argument: `stepGame(..., now)` and
+`createGameState(game, now)` take the host clock in milliseconds, and
+`GameState.levelStartedAt` records when the level began. Hint unlocking is
+the only thing that depends on it. Given the same states, commands and `now`
+values, the results are always identical, so tests can simulate any moment.
+A `hint_locked` event carries `availableAt`, which the UI uses to tick the
+countdown.
 
 A `failure` event has a `reason`, and its text depends on that reason:
 

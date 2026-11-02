@@ -43,6 +43,7 @@ export const ptBR: Language = {
     noSuchObject: (typed) => `Não há "${typed}" aqui.`,
     notVisible: (typed) => `Daqui você não vê "${typed}".`,
     hint: (n, total, text) => `Dica ${n}/${total}: ${text}`,
+    hintLocked: (countdown) => `Próxima dica disponível em ${countdown}`,
     noMoreHints: "Não há mais dicas para esta sala.",
     restarted: "Fase reiniciada.",
     escaped: "Você escapou!",

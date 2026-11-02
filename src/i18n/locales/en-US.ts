@@ -39,6 +39,7 @@ export const enUS: Language = {
     noSuchObject: (typed) => `There is no such ${typed}.`,
     notVisible: (typed) => `You don't see any ${typed} here.`,
     hint: (n, total, text) => `Hint ${n}/${total}: ${text}`,
+    hintLocked: (countdown) => `Next hint available in ${countdown}`,
     noMoreHints: "There are no more hints for this room.",
     restarted: "Level restarted.",
     escaped: "You escaped!",

@@ -9,8 +9,10 @@ import type {
   RoomDefinition,
   StepResult,
 } from "./types";
+import { HINT_UNLOCK_MS } from "./types";
 
-export function createInitialState(room: RoomDefinition): GameState {
+/** `now` is the host clock (ms); the level's hint timer starts there. */
+export function createInitialState(room: RoomDefinition, now = 0): GameState {
   return {
     roomId: room.id,
     camera: "A",
@@ -18,7 +20,20 @@ export function createInitialState(room: RoomDefinition): GameState {
     flags: { ...room.initialFlags },
     completed: false,
     hints: [],
+    levelStartedAt: now,
   };
+}
+
+/** Format a duration as HH:MM:SS, rounding up to whole seconds. */
+export function formatCountdown(ms: number): string {
+  const total = Math.max(0, Math.ceil(ms / 1000));
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return `${pad(Math.floor(total / 3600))}:${pad(Math.floor(total / 60) % 60)}:${pad(total % 60)}`;
+}
+
+/** When the next hint of the current level unlocks (host clock, ms). */
+export function hintAvailableAt(state: GameState, schedule: readonly number[] = HINT_UNLOCK_MS): number {
+  return state.levelStartedAt + schedule[Math.min(state.hints.length, schedule.length - 1)];
 }
 
 function cloneState(state: GameState): GameState {
@@ -36,23 +51,35 @@ export function nextHint(state: GameState, room: RoomDefinition): number | undef
 
 /**
  * Pure, deterministic transition function. Never mutates `state`.
- * `messages` only changes the wording of the engine's own responses.
+ * `messages` only changes the wording of the engine's own responses. `now` is
+ * the host clock (ms), used only for hint unlock times; the same state,
+ * command and `now` always give the same result. `hintUnlockMs` replaces the
+ * unlock schedule (e.g. all zeros to test without waiting).
  */
 export function step(
   state: GameState,
   command: Command,
   room: RoomDefinition,
   messages: EngineMessages = enUS.engine,
+  now = 0,
+  hintUnlockMs: readonly number[] = HINT_UNLOCK_MS,
 ): StepResult {
   const next = cloneState(state);
-  const events = run(next, command, room, messages);
+  const events = run(next, command, room, messages, now, hintUnlockMs);
   return { state: next, events };
 }
 
-function run(state: GameState, command: Command, room: RoomDefinition, messages: EngineMessages): GameEvent[] {
+function run(
+  state: GameState,
+  command: Command,
+  room: RoomDefinition,
+  messages: EngineMessages,
+  now: number,
+  hintUnlockMs: readonly number[],
+): GameEvent[] {
   if (command.verb === "restart") {
-    // Restart the level. Hints already revealed here are kept.
-    Object.assign(state, createInitialState(room), { hints: state.hints });
+    // Restart the level. Revealed hints and the level's hint clock are kept.
+    Object.assign(state, createInitialState(room), { hints: state.hints, levelStartedAt: state.levelStartedAt });
     return [
       { type: "restarted", text: messages.restarted },
       { type: "message", text: room.cameras[state.camera].description },
@@ -85,6 +112,10 @@ function run(state: GameState, command: Command, room: RoomDefinition, messages:
       const hints = room.hints ?? [];
       const next = nextHint(state, room);
       if (next === undefined) return [{ type: "message", text: messages.noMoreHints }];
+      const availableAt = hintAvailableAt(state, hintUnlockMs);
+      if (now < availableAt) {
+        return [{ type: "hint_locked", availableAt, text: messages.hintLocked(formatCountdown(availableAt - now)) }];
+      }
       state.hints.push(next);
       return [{ type: "hint_revealed", hint: next, text: messages.hint(next + 1, hints.length, hints[next].text) }];
     }

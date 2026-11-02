@@ -4,6 +4,8 @@ import { LANGUAGES, localeFromParam, type Language } from "./i18n";
 import {
   buildAliasMap,
   createGameState,
+  formatCountdown,
+  HINT_UNLOCK_MS,
   parse,
   stepGame,
   type AliasMap,
@@ -53,6 +55,9 @@ function start(game: GameDefinition, language: Language): void {
   let aliasesFor = "";
 
   const currentRoom = () => game.rooms[state.roomId];
+  /** "Next hint available in HH:MM:SS", recomputed so the seconds tick down on screen. */
+  const countdown = (availableAt: number) =>
+    language.engine.hintLocked(formatCountdown(availableAt - Date.now()));
 
   const render = () => {
     const room = currentRoom();
@@ -82,11 +87,15 @@ function start(game: GameDefinition, language: Language): void {
       ui.say([{ text: parsed.error, kind: "error" }]);
       return;
     }
-    const result = stepGame(state, parsed.command, game, language.engine);
+    const result = stepGame(state, parsed.command, game, language.engine, Date.now(), hintUnlockMs);
     state = result.state;
     // Everything one command produced becomes a single subtitle.
     const lines: SubtitleLine[] = result.events.flatMap((event) =>
-      "text" in event ? [{ text: event.text, kind: lineKind(event) }] : [],
+      event.type === "hint_locked"
+        ? [{ text: event.text, kind: "hint", live: () => countdown(event.availableAt) }]
+        : "text" in event
+          ? [{ text: event.text, kind: lineKind(event) }]
+          : [],
     );
     ui.say(lines);
     render();
@@ -107,15 +116,22 @@ function start(game: GameDefinition, language: Language): void {
     ui.input.value = history[historyIndex] ?? "";
   });
 
-  state = createGameState(game);
+  state = createGameState(game, Date.now());
   ui.say([{ text: currentRoom().cameras[state.camera].description, kind: "response" }]);
   render();
   ui.focusInput();
 }
 
+const params = new URLSearchParams(location.search);
+
+// Testing aid, dev server only: ?hintTimer=off unlocks every hint immediately.
+// import.meta.env.DEV is false in production builds, so the published game ignores it.
+const hintUnlockMs =
+  import.meta.env.DEV && params.get("hintTimer") === "off" ? HINT_UNLOCK_MS.map(() => 0) : HINT_UNLOCK_MS;
+
 try {
   // The language is chosen with ?lang=en-US | pt-BR | es (default: en-US).
-  const locale = localeFromParam(new URLSearchParams(location.search).get("lang"));
+  const locale = localeFromParam(params.get("lang"));
   start(loadGame(locale), LANGUAGES[locale]);
 } catch (error) {
   ui.say([{ text: String(error instanceof Error ? error.message : error), kind: "error" }]);

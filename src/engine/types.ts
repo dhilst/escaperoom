@@ -49,6 +49,8 @@ export interface EngineMessages {
   /** A real object that only the other camera can see, or an item not carried. */
   notVisible(typed: string): string;
   hint(number: number, total: number, text: string): string;
+  /** `countdown` is already formatted as HH:MM:SS. */
+  hintLocked(countdown: string): string;
   noMoreHints: string;
   restarted: string;
   escaped: string;
@@ -71,6 +73,8 @@ export interface GameState {
   completed: boolean;
   /** Indices into the current room's `hints`, in the order they were revealed. */
   hints: number[];
+  /** When the current level began (ms, host clock). Hint unlock times count from here. */
+  levelStartedAt: number;
 }
 
 // ---------------------------------------------------------------------------
@@ -104,6 +108,13 @@ export interface Hint {
 }
 
 export const MAX_HINTS = 5;
+
+const MINUTE = 60_000;
+/**
+ * When each hint unlocks, counted from the start of the level: the 1st after
+ * 10 minutes, the 2nd after 30, then 1h30, 3h and 6h.
+ */
+export const HINT_UNLOCK_MS = [10 * MINUTE, 30 * MINUTE, 90 * MINUTE, 180 * MINUTE, 360 * MINUTE];
 
 export interface ObjectDefinition {
   name: string;
@@ -181,6 +192,8 @@ export type GameEvent =
   | { type: "room_entered"; room: string; text: string }
   | { type: "game_completed"; text: string }
   | { type: "hint_revealed"; hint: number; text: string }
+  /** The next hint isn't unlocked yet; `availableAt` is on the host clock, for a live countdown. */
+  | { type: "hint_locked"; availableAt: number; text: string }
   | { type: "restarted"; text: string }
   | { type: "failure"; reason: FailureReason; text: string };
 

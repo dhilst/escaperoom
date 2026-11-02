@@ -29,13 +29,18 @@ export function play(lines: string[], start: GameState = createInitialState(room
   return { state, log, last: log[log.length - 1] ?? [] };
 }
 
-/** Run raw input lines through the whole game, following room changes. */
-export function playGame(lines: string[], start: GameState = createGameState(game), locale: Locale = "en-US") {
+/** Run raw input lines through the whole game, following room changes, at host time `now` (ms). */
+export function playGame(
+  lines: string[],
+  start: GameState = createGameState(game),
+  locale: Locale = "en-US",
+  now = 0,
+) {
   const g = loadGame(locale);
   let state = start;
   const log: GameEvent[][] = [];
   for (const line of lines) {
-    const result = stepGame(state, parseOrThrow(line, state.roomId, g, locale), g, LANGUAGES[locale].engine);
+    const result = stepGame(state, parseOrThrow(line, state.roomId, g, locale), g, LANGUAGES[locale].engine, now);
     state = result.state;
     log.push(result.events);
   }
