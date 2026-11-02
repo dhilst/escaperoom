@@ -10,7 +10,9 @@ export interface SubtitleLine {
 /** Milliseconds per typed character. */
 export const TYPE_MS = 30;
 /** How long a fully typed subtitle stays on screen. */
-export const HOLD_MS = 5000;
+export const HOLD_MS = 10_000;
+/** The help text is longer and worth reading twice: it stays up longer. */
+export const HELP_HOLD_MS = 15_000;
 /** Fade-out duration; keep in sync with the .subtitle transition in style.css. */
 export const FADE_MS = 400;
 /** Refresh rate for live lines once typing is done. */
@@ -18,7 +20,7 @@ const LIVE_MS = 250;
 
 /**
  * Resident Evil-style subtitles: the response types itself out over the bottom
- * of the camera view, stays for HOLD_MS once complete, then fades. A new
+ * of the camera view, stays for HOLD_MS (or `holdMs`) once complete, then fades. A new
  * subtitle replaces the current one immediately. All lines of a response flow
  * as one paragraph (line breaks become spaces); each keeps its color.
  *
@@ -36,7 +38,7 @@ export class Subtitles {
     private readonly live: HTMLElement,
   ) {}
 
-  show(lines: SubtitleLine[]): void {
+  show(lines: SubtitleLine[], holdMs = HOLD_MS): void {
     cancelAnimationFrame(this.frame);
     clearTimeout(this.timer);
     clearInterval(this.ticker);
@@ -85,7 +87,7 @@ export class Subtitles {
       if (lines.some((l) => l.live)) {
         this.ticker = window.setInterval(() => render(Infinity), LIVE_MS);
       }
-      this.timer = window.setTimeout(() => this.fade(), HOLD_MS);
+      this.timer = window.setTimeout(() => this.fade(), holdMs);
     };
     tick(start);
   }

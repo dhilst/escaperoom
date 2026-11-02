@@ -17,7 +17,7 @@ import {
   type GameState,
   type RoomDefinition,
 } from "./engine";
-import { Renderer, type LineKind, type SubtitleLine } from "./ui/renderer";
+import { HELP_HOLD_MS, Renderer, type LineKind, type SubtitleLine } from "./ui/renderer";
 
 // Every image under rooms/<id>/ is bundled; room.json refers to them by file name.
 const roomImages = import.meta.glob<string>("../rooms/*/*.{png,webp,jpg}", {
@@ -101,7 +101,8 @@ function start(game: GameDefinition, language: Language): void {
           ? [{ text: event.text, kind: lineKind(event) }]
           : [],
     );
-    ui.say(lines);
+    const isHelp = parsed.command.words.length === 1 && parsed.command.words[0] === "help";
+    ui.say(lines, isHelp ? HELP_HOLD_MS : undefined);
     render();
   };
 

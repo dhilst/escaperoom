@@ -4,6 +4,7 @@ import type { UiStrings } from "../i18n";
 import { Subtitles, type SubtitleLine } from "./subtitles";
 
 export type { LineKind, SubtitleLine } from "./subtitles";
+export { HELP_HOLD_MS } from "./subtitles";
 
 /** A revealed hint: its position in the room's ladder (1-based) and its text. */
 export interface ShownHint {
@@ -121,8 +122,8 @@ export class Renderer {
   }
 
   /** Show one command's response as a typed subtitle over the camera view. */
-  say(lines: SubtitleLine[]): void {
-    this.subtitles.show(lines);
+  say(lines: SubtitleLine[], holdMs?: number): void {
+    this.subtitles.show(lines, holdMs);
   }
 
   focusInput(): void {

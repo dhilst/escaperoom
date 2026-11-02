@@ -80,8 +80,9 @@ Objects and items go by their names in the player's language (`chave porta`,
 `llave puerta`). Rooms can add their own verbs too.
 
 Responses appear as subtitles over the bottom of the camera view, typed out
-like the old Resident Evil games. Each one stays for 5 seconds after it
-finishes typing, and a new command replaces it immediately. Screen readers
+like the old Resident Evil games. Each one stays for 10 seconds after it
+finishes typing (the `help` text for 15), and a new command replaces it
+immediately. Screen readers
 get the full text at once, and with reduced motion enabled the text appears
 without the typing effect.
 
