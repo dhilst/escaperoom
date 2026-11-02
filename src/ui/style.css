@@ -236,8 +236,7 @@ h2 {
 }
 
 .subtitle .line {
-  display: block;
-  white-space: pre-wrap;
+  white-space: normal;
   color: #ece6d2;
 }
 

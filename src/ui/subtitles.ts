@@ -35,11 +35,17 @@ export class Subtitles {
     clearTimeout(this.timer);
     if (lines.length === 0) return;
 
-    this.live.textContent = lines.map((l) => l.text).join("\n");
+    // One flowing paragraph: line breaks inside texts and between the lines of
+    // a response become spaces (colors per line are kept).
+    const flat = lines.map((l, i) => ({
+      kind: l.kind,
+      text: l.text.replace(/\s*\n\s*/g, " ") + (i < lines.length - 1 ? " " : ""),
+    }));
+    this.live.textContent = flat.map((l) => l.text).join("");
 
     // Each line holds a typed part and a hidden remainder, so the band has its
     // final size from the start and the text doesn't reflow while typing.
-    const parts = lines.map(({ text, kind }) => {
+    const parts = flat.map(({ text, kind }) => {
       const line = document.createElement("span");
       line.className = `line ${kind}`;
       const typed = document.createElement("span");
