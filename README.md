@@ -25,6 +25,19 @@ npm run typecheck  # tsc --noEmit
 npm run build      # typecheck and build a static site into dist/
 ```
 
+## Publish
+
+The game is a static site, published with GitHub Pages at
+**https://dhilst.github.io/escaperoom/**.
+
+```sh
+npm run deploy     # build, then force-push dist/ as the gh-pages branch
+```
+
+The `gh-pages` branch contains only the build output, and each deploy
+replaces it with a single commit. The build uses relative asset paths, so it
+works under any URL path.
+
 ## Languages
 
 The game is available in US English (the default), Brazilian Portuguese and
