@@ -39,6 +39,7 @@ export const enUS: Language = {
     banner: "You escaped",
     bannerSub: "The end · reload the page to play again",
     helpTip: "Type help for the list of commands.",
+    progressRestored: "Your progress was restored.",
     language: "Language",
   },
 };

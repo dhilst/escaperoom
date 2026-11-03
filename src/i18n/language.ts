@@ -11,6 +11,8 @@ export interface UiStrings {
   bannerSub: string;
   /** Shown once, with the first room description. */
   helpTip: string;
+  /** Shown instead of the help tip when a saved game is resumed. */
+  progressRestored: string;
   language: string;
 }
 

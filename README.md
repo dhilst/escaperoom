@@ -116,6 +116,17 @@ altar wants the three candles named in the hymn's order (four words). The
 front door wants its three keys in the order carved above it (four words).
 Doing the parts one at a time doesn't work in those rooms.
 
+### Saved progress
+
+The game saves to the browser's `localStorage` after every command: the
+room, camera, inventory, flags, revealed hints and the level's hint clock.
+Reopening the page resumes where you left off, with "Your progress was
+restored.", even in a different `?lang`. Saves are checked against the
+current rooms (`restoreState()` in `src/engine/save.ts`), and one that no
+longer fits is ignored. Winning clears the save, so reloading after the end
+starts a new game. To start over by hand, clear the site's data in the
+browser. In development, `?room=N` always starts that level.
+
 ### Hidden commands
 
 `help` (`ajuda`, `ayuda`) lists the commands above, and the game suggests it
@@ -178,6 +189,7 @@ src/
     subtitles.ts    typed, timed subtitles for responses
     style.css
   content.ts        bundles the rooms and resolves them for one locale
+  persistence.ts    saves and loads progress in localStorage
   main.ts           wires the game, engine and renderer together
 rooms/
   game.json         title and level order

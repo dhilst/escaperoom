@@ -39,6 +39,7 @@ export const ptBR: Language = {
     banner: "Você escapou",
     bannerSub: "Fim · recarregue a página para jogar de novo",
     helpTip: "Digite ajuda para ver os comandos.",
+    progressRestored: "Seu progresso foi restaurado.",
     language: "Idioma",
   },
 };

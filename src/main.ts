@@ -1,5 +1,6 @@
 import "./ui/style.css";
 import { loadGame } from "./content";
+import { loadSave, writeSave } from "./persistence";
 import { LANGUAGES, localeFromParam, type Language } from "./i18n";
 import {
   buildVocabulary,
@@ -104,6 +105,7 @@ function start(game: GameDefinition, language: Language): void {
     const isHelp = parsed.command.words.length === 1 && parsed.command.words[0] === "help";
     ui.say(lines, isHelp ? HELP_HOLD_MS : undefined);
     render();
+    writeSave(state);
   };
 
   ui.form.addEventListener("submit", (e) => {
@@ -121,12 +123,14 @@ function start(game: GameDefinition, language: Language): void {
     ui.input.value = history[historyIndex] ?? "";
   });
 
-  state = startState(game);
+  const { state: initial, restored } = startState(game);
+  state = initial;
   ui.say([
     { text: describeCamera(state, currentRoom()), kind: "response" },
-    { text: language.ui.helpTip, kind: "hint" },
+    { text: restored ? language.ui.progressRestored : language.ui.helpTip, kind: "hint" },
   ]);
   render();
+  writeSave(state);
   ui.focusInput();
 }
 
@@ -141,10 +145,13 @@ ui.setTypingSpeed(wpmFromParam(params.get("wpm")));
  * Testing aid, dev server only: ?room=N starts at level N (1-based; a room id
  * such as ?room=cellar works too). Production builds ignore it.
  */
-function startState(game: GameDefinition): GameState {
+function startState(game: GameDefinition): { state: GameState; restored: boolean } {
   const wanted = import.meta.env.DEV ? params.get("room") : null;
   const roomId = wanted && (game.order[Number(wanted) - 1] ?? (wanted in game.rooms ? wanted : undefined));
-  return roomId ? createInitialState(game.rooms[roomId], Date.now()) : createGameState(game, Date.now());
+  if (roomId) return { state: createInitialState(game.rooms[roomId], Date.now()), restored: false };
+  // Progress is saved in this browser after every command (see persistence.ts).
+  const saved = loadSave(game);
+  return saved ? { state: saved, restored: true } : { state: createGameState(game, Date.now()), restored: false };
 }
 
 const hintUnlockMs =
