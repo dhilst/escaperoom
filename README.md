@@ -2,9 +2,11 @@
 
 A small browser escape room in the style of late-90s PlayStation survival horror.
 You play by typing commands. There's no movement and no clicking. *The Hollow
-House* has ten rooms, played as levels: the Locked Study, the Flooded Cellar,
-the Observatory, the Rooftop Greenhouse, the Nursery, the Library, the
-Chapel, the Clock Tower, the Kitchen and the Grand Foyer. Each room has two
+House* has twenty rooms, played as levels: the Locked Study, the Flooded
+Cellar, the Observatory, the Rooftop Greenhouse, the Nursery, the Library, the
+Chapel, the Clock Tower, the Kitchen, the Laundry, the Dining Hall, the Music
+Room, the Billiard Room, the Portrait Gallery, the Trophy Room, the Master
+Bedroom, the Bathroom, the Darkroom, the Attic and the Grand Foyer. Each room has two
 fixed camera shots, and `turn` switches between them.
 
 The game logic is a pure, deterministic engine driven by JSON room data. The

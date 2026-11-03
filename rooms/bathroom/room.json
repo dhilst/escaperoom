@@ -1,0 +1,1697 @@
+{
+  "id": "bathroom",
+  "title": {
+    "en-US": "The Bathroom",
+    "pt-BR": "O Banheiro",
+    "es": "El Baño"
+  },
+  "cameras": {
+    "A": {
+      "image": "camera_a.png",
+      "description": {
+        "en-US": "A clawfoot tub full of grey water sits under a copper geyser.\nA cracked mirror hangs over the washbasin.",
+        "pt-BR": "Uma banheira de pés cheia de água cinzenta fica sob um aquecedor de cobre.\nUm espelho rachado pende sobre a pia.",
+        "es": "Una bañera de patas llena de agua gris está bajo un calentador de cobre.\nUn espejo agrietado cuelga sobre el lavabo."
+      },
+      "variants": [
+        {
+          "when": [
+            {
+              "type": "flag_equals",
+              "flag": "steam",
+              "value": true
+            }
+          ],
+          "description": {
+            "en-US": "Steam curls from the clawfoot tub under the humming geyser.\nThe mirror over the washbasin is white with fog.",
+            "pt-BR": "O vapor sobe da banheira de pés sob o aquecedor que zumbe.\nO espelho sobre a pia está branco de névoa.",
+            "es": "El vapor sube de la bañera de patas bajo el calentador que zumba.\nEl espejo sobre el lavabo está blanco de vaho."
+          }
+        }
+      ]
+    },
+    "C": {
+      "image": "camera_c.png",
+      "description": {
+        "en-US": "A medicine cabinet hangs by the toilet's high cistern, near a towel rail.\nA bathrobe sags on a hook by the door. The gas lamp is dark.",
+        "pt-BR": "Um armário de remédios fica junto à caixa de descarga alta, perto de um toalheiro.\nUm roupão pende de um gancho junto à porta. O lampião está apagado.",
+        "es": "Un botiquín cuelga junto a la cisterna alta del inodoro, cerca de un toallero.\nUn albornoz cuelga de un gancho junto a la puerta. La lámpara de gas está apagada."
+      },
+      "variants": [
+        {
+          "when": [
+            {
+              "type": "flag_equals",
+              "flag": "lamp_lit",
+              "value": true
+            }
+          ],
+          "description": {
+            "en-US": "A medicine cabinet hangs by the toilet's high cistern, near a towel rail.\nThe gas lamp by the door hisses, bright and white.",
+            "pt-BR": "Um armário de remédios fica junto à caixa de descarga alta, perto de um toalheiro.\nO lampião junto à porta chia, claro e branco.",
+            "es": "Un botiquín cuelga junto a la cisterna alta del inodoro, cerca de un toallero.\nLa lámpara de gas junto a la puerta sisea, clara y blanca."
+          }
+        }
+      ]
+    }
+  },
+  "objects": {
+    "tub": {
+      "name": {
+        "en-US": "bathtub",
+        "pt-BR": "banheira",
+        "es": "bañera"
+      },
+      "aliases": {
+        "en-US": [
+          "tub",
+          "bath",
+          "clawfoot tub",
+          "water",
+          "grey water",
+          "tap",
+          "taps",
+          "faucet",
+          "faucets"
+        ],
+        "pt-BR": [
+          "banheira de pés",
+          "banho",
+          "água",
+          "água cinzenta",
+          "torneira",
+          "torneiras"
+        ],
+        "es": [
+          "tina",
+          "bañera de patas",
+          "baño",
+          "agua",
+          "agua gris",
+          "grifo",
+          "grifos"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "plug": {
+      "name": {
+        "en-US": "plug",
+        "pt-BR": "tampão",
+        "es": "tapón"
+      },
+      "aliases": {
+        "en-US": [
+          "drain",
+          "plug chain",
+          "chain",
+          "stopper"
+        ],
+        "pt-BR": [
+          "ralo",
+          "tampa",
+          "corrente",
+          "corrente do tampão"
+        ],
+        "es": [
+          "desagüe",
+          "cadenita",
+          "tapón de goma"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "hot_tap": {
+      "name": {
+        "en-US": "hot tap",
+        "pt-BR": "torneira quente",
+        "es": "grifo caliente"
+      },
+      "aliases": {
+        "en-US": [
+          "hot",
+          "hot water",
+          "hot faucet"
+        ],
+        "pt-BR": [
+          "quente",
+          "água quente"
+        ],
+        "es": [
+          "caliente",
+          "agua caliente"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "cold_tap": {
+      "name": {
+        "en-US": "cold tap",
+        "pt-BR": "torneira fria",
+        "es": "grifo frío"
+      },
+      "aliases": {
+        "en-US": [
+          "cold",
+          "cold water",
+          "cold faucet"
+        ],
+        "pt-BR": [
+          "fria",
+          "água fria"
+        ],
+        "es": [
+          "frío",
+          "agua fría"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "geyser": {
+      "name": {
+        "en-US": "geyser",
+        "pt-BR": "aquecedor",
+        "es": "calentador"
+      },
+      "aliases": {
+        "en-US": [
+          "water heater",
+          "heater",
+          "boiler",
+          "copper heater",
+          "copper geyser",
+          "pilot",
+          "pilot light",
+          "burner",
+          "flame window"
+        ],
+        "pt-BR": [
+          "aquecedor de água",
+          "aquecedor de cobre",
+          "boiler",
+          "piloto",
+          "chama piloto",
+          "queimador"
+        ],
+        "es": [
+          "calentador de agua",
+          "calentador de cobre",
+          "calefón",
+          "caldera",
+          "piloto",
+          "llama piloto",
+          "quemador"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "mirror": {
+      "name": {
+        "en-US": "mirror",
+        "pt-BR": "espelho",
+        "es": "espejo"
+      },
+      "aliases": {
+        "en-US": [
+          "looking glass",
+          "glass",
+          "reflection",
+          "cracked mirror",
+          "fog",
+          "steam"
+        ],
+        "pt-BR": [
+          "vidro",
+          "reflexo",
+          "espelho rachado",
+          "névoa",
+          "vapor"
+        ],
+        "es": [
+          "vidrio",
+          "reflejo",
+          "espejo agrietado",
+          "niebla",
+          "vaho",
+          "vapor"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "basin": {
+      "name": {
+        "en-US": "washbasin",
+        "pt-BR": "pia",
+        "es": "lavabo"
+      },
+      "aliases": {
+        "en-US": [
+          "basin",
+          "sink",
+          "washstand",
+          "soap"
+        ],
+        "pt-BR": [
+          "lavatório",
+          "sabonete",
+          "sabão"
+        ],
+        "es": [
+          "lavamanos",
+          "jabón",
+          "palangana"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "cabinet": {
+      "name": {
+        "en-US": "medicine cabinet",
+        "pt-BR": "armário de remédios",
+        "es": "botiquín"
+      },
+      "aliases": {
+        "en-US": [
+          "cabinet",
+          "cupboard",
+          "dials",
+          "dial lock",
+          "brass dials"
+        ],
+        "pt-BR": [
+          "armário",
+          "armarinho",
+          "cadeado de discos",
+          "discos"
+        ],
+        "es": [
+          "armario",
+          "armarito",
+          "diales",
+          "cerradura de diales"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "toilet": {
+      "name": {
+        "en-US": "toilet",
+        "pt-BR": "privada",
+        "es": "inodoro"
+      },
+      "aliases": {
+        "en-US": [
+          "lavatory",
+          "wc",
+          "cistern",
+          "flush",
+          "bowl",
+          "pull chain"
+        ],
+        "pt-BR": [
+          "vaso",
+          "vaso sanitário",
+          "descarga",
+          "caixa de descarga"
+        ],
+        "es": [
+          "retrete",
+          "váter",
+          "cisterna",
+          "taza",
+          "cadena del váter"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "towels": {
+      "name": {
+        "en-US": "towels",
+        "pt-BR": "toalhas",
+        "es": "toallas"
+      },
+      "aliases": {
+        "en-US": [
+          "towel",
+          "towel rail",
+          "rail"
+        ],
+        "pt-BR": [
+          "toalha",
+          "toalheiro",
+          "porta-toalhas"
+        ],
+        "es": [
+          "toalla",
+          "toallero"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "robe": {
+      "name": {
+        "en-US": "bathrobe",
+        "pt-BR": "roupão",
+        "es": "albornoz"
+      },
+      "aliases": {
+        "en-US": [
+          "robe",
+          "dressing gown",
+          "gown",
+          "hook",
+          "pocket",
+          "pockets"
+        ],
+        "pt-BR": [
+          "roupão de banho",
+          "cabide",
+          "gancho",
+          "bolso",
+          "bolsos"
+        ],
+        "es": [
+          "bata",
+          "percha",
+          "gancho",
+          "bolsillo",
+          "bolsillos"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "lamp": {
+      "name": {
+        "en-US": "gas lamp",
+        "pt-BR": "lampião",
+        "es": "lámpara de gas"
+      },
+      "aliases": {
+        "en-US": [
+          "lamp",
+          "sconce",
+          "mantle",
+          "wall lamp",
+          "gas",
+          "jet"
+        ],
+        "pt-BR": [
+          "lampião a gás",
+          "luminária",
+          "camisa",
+          "gás",
+          "bico de gás"
+        ],
+        "es": [
+          "lámpara",
+          "aplique",
+          "camisa",
+          "gas",
+          "farol"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "door": {
+      "name": {
+        "en-US": "door",
+        "pt-BR": "porta",
+        "es": "puerta"
+      },
+      "aliases": {
+        "en-US": [
+          "exit",
+          "lock",
+          "keyhole",
+          "narrow door",
+          "lock plate"
+        ],
+        "pt-BR": [
+          "saída",
+          "fechadura",
+          "buraco da fechadura",
+          "porta estreita"
+        ],
+        "es": [
+          "salida",
+          "cerradura",
+          "ojo de la cerradura",
+          "puerta estrecha"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    }
+  },
+  "items": {
+    "lighter": {
+      "name": {
+        "en-US": "Brass lighter",
+        "pt-BR": "Isqueiro de latão",
+        "es": "Mechero de latón"
+      },
+      "aliases": {
+        "en-US": [
+          "lighter",
+          "petrol lighter",
+          "cigarette lighter"
+        ],
+        "pt-BR": [
+          "isqueiro",
+          "isqueiro a gasolina"
+        ],
+        "es": [
+          "mechero",
+          "encendedor",
+          "mechero de gasolina"
+        ]
+      },
+      "description": {
+        "en-US": "A dented brass petrol lighter. It still sparks.",
+        "pt-BR": "Um isqueiro de latão a gasolina, amassado. Ainda faísca.",
+        "es": "Un mechero de gasolina de latón, abollado. Todavía echa chispas."
+      }
+    },
+    "rusty_key": {
+      "name": {
+        "en-US": "Rusty key",
+        "pt-BR": "Chave enferrujada",
+        "es": "Llave oxidada"
+      },
+      "aliases": {
+        "en-US": [
+          "key",
+          "small key"
+        ],
+        "pt-BR": [
+          "chave",
+          "chave pequena"
+        ],
+        "es": [
+          "llave",
+          "llave pequeña"
+        ]
+      },
+      "description": {
+        "en-US": "A small key, rough with orange rust. It will be stiff in any lock.",
+        "pt-BR": "Uma chave pequena, áspera de ferrugem. Vai emperrar em qualquer fechadura.",
+        "es": "Una llave pequeña, áspera de óxido. Se atascará en cualquier cerradura."
+      }
+    },
+    "oil": {
+      "name": {
+        "en-US": "Castor oil",
+        "pt-BR": "Óleo de rícino",
+        "es": "Aceite de ricino"
+      },
+      "aliases": {
+        "en-US": [
+          "oil",
+          "flask",
+          "bottle",
+          "flask of oil",
+          "bottle of oil"
+        ],
+        "pt-BR": [
+          "óleo",
+          "frasco",
+          "frasco de óleo",
+          "vidro de óleo"
+        ],
+        "es": [
+          "aceite",
+          "frasco",
+          "botella",
+          "frasco de aceite"
+        ]
+      },
+      "description": {
+        "en-US": "A flask of castor oil. \"For stiff joints\", says the label. Stiff locks too, no doubt.",
+        "pt-BR": "Um frasco de óleo de rícino. \"Para juntas rígidas\", diz o rótulo. Fechaduras rígidas também, sem dúvida.",
+        "es": "Un frasco de aceite de ricino. \"Para articulaciones rígidas\", dice la etiqueta. Y cerraduras rígidas, sin duda."
+      }
+    },
+    "mirror_note": {
+      "name": {
+        "en-US": "Mirror: 8 2 6 4",
+        "pt-BR": "Espelho: 8 2 6 4",
+        "es": "Espejo: 8 2 6 4"
+      },
+      "aliases": {
+        "en-US": [
+          "mirror note",
+          "note"
+        ],
+        "pt-BR": [
+          "anotação do espelho",
+          "anotação"
+        ],
+        "es": [
+          "nota del espejo",
+          "nota"
+        ]
+      },
+      "description": {
+        "en-US": "You noted the figures the steam showed on the mirror: 8 2 6 4.",
+        "pt-BR": "Você anotou os números que o vapor revelou no espelho: 8 2 6 4.",
+        "es": "Anotaste las cifras que el vapor mostró en el espejo: 8 2 6 4."
+      }
+    }
+  },
+  "verbs": {
+    "pull": {
+      "name": {
+        "en-US": "pull",
+        "pt-BR": "puxar",
+        "es": "tirar"
+      },
+      "aliases": {
+        "en-US": [
+          "tug",
+          "yank"
+        ],
+        "pt-BR": [
+          "arrancar"
+        ],
+        "es": [
+          "jalar",
+          "tira"
+        ]
+      }
+    }
+  },
+  "initialFlags": {
+    "drained": false,
+    "geyser_lit": false,
+    "steam": false,
+    "lamp_lit": false,
+    "robe_searched": false,
+    "cabinet_open": false,
+    "door_open": false
+  },
+  "brightness": 0.45,
+  "lighting": [
+    {
+      "when": [
+        {
+          "type": "flag_equals",
+          "flag": "lamp_lit",
+          "value": true
+        }
+      ],
+      "brightness": 1.1
+    }
+  ],
+  "interactions": [
+    {
+      "say": [
+        "tub"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "drained",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A clawfoot tub brimming with grey, scummy water.\nSomething glints at the bottom. A plug chain hangs over the rim.",
+            "pt-BR": "Uma banheira de pés cheia de água cinzenta e encardida.\nAlgo brilha no fundo. Uma corrente de tampão pende da borda.",
+            "es": "Una bañera de patas llena de agua gris y turbia.\nAlgo brilla en el fondo. Una cadenita de tapón cuelga del borde."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "tub"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The tub is empty now, ringed with grime. Two brass taps at its end: hot and cold.",
+            "pt-BR": "A banheira está vazia, com um anel de sujeira. Duas torneiras de latão na ponta: quente e fria.",
+            "es": "La bañera está vacía, con un cerco de mugre. Dos grifos de latón en el extremo: caliente y frío."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "tub"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Two brass taps, hot and cold, and a plug on a chain.",
+            "pt-BR": "Duas torneiras de latão, quente e fria, e um tampão numa corrente.",
+            "es": "Dos grifos de latón, caliente y frío, y un tapón con cadenita."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "plug"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "drained",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A rubber plug on a chain, sunk under the grey water.",
+            "pt-BR": "Um tampão de borracha numa corrente, afundado na água cinzenta.",
+            "es": "Un tapón de goma con cadenita, hundido bajo el agua gris."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "plug"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The plug lies on the rim of the empty tub.",
+            "pt-BR": "O tampão está na borda da banheira vazia.",
+            "es": "El tapón descansa en el borde de la bañera vacía."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "pull",
+        "plug"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "drained",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "drained",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You haul on the chain. The plug pops free and the water gurgles away.\nIn the slime at the bottom lies a small key. You found a rusty key!",
+            "pt-BR": "Você puxa a corrente. O tampão se solta e a água escoa gorgolejando.\nNo lodo do fundo há uma chave pequena. Você encontrou uma chave enferrujada!",
+            "es": "Tiras de la cadenita. El tapón salta y el agua se va gorgoteando.\nEn el lodo del fondo hay una llave pequeña. ¡Encontraste una llave oxidada!"
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "rusty_key"
+        }
+      ]
+    },
+    {
+      "say": [
+        "pull",
+        "plug"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The tub is already empty.",
+            "pt-BR": "A banheira já está vazia.",
+            "es": "La bañera ya está vacía."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "plug"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "drained",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "drained",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You haul on the chain. The plug pops free and the water gurgles away.\nIn the slime at the bottom lies a small key. You found a rusty key!",
+            "pt-BR": "Você puxa a corrente. O tampão se solta e a água escoa gorgolejando.\nNo lodo do fundo há uma chave pequena. Você encontrou uma chave enferrujada!",
+            "es": "Tiras de la cadenita. El tapón salta y el agua se va gorgoteando.\nEn el lodo del fondo hay una llave pequeña. ¡Encontraste una llave oxidada!"
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "rusty_key"
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "plug"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The tub is already empty.",
+            "pt-BR": "A banheira já está vazia.",
+            "es": "La bañera ya está vacía."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "hot_tap"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A brass tap marked H, green with crust around its base.",
+            "pt-BR": "Uma torneira de latão marcada com Q, com uma crosta verde na base.",
+            "es": "Un grifo de latón marcado con C, con costra verde en la base."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "hot_tap"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "steam",
+          "value": true
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Hot water still pours. Steam fills the room.",
+            "pt-BR": "A água quente ainda corre. O vapor enche o cômodo.",
+            "es": "El agua caliente sigue corriendo. El vapor llena la habitación."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "hot_tap"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "geyser_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The pipes knock and shudder. A trickle of icy water, then nothing.\nThe heater isn't burning.",
+            "pt-BR": "Os canos batem e tremem. Um fio de água gelada, e depois nada.\nO aquecedor não está aceso.",
+            "es": "Las tuberías golpean y tiemblan. Un hilo de agua helada, y luego nada.\nEl calentador no está encendido."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "hot_tap"
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "steam",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The geyser roars. Scalding water thunders into the tub.\nSteam billows up and the mirror fogs over.",
+            "pt-BR": "O aquecedor ruge. Água escaldante despenca na banheira.\nO vapor sobe em nuvens e o espelho embaça.",
+            "es": "El calentador ruge. Agua hirviendo cae con estruendo en la bañera.\nEl vapor sube en nubes y el espejo se empaña."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "cold_tap"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A brass tap marked C. Its handle is ice to the touch.",
+            "pt-BR": "Uma torneira de latão marcada com F. A manopla é gelada ao toque.",
+            "es": "Un grifo de latón marcado con F. Su manija está helada al tacto."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "cold_tap"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Icy water splutters into the tub, then stops. It only makes the room colder.",
+            "pt-BR": "Água gelada espirra na banheira e para. Só deixa o cômodo mais frio.",
+            "es": "Agua helada salpica en la bañera y se detiene. Solo enfría más la habitación."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "geyser"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "geyser_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A copper gas geyser bolted to the wall. Its pilot light is out.\nA faded plate reads: LIGHT THE PILOT BEFORE RUNNING HOT WATER.",
+            "pt-BR": "Um aquecedor a gás de cobre preso à parede. A chama piloto está apagada.\nUma placa desbotada diz: ACENDA O PILOTO ANTES DE ABRIR A ÁGUA QUENTE.",
+            "es": "Un calentador de gas de cobre atornillado a la pared. La llama piloto está apagada.\nUna placa descolorida dice: ENCIENDA EL PILOTO ANTES DE ABRIR EL AGUA CALIENTE."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "geyser"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The geyser hums. A blue flame flickers behind its little window.",
+            "pt-BR": "O aquecedor zumbe. Uma chama azul tremula atrás da janelinha.",
+            "es": "El calentador zumba. Una llama azul parpadea tras su ventanita."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "geyser"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "geyser_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A little hatch shows the pilot burner. Gas hisses faintly. It only wants a flame.",
+            "pt-BR": "Uma portinhola mostra o queimador piloto. O gás chia de leve. Só falta uma chama.",
+            "es": "Una portezuela deja ver el quemador piloto. El gas sisea apenas. Solo le falta una llama."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "geyser"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Better not. The flame is lit.",
+            "pt-BR": "Melhor não. A chama está acesa.",
+            "es": "Mejor no. La llama está encendida."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "lighter",
+        "geyser"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "geyser_lit",
+          "value": true
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The geyser already burns.",
+            "pt-BR": "O aquecedor já está aceso.",
+            "es": "El calentador ya está encendido."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "lighter",
+        "geyser"
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "geyser_lit",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You hold the lighter to the pilot. The gas catches with a soft whump,\nand the geyser begins to hum.",
+            "pt-BR": "Você aproxima o isqueiro do piloto. O gás pega fogo com um baque surdo,\ne o aquecedor começa a zumbir.",
+            "es": "Acercas el mechero al piloto. El gas prende con un golpe sordo\ny el calentador empieza a zumbar."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "mirror"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "steam",
+          "value": true
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Figures bloom in the fog on the glass, where a finger once wrote:\n8 2 6 4",
+            "pt-BR": "Na névoa do vidro surgem marcas, onde um dedo escreveu um dia:\n8 2 6 4",
+            "es": "En el vaho del vidrio aparecen marcas, donde un dedo escribió una vez:\n8 2 6 4"
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "mirror_note"
+        }
+      ]
+    },
+    {
+      "say": [
+        "mirror"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Your own face stares back, grey and tired.\nThe glass is spotless, as if someone wiped it in a hurry.",
+            "pt-BR": "Seu próprio rosto o encara, cinzento e cansado.\nO vidro está impecável, como se alguém o tivesse limpado às pressas.",
+            "es": "Tu propia cara te devuelve la mirada, gris y cansada.\nEl vidrio está impecable, como si alguien lo hubiera limpiado deprisa."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "basin"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A cracked washbasin. A sliver of soap has dried hard as stone.",
+            "pt-BR": "Uma pia rachada. Um pedaço de sabonete secou, duro como pedra.",
+            "es": "Un lavabo agrietado. Un trozo de jabón se ha secado, duro como piedra."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "basin"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The basin tap gives a dry cough. No water comes.",
+            "pt-BR": "A torneira da pia dá uma tosse seca. Não sai água.",
+            "es": "El grifo del lavabo tose en seco. No sale agua."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "cabinet"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "cabinet_open",
+          "value": true
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Empty shelves and rings of rust. You already took what mattered.",
+            "pt-BR": "Prateleiras vazias e anéis de ferrugem. Você já pegou o que importava.",
+            "es": "Estantes vacías y cercos de óxido. Ya tomaste lo que importaba."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "cabinet"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "lamp_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A small medicine cabinet with a brass lock.\nToo dark to make out the dials.",
+            "pt-BR": "Um pequeno armário de remédios com um cadeado de latão.\nEstá escuro demais para ler os discos.",
+            "es": "Un pequeño botiquín con una cerradura de latón.\nEstá demasiado oscuro para leer los diales."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "cabinet"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A small medicine cabinet, locked by four brass number dials.",
+            "pt-BR": "Um pequeno armário de remédios, trancado por quatro discos numerados de latão.",
+            "es": "Un pequeño botiquín, cerrado con cuatro diales numerados de latón."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "cabinet"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "cabinet_open",
+          "value": true
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "It's already open.",
+            "pt-BR": "Já está aberto.",
+            "es": "Ya está abierto."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "cabinet"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Locked. The brass dials hold it shut.",
+            "pt-BR": "Trancado. Os discos de latão o mantêm fechado.",
+            "es": "Cerrado. Los diales de latón lo mantienen cerrado."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "8264",
+        "cabinet"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "cabinet_open",
+          "value": true
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The cabinet is already open.",
+            "pt-BR": "O armário já está aberto.",
+            "es": "El botiquín ya está abierto."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "8264",
+        "cabinet"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "lamp_lit",
+          "value": true
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "cabinet_open",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You turn the dials: 8, 2, 6, 4. The little door clicks open.\nAmong empty bottles stands a flask of castor oil. You took the castor oil!",
+            "pt-BR": "Você gira os discos: 8, 2, 6, 4. A portinha se abre com um clique.\nEntre frascos vazios há um frasco de óleo de rícino. Você pegou o óleo de rícino!",
+            "es": "Giras los diales: 8, 2, 6, 4. La puertecita se abre con un clic.\nEntre frascos vacíos hay uno de aceite de ricino. ¡Tomaste el aceite de ricino!"
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "oil"
+        }
+      ]
+    },
+    {
+      "say": [
+        "toilet"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A high cistern with a pull chain over a bowl stained brown.",
+            "pt-BR": "Uma caixa de descarga alta, com corrente, sobre um vaso manchado de marrom.",
+            "es": "Una cisterna alta con cadena sobre una taza manchada de marrón."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "pull",
+        "toilet"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The cistern gurgles and coughs. Nothing else.",
+            "pt-BR": "A descarga gorgoleja e tosse. Nada mais.",
+            "es": "La cisterna gorgotea y tose. Nada más."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "toilet"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You lift the lid. You wish you hadn't.",
+            "pt-BR": "Você levanta a tampa. Preferia não ter levantado.",
+            "es": "Levantas la tapa. Ojalá no lo hubieras hecho."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "towels"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Grey towels, stiff as card. Something has chewed their edges.",
+            "pt-BR": "Toalhas cinzentas, duras como papelão. Algo roeu as bordas.",
+            "es": "Toallas grises, tiesas como cartón. Algo ha roído los bordes."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "robe"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "robe_searched",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A damp bathrobe on a hook by the door.\nOne pocket sags, as if something heavy is still in it.",
+            "pt-BR": "Um roupão úmido num gancho junto à porta.\nUm dos bolsos pesa, como se ainda houvesse algo dentro.",
+            "es": "Un albornoz húmedo en un gancho junto a la puerta.\nUn bolsillo cuelga, como si aún hubiera algo pesado dentro."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "robe"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A damp bathrobe. Its pockets are empty now.",
+            "pt-BR": "Um roupão úmido. Os bolsos agora estão vazios.",
+            "es": "Un albornoz húmedo. Sus bolsillos ya están vacíos."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "robe"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "robe_searched",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "robe_searched",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You dig into the pocket. Lint, a hairpin... and cold metal.\nYou found a brass lighter!",
+            "pt-BR": "Você revira o bolso. Fiapos, um grampo... e metal frio.\nVocê encontrou um isqueiro de latão!",
+            "es": "Rebuscas en el bolsillo. Pelusa, una horquilla... y metal frío.\n¡Encontraste un mechero de latón!"
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "lighter"
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "robe"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Nothing else in the pockets.",
+            "pt-BR": "Não há mais nada nos bolsos.",
+            "es": "No queda nada más en los bolsillos."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "lamp"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "lamp_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A gas lamp beside the door. Its mantle is dark,\nbut gas still hisses faintly at the jet.",
+            "pt-BR": "Um lampião a gás ao lado da porta. A camisa está apagada,\nmas o gás ainda chia de leve no bico.",
+            "es": "Una lámpara de gas junto a la puerta. Su camisa está apagada,\npero el gas aún sisea apenas en la boquilla."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "lamp"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The gas lamp burns with a white, steady hiss.",
+            "pt-BR": "O lampião queima com um chiado branco e constante.",
+            "es": "La lámpara de gas arde con un siseo blanco y constante."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "lighter",
+        "lamp"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "lamp_lit",
+          "value": true
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The lamp already burns.",
+            "pt-BR": "O lampião já está aceso.",
+            "es": "La lámpara ya está encendida."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "lighter",
+        "lamp"
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "lamp_lit",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The gas catches with a pop. White light washes over the tiles.",
+            "pt-BR": "O gás pega fogo com um estalo. Uma luz branca banha os azulejos.",
+            "es": "El gas prende con un chasquido. Una luz blanca baña los azulejos."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "door"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A narrow door. Its keyhole is crusted with orange rust.",
+            "pt-BR": "Uma porta estreita. O buraco da fechadura está tomado de ferrugem.",
+            "es": "Una puerta estrecha. El ojo de la cerradura está cubierto de óxido."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "door"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "It's locked.",
+            "pt-BR": "Está trancada.",
+            "es": "Está cerrada con llave."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "rusty_key",
+        "door"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The key goes in, then sticks. The lock is rusted solid.\nForced like this, the key would snap.",
+            "pt-BR": "A chave entra e emperra. A fechadura está tomada de ferrugem.\nForçada assim, a chave quebraria.",
+            "es": "La llave entra y se atasca. La cerradura está oxidada por completo.\nForzada así, la llave se partiría."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "oil",
+        "door"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Oil runs down the lock plate and drips onto the floor. Wasted on the outside.",
+            "pt-BR": "O óleo escorre pela placa da fechadura e pinga no chão. Desperdiçado do lado de fora.",
+            "es": "El aceite resbala por la placa de la cerradura y gotea al suelo. Desperdiciado por fuera."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "oil",
+        "rusty_key"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Oiled now, the key would only dry out in your pocket.\nBetter done at the lock itself.",
+            "pt-BR": "Se untar a chave agora, o óleo vai secar no bolso.\nMelhor fazer isso na própria fechadura.",
+            "es": "Si aceitas la llave ahora, se secará en el bolsillo.\nMejor hacerlo en la propia cerradura."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "oil",
+        "rusty_key",
+        "door"
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "door_open",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You soak the key in castor oil and work it into the lock.\nIt grinds, then turns. The door opens on pitch darkness and a sharp smell of chemicals.",
+            "pt-BR": "Você encharca a chave de óleo de rícino e a trabalha na fechadura.\nEla range, e então gira. A porta se abre para uma escuridão total e um cheiro forte de produtos químicos.",
+            "es": "Empapas la llave en aceite de ricino y la trabajas en la cerradura.\nRechina y luego gira. La puerta se abre a una oscuridad total y un fuerte olor a químicos."
+          }
+        },
+        {
+          "type": "remove_item",
+          "item": "oil"
+        },
+        {
+          "type": "remove_item",
+          "item": "rusty_key"
+        },
+        {
+          "type": "remove_item",
+          "item": "lighter"
+        },
+        {
+          "type": "change_room",
+          "room": "darkroom"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "text": {
+        "en-US": "People leave things behind in odd places: a pocket, the bottom of a bath.",
+        "pt-BR": "As pessoas deixam coisas em lugares estranhos: um bolso, o fundo de uma banheira.",
+        "es": "La gente deja cosas en sitios raros: un bolsillo, el fondo de una bañera."
+      },
+      "skipIf": [
+        {
+          "type": "has_item",
+          "item": "lighter"
+        },
+        {
+          "type": "flag_equals",
+          "flag": "drained",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "Something glints under the bath water. The water has to go first.",
+        "pt-BR": "Algo brilha debaixo da água da banheira. Primeiro a água tem que sair.",
+        "es": "Algo brilla bajo el agua de la bañera. Primero hay que quitar el agua."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "drained",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "Hot water needs the copper heater burning, and its steam will show you more.",
+        "pt-BR": "A água quente precisa do aquecedor de cobre aceso, e o vapor vai lhe mostrar mais.",
+        "es": "El agua caliente necesita el calentador de cobre encendido, y su vapor te mostrará más."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "steam",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "The cabinet's dials can't be read in the dark. The lamp by the door still has gas.",
+        "pt-BR": "Os discos do armário não podem ser lidos no escuro. O lampião junto à porta ainda tem gás.",
+        "es": "Los diales del botiquín no se leen a oscuras. La lámpara junto a la puerta aún tiene gas."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "lamp_lit",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "A rusted lock won't yield to a key alone. Loosen it in the same moment you turn it.",
+        "pt-BR": "Uma fechadura enferrujada não cede só com a chave. Solte-a no mesmo momento em que girar.",
+        "es": "Una cerradura oxidada no cede solo con la llave. Aflójala en el mismo momento en que la gires."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "door_open",
+          "value": true
+        }
+      ]
+    }
+  ]
+}

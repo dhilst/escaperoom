@@ -501,12 +501,12 @@
         {
           "type": "display_message",
           "text": {
-            "en-US": "The key turns with a groan. The door opens onto a grand hall.\nFar ahead, in the gloom, waits the front door.",
-            "pt-BR": "A chave gira com um gemido. A porta se abre para um grande salão.\nLá longe, na penumbra, espera a porta da frente.",
-            "es": "La llave gira con un quejido. La puerta se abre a un gran salón.\nA lo lejos, en la penumbra, espera la puerta principal."
+            "en-US": "The key turns with a groan. The door opens onto a narrow service passage.\nIt smells of lye and old steam.",
+            "pt-BR": "A chave gira com um gemido. A porta se abre para um estreito corredor de serviço.\nCheira a sabão e a vapor antigo.",
+            "es": "La llave gira con un quejido. La puerta se abre a un estrecho pasillo de servicio.\nHuele a lejía y a vapor viejo."
           }
         },
-        {"type": "change_room", "room": "foyer"}
+        {"type": "change_room", "room": "laundry"}
       ]
     },
     {

@@ -1,0 +1,1030 @@
+{
+  "id": "armory",
+  "title": {
+    "en-US": "The Trophy Room",
+    "pt-BR": "A Sala de Troféus",
+    "es": "La Sala de Trofeos"
+  },
+  "cameras": {
+    "A": {
+      "image": "camera_a.png",
+      "description": {
+        "en-US": "A suit of armour stands by a cold fireplace, a shield strapped to its arm.\nCrossed swords hang above the mantel. A stag's head watches from the wall.",
+        "pt-BR": "Uma armadura está ao lado de uma lareira fria, com um escudo preso ao braço.\nEspadas cruzadas pendem sobre a cornija. Uma cabeça de cervo vigia da parede.",
+        "es": "Una armadura está junto a una chimenea fría, con un escudo atado al brazo.\nUnas espadas cruzadas cuelgan sobre la repisa. Una cabeza de ciervo vigila desde la pared."
+      },
+      "variants": [
+        {
+          "when": [
+            {
+              "type": "flag_equals",
+              "flag": "shield_hung",
+              "value": true
+            }
+          ],
+          "description": {
+            "en-US": "Gaslight reaches the suit of armour by the cold fireplace, its shield arm empty.\nCrossed swords gleam above the mantel. A stag's head watches from the wall.",
+            "pt-BR": "A luz do gás alcança a armadura junto à lareira fria, de braço vazio.\nEspadas cruzadas reluzem sobre a cornija. Uma cabeça de cervo vigia da parede.",
+            "es": "La luz del gas alcanza la armadura junto a la chimenea fría, con el brazo vacío.\nUnas espadas cruzadas brillan sobre la repisa. Una cabeza de ciervo vigila desde la pared."
+          }
+        },
+        {
+          "when": [
+            {
+              "type": "flag_equals",
+              "flag": "strap_cut",
+              "value": true
+            }
+          ],
+          "description": {
+            "en-US": "A suit of armour stands by a cold fireplace, its shield arm empty.\nCrossed swords hang above the mantel. A stag's head watches from the wall.",
+            "pt-BR": "Uma armadura está ao lado de uma lareira fria, de braço vazio.\nEspadas cruzadas pendem sobre a cornija. Uma cabeça de cervo vigia da parede.",
+            "es": "Una armadura está junto a una chimenea fría, con el brazo vacío.\nUnas espadas cruzadas cuelgan sobre la repisa. Una cabeza de ciervo vigila desde la pared."
+          }
+        }
+      ]
+    },
+    "C": {
+      "image": "camera_c.png",
+      "description": {
+        "en-US": "A glass display case and a rack of spears stand by an iron-bound door.\nOn the wall, an oak crest board shows an empty hook between two dead gas sconces.",
+        "pt-BR": "Uma vitrine e um suporte de lanças estão junto a uma porta reforçada com ferro.\nNa parede, um brasão de carvalho mostra um gancho vazio entre duas arandelas apagadas.",
+        "es": "Una vitrina y un soporte de lanzas están junto a una puerta reforzada con hierro.\nEn la pared, un blasón de roble muestra un gancho vacío entre dos apliques apagados."
+      },
+      "variants": [
+        {
+          "when": [
+            {
+              "type": "flag_equals",
+              "flag": "shield_hung",
+              "value": true
+            }
+          ],
+          "description": {
+            "en-US": "Gas sconces hiss on either side of the crest board, the shield back on its hook.\nA glass display case and a rack of spears stand by an iron-bound door.",
+            "pt-BR": "As arandelas chiam dos dois lados do brasão, com o escudo de volta ao gancho.\nUma vitrine e um suporte de lanças estão junto a uma porta reforçada com ferro.",
+            "es": "Los apliques silban a ambos lados del blasón, con el escudo de nuevo en su gancho.\nUna vitrina y un soporte de lanzas están junto a una puerta reforzada con hierro."
+          }
+        }
+      ]
+    }
+  },
+  "objects": {
+    "armour": {
+      "name": {
+        "en-US": "suit of armour",
+        "pt-BR": "armadura",
+        "es": "armadura"
+      },
+      "aliases": {
+        "en-US": [
+          "armour",
+          "armor",
+          "suit of armor",
+          "suit",
+          "knight",
+          "helmet",
+          "visor",
+          "gauntlet",
+          "strap",
+          "leather strap",
+          "arm"
+        ],
+        "pt-BR": [
+          "cavaleiro",
+          "elmo",
+          "viseira",
+          "manopla",
+          "correia",
+          "correia de couro",
+          "braço"
+        ],
+        "es": [
+          "caballero",
+          "yelmo",
+          "visera",
+          "guantelete",
+          "correa",
+          "correa de cuero",
+          "brazo"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "fireplace": {
+      "name": {
+        "en-US": "fireplace",
+        "pt-BR": "lareira",
+        "es": "chimenea"
+      },
+      "aliases": {
+        "en-US": [
+          "hearth",
+          "grate",
+          "mantel",
+          "mantelpiece",
+          "ashes"
+        ],
+        "pt-BR": [
+          "cornija",
+          "grelha",
+          "cinzas",
+          "fogareiro"
+        ],
+        "es": [
+          "hogar",
+          "repisa",
+          "rejilla",
+          "cenizas"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "swords": {
+      "name": {
+        "en-US": "crossed swords",
+        "pt-BR": "espadas cruzadas",
+        "es": "espadas cruzadas"
+      },
+      "aliases": {
+        "en-US": [
+          "swords",
+          "sword",
+          "blades"
+        ],
+        "pt-BR": [
+          "espadas",
+          "espada",
+          "lâminas"
+        ],
+        "es": [
+          "espadas",
+          "espada",
+          "hojas"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "stag": {
+      "name": {
+        "en-US": "stag head",
+        "pt-BR": "cabeça de cervo",
+        "es": "cabeza de ciervo"
+      },
+      "aliases": {
+        "en-US": [
+          "stag",
+          "head",
+          "antlers",
+          "deer",
+          "trophy"
+        ],
+        "pt-BR": [
+          "cervo",
+          "cabeça",
+          "chifres",
+          "galhada",
+          "veado",
+          "troféu"
+        ],
+        "es": [
+          "ciervo",
+          "cabeza",
+          "astas",
+          "cuernos",
+          "venado",
+          "trofeo"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "case": {
+      "name": {
+        "en-US": "display case",
+        "pt-BR": "vitrine",
+        "es": "vitrina"
+      },
+      "aliases": {
+        "en-US": [
+          "case",
+          "glass case",
+          "glass",
+          "cabinet",
+          "lid"
+        ],
+        "pt-BR": [
+          "mostruário",
+          "caixa de vidro",
+          "vidro",
+          "tampa"
+        ],
+        "es": [
+          "estuche",
+          "caja de cristal",
+          "cristal",
+          "tapa"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "rack": {
+      "name": {
+        "en-US": "weapons rack",
+        "pt-BR": "suporte de armas",
+        "es": "armero"
+      },
+      "aliases": {
+        "en-US": [
+          "rack",
+          "spears",
+          "spear",
+          "halberd",
+          "axes",
+          "axe",
+          "weapons"
+        ],
+        "pt-BR": [
+          "suporte",
+          "lanças",
+          "lança",
+          "alabarda",
+          "machados",
+          "machado",
+          "armas"
+        ],
+        "es": [
+          "soporte de armas",
+          "lanzas",
+          "lanza",
+          "alabarda",
+          "hachas",
+          "hacha",
+          "armas"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "crest": {
+      "name": {
+        "en-US": "crest board",
+        "pt-BR": "brasão",
+        "es": "blasón"
+      },
+      "aliases": {
+        "en-US": [
+          "crest",
+          "board",
+          "hook",
+          "iron hook",
+          "coat of arms",
+          "carving",
+          "carvings",
+          "beasts",
+          "plaque",
+          "words"
+        ],
+        "pt-BR": [
+          "painel",
+          "gancho",
+          "gancho de ferro",
+          "entalhe",
+          "entalhes",
+          "feras",
+          "placa",
+          "palavras"
+        ],
+        "es": [
+          "tablero",
+          "gancho",
+          "gancho de hierro",
+          "talla",
+          "tallas",
+          "bestias",
+          "placa",
+          "emblema",
+          "palabras"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "sconces": {
+      "name": {
+        "en-US": "gas sconces",
+        "pt-BR": "arandelas",
+        "es": "apliques"
+      },
+      "aliases": {
+        "en-US": [
+          "sconces",
+          "sconce",
+          "gas lamps",
+          "lamps",
+          "lamp",
+          "jets",
+          "gaslight"
+        ],
+        "pt-BR": [
+          "arandela",
+          "lampiões",
+          "lampião",
+          "bicos de gás",
+          "luminárias"
+        ],
+        "es": [
+          "aplique",
+          "lámparas",
+          "lámpara",
+          "faroles",
+          "farol",
+          "lámparas de gas"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "door": {
+      "name": {
+        "en-US": "door",
+        "pt-BR": "porta",
+        "es": "puerta"
+      },
+      "aliases": {
+        "en-US": [
+          "iron door",
+          "iron-bound door",
+          "exit",
+          "bar",
+          "lock"
+        ],
+        "pt-BR": [
+          "porta de ferro",
+          "saída",
+          "tranca",
+          "fechadura"
+        ],
+        "es": [
+          "puerta de hierro",
+          "salida",
+          "tranca",
+          "cerradura"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    }
+  },
+  "items": {
+    "knife": {
+      "name": {
+        "en-US": "Hunting knife",
+        "pt-BR": "Faca de caça",
+        "es": "Cuchillo de caza"
+      },
+      "aliases": {
+        "en-US": [
+          "knife",
+          "dagger"
+        ],
+        "pt-BR": [
+          "faca",
+          "punhal"
+        ],
+        "es": [
+          "cuchillo",
+          "puñal"
+        ]
+      },
+      "description": {
+        "en-US": "A hunting knife with a horn grip. The edge is still keen.",
+        "pt-BR": "Uma faca de caça com cabo de chifre. O fio ainda está afiado.",
+        "es": "Un cuchillo de caza con mango de asta. El filo sigue afilado."
+      }
+    },
+    "shield": {
+      "name": {
+        "en-US": "Shield",
+        "pt-BR": "Escudo",
+        "es": "Escudo"
+      },
+      "aliases": {
+        "en-US": [
+          "kite shield",
+          "heater shield"
+        ],
+        "pt-BR": [
+          "escudo de cavaleiro"
+        ],
+        "es": [
+          "escudo de caballero"
+        ]
+      },
+      "description": {
+        "en-US": "A kite shield, painted in four quarters: an eagle among clouds,\na lion on a throne, a bear in a cave, a wolf among pines.",
+        "pt-BR": "Um escudo pintado em quatro quartos: uma águia entre nuvens,\num leão num trono, um urso numa caverna, um lobo entre pinheiros.",
+        "es": "Un escudo pintado en cuatro cuarteles: un águila entre nubes,\nun león en un trono, un oso en una cueva, un lobo entre pinos."
+      }
+    },
+    "motto_note": {
+      "name": {
+        "en-US": "Motto: cave, forest, throne, sky",
+        "pt-BR": "Lema: caverna, floresta, trono, céu",
+        "es": "Lema: cueva, bosque, trono, cielo"
+      },
+      "aliases": {
+        "en-US": [
+          "motto note",
+          "motto"
+        ],
+        "pt-BR": [
+          "anotação do lema",
+          "lema"
+        ],
+        "es": [
+          "nota del lema",
+          "lema"
+        ]
+      },
+      "description": {
+        "en-US": "You noted the motto under the crest: from the cave, through the forest, to the throne, into the sky.",
+        "pt-BR": "Você anotou o lema sob o brasão: da caverna, pela floresta, ao trono, até o céu.",
+        "es": "Anotaste el lema bajo el blasón: desde la cueva, por el bosque, al trono, hasta el cielo."
+      }
+    }
+  },
+  "verbs": {
+    "bear": {
+      "name": {
+        "en-US": "bear",
+        "pt-BR": "urso",
+        "es": "oso"
+      }
+    },
+    "wolf": {
+      "name": {
+        "en-US": "wolf",
+        "pt-BR": "lobo",
+        "es": "lobo"
+      }
+    },
+    "lion": {
+      "name": {
+        "en-US": "lion",
+        "pt-BR": "leão",
+        "es": "león"
+      }
+    },
+    "eagle": {
+      "name": {
+        "en-US": "eagle",
+        "pt-BR": "águia",
+        "es": "águila"
+      }
+    }
+  },
+  "initialFlags": {
+    "case_open": false,
+    "strap_cut": false,
+    "shield_hung": false,
+    "passage_open": false
+  },
+  "brightness": 0.45,
+  "lighting": [
+    {
+      "when": [
+        {
+          "type": "flag_equals",
+          "flag": "shield_hung",
+          "value": true
+        }
+      ],
+      "brightness": 1.1
+    }
+  ],
+  "interactions": [
+    {
+      "say": [
+        "armour"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "strap_cut",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A suit of armour, black with age. Its left arm clutches a kite shield,\nbound tight to the gauntlet by a leather strap.",
+            "pt-BR": "Uma armadura, escurecida pelo tempo. O braço esquerdo segura um escudo,\nbem preso à manopla por uma correia de couro.",
+            "es": "Una armadura, ennegrecida por los años. Su brazo izquierdo sujeta un escudo,\natado con fuerza al guantelete por una correa de cuero."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "armour"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The suit of armour stands empty-handed, a cut strap hanging from its gauntlet.",
+            "pt-BR": "A armadura está de mãos vazias, uma correia cortada pendendo da manopla.",
+            "es": "La armadura está con las manos vacías, una correa cortada cuelga de su guantelete."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "armour"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The visor lifts with a squeal. Inside, only rust and the smell of old oil.",
+            "pt-BR": "A viseira se ergue com um guincho. Lá dentro, só ferrugem e cheiro de óleo velho.",
+            "es": "La visera se alza con un chirrido. Dentro, solo óxido y olor a aceite viejo."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "knife",
+        "armour"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "strap_cut",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "strap_cut",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You saw through the old leather. The strap parts, and the shield slides into your arms.\nYou took the shield!",
+            "pt-BR": "Você serra o couro velho. A correia se rompe, e o escudo escorrega para os seus braços.\nVocê pegou o escudo!",
+            "es": "Sierras el cuero viejo. La correa cede y el escudo cae en tus brazos.\n¡Tomaste el escudo!"
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "shield"
+        }
+      ]
+    },
+    {
+      "say": [
+        "knife",
+        "armour"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The strap is already cut.",
+            "pt-BR": "A correia já está cortada.",
+            "es": "La correa ya está cortada."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "fireplace"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A cold fireplace, swept clean. Iron fire-dogs shaped like hounds guard the grate.",
+            "pt-BR": "Uma lareira fria, varrida. Cães de ferro guardam a grelha.",
+            "es": "Una chimenea fría, barrida. Unos morillos de hierro con forma de sabueso guardan la rejilla."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "swords"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Two longswords crossed above the mantel, bolted fast to the stone.",
+            "pt-BR": "Duas espadas longas cruzadas sobre a cornija, presas firmemente à pedra.",
+            "es": "Dos espadas largas cruzadas sobre la repisa, atornilladas a la piedra."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "stag"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "shield_hung",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A stag's head with a great crown of antlers. Its glass eyes stare across the room\nat the empty hook on the far wall.",
+            "pt-BR": "Uma cabeça de cervo com uma grande galhada. Seus olhos de vidro fitam, do outro lado da sala,\no gancho vazio na parede oposta.",
+            "es": "Una cabeza de ciervo con una gran cornamenta. Sus ojos de cristal miran, al otro lado de la sala,\nel gancho vacío de la pared opuesta."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "stag"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A stag's head with a great crown of antlers. The gaslight glints in its glass eyes.",
+            "pt-BR": "Uma cabeça de cervo com uma grande galhada. A luz do gás reluz em seus olhos de vidro.",
+            "es": "Una cabeza de ciervo con una gran cornamenta. La luz del gas brilla en sus ojos de cristal."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "case"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "case_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A glass display case. Behind the dusty glass, a hunting knife rests on faded velvet.\nThe lid isn't locked.",
+            "pt-BR": "Uma vitrine de vidro. Atrás do vidro empoeirado, uma faca de caça repousa sobre veludo desbotado.\nA tampa não está trancada.",
+            "es": "Una vitrina de cristal. Tras el cristal polvoriento, un cuchillo de caza reposa sobre terciopelo descolorido.\nLa tapa no tiene llave."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "case"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Only the shape of the knife is left, pressed into the velvet.",
+            "pt-BR": "Só restou a marca da faca, afundada no veludo.",
+            "es": "Solo queda la forma del cuchillo, marcada en el terciopelo."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "case"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "case_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "case_open",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The lid creaks up on stiff hinges. You lift the knife from its velvet bed.\nYou took the hunting knife!",
+            "pt-BR": "A tampa se ergue rangendo nas dobradiças duras. Você tira a faca do veludo.\nVocê pegou a faca de caça!",
+            "es": "La tapa se levanta crujiendo sobre sus bisagras duras. Sacas el cuchillo de su lecho de terciopelo.\n¡Tomaste el cuchillo de caza!"
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "knife"
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "case"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The case is empty now.",
+            "pt-BR": "A vitrine está vazia agora.",
+            "es": "La vitrina está vacía ahora."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "rack"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Spears, a halberd and two axes, chained to the rack. The chain is rusted solid.",
+            "pt-BR": "Lanças, uma alabarda e dois machados, acorrentados ao suporte. A corrente está enferrujada.",
+            "es": "Lanzas, una alabarda y dos hachas, encadenadas al soporte. La cadena está oxidada por completo."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "crest"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "shield_hung",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "An oak crest board. At its heart, an iron hook and the pale outline of a missing shield.\nWords are carved beneath it, too deep in shadow to read.",
+            "pt-BR": "Um painel de carvalho com um brasão. No centro, um gancho de ferro e o contorno claro de um escudo ausente.\nHá palavras entalhadas embaixo, fundas demais na sombra para ler.",
+            "es": "Un tablero de roble con un blasón. En el centro, un gancho de hierro y el contorno pálido de un escudo ausente.\nHay palabras talladas debajo, demasiado hundidas en la sombra para leerlas."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "crest"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The shield sits in its outline as if it never left: an eagle among clouds,\na lion on a throne, a bear in a cave, a wolf among pines.\nCarved beneath the hook: FROM THE CAVE, THROUGH THE FOREST, TO THE THRONE, INTO THE SKY.",
+            "pt-BR": "O escudo se encaixa no contorno como se nunca tivesse saído: uma águia entre nuvens,\num leão num trono, um urso numa caverna, um lobo entre pinheiros.\nEntalhado sob o gancho: DA CAVERNA, PELA FLORESTA, AO TRONO, ATÉ O CÉU.",
+            "es": "El escudo encaja en su contorno como si nunca se hubiera ido: un águila entre nubes,\nun león en un trono, un oso en una cueva, un lobo entre pinos.\nTallado bajo el gancho: DESDE LA CUEVA, POR EL BOSQUE, AL TRONO, HASTA EL CIELO."
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "motto_note"
+        }
+      ]
+    },
+    {
+      "say": [
+        "shield",
+        "crest"
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "shield_hung",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You hang the shield on the hook. It settles into its outline with a heavy clunk.\nSomewhere in the wall a valve turns. The gas sconces hiss, sputter and catch.",
+            "pt-BR": "Você pendura o escudo no gancho. Ele se acomoda no contorno com um baque pesado.\nEm algum lugar da parede, uma válvula gira. As arandelas chiam, crepitam e se acendem.",
+            "es": "Cuelgas el escudo del gancho. Encaja en su contorno con un golpe sordo.\nEn algún lugar del muro gira una válvula. Los apliques silban, chisporrotean y se encienden."
+          }
+        },
+        {
+          "type": "remove_item",
+          "item": "shield"
+        }
+      ]
+    },
+    {
+      "say": [
+        "sconces"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "shield_hung",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Two brass gas sconces flank the crest board. Their mantles are cold and grey.",
+            "pt-BR": "Duas arandelas de latão ladeiam o brasão. As camisas estão frias e cinzentas.",
+            "es": "Dos apliques de latón flanquean el blasón. Sus camisas están frías y grises."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "sconces"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The gas sconces burn with a soft white hiss.",
+            "pt-BR": "As arandelas queimam com um chiado branco e suave.",
+            "es": "Los apliques arden con un suave silbido blanco."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "door"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "An iron-bound door with no keyhole. Something bars it from inside the wall.",
+            "pt-BR": "Uma porta reforçada com ferro, sem fechadura à vista. Algo a tranca de dentro da parede.",
+            "es": "Una puerta reforzada con hierro, sin ojo de cerradura. Algo la atranca desde dentro del muro."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "door"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "It won't budge. Whatever holds it is hidden in the wall.",
+            "pt-BR": "Não se mexe. O que a prende está escondido na parede.",
+            "es": "No se mueve. Lo que la sujeta está escondido en el muro."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "bear",
+        "wolf",
+        "lion",
+        "eagle",
+        "crest"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "shield_hung",
+          "value": true
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "passage_open",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You press the bear, the wolf, the lion, then the eagle. Each quarter sinks with a clunk.\nBehind the wall, a bar grinds free, and the iron door swings open onto a carpeted corridor.\nAt its end, a great four-poster bed waits in the dark.",
+            "pt-BR": "Você aperta o urso, o lobo, o leão e depois a águia. Cada quarto afunda com um estalo.\nAtrás da parede, uma tranca range e se solta, e a porta de ferro se abre para um corredor acarpetado.\nNo fim dele, uma grande cama de dossel espera no escuro.",
+            "es": "Pulsas el oso, el lobo, el león y luego el águila. Cada cuartel se hunde con un chasquido.\nTras el muro, una tranca chirría y se suelta, y la puerta de hierro se abre a un pasillo alfombrado.\nAl fondo, una gran cama con dosel espera en la oscuridad."
+          }
+        },
+        {
+          "type": "change_room",
+          "room": "bedroom"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "text": {
+        "en-US": "Every trophy in this room has its place on the walls. One of them is missing.",
+        "pt-BR": "Cada troféu desta sala tem seu lugar nas paredes. Um deles está faltando.",
+        "es": "Cada trofeo de esta sala tiene su lugar en las paredes. Falta uno."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "shield_hung",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "Not every blade here is bolted down or chained. Look behind glass.",
+        "pt-BR": "Nem toda lâmina aqui está presa ou acorrentada. Procure atrás do vidro.",
+        "es": "No todas las hojas de aquí están atornilladas o encadenadas. Busca tras el cristal."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "case_open",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "The knight is holding on to something that belongs elsewhere. Leather gives way to a sharp edge.",
+        "pt-BR": "O cavaleiro segura algo que pertence a outro lugar. O couro cede a um fio afiado.",
+        "es": "El caballero sujeta algo que pertenece a otro lugar. El cuero cede ante un filo."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "strap_cut",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "The stag is staring at where the shield belongs. Give it back to the wall.",
+        "pt-BR": "O cervo encara o lugar onde o escudo deveria estar. Devolva-o à parede.",
+        "es": "El ciervo mira hacia donde va el escudo. Devuélveselo a la pared."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "shield_hung",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "Each beast on the shield is painted in its home. The motto names those homes in order: press the beasts the same way.",
+        "pt-BR": "Cada fera do escudo está pintada em seu lar. O lema nomeia esses lares em ordem: aperte as feras do mesmo jeito.",
+        "es": "Cada bestia del escudo está pintada en su hogar. El lema nombra esos hogares en orden: pulsa las bestias igual."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "passage_open",
+          "value": true
+        }
+      ]
+    }
+  ]
+}

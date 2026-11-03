@@ -1,0 +1,1438 @@
+{
+  "id": "gallery",
+  "title": {
+    "en-US": "The Portrait Gallery",
+    "pt-BR": "A Galeria de Retratos",
+    "es": "La Galería de Retratos"
+  },
+  "cameras": {
+    "A": {
+      "image": "camera_a.png",
+      "description": {
+        "en-US": "Four dim portraits line the long wall, a brass plaque beneath each.\nA marble bust stands by a tall window. The gas sconces are cold.",
+        "pt-BR": "Quatro retratos escuros cobrem a parede comprida, cada um com uma placa de latão.\nUm busto de mármore está junto a uma janela alta. As arandelas a gás estão frias.",
+        "es": "Cuatro retratos oscuros cubren la pared larga, cada uno con una placa de latón.\nUn busto de mármol está junto a una ventana alta. Los apliques de gas están fríos."
+      },
+      "variants": [
+        {
+          "when": [
+            {
+              "type": "flag_equals",
+              "flag": "gas_lit",
+              "value": true
+            }
+          ],
+          "description": {
+            "en-US": "Gaslight warms four portraits and the brass plaques beneath them.\nA marble bust stands by a tall window, its shadow long on the floor.",
+            "pt-BR": "A luz do gás aquece quatro retratos e as placas de latão sob eles.\nUm busto de mármore está junto a uma janela alta, com a sombra comprida no chão.",
+            "es": "La luz del gas entibia cuatro retratos y las placas de latón bajo ellos.\nUn busto de mármol está junto a una ventana alta, con su sombra larga en el suelo."
+          }
+        }
+      ]
+    },
+    "C": {
+      "image": "camera_c.png",
+      "description": {
+        "en-US": "A large portrait of a lady hangs above a velvet bench.\nA gas pipe runs along the wall to a valve near the floor.",
+        "pt-BR": "Um grande retrato de uma dama está pendurado sobre um banco de veludo.\nUm cano de gás corre pela parede até uma válvula perto do chão.",
+        "es": "Un gran retrato de una dama cuelga sobre un banco de terciopelo.\nUn tubo de gas recorre la pared hasta una válvula cerca del suelo."
+      },
+      "variants": [
+        {
+          "when": [
+            {
+              "type": "flag_equals",
+              "flag": "portrait_open",
+              "value": true
+            }
+          ],
+          "description": {
+            "en-US": "The lady's portrait stands swung aside from the wall.\nBehind it, an iron door with four brass dials and a keyhole.",
+            "pt-BR": "O retrato da dama está aberto, afastado da parede.\nAtrás dele, uma porta de ferro com quatro discos de latão e uma fechadura.",
+            "es": "El retrato de la dama está abierto, apartado de la pared.\nDetrás, una puerta de hierro con cuatro diales de latón y una cerradura."
+          }
+        },
+        {
+          "when": [
+            {
+              "type": "flag_equals",
+              "flag": "gas_lit",
+              "value": true
+            }
+          ],
+          "description": {
+            "en-US": "In the gaslight, a large portrait of a lady hangs crooked above a velvet bench.\nThe gas valve near the floor stands open.",
+            "pt-BR": "À luz do gás, um grande retrato de uma dama pende torto sobre um banco de veludo.\nA válvula de gás perto do chão está aberta.",
+            "es": "A la luz del gas, un gran retrato de una dama cuelga torcido sobre un banco de terciopelo.\nLa válvula de gas cerca del suelo está abierta."
+          }
+        }
+      ]
+    }
+  },
+  "objects": {
+    "ancestors": {
+      "name": {
+        "en-US": "ancestors",
+        "pt-BR": "antepassados",
+        "es": "antepasados"
+      },
+      "aliases": {
+        "en-US": [
+          "portraits",
+          "paintings",
+          "ancestor portraits",
+          "family",
+          "faces"
+        ],
+        "pt-BR": [
+          "retratos",
+          "quadros",
+          "família",
+          "rostos"
+        ],
+        "es": [
+          "retratos",
+          "cuadros",
+          "familia",
+          "rostros"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "ambrose": {
+      "name": {
+        "en-US": "ambrose",
+        "pt-BR": "ambrose",
+        "es": "ambrose"
+      },
+      "aliases": {
+        "en-US": [
+          "ambrose hollow",
+          "old man",
+          "wig"
+        ],
+        "pt-BR": [
+          "ambrose hollow",
+          "velho",
+          "peruca"
+        ],
+        "es": [
+          "ambrose hollow",
+          "anciano",
+          "peluca"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "beatrice": {
+      "name": {
+        "en-US": "beatrice",
+        "pt-BR": "beatrice",
+        "es": "beatrice"
+      },
+      "aliases": {
+        "en-US": [
+          "beatrice hollow",
+          "woman",
+          "fan"
+        ],
+        "pt-BR": [
+          "beatrice hollow",
+          "mulher",
+          "leque"
+        ],
+        "es": [
+          "beatrice hollow",
+          "mujer",
+          "abanico"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "cornelius": {
+      "name": {
+        "en-US": "cornelius",
+        "pt-BR": "cornelius",
+        "es": "cornelius"
+      },
+      "aliases": {
+        "en-US": [
+          "cornelius hollow",
+          "bearded man",
+          "pipe",
+          "glint"
+        ],
+        "pt-BR": [
+          "cornelius hollow",
+          "barbudo",
+          "cachimbo",
+          "brilho"
+        ],
+        "es": [
+          "cornelius hollow",
+          "barbudo",
+          "pipa",
+          "brillo"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "dorothea": {
+      "name": {
+        "en-US": "dorothea",
+        "pt-BR": "dorothea",
+        "es": "dorothea"
+      },
+      "aliases": {
+        "en-US": [
+          "dorothea hollow",
+          "girl",
+          "little dog",
+          "dog"
+        ],
+        "pt-BR": [
+          "dorothea hollow",
+          "menina",
+          "cachorrinho",
+          "cachorro"
+        ],
+        "es": [
+          "dorothea hollow",
+          "niña",
+          "perrito",
+          "perro"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "plaques": {
+      "name": {
+        "en-US": "plaques",
+        "pt-BR": "placas",
+        "es": "placas"
+      },
+      "aliases": {
+        "en-US": [
+          "plaque",
+          "brass plaques",
+          "names",
+          "years",
+          "dates"
+        ],
+        "pt-BR": [
+          "placa",
+          "placas de latão",
+          "nomes",
+          "anos",
+          "datas"
+        ],
+        "es": [
+          "placa",
+          "placas de latón",
+          "nombres",
+          "años",
+          "fechas"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "sconces": {
+      "name": {
+        "en-US": "sconces",
+        "pt-BR": "arandelas",
+        "es": "apliques"
+      },
+      "aliases": {
+        "en-US": [
+          "sconce",
+          "gas lamps",
+          "gas lamp",
+          "lamps",
+          "lights",
+          "mantles"
+        ],
+        "pt-BR": [
+          "arandela",
+          "lampiões",
+          "lampião",
+          "luminárias",
+          "luzes"
+        ],
+        "es": [
+          "aplique",
+          "lámparas de gas",
+          "lámparas",
+          "luces",
+          "camisas"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "bust": {
+      "name": {
+        "en-US": "bust",
+        "pt-BR": "busto",
+        "es": "busto"
+      },
+      "aliases": {
+        "en-US": [
+          "marble bust",
+          "statue",
+          "plinth",
+          "inscription",
+          "head"
+        ],
+        "pt-BR": [
+          "busto de mármore",
+          "estátua",
+          "pedestal",
+          "inscrição",
+          "cabeça"
+        ],
+        "es": [
+          "busto de mármol",
+          "estatua",
+          "pedestal",
+          "inscripción",
+          "cabeza"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "window": {
+      "name": {
+        "en-US": "window",
+        "pt-BR": "janela",
+        "es": "ventana"
+      },
+      "aliases": {
+        "en-US": [
+          "tall window",
+          "glass",
+          "curtains",
+          "moon"
+        ],
+        "pt-BR": [
+          "janela alta",
+          "vidro",
+          "cortinas",
+          "lua"
+        ],
+        "es": [
+          "ventana alta",
+          "vidrio",
+          "cortinas",
+          "luna"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "rug": {
+      "name": {
+        "en-US": "rug",
+        "pt-BR": "tapete",
+        "es": "alfombra"
+      },
+      "aliases": {
+        "en-US": [
+          "runner",
+          "carpet",
+          "floor"
+        ],
+        "pt-BR": [
+          "passadeira",
+          "carpete",
+          "chão"
+        ],
+        "es": [
+          "alfombrilla",
+          "moqueta",
+          "suelo"
+        ]
+      },
+      "cameras": [
+        "A",
+        "C"
+      ]
+    },
+    "lady": {
+      "name": {
+        "en-US": "large portrait",
+        "pt-BR": "retrato grande",
+        "es": "retrato grande"
+      },
+      "aliases": {
+        "en-US": [
+          "portrait",
+          "lady",
+          "painting",
+          "frame",
+          "lady's portrait",
+          "lady portrait"
+        ],
+        "pt-BR": [
+          "retrato",
+          "dama",
+          "pintura",
+          "moldura",
+          "retrato da dama"
+        ],
+        "es": [
+          "retrato",
+          "dama",
+          "pintura",
+          "marco",
+          "cuadro",
+          "retrato de la dama"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "bench": {
+      "name": {
+        "en-US": "bench",
+        "pt-BR": "banco",
+        "es": "banco"
+      },
+      "aliases": {
+        "en-US": [
+          "velvet bench",
+          "cushion",
+          "seat"
+        ],
+        "pt-BR": [
+          "banco de veludo",
+          "almofada",
+          "assento"
+        ],
+        "es": [
+          "banco de terciopelo",
+          "cojín",
+          "asiento"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "valve": {
+      "name": {
+        "en-US": "valve",
+        "pt-BR": "válvula",
+        "es": "válvula"
+      },
+      "aliases": {
+        "en-US": [
+          "gas valve",
+          "gas pipe",
+          "pipe line",
+          "spindle",
+          "gas"
+        ],
+        "pt-BR": [
+          "válvula de gás",
+          "cano de gás",
+          "cano",
+          "eixo",
+          "gás"
+        ],
+        "es": [
+          "válvula de gas",
+          "tubo de gas",
+          "tubo",
+          "eje",
+          "gas"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "safe": {
+      "name": {
+        "en-US": "safe",
+        "pt-BR": "cofre",
+        "es": "caja fuerte"
+      },
+      "aliases": {
+        "en-US": [
+          "iron door",
+          "hidden door",
+          "dials",
+          "keyhole",
+          "vault"
+        ],
+        "pt-BR": [
+          "porta de ferro",
+          "porta escondida",
+          "discos",
+          "fechadura"
+        ],
+        "es": [
+          "puerta de hierro",
+          "puerta oculta",
+          "diales",
+          "cerradura",
+          "bóveda"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    }
+  },
+  "items": {
+    "valve_wheel": {
+      "name": {
+        "en-US": "Valve wheel",
+        "pt-BR": "Volante da válvula",
+        "es": "Volante de la válvula"
+      },
+      "aliases": {
+        "en-US": [
+          "wheel",
+          "handwheel",
+          "brass wheel"
+        ],
+        "pt-BR": [
+          "volante",
+          "roda",
+          "roda de latão"
+        ],
+        "es": [
+          "volante",
+          "rueda",
+          "rueda de latón"
+        ]
+      },
+      "description": {
+        "en-US": "A brass wheel with a square hole in its hub, made to turn a valve.",
+        "pt-BR": "Uma roda de latão com um furo quadrado no centro, feita para girar uma válvula.",
+        "es": "Una rueda de latón con un agujero cuadrado en el centro, hecha para girar una válvula."
+      }
+    },
+    "small_key": {
+      "name": {
+        "en-US": "Small key",
+        "pt-BR": "Chave pequena",
+        "es": "Llave pequeña"
+      },
+      "aliases": {
+        "en-US": [
+          "key",
+          "little key",
+          "brass key"
+        ],
+        "pt-BR": [
+          "chave",
+          "chavinha",
+          "chave de latão"
+        ],
+        "es": [
+          "llave",
+          "llavecita",
+          "llave de latón"
+        ]
+      },
+      "description": {
+        "en-US": "A small brass key, warm from the gaslight. Too small for a door.",
+        "pt-BR": "Uma chave pequena de latão, morna da luz do gás. Pequena demais para uma porta.",
+        "es": "Una llave pequeña de latón, tibia por la luz del gas. Demasiado pequeña para una puerta."
+      }
+    },
+    "plaques_note": {
+      "name": {
+        "en-US": "Plaques: Cornelius 1844, Ambrose 1753, Dorothea 1877, Beatrice 1810",
+        "pt-BR": "Placas: Cornelius 1844, Ambrose 1753, Dorothea 1877, Beatrice 1810",
+        "es": "Placas: Cornelius 1844, Ambrose 1753, Dorothea 1877, Beatrice 1810"
+      },
+      "aliases": {
+        "en-US": [
+          "plaques note",
+          "names note",
+          "note"
+        ],
+        "pt-BR": [
+          "anotação das placas",
+          "anotação dos nomes",
+          "anotação"
+        ],
+        "es": [
+          "nota de las placas",
+          "nota de los nombres",
+          "nota"
+        ]
+      },
+      "description": {
+        "en-US": "You noted the plaques, as they hang left to right: Cornelius 1844, Ambrose 1753, Dorothea 1877, Beatrice 1810.",
+        "pt-BR": "Você anotou as placas, na ordem em que estão, da esquerda para a direita: Cornelius 1844, Ambrose 1753, Dorothea 1877, Beatrice 1810.",
+        "es": "Anotaste las placas, en el orden en que cuelgan, de izquierda a derecha: Cornelius 1844, Ambrose 1753, Dorothea 1877, Beatrice 1810."
+      }
+    },
+    "bust_note": {
+      "name": {
+        "en-US": "Bust: first to last, last figure of each birth",
+        "pt-BR": "Busto: do primeiro ao último, último algarismo de cada nascimento",
+        "es": "Busto: del primero al último, última cifra de cada nacimiento"
+      },
+      "aliases": {
+        "en-US": [
+          "bust note",
+          "inscription note"
+        ],
+        "pt-BR": [
+          "anotação do busto",
+          "anotação da inscrição"
+        ],
+        "es": [
+          "nota del busto",
+          "nota de la inscripción"
+        ]
+      },
+      "description": {
+        "en-US": "You noted the bust's inscription: \"FROM THE FIRST OF US TO THE LAST, EACH BY THE LAST FIGURE OF OUR BIRTH.\"",
+        "pt-BR": "Você anotou a inscrição do busto: \"DO PRIMEIRO DE NÓS AO ÚLTIMO, CADA UM PELO ÚLTIMO ALGARISMO DE SEU NASCIMENTO.\"",
+        "es": "Anotaste la inscripción del busto: \"DEL PRIMERO DE NOSOTROS AL ÚLTIMO, CADA UNO POR LA ÚLTIMA CIFRA DE SU NACIMIENTO.\""
+      }
+    }
+  },
+  "initialFlags": {
+    "wheel_found": false,
+    "gas_lit": false,
+    "key_found": false,
+    "portrait_open": false,
+    "safe_open": false
+  },
+  "brightness": 0.4,
+  "lighting": [
+    {
+      "when": [
+        {
+          "type": "flag_equals",
+          "flag": "gas_lit",
+          "value": true
+        }
+      ],
+      "brightness": 1.1
+    }
+  ],
+  "interactions": [
+    {
+      "say": [
+        "ancestors"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Four generations of Hollows stare down from gilt frames:\nCornelius, Ambrose, Dorothea and Beatrice, by their plaques.",
+            "pt-BR": "Quatro gerações de Hollows encaram você de molduras douradas:\nCornelius, Ambrose, Dorothea e Beatrice, segundo as placas.",
+            "es": "Cuatro generaciones de Hollow te miran desde marcos dorados:\nCornelius, Ambrose, Dorothea y Beatrice, según sus placas."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "ambrose"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "gas_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Too dark to make out more than a pale face in a frame.",
+            "pt-BR": "Escuro demais para distinguir mais que um rosto pálido numa moldura.",
+            "es": "Demasiado oscuro para distinguir más que un rostro pálido en un marco."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "ambrose"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Ambrose Hollow, in a powdered wig. The first of the line, by the look of him.\nHis painted eyes seem to follow you.",
+            "pt-BR": "Ambrose Hollow, de peruca empoada. O primeiro da linhagem, pela aparência.\nOs olhos pintados parecem seguir você.",
+            "es": "Ambrose Hollow, con peluca empolvada. El primero del linaje, por su aspecto.\nSus ojos pintados parecen seguirte."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "beatrice"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "gas_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Too dark to make out more than a pale face in a frame.",
+            "pt-BR": "Escuro demais para distinguir mais que um rosto pálido numa moldura.",
+            "es": "Demasiado oscuro para distinguir más que un rostro pálido en un marco."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "beatrice"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Beatrice Hollow, in grey silk, a closed fan in her lap.\nHer smile was painted thin.",
+            "pt-BR": "Beatrice Hollow, de seda cinza, com um leque fechado no colo.\nO sorriso foi pintado fino.",
+            "es": "Beatrice Hollow, de seda gris, con un abanico cerrado en el regazo.\nSu sonrisa fue pintada fina."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "dorothea"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "gas_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Too dark to make out more than a pale face in a frame.",
+            "pt-BR": "Escuro demais para distinguir mais que um rosto pálido numa moldura.",
+            "es": "Demasiado oscuro para distinguir más que un rostro pálido en un marco."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "dorothea"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Dorothea Hollow, a pale girl holding a little dog.\nThe youngest face on the wall.",
+            "pt-BR": "Dorothea Hollow, uma menina pálida segurando um cachorrinho.\nO rosto mais jovem da parede.",
+            "es": "Dorothea Hollow, una niña pálida con un perrito en brazos.\nEl rostro más joven de la pared."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "cornelius"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "gas_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Too dark to make out more than a pale face in a frame.",
+            "pt-BR": "Escuro demais para distinguir mais que um rosto pálido numa moldura.",
+            "es": "Demasiado oscuro para distinguir más que un rostro pálido en un marco."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "cornelius"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "gas_lit",
+          "value": true
+        },
+        {
+          "type": "flag_equals",
+          "flag": "key_found",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "key_found",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Cornelius Hollow, bearded, a pipe in his fist. Something glints at the corner of his frame.\nTucked behind the gilt, you found a small key!",
+            "pt-BR": "Cornelius Hollow, barbudo, com um cachimbo na mão. Algo brilha no canto da moldura.\nEscondida atrás do dourado, você encontrou uma chave pequena!",
+            "es": "Cornelius Hollow, barbudo, con una pipa en el puño. Algo brilla en la esquina del marco.\nEscondida tras el dorado, ¡encontraste una llave pequeña!"
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "small_key"
+        }
+      ]
+    },
+    {
+      "say": [
+        "cornelius"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Cornelius Hollow, bearded, a pipe in his fist.\nThe corner of his frame sits a little loose, now empty.",
+            "pt-BR": "Cornelius Hollow, barbudo, com um cachimbo na mão.\nO canto da moldura está um pouco solto, agora vazio.",
+            "es": "Cornelius Hollow, barbudo, con una pipa en el puño.\nLa esquina del marco está algo suelta, ahora vacía."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "plaques"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "gas_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Too dark to read the plaques. You can only feel engraved letters.",
+            "pt-BR": "Escuro demais para ler as placas. Você só sente as letras gravadas.",
+            "es": "Demasiado oscuro para leer las placas. Solo sientes las letras grabadas."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "plaques"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Brass plaques, left to right:\nCORNELIUS · 1844   AMBROSE · 1753   DOROTHEA · 1877   BEATRICE · 1810",
+            "pt-BR": "Placas de latão, da esquerda para a direita:\nCORNELIUS · 1844   AMBROSE · 1753   DOROTHEA · 1877   BEATRICE · 1810",
+            "es": "Placas de latón, de izquierda a derecha:\nCORNELIUS · 1844   AMBROSE · 1753   DOROTHEA · 1877   BEATRICE · 1810"
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "plaques_note"
+        }
+      ]
+    },
+    {
+      "say": [
+        "bust"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A marble bust of a man with no name. Words are carved in the plinth:\n\"FROM THE FIRST OF US TO THE LAST, EACH BY THE LAST FIGURE OF OUR BIRTH.\"",
+            "pt-BR": "Um busto de mármore de um homem sem nome. Há palavras gravadas no pedestal:\n\"DO PRIMEIRO DE NÓS AO ÚLTIMO, CADA UM PELO ÚLTIMO ALGARISMO DE SEU NASCIMENTO.\"",
+            "es": "Un busto de mármol de un hombre sin nombre. Hay palabras talladas en el pedestal:\n\"DEL PRIMERO DE NOSOTROS AL ÚLTIMO, CADA UNO POR LA ÚLTIMA CIFRA DE SU NACIMIENTO.\""
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "bust_note"
+        }
+      ]
+    },
+    {
+      "say": [
+        "sconces"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "gas_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Brass gas sconces between the frames, cold. Their mantles are grey with dust.",
+            "pt-BR": "Arandelas de latão entre as molduras, frias. As camisas estão cinzentas de poeira.",
+            "es": "Apliques de latón entre los marcos, fríos. Sus camisas están grises de polvo."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "sconces"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The gas burns softly in the mantles, humming.",
+            "pt-BR": "O gás queima suave nas camisas, zumbindo.",
+            "es": "El gas arde suave en las camisas, zumbando."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "window"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A tall window. A thin moon hangs over the dead garden below.",
+            "pt-BR": "Uma janela alta. Uma lua fina paira sobre o jardim morto lá embaixo.",
+            "es": "Una ventana alta. Una luna fina cuelga sobre el jardín muerto de abajo."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "window"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The sash is painted shut.",
+            "pt-BR": "A janela está emperrada pela tinta.",
+            "es": "La ventana está sellada por la pintura."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "rug"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A long runner, worn pale down the middle by pacing feet.",
+            "pt-BR": "Uma passadeira comprida, desbotada no meio por passos que iam e vinham.",
+            "es": "Una alfombra larga, desteñida en el centro por pasos que iban y venían."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "lady"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "portrait_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A lady in black, painted larger than life. No plaque names her.\nThe frame hangs crooked, and it sits oddly far from the wall.",
+            "pt-BR": "Uma dama de preto, pintada maior que o natural. Nenhuma placa diz seu nome.\nA moldura está torta e estranhamente afastada da parede.",
+            "es": "Una dama de negro, pintada más grande que el natural. Ninguna placa dice su nombre.\nEl marco cuelga torcido y extrañamente separado de la pared."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "lady"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The portrait hangs open on hidden hinges. The lady watches the iron door she kept.",
+            "pt-BR": "O retrato está aberto sobre dobradiças escondidas. A dama vigia a porta de ferro que guardava.",
+            "es": "El retrato está abierto sobre bisagras ocultas. La dama vigila la puerta de hierro que guardaba."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "lady"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "portrait_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "portrait_open",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You pull the frame. It swings out on hidden hinges.\nBehind it, set into the wall: an iron door with four brass dials and a keyhole.",
+            "pt-BR": "Você puxa a moldura. Ela se abre sobre dobradiças escondidas.\nAtrás dela, embutida na parede: uma porta de ferro com quatro discos de latão e uma fechadura.",
+            "es": "Tiras del marco. Se abre sobre bisagras ocultas.\nDetrás, empotrada en la pared: una puerta de hierro con cuatro diales de latón y una cerradura."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "lady"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "It's already open.",
+            "pt-BR": "Já está aberto.",
+            "es": "Ya está abierto."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "bench"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "wheel_found",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A long velvet bench for admiring the portraits. Its cushion sits lumpy and uneven.",
+            "pt-BR": "Um banco comprido de veludo para admirar os retratos. A almofada está irregular e calombenta.",
+            "es": "Un banco largo de terciopelo para admirar los retratos. Su cojín está desigual y abultado."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "bench"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A long velvet bench. The cushion lies flat now.",
+            "pt-BR": "Um banco comprido de veludo. A almofada agora está lisa.",
+            "es": "Un banco largo de terciopelo. El cojín ahora está liso."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "bench"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "wheel_found",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "wheel_found",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You lift the cushion. Underneath lies a brass wheel, hidden like a sweet.\nYou found a valve wheel!",
+            "pt-BR": "Você levanta a almofada. Embaixo há uma roda de latão, escondida como um doce.\nVocê encontrou um volante de válvula!",
+            "es": "Levantas el cojín. Debajo hay una rueda de latón, escondida como un caramelo.\n¡Encontraste un volante de válvula!"
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "valve_wheel"
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "bench"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Nothing else under the cushion but dust.",
+            "pt-BR": "Não há mais nada sob a almofada além de poeira.",
+            "es": "No queda nada bajo el cojín más que polvo."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "valve"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "gas_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A gas pipe runs along the skirting to a valve. Its wheel is gone;\nonly a bare square spindle remains.",
+            "pt-BR": "Um cano de gás corre pelo rodapé até uma válvula. O volante sumiu;\nsó resta um eixo quadrado nu.",
+            "es": "Un tubo de gas recorre el zócalo hasta una válvula. Su volante no está;\nsolo queda un eje cuadrado desnudo."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "valve"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The valve stands open. Gas whispers in the pipe.",
+            "pt-BR": "A válvula está aberta. O gás sussurra no cano.",
+            "es": "La válvula está abierta. El gas susurra en el tubo."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "valve"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "gas_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Your fingers slip on the bare spindle. It needs a wheel.",
+            "pt-BR": "Seus dedos escorregam no eixo nu. Falta um volante.",
+            "es": "Tus dedos resbalan en el eje desnudo. Le falta un volante."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "valve"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "It's already open.",
+            "pt-BR": "Já está aberta.",
+            "es": "Ya está abierta."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "valve_wheel",
+        "valve"
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "gas_lit",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The wheel fits the spindle. You turn it, and gas hisses through the walls.\nAlong the gallery, the pilot flames catch one by one. Light!",
+            "pt-BR": "O volante encaixa no eixo. Você o gira, e o gás chia pelas paredes.\nAo longo da galeria, as chamas-piloto pegam uma a uma. Luz!",
+            "es": "El volante encaja en el eje. Lo giras y el gas sisea por las paredes.\nA lo largo de la galería, las llamas piloto prenden una a una. ¡Luz!"
+          }
+        },
+        {
+          "type": "remove_item",
+          "item": "valve_wheel"
+        }
+      ]
+    },
+    {
+      "say": [
+        "safe"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "portrait_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You see only faded wallpaper.",
+            "pt-BR": "Você só vê papel de parede desbotado.",
+            "es": "Solo ves papel pintado descolorido."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "safe"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "An iron door the size of a cupboard, set into the wall.\nFour brass dials above a small keyhole. Dials and lock hold one bolt together.",
+            "pt-BR": "Uma porta de ferro do tamanho de um armário, embutida na parede.\nQuatro discos de latão sobre uma pequena fechadura. Discos e fechadura prendem juntos um só ferrolho.",
+            "es": "Una puerta de hierro del tamaño de un armario, empotrada en la pared.\nCuatro diales de latón sobre una pequeña cerradura. Diales y cerradura sujetan juntos un solo cerrojo."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "safe"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "portrait_open",
+          "value": true
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "It won't move. The dials and the keyhole both hold it.",
+            "pt-BR": "Não se mexe. Os discos e a fechadura a prendem.",
+            "es": "No se mueve. Los diales y la cerradura la sujetan."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "small_key",
+        "safe"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "portrait_open",
+          "value": true
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The key turns halfway and stops.\nThe bolt won't draw unless the dials are set as the key turns.",
+            "pt-BR": "A chave gira até a metade e para.\nO ferrolho só corre se os discos forem acertados enquanto a chave gira.",
+            "es": "La llave gira hasta la mitad y se detiene.\nEl cerrojo solo corre si los diales se ajustan mientras la llave gira."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "small_key",
+        "3047",
+        "safe"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "portrait_open",
+          "value": true
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You turn the key as the last dial clicks home. The bolt draws back with a clang.\nThe iron door swings onto a cold passage. At its end, suits of armour stand guard.",
+            "pt-BR": "Você gira a chave enquanto o último disco se encaixa. O ferrolho recua com um estrondo.\nA porta de ferro se abre para um corredor frio. No fim dele, armaduras montam guarda.",
+            "es": "Giras la llave mientras el último dial encaja. El cerrojo retrocede con un estruendo.\nLa puerta de hierro se abre a un pasillo frío. Al fondo, unas armaduras montan guardia."
+          }
+        },
+        {
+          "type": "set_flag",
+          "flag": "safe_open",
+          "value": true
+        },
+        {
+          "type": "change_room",
+          "room": "armory"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "text": {
+        "en-US": "You can't study faces in the dark. This gallery was lit by gas once.",
+        "pt-BR": "Não dá para estudar rostos no escuro. Esta galeria já foi iluminada a gás.",
+        "es": "No se pueden estudiar rostros a oscuras. Esta galería se iluminaba con gas."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "gas_lit",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "The valve is missing a part. Someone sat on it, so to speak.",
+        "pt-BR": "Falta uma peça na válvula. Alguém se sentou em cima dela, por assim dizer.",
+        "es": "A la válvula le falta una pieza. Alguien se sentó encima, por así decirlo."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "wheel_found",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "One of the ancestors keeps something small in his frame. Look closely in good light.",
+        "pt-BR": "Um dos antepassados guarda algo pequeno na moldura. Olhe com atenção, com boa luz.",
+        "es": "Uno de los antepasados guarda algo pequeño en su marco. Míralo bien, con buena luz."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "key_found",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "The lady's frame doesn't hang flat against the wall. Why?",
+        "pt-BR": "A moldura da dama não fica rente à parede. Por quê?",
+        "es": "El marco de la dama no queda pegado a la pared. ¿Por qué?"
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "portrait_open",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "The bust tells you how to read the plaques: oldest first. Key and dials must work together.",
+        "pt-BR": "O busto ensina a ler as placas: o mais velho primeiro. Chave e discos precisam agir juntos.",
+        "es": "El busto dice cómo leer las placas: el más antiguo primero. Llave y diales deben actuar juntos."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "safe_open",
+          "value": true
+        }
+      ]
+    }
+  ]
+}

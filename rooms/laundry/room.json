@@ -1,0 +1,1241 @@
+{
+  "id": "laundry",
+  "title": {
+    "en-US": "The Laundry",
+    "pt-BR": "A Lavanderia",
+    "es": "El Lavadero"
+  },
+  "cameras": {
+    "A": {
+      "image": "camera_a.png",
+      "description": {
+        "en-US": "A copper boiler squats on a cold brick firebox beside an iron mangle.\nA zinc washtub of grey water stands under a fogged window.",
+        "pt-BR": "Uma caldeira de cobre repousa sobre uma fornalha de tijolos fria, ao lado de uma calandra de ferro.\nUma tina de zinco com água cinzenta fica sob uma janela embaçada.",
+        "es": "Una caldera de cobre descansa sobre un hogar de ladrillo frío, junto a un escurridor de hierro.\nUna tina de zinc con agua gris está bajo una ventana empañada."
+      },
+      "variants": [
+        {
+          "when": [
+            {
+              "type": "flag_equals",
+              "flag": "boiler_lit",
+              "value": true
+            }
+          ],
+          "description": {
+            "en-US": "The copper boiler glows over its roaring firebox beside the iron mangle.\nSteam curls from the zinc washtub under the fogged window.",
+            "pt-BR": "A caldeira de cobre brilha sobre a fornalha acesa, ao lado da calandra de ferro.\nO vapor sobe da tina de zinco sob a janela embaçada.",
+            "es": "La caldera de cobre brilla sobre el hogar encendido, junto al escurridor de hierro.\nEl vapor sube de la tina de zinc bajo la ventana empañada."
+          }
+        }
+      ]
+    },
+    "C": {
+      "image": "camera_c.png",
+      "description": {
+        "en-US": "Grey sheets hang stiff from a clothesline above a wicker basket.\nA tall linen press stands by the servants' door. Flat irons line a shelf.",
+        "pt-BR": "Lençóis cinzentos pendem duros de um varal sobre um cesto de vime.\nUm alto armário de roupas fica junto à porta de serviço. Ferros de passar enfileiram-se numa prateleira.",
+        "es": "Sábanas grises cuelgan rígidas de un tendedero sobre un cesto de mimbre.\nUn alto armario de ropa está junto a la puerta de servicio. Unas planchas se alinean en un estante."
+      },
+      "variants": [
+        {
+          "when": [
+            {
+              "type": "flag_equals",
+              "flag": "boiler_lit",
+              "value": true
+            }
+          ],
+          "description": {
+            "en-US": "Firelight flickers over the grey sheets on the clothesline and the wicker basket.\nA tall linen press stands by the servants' door. Flat irons line a shelf.",
+            "pt-BR": "A luz do fogo tremula sobre os lençóis cinzentos do varal e o cesto de vime.\nUm alto armário de roupas fica junto à porta de serviço. Ferros de passar enfileiram-se numa prateleira.",
+            "es": "La luz del fuego tiembla sobre las sábanas grises del tendedero y el cesto de mimbre.\nUn alto armario de ropa está junto a la puerta de servicio. Unas planchas se alinean en un estante."
+          }
+        }
+      ]
+    }
+  },
+  "objects": {
+    "boiler": {
+      "name": {
+        "en-US": "boiler",
+        "pt-BR": "caldeira",
+        "es": "caldera"
+      },
+      "aliases": {
+        "en-US": [
+          "copper boiler",
+          "copper",
+          "firebox",
+          "furnace",
+          "fire",
+          "grate"
+        ],
+        "pt-BR": [
+          "caldeira de cobre",
+          "cobre",
+          "fornalha",
+          "fogo",
+          "grelha"
+        ],
+        "es": [
+          "caldera de cobre",
+          "cobre",
+          "hogar",
+          "horno",
+          "fuego",
+          "parrilla"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "scuttle": {
+      "name": {
+        "en-US": "coal scuttle",
+        "pt-BR": "balde de carvão",
+        "es": "cubo de carbón"
+      },
+      "aliases": {
+        "en-US": [
+          "scuttle",
+          "coal",
+          "coal bucket",
+          "bucket"
+        ],
+        "pt-BR": [
+          "carvão",
+          "balde"
+        ],
+        "es": [
+          "carbón",
+          "cubo",
+          "carbonera"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "washtub": {
+      "name": {
+        "en-US": "washtub",
+        "pt-BR": "tina",
+        "es": "tina"
+      },
+      "aliases": {
+        "en-US": [
+          "tub",
+          "wash tub",
+          "zinc tub",
+          "water",
+          "grey water",
+          "gray water"
+        ],
+        "pt-BR": [
+          "tina de lavar",
+          "tina de zinco",
+          "bacia",
+          "água",
+          "água cinzenta"
+        ],
+        "es": [
+          "tina de lavar",
+          "tina de zinc",
+          "barreño",
+          "agua",
+          "agua gris"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "mangle": {
+      "name": {
+        "en-US": "mangle",
+        "pt-BR": "calandra",
+        "es": "escurridor"
+      },
+      "aliases": {
+        "en-US": [
+          "wringer",
+          "rollers",
+          "roller",
+          "crank",
+          "wheel",
+          "iron mangle"
+        ],
+        "pt-BR": [
+          "espremedor",
+          "rolos",
+          "rolo",
+          "manivela",
+          "roda",
+          "calandra de ferro"
+        ],
+        "es": [
+          "rodillos",
+          "rodillo",
+          "manivela",
+          "rueda",
+          "escurridor de hierro",
+          "calandria"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "soap_dish": {
+      "name": {
+        "en-US": "soap dish",
+        "pt-BR": "saboneteira",
+        "es": "jabonera"
+      },
+      "aliases": {
+        "en-US": [
+          "dish",
+          "rim"
+        ],
+        "pt-BR": [
+          "prato",
+          "borda"
+        ],
+        "es": [
+          "platito",
+          "borde"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "window": {
+      "name": {
+        "en-US": "window",
+        "pt-BR": "janela",
+        "es": "ventana"
+      },
+      "aliases": {
+        "en-US": [
+          "glass",
+          "fogged window"
+        ],
+        "pt-BR": [
+          "vidro",
+          "janela embaçada"
+        ],
+        "es": [
+          "vidrio",
+          "ventana empañada"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "clothesline": {
+      "name": {
+        "en-US": "clothesline",
+        "pt-BR": "varal",
+        "es": "tendedero"
+      },
+      "aliases": {
+        "en-US": [
+          "clothes line",
+          "washing line",
+          "line",
+          "sheets",
+          "sheet",
+          "grey sheets"
+        ],
+        "pt-BR": [
+          "varal de roupas",
+          "corda",
+          "lençóis",
+          "lençol",
+          "lençóis cinzentos"
+        ],
+        "es": [
+          "cuerda",
+          "cordel",
+          "sábanas",
+          "sábana",
+          "sábanas grises"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "basket": {
+      "name": {
+        "en-US": "basket",
+        "pt-BR": "cesto",
+        "es": "cesto"
+      },
+      "aliases": {
+        "en-US": [
+          "laundry basket",
+          "wicker basket",
+          "linen",
+          "dirty linen",
+          "laundry"
+        ],
+        "pt-BR": [
+          "cesto de roupa",
+          "cesto de vime",
+          "roupa suja",
+          "roupa"
+        ],
+        "es": [
+          "cesto de ropa",
+          "cesto de mimbre",
+          "ropa sucia",
+          "ropa"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "press": {
+      "name": {
+        "en-US": "linen press",
+        "pt-BR": "armário",
+        "es": "armario"
+      },
+      "aliases": {
+        "en-US": [
+          "press",
+          "cabinet",
+          "cupboard",
+          "dials",
+          "brass lock"
+        ],
+        "pt-BR": [
+          "armário de roupas",
+          "rouparia",
+          "mostradores",
+          "cadeado"
+        ],
+        "es": [
+          "armario de ropa",
+          "ropero",
+          "diales",
+          "candado"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "door": {
+      "name": {
+        "en-US": "door",
+        "pt-BR": "porta",
+        "es": "puerta"
+      },
+      "aliases": {
+        "en-US": [
+          "servants door",
+          "servants' door",
+          "exit",
+          "lock",
+          "keyhole"
+        ],
+        "pt-BR": [
+          "porta de serviço",
+          "saída",
+          "fechadura"
+        ],
+        "es": [
+          "puerta de servicio",
+          "salida",
+          "cerradura"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "irons": {
+      "name": {
+        "en-US": "flat irons",
+        "pt-BR": "ferros de passar",
+        "es": "planchas"
+      },
+      "aliases": {
+        "en-US": [
+          "irons",
+          "iron",
+          "shelf"
+        ],
+        "pt-BR": [
+          "ferros",
+          "ferro",
+          "prateleira"
+        ],
+        "es": [
+          "plancha",
+          "estante"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    }
+  },
+  "items": {
+    "pillowcase": {
+      "name": {
+        "en-US": "Pillowcase",
+        "pt-BR": "Fronha",
+        "es": "Funda de almohada"
+      },
+      "aliases": {
+        "en-US": [
+          "pillow case",
+          "wet pillowcase",
+          "cloth"
+        ],
+        "pt-BR": [
+          "fronha molhada",
+          "pano"
+        ],
+        "es": [
+          "funda",
+          "funda mojada",
+          "tela"
+        ]
+      }
+    },
+    "monogram_note": {
+      "name": {
+        "en-US": "Monogram: 5 1 8 3",
+        "pt-BR": "Monograma: 5 1 8 3",
+        "es": "Monograma: 5 1 8 3"
+      },
+      "aliases": {
+        "en-US": [
+          "monogram",
+          "note",
+          "embroidery"
+        ],
+        "pt-BR": [
+          "monograma",
+          "nota",
+          "bordado"
+        ],
+        "es": [
+          "monograma",
+          "nota",
+          "bordado"
+        ]
+      },
+      "description": {
+        "en-US": "White thread on white linen: a curly H above four numbers, 5 1 8 3.",
+        "pt-BR": "Linha branca sobre linho branco: um H rebuscado sobre quatro números, 5 1 8 3.",
+        "es": "Hilo blanco sobre lino blanco: una H florida sobre cuatro números, 5 1 8 3."
+      }
+    },
+    "tinderbox": {
+      "name": {
+        "en-US": "Tinderbox",
+        "pt-BR": "Pederneira",
+        "es": "Yesquero"
+      },
+      "aliases": {
+        "en-US": [
+          "tinder box",
+          "tinder",
+          "flint",
+          "steel"
+        ],
+        "pt-BR": [
+          "isqueiro",
+          "acendedor",
+          "pedra de fogo"
+        ],
+        "es": [
+          "pedernal",
+          "eslabón",
+          "mechero"
+        ]
+      },
+      "description": {
+        "en-US": "A tin box with flint, steel and a wad of dry tinder. Good for a spark or two.",
+        "pt-BR": "Uma caixinha de lata com pedra, fuzil e um chumaço de isca seca. Serve para uma ou duas faíscas.",
+        "es": "Una cajita de lata con pedernal, eslabón y un poco de yesca seca. Sirve para una o dos chispas."
+      }
+    },
+    "soap": {
+      "name": {
+        "en-US": "Soap",
+        "pt-BR": "Sabão",
+        "es": "Jabón"
+      },
+      "aliases": {
+        "en-US": [
+          "lye soap",
+          "cake of soap",
+          "bar of soap"
+        ],
+        "pt-BR": [
+          "sabão de soda",
+          "barra de sabão"
+        ],
+        "es": [
+          "jabón de lejía",
+          "pastilla de jabón"
+        ]
+      },
+      "description": {
+        "en-US": "A cake of yellow lye soap, slick and soft at the edges.",
+        "pt-BR": "Uma barra de sabão amarelo de soda, escorregadia e mole nas bordas.",
+        "es": "Una pastilla de jabón amarillo de lejía, resbaladiza y blanda en los bordes."
+      }
+    },
+    "brass_key": {
+      "name": {
+        "en-US": "Brass key",
+        "pt-BR": "Chave de latão",
+        "es": "Llave de latón"
+      },
+      "aliases": {
+        "en-US": [
+          "key",
+          "small key"
+        ],
+        "pt-BR": [
+          "chave"
+        ],
+        "es": [
+          "llave"
+        ]
+      },
+      "description": {
+        "en-US": "A small brass key with a tag: SERVICE.",
+        "pt-BR": "Uma pequena chave de latão com uma etiqueta: SERVIÇO.",
+        "es": "Una pequeña llave de latón con una etiqueta: SERVICIO."
+      }
+    }
+  },
+  "initialFlags": {
+    "pillowcase_taken": false,
+    "pressed": false,
+    "boiler_lit": false,
+    "tinder_found": false,
+    "soap_taken": false,
+    "press_open": false
+  },
+  "brightness": 0.45,
+  "lighting": [
+    {
+      "when": [
+        {
+          "type": "flag_equals",
+          "flag": "boiler_lit",
+          "value": true
+        }
+      ],
+      "brightness": 1.1
+    }
+  ],
+  "interactions": [
+    {
+      "say": [
+        "boiler"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "boiler_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A squat copper boiler on a brick firebox. Coal is laid on the grate,\nbut the fire is long dead.",
+            "pt-BR": "Uma caldeira de cobre atarracada sobre uma fornalha de tijolos. Há carvão sobre a grelha,\nmas o fogo morreu há muito tempo.",
+            "es": "Una caldera de cobre achaparrada sobre un hogar de ladrillo. Hay carbón en la parrilla,\npero el fuego murió hace mucho."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "boiler"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The firebox roars. The copper ticks and sighs as it warms.",
+            "pt-BR": "A fornalha ruge. O cobre estala e suspira enquanto esquenta.",
+            "es": "El hogar ruge. El cobre cruje y suspira mientras se calienta."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "boiler"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "boiler_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The firebox door creaks open. Coal is laid ready on the grate. It only wants a spark.",
+            "pt-BR": "A portinhola da fornalha range ao abrir. O carvão está pronto sobre a grelha. Só falta uma faísca.",
+            "es": "La portezuela del hogar chirría al abrirse. El carbón espera en la parrilla. Solo falta una chispa."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "boiler"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The heat slaps your face. You shut the firebox again.",
+            "pt-BR": "O calor bate no seu rosto. Você fecha a fornalha de novo.",
+            "es": "El calor te golpea la cara. Vuelves a cerrar el hogar."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "tinderbox",
+        "boiler"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "boiler_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "boiler_lit",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Flint on steel. A spark, a curl of smoke, and the coal catches.\nThe firebox glows, and warm light spills across the laundry.",
+            "pt-BR": "Pedra contra fuzil. Uma faísca, um fio de fumaça, e o carvão pega.\nA fornalha brilha, e uma luz quente se espalha pela lavanderia.",
+            "es": "Pedernal contra eslabón. Una chispa, un hilo de humo, y el carbón prende.\nEl hogar brilla y una luz cálida se derrama por el lavadero."
+          }
+        },
+        {
+          "type": "remove_item",
+          "item": "tinderbox"
+        }
+      ]
+    },
+    {
+      "say": [
+        "scuttle"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A scuttle heaped with coal. Someone meant to keep the boiler fed.",
+            "pt-BR": "Um balde cheio de carvão. Alguém pretendia manter a caldeira acesa.",
+            "es": "Un cubo lleno de carbón. Alguien pensaba mantener la caldera encendida."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "washtub"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "pillowcase_taken",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "pillowcase_taken",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A zinc washtub of grey, scummy water. Something pale lies drowned at the bottom.\nYou fish out a sodden pillowcase!",
+            "pt-BR": "Uma tina de zinco com água cinzenta e espumosa. Algo claro jaz afogado no fundo.\nVocê pescou uma fronha encharcada!",
+            "es": "Una tina de zinc con agua gris y espumosa. Algo pálido yace ahogado en el fondo.\n¡Sacaste una funda de almohada empapada!"
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "pillowcase"
+        }
+      ]
+    },
+    {
+      "say": [
+        "washtub"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Grey water, cold and still. Nothing else lies at the bottom.",
+            "pt-BR": "Água cinzenta, fria e parada. Não há mais nada no fundo.",
+            "es": "Agua gris, fría y quieta. No queda nada más en el fondo."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "mangle"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "An iron mangle: two wooden rollers and a big crank wheel.\nWet cloth goes in one side and comes out flat on the other.",
+            "pt-BR": "Uma calandra de ferro: dois rolos de madeira e uma grande roda de manivela.\nO pano molhado entra de um lado e sai liso do outro.",
+            "es": "Un escurridor de hierro: dos rodillos de madera y una gran rueda con manivela.\nLa tela mojada entra por un lado y sale lisa por el otro."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "pillowcase",
+        "mangle"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "pressed",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "pressed",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You feed the pillowcase between the rollers and turn the wheel. Water streams out.\nIt comes out flat and stiff. Something is stitched on one corner.",
+            "pt-BR": "Você passa a fronha entre os rolos e gira a roda. A água escorre.\nEla sai lisa e dura. Há algo bordado num canto.",
+            "es": "Pasas la funda entre los rodillos y giras la rueda. El agua chorrea.\nSale lisa y tiesa. Hay algo bordado en una esquina."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "pillowcase",
+        "mangle"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "It's already pressed flat.",
+            "pt-BR": "Ela já está bem lisa.",
+            "es": "Ya está bien lisa."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "soap_dish"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "soap_taken",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "soap_taken",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A chipped dish on the washtub's rim, holding a cake of yellow lye soap.\nYou took the soap!",
+            "pt-BR": "Uma saboneteira lascada na borda da tina, com uma barra de sabão amarelo.\nVocê pegou o sabão!",
+            "es": "Una jabonera desportillada en el borde de la tina, con una pastilla de jabón amarillo.\n¡Tomaste el jabón!"
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "soap"
+        }
+      ]
+    },
+    {
+      "say": [
+        "soap_dish"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "An empty dish, ringed with old scum.",
+            "pt-BR": "Uma saboneteira vazia, com marcas de espuma velha.",
+            "es": "Una jabonera vacía, con cercos de espuma vieja."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "window"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Steam has clouded the glass for years. Beyond it, only black.",
+            "pt-BR": "O vapor embaçou o vidro por anos. Lá fora, só escuridão.",
+            "es": "El vapor empañó el vidrio durante años. Afuera, solo negrura."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "pillowcase"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "pressed",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Sodden and crumpled. Whatever is stitched on it is lost in the folds.",
+            "pt-BR": "Encharcada e amassada. O que quer que esteja bordado nela se perde nas dobras.",
+            "es": "Empapada y arrugada. Lo que sea que lleve bordado se pierde entre los pliegues."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "pillowcase"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "boiler_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Flat at last. White thread on white linen: in this gloom you can't make it out.",
+            "pt-BR": "Lisa, enfim. Linha branca sobre linho branco: nesta penumbra você não consegue ler.",
+            "es": "Lisa por fin. Hilo blanco sobre lino blanco: con esta penumbra no logras leerlo."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "pillowcase"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "In the firelight the white thread shows: a curly H above four numbers.\n5 1 8 3",
+            "pt-BR": "À luz do fogo, a linha branca aparece: um H rebuscado sobre quatro números.\n5 1 8 3",
+            "es": "A la luz del fuego, el hilo blanco se ve: una H florida sobre cuatro números.\n5 1 8 3"
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "monogram_note"
+        }
+      ]
+    },
+    {
+      "say": [
+        "clothesline"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Grey sheets hang from a line strung across the room, stiff as boards.\nThey stir a little, though nothing else does.",
+            "pt-BR": "Lençóis cinzentos pendem de um varal que atravessa o cômodo, duros como tábuas.\nEles se mexem um pouco, embora nada mais se mexa.",
+            "es": "Sábanas grises cuelgan de una cuerda que cruza la habitación, tiesas como tablas.\nSe mueven un poco, aunque nada más se mueve."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "basket"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "tinder_found",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "tinder_found",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A wicker basket heaped with dirty linen. Under the linen, something small and hard.\nYou found a tinderbox!",
+            "pt-BR": "Um cesto de vime cheio de roupa suja. Debaixo da roupa, algo pequeno e duro.\nVocê encontrou uma pederneira!",
+            "es": "Un cesto de mimbre lleno de ropa sucia. Bajo la ropa, algo pequeño y duro.\n¡Encontraste un yesquero!"
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "tinderbox"
+        }
+      ]
+    },
+    {
+      "say": [
+        "basket"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Only dirty linen is left. It smells of damp.",
+            "pt-BR": "Só restou roupa suja. Cheira a umidade.",
+            "es": "Solo queda ropa sucia. Huele a humedad."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "press"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "press_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A tall linen press of dark oak. Its doors are held by a brass lock with four number dials.",
+            "pt-BR": "Um alto armário de roupas de carvalho escuro. As portas estão presas por um cadeado de latão com quatro mostradores numéricos.",
+            "es": "Un alto armario de ropa de roble oscuro. Sus puertas las sujeta un candado de latón con cuatro diales numéricos."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "press"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Folded linen, smelling of lavender. Nothing else.",
+            "pt-BR": "Roupa de cama dobrada, com cheiro de lavanda. Nada mais.",
+            "es": "Ropa de cama doblada, con olor a lavanda. Nada más."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "press"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "press_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Locked. The four dials won't budge without the right numbers.",
+            "pt-BR": "Trancado. Os quatro mostradores não cedem sem os números certos.",
+            "es": "Cerrado. Los cuatro diales no ceden sin los números correctos."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "press"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "It's already open. Only folded linen is left.",
+            "pt-BR": "Já está aberto. Só restou roupa dobrada.",
+            "es": "Ya está abierto. Solo queda ropa doblada."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "5183",
+        "press"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "press_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "press_open",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The dials click into place: 5, 1, 8, 3. The doors swing open on stacks of folded linen.\nOn a hook inside hangs a small brass key. You took the key!",
+            "pt-BR": "Os mostradores se encaixam: 5, 1, 8, 3. As portas se abrem sobre pilhas de roupa dobrada.\nNum gancho lá dentro pende uma pequena chave de latão. Você pegou a chave!",
+            "es": "Los diales encajan: 5, 1, 8, 3. Las puertas se abren sobre pilas de ropa doblada.\nDe un gancho cuelga una pequeña llave de latón. ¡Tomaste la llave!"
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "brass_key"
+        }
+      ]
+    },
+    {
+      "say": [
+        "5183",
+        "press"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "It's already open.",
+            "pt-BR": "Já está aberto.",
+            "es": "Ya está abierto."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "irons"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Flat irons lined up on a shelf, cold and heavy. Waiting for a fire that never came.",
+            "pt-BR": "Ferros de passar enfileirados numa prateleira, frios e pesados. Esperando um fogo que nunca veio.",
+            "es": "Planchas alineadas en un estante, frías y pesadas. Esperando un fuego que nunca llegó."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "door"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A plain servants' door. The lock is crusted with rust.",
+            "pt-BR": "Uma simples porta de serviço. A fechadura está coberta de ferrugem.",
+            "es": "Una sencilla puerta de servicio. La cerradura está cubierta de óxido."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "door"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "It's locked.",
+            "pt-BR": "Está trancada.",
+            "es": "Está cerrada con llave."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "brass_key",
+        "door"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The key slides in, but it won't turn. The old lock is stiff with rust.\nIt needs something to make it slip.",
+            "pt-BR": "A chave entra, mas não gira. A velha fechadura está dura de ferrugem.\nPrecisa de algo que a faça deslizar.",
+            "es": "La llave entra, pero no gira. La vieja cerradura está dura de óxido.\nNecesita algo que la haga deslizar."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "soap",
+        "brass_key",
+        "door"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You rub the key with the lye soap and try again. The lock grates, then gives.\nBeyond the door, a long dining hall: a table laid for a dinner no one came to eat.",
+            "pt-BR": "Você esfrega a chave no sabão e tenta de novo. A fechadura range e cede.\nAlém da porta, uma longa sala de jantar: uma mesa posta para um jantar que ninguém veio comer.",
+            "es": "Frotas la llave con el jabón y lo intentas de nuevo. La cerradura chirría y cede.\nTras la puerta, un largo comedor: una mesa puesta para una cena que nadie vino a comer."
+          }
+        },
+        {
+          "type": "change_room",
+          "room": "dining"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "text": {
+        "en-US": "Something in this room has been left to soak for far too long.",
+        "pt-BR": "Algo neste cômodo ficou de molho por tempo demais.",
+        "es": "Algo en esta habitación lleva demasiado tiempo en remojo."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "pillowcase_taken",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "Wet, crumpled cloth hides what is stitched on it. Laundries have a machine for that.",
+        "pt-BR": "Pano molhado e amassado esconde o que está bordado nele. Lavanderias têm uma máquina para isso.",
+        "es": "La tela mojada y arrugada esconde lo que lleva bordado. Los lavaderos tienen una máquina para eso."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "pressed",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "White thread is hard to read in the dark. This room needs a fire.",
+        "pt-BR": "Linha branca é difícil de ler no escuro. Este cômodo precisa de fogo.",
+        "es": "El hilo blanco es difícil de leer a oscuras. Esta habitación necesita fuego."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "boiler_lit",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "Every washday begins with a spark. Someone lost one among the dirty linen.",
+        "pt-BR": "Todo dia de lavar roupa começa com uma faísca. Alguém perdeu uma no meio da roupa suja.",
+        "es": "Todo día de colada empieza con una chispa. Alguien perdió una entre la ropa sucia."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "tinder_found",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "The press wants numbers. Read what was stitched on the linen, in good light.",
+        "pt-BR": "O armário quer números. Leia o que foi bordado no linho, com boa luz.",
+        "es": "El armario quiere números. Lee lo que se bordó en el lino, con buena luz."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "press_open",
+          "value": true
+        }
+      ]
+    }
+  ]
+}

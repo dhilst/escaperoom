@@ -1,0 +1,1425 @@
+{
+  "id": "bedroom",
+  "title": {
+    "en-US": "The Master Bedroom",
+    "pt-BR": "O Quarto Principal",
+    "es": "El Dormitorio Principal"
+  },
+  "cameras": {
+    "A": {
+      "image": "camera_a.png",
+      "description": {
+        "en-US": "A four-poster bed sags under a dusty canopy, its pillows still dented.\nOn the nightstand an oil lamp stands cold beside a curtained window.",
+        "pt-BR": "Uma cama de dossel afunda sob um cortinado empoeirado, os travesseiros ainda marcados.\nNo criado-mudo, um lampião a óleo está frio ao lado de uma janela com cortinas.",
+        "es": "Una cama con dosel se hunde bajo un toldo polvoriento, las almohadas aún hundidas.\nEn la mesita de noche, un quinqué está frío junto a una ventana con cortinas."
+      },
+      "variants": [
+        {
+          "when": [
+            {
+              "type": "flag_equals",
+              "flag": "lamp_lit",
+              "value": true
+            }
+          ],
+          "description": {
+            "en-US": "The oil lamp burns low, gilding the four-poster bed and its dented pillows.\nShadows of the canopy sway across the curtained window.",
+            "pt-BR": "O lampião a óleo arde baixo, dourando a cama de dossel e seus travesseiros marcados.\nAs sombras do cortinado balançam sobre a janela com cortinas.",
+            "es": "El quinqué arde bajo y dora la cama con dosel y sus almohadas hundidas.\nLas sombras del toldo se mecen sobre la ventana con cortinas."
+          }
+        }
+      ]
+    },
+    "C": {
+      "image": "camera_c.png",
+      "description": {
+        "en-US": "A vanity with an oval mirror holds a silver jewelry box.\nBeside it looms a tall wardrobe. The door to the hall is locked.",
+        "pt-BR": "Uma penteadeira com espelho oval guarda um porta-joias de prata.\nAo lado se ergue um guarda-roupa alto. A porta para o corredor está trancada.",
+        "es": "Un tocador con espejo ovalado sostiene un joyero de plata.\nA su lado se alza un armario alto. La puerta al pasillo está cerrada."
+      },
+      "variants": [
+        {
+          "when": [
+            {
+              "type": "flag_equals",
+              "flag": "wardrobe_open",
+              "value": true
+            }
+          ],
+          "description": {
+            "en-US": "A vanity with an oval mirror holds a silver jewelry box.\nBeside it the tall wardrobe stands open, old dresses hanging in the dark.",
+            "pt-BR": "Uma penteadeira com espelho oval guarda um porta-joias de prata.\nAo lado, o guarda-roupa alto está aberto, com vestidos antigos pendurados no escuro.",
+            "es": "Un tocador con espejo ovalado sostiene un joyero de plata.\nA su lado, el armario alto está abierto, con vestidos viejos colgados en la oscuridad."
+          }
+        }
+      ]
+    }
+  },
+  "objects": {
+    "bed": {
+      "name": {
+        "en-US": "bed",
+        "pt-BR": "cama",
+        "es": "cama"
+      },
+      "aliases": {
+        "en-US": [
+          "four-poster",
+          "four-poster bed",
+          "canopy",
+          "covers",
+          "sheets",
+          "blanket"
+        ],
+        "pt-BR": [
+          "cama de dossel",
+          "dossel",
+          "cortinado",
+          "cobertas",
+          "lençóis",
+          "cobertor"
+        ],
+        "es": [
+          "cama con dosel",
+          "dosel",
+          "toldo",
+          "sábanas",
+          "mantas",
+          "manta"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "pillow": {
+      "name": {
+        "en-US": "pillow",
+        "pt-BR": "travesseiro",
+        "es": "almohada"
+      },
+      "aliases": {
+        "en-US": [
+          "pillows",
+          "cushion"
+        ],
+        "pt-BR": [
+          "travesseiros",
+          "almofada"
+        ],
+        "es": [
+          "almohadas",
+          "cojín"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "diary": {
+      "name": {
+        "en-US": "diary",
+        "pt-BR": "diário",
+        "es": "diario"
+      },
+      "aliases": {
+        "en-US": [
+          "leather diary",
+          "journal"
+        ],
+        "pt-BR": [
+          "diário de couro",
+          "caderno"
+        ],
+        "es": [
+          "diario de cuero",
+          "cuaderno"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "nightstand": {
+      "name": {
+        "en-US": "nightstand",
+        "pt-BR": "criado-mudo",
+        "es": "mesita de noche"
+      },
+      "aliases": {
+        "en-US": [
+          "bedside table",
+          "night table",
+          "table"
+        ],
+        "pt-BR": [
+          "mesa de cabeceira",
+          "mesinha",
+          "mesa"
+        ],
+        "es": [
+          "mesita",
+          "mesilla",
+          "buró",
+          "mesa"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "lamp": {
+      "name": {
+        "en-US": "lamp",
+        "pt-BR": "lampião",
+        "es": "quinqué"
+      },
+      "aliases": {
+        "en-US": [
+          "oil lamp",
+          "wick",
+          "glass chimney"
+        ],
+        "pt-BR": [
+          "lampião a óleo",
+          "lamparina",
+          "luminária",
+          "pavio"
+        ],
+        "es": [
+          "lámpara",
+          "lámpara de aceite",
+          "candil",
+          "mecha"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "window": {
+      "name": {
+        "en-US": "window",
+        "pt-BR": "janela",
+        "es": "ventana"
+      },
+      "aliases": {
+        "en-US": [
+          "curtains",
+          "curtain",
+          "glass",
+          "rain"
+        ],
+        "pt-BR": [
+          "cortinas",
+          "cortina",
+          "vidro",
+          "chuva"
+        ],
+        "es": [
+          "cortinas",
+          "cortina",
+          "vidrio",
+          "lluvia"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "vanity": {
+      "name": {
+        "en-US": "vanity",
+        "pt-BR": "penteadeira",
+        "es": "tocador"
+      },
+      "aliases": {
+        "en-US": [
+          "dressing table",
+          "drawer",
+          "vanity drawer"
+        ],
+        "pt-BR": [
+          "gaveta",
+          "gaveta da penteadeira"
+        ],
+        "es": [
+          "cajón",
+          "cajón del tocador"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "mirror": {
+      "name": {
+        "en-US": "mirror",
+        "pt-BR": "espelho",
+        "es": "espejo"
+      },
+      "aliases": {
+        "en-US": [
+          "oval mirror",
+          "reflection"
+        ],
+        "pt-BR": [
+          "espelho oval",
+          "reflexo"
+        ],
+        "es": [
+          "espejo ovalado",
+          "reflejo"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "jewelry_box": {
+      "name": {
+        "en-US": "jewelry box",
+        "pt-BR": "porta-joias",
+        "es": "joyero"
+      },
+      "aliases": {
+        "en-US": [
+          "jewellery box",
+          "jewel box",
+          "box",
+          "dials",
+          "silver box"
+        ],
+        "pt-BR": [
+          "caixa de joias",
+          "caixinha",
+          "caixa",
+          "discos"
+        ],
+        "es": [
+          "caja de joyas",
+          "cajita",
+          "caja",
+          "diales"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "wardrobe": {
+      "name": {
+        "en-US": "wardrobe",
+        "pt-BR": "guarda-roupa",
+        "es": "armario"
+      },
+      "aliases": {
+        "en-US": [
+          "closet",
+          "armoire",
+          "dresses",
+          "keyhole"
+        ],
+        "pt-BR": [
+          "roupeiro",
+          "armário",
+          "vestidos",
+          "buraco da fechadura"
+        ],
+        "es": [
+          "ropero",
+          "guardarropa",
+          "vestidos",
+          "ojo de la cerradura"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "carvings": {
+      "name": {
+        "en-US": "carvings",
+        "pt-BR": "entalhes",
+        "es": "tallas"
+      },
+      "aliases": {
+        "en-US": [
+          "back panel",
+          "panel",
+          "flowers",
+          "carved flowers",
+          "carving"
+        ],
+        "pt-BR": [
+          "painel",
+          "painel do fundo",
+          "flores",
+          "flores entalhadas",
+          "entalhe"
+        ],
+        "es": [
+          "panel",
+          "panel del fondo",
+          "flores",
+          "flores talladas",
+          "talla"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "door": {
+      "name": {
+        "en-US": "door",
+        "pt-BR": "porta",
+        "es": "puerta"
+      },
+      "aliases": {
+        "en-US": [
+          "hall door",
+          "bedroom door",
+          "exit"
+        ],
+        "pt-BR": [
+          "porta do corredor",
+          "porta do quarto",
+          "saída"
+        ],
+        "es": [
+          "puerta del pasillo",
+          "puerta del dormitorio",
+          "salida"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    }
+  },
+  "items": {
+    "matchbook": {
+      "name": {
+        "en-US": "Matchbook",
+        "pt-BR": "Fósforos",
+        "es": "Cerillas"
+      },
+      "aliases": {
+        "en-US": [
+          "matches",
+          "match",
+          "book of matches"
+        ],
+        "pt-BR": [
+          "fósforo",
+          "cartela de fósforos",
+          "palitos de fósforo"
+        ],
+        "es": [
+          "cerilla",
+          "librito de cerillas",
+          "fósforos"
+        ]
+      },
+      "description": {
+        "en-US": "A paper book of matches from a hotel long since closed.",
+        "pt-BR": "Uma cartela de fósforos de um hotel fechado há muito tempo.",
+        "es": "Un librito de cerillas de un hotel cerrado hace mucho."
+      }
+    },
+    "diary_note": {
+      "name": {
+        "en-US": "Diary: wed on 11 June",
+        "pt-BR": "Diário: casamento em 11 de junho",
+        "es": "Diario: boda el 11 de junio"
+      },
+      "aliases": {
+        "en-US": [
+          "diary note",
+          "wedding note",
+          "date note"
+        ],
+        "pt-BR": [
+          "anotação do diário",
+          "anotação do casamento"
+        ],
+        "es": [
+          "nota del diario",
+          "nota de la boda"
+        ]
+      },
+      "description": {
+        "en-US": "You noted the marked page: \"The eleventh of June, the day we wed. He gave me a silver box for my jewels, and it keeps that day.\"",
+        "pt-BR": "Você anotou a página marcada: \"Onze de junho, o dia em que nos casamos. Ele me deu uma caixa de prata para as minhas joias, e ela guarda esse dia.\"",
+        "es": "Anotaste la página marcada: \"El once de junio, el día en que nos casamos. Me regaló una caja de plata para mis joyas, y ella guarda ese día.\""
+      }
+    },
+    "locket": {
+      "name": {
+        "en-US": "Locket",
+        "pt-BR": "Medalhão",
+        "es": "Medallón"
+      },
+      "aliases": {
+        "en-US": [
+          "silver locket",
+          "pendant",
+          "chain"
+        ],
+        "pt-BR": [
+          "medalhão de prata",
+          "pingente",
+          "corrente"
+        ],
+        "es": [
+          "medallón de plata",
+          "colgante",
+          "cadena"
+        ]
+      },
+      "description": {
+        "en-US": "A silver locket on a fine chain. It's hinged, and something rattles inside.",
+        "pt-BR": "Um medalhão de prata numa corrente fina. Tem dobradiça, e algo chacoalha lá dentro.",
+        "es": "Un medallón de plata con una cadena fina. Tiene bisagra, y algo suena dentro."
+      }
+    },
+    "locket_note": {
+      "name": {
+        "en-US": "Locket inscription",
+        "pt-BR": "Inscrição do medalhão",
+        "es": "Inscripción del medallón"
+      },
+      "aliases": {
+        "en-US": [
+          "locket note",
+          "inscription",
+          "locket words"
+        ],
+        "pt-BR": [
+          "anotação do medalhão",
+          "inscrição"
+        ],
+        "es": [
+          "nota del medallón",
+          "inscripción"
+        ]
+      },
+      "description": {
+        "en-US": "You noted the words inside the locket: \"A rose for the day we wed. Ivy for the day we met. A lily for the day you left me.\"",
+        "pt-BR": "Você anotou as palavras dentro do medalhão: \"Uma rosa pelo dia em que nos casamos. Hera pelo dia em que nos conhecemos. Um lírio pelo dia em que você me deixou.\"",
+        "es": "Anotaste las palabras del medallón: \"Una rosa por el día en que nos casamos. Hiedra por el día en que nos conocimos. Un lirio por el día en que me dejaste.\""
+      }
+    },
+    "tiny_key": {
+      "name": {
+        "en-US": "Tiny key",
+        "pt-BR": "Chave minúscula",
+        "es": "Llave diminuta"
+      },
+      "aliases": {
+        "en-US": [
+          "key",
+          "little key",
+          "small key"
+        ],
+        "pt-BR": [
+          "chave",
+          "chavinha",
+          "chave pequena"
+        ],
+        "es": [
+          "llave",
+          "llavecita",
+          "llave pequeña"
+        ]
+      },
+      "description": {
+        "en-US": "A key no longer than a fingernail, made for a small lock.",
+        "pt-BR": "Uma chave do tamanho de uma unha, feita para uma fechadura pequena.",
+        "es": "Una llave no más larga que una uña, hecha para una cerradura pequeña."
+      }
+    }
+  },
+  "verbs": {
+    "ivy": {
+      "name": {
+        "en-US": "ivy",
+        "pt-BR": "hera",
+        "es": "hiedra"
+      },
+      "aliases": {
+        "en-US": [
+          "ivy leaf"
+        ],
+        "pt-BR": [
+          "folha de hera"
+        ],
+        "es": [
+          "hoja de hiedra"
+        ]
+      }
+    },
+    "rose": {
+      "name": {
+        "en-US": "rose",
+        "pt-BR": "rosa",
+        "es": "rosa"
+      },
+      "aliases": {
+        "en-US": [],
+        "pt-BR": [],
+        "es": []
+      }
+    },
+    "lily": {
+      "name": {
+        "en-US": "lily",
+        "pt-BR": "lírio",
+        "es": "lirio"
+      },
+      "aliases": {
+        "en-US": [
+          "lilly"
+        ],
+        "pt-BR": [
+          "lirio"
+        ],
+        "es": [
+          "azucena"
+        ]
+      }
+    }
+  },
+  "initialFlags": {
+    "lamp_lit": false,
+    "vanity_open": false,
+    "box_open": false,
+    "locket_open": false,
+    "wardrobe_open": false,
+    "panel_open": false
+  },
+  "brightness": 0.45,
+  "lighting": [
+    {
+      "when": [
+        {
+          "type": "flag_equals",
+          "flag": "lamp_lit",
+          "value": true
+        }
+      ],
+      "brightness": 1.1
+    }
+  ],
+  "interactions": [
+    {
+      "say": [
+        "bed"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A heavy four-poster bed. The covers are turned down, as if someone meant to come back.\nOne pillow sits oddly high.",
+            "pt-BR": "Uma pesada cama de dossel. As cobertas estão dobradas, como se alguém pretendesse voltar.\nUm dos travesseiros está estranhamente alto.",
+            "es": "Una pesada cama con dosel. Las mantas están abiertas, como si alguien pensara volver.\nUna de las almohadas está extrañamente alta."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "pillow"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You lift the pillow. Beneath it lies a small leather diary.",
+            "pt-BR": "Você levanta o travesseiro. Embaixo dele há um pequeno diário de couro.",
+            "es": "Levantas la almohada. Debajo hay un pequeño diario de cuero."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "diary"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "lamp_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A small leather diary. In this dark, the faded ink is unreadable.",
+            "pt-BR": "Um pequeno diário de couro. Neste escuro, a tinta desbotada é ilegível.",
+            "es": "Un pequeño diario de cuero. En esta oscuridad, la tinta desvaída es ilegible."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "diary"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You leaf to a page marked with a ribbon:\n\"The eleventh of June, the day we wed. He gave me a silver box for my jewels, and it keeps that day.\"",
+            "pt-BR": "Você folheia até uma página marcada com uma fita:\n\"Onze de junho, o dia em que nos casamos. Ele me deu uma caixa de prata para as minhas joias, e ela guarda esse dia.\"",
+            "es": "Hojeas hasta una página marcada con una cinta:\n\"El once de junio, el día en que nos casamos. Me regaló una caja de plata para mis joyas, y ella guarda ese día.\""
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "diary_note"
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "diary"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "lamp_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A small leather diary. In this dark, the faded ink is unreadable.",
+            "pt-BR": "Um pequeno diário de couro. Neste escuro, a tinta desbotada é ilegível.",
+            "es": "Un pequeño diario de cuero. En esta oscuridad, la tinta desvaída es ilegible."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "diary"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You leaf to a page marked with a ribbon:\n\"The eleventh of June, the day we wed. He gave me a silver box for my jewels, and it keeps that day.\"",
+            "pt-BR": "Você folheia até uma página marcada com uma fita:\n\"Onze de junho, o dia em que nos casamos. Ele me deu uma caixa de prata para as minhas joias, e ela guarda esse dia.\"",
+            "es": "Hojeas hasta una página marcada con una cinta:\n\"El once de junio, el día en que nos casamos. Me regaló una caja de plata para mis joyas, y ella guarda ese día.\""
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "diary_note"
+        }
+      ]
+    },
+    {
+      "say": [
+        "nightstand"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A bedside table with a single drawer. An oil lamp stands on top.",
+            "pt-BR": "Um criado-mudo com uma única gaveta. Um lampião a óleo fica em cima.",
+            "es": "Una mesita de noche con un solo cajón. Encima hay un quinqué."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "nightstand"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A hairpin and a dried flower, its petals gone to dust. Nothing more.",
+            "pt-BR": "Um grampo de cabelo e uma flor seca, com as pétalas virando pó. Nada mais.",
+            "es": "Una horquilla y una flor seca, con los pétalos hechos polvo. Nada más."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "lamp"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "lamp_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "An oil lamp with a glass chimney. There's oil in it, but no flame.",
+            "pt-BR": "Um lampião a óleo com chaminé de vidro. Tem óleo, mas nenhuma chama.",
+            "es": "Un quinqué con tubo de vidrio. Tiene aceite, pero ninguna llama."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "lamp"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The lamp burns low and steady.",
+            "pt-BR": "O lampião arde baixo e firme.",
+            "es": "El quinqué arde bajo y firme."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "matchbook",
+        "lamp"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "lamp_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "lamp_lit",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The match flares. The wick catches, and warm light spreads across the bedroom.",
+            "pt-BR": "O fósforo se acende. O pavio pega fogo, e uma luz quente se espalha pelo quarto.",
+            "es": "La cerilla se enciende. La mecha prende y una luz cálida se extiende por el dormitorio."
+          }
+        },
+        {
+          "type": "remove_item",
+          "item": "matchbook"
+        }
+      ]
+    },
+    {
+      "say": [
+        "window"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Behind the heavy curtains, rain streaks the glass. The night beyond is black.",
+            "pt-BR": "Atrás das cortinas pesadas, a chuva risca o vidro. A noite lá fora é negra.",
+            "es": "Tras las pesadas cortinas, la lluvia raya el vidrio. La noche afuera es negra."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "window"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The sash is painted shut.",
+            "pt-BR": "A vidraça está emperrada de tinta.",
+            "es": "La hoja está sellada con pintura."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "vanity"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "vanity_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A dressing table with an oval mirror. Its single drawer is closed.",
+            "pt-BR": "Uma penteadeira com espelho oval. A única gaveta está fechada.",
+            "es": "Un tocador con espejo ovalado. Su único cajón está cerrado."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "vanity"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Face powder and an old comb. The drawer hangs open.",
+            "pt-BR": "Pó de arroz e um pente velho. A gaveta está aberta.",
+            "es": "Polvos de tocador y un peine viejo. El cajón está abierto."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "vanity"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "vanity_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "vanity_open",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Face powder, a comb with grey hairs caught in it... and a book of matches.\nYou found a matchbook!",
+            "pt-BR": "Pó de arroz, um pente com fios grisalhos presos... e uma cartela de fósforos.\nVocê encontrou fósforos!",
+            "es": "Polvos de tocador, un peine con canas enredadas... y un librito de cerillas.\n¡Encontraste cerillas!"
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "matchbook"
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "vanity"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Only the powder and the comb are left.",
+            "pt-BR": "Só restaram o pó de arroz e o pente.",
+            "es": "Solo quedan los polvos y el peine."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "mirror"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Your reflection looks tired. For a moment it seems to blink a little late.",
+            "pt-BR": "Seu reflexo parece cansado. Por um instante, ele parece piscar com atraso.",
+            "es": "Tu reflejo parece cansado. Por un instante, parece parpadear con retraso."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "jewelry_box"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "box_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A silver jewelry box with four small number dials.\nEngraved beneath them: DAY · MONTH.",
+            "pt-BR": "Um porta-joias de prata com quatro pequenos discos numerados.\nGravado embaixo deles: DIA · MÊS.",
+            "es": "Un joyero de plata con cuatro pequeños diales numerados.\nGrabado debajo: DÍA · MES."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "jewelry_box"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Empty velvet. Whatever else it held is long gone.",
+            "pt-BR": "Veludo vazio. O que mais ele guardava se foi há muito.",
+            "es": "Terciopelo vacío. Lo demás que guardaba desapareció hace mucho."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "jewelry_box"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "box_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "It won't open. The four dials hold it shut.",
+            "pt-BR": "Não abre. Os quatro discos o mantêm fechado.",
+            "es": "No se abre. Los cuatro diales lo mantienen cerrado."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "jewelry_box"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "It's already open, and empty.",
+            "pt-BR": "Já está aberto, e vazio.",
+            "es": "Ya está abierto, y vacío."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "1106",
+        "jewelry_box"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "box_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "box_open",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The dials click into place and the lid springs up.\nOn the velvet lies a silver locket. You took the locket!",
+            "pt-BR": "Os discos se encaixam e a tampa salta.\nSobre o veludo há um medalhão de prata. Você pegou o medalhão!",
+            "es": "Los diales encajan y la tapa salta.\nSobre el terciopelo hay un medallón de plata. ¡Tomaste el medallón!"
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "locket"
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "locket"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "locket_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "locket_open",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The locket opens. Inside are three pressed flowers and a few engraved words:\n\"A rose for the day we wed. Ivy for the day we met. A lily for the day you left me.\"\nA tiny key drops into your palm!",
+            "pt-BR": "O medalhão se abre. Dentro há três flores prensadas e algumas palavras gravadas:\n\"Uma rosa pelo dia em que nos casamos. Hera pelo dia em que nos conhecemos. Um lírio pelo dia em que você me deixou.\"\nUma chave minúscula cai na sua mão!",
+            "es": "El medallón se abre. Dentro hay tres flores prensadas y unas palabras grabadas:\n\"Una rosa por el día en que nos casamos. Hiedra por el día en que nos conocimos. Un lirio por el día en que me dejaste.\"\n¡Una llave diminuta cae en tu mano!"
+          }
+        },
+        {
+          "type": "remove_item",
+          "item": "locket"
+        },
+        {
+          "type": "add_item",
+          "item": "locket_note"
+        },
+        {
+          "type": "add_item",
+          "item": "tiny_key"
+        }
+      ]
+    },
+    {
+      "say": [
+        "wardrobe"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "wardrobe_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A tall walnut wardrobe. A tiny keyhole sits beneath its handles.",
+            "pt-BR": "Um guarda-roupa alto de nogueira. Há um buraco de fechadura minúsculo sob os puxadores.",
+            "es": "Un armario alto de nogal. Hay un ojo de cerradura diminuto bajo los tiradores."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "wardrobe"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Old dresses that smell of lavender. On the back panel are carved a rose, a lily and an ivy leaf.\nBeneath them: TELL OUR STORY FROM THE BEGINNING.",
+            "pt-BR": "Vestidos antigos com cheiro de lavanda. No painel do fundo estão entalhados uma rosa, um lírio e uma folha de hera.\nAbaixo deles: CONTE NOSSA HISTÓRIA DESDE O COMEÇO.",
+            "es": "Vestidos viejos que huelen a lavanda. En el panel del fondo hay tallados una rosa, un lirio y una hoja de hiedra.\nDebajo: CUENTA NUESTRA HISTORIA DESDE EL PRINCIPIO."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "wardrobe"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "wardrobe_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Locked. The keyhole is tiny, made for a very small key.",
+            "pt-BR": "Trancado. O buraco da fechadura é minúsculo, feito para uma chave bem pequena.",
+            "es": "Cerrado con llave. El ojo de la cerradura es diminuto, hecho para una llave muy pequeña."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "wardrobe"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Old dresses that smell of lavender. On the back panel are carved a rose, a lily and an ivy leaf.\nBeneath them: TELL OUR STORY FROM THE BEGINNING.",
+            "pt-BR": "Vestidos antigos com cheiro de lavanda. No painel do fundo estão entalhados uma rosa, um lírio e uma folha de hera.\nAbaixo deles: CONTE NOSSA HISTÓRIA DESDE O COMEÇO.",
+            "es": "Vestidos viejos que huelen a lavanda. En el panel del fondo hay tallados una rosa, un lirio y una hoja de hiedra.\nDebajo: CUENTA NUESTRA HISTORIA DESDE EL PRINCIPIO."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "tiny_key",
+        "wardrobe"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "wardrobe_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "wardrobe_open",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The tiny key turns, and the wardrobe doors swing open on rows of old dresses.\nCarved into the back panel: a rose, a lily, an ivy leaf, and the words TELL OUR STORY FROM THE BEGINNING.",
+            "pt-BR": "A chave minúscula gira, e as portas do guarda-roupa se abrem para fileiras de vestidos antigos.\nEntalhados no painel do fundo: uma rosa, um lírio, uma folha de hera e as palavras CONTE NOSSA HISTÓRIA DESDE O COMEÇO.",
+            "es": "La llave diminuta gira y las puertas del armario se abren sobre hileras de vestidos viejos.\nTallados en el panel del fondo: una rosa, un lirio, una hoja de hiedra y las palabras CUENTA NUESTRA HISTORIA DESDE EL PRINCIPIO."
+          }
+        },
+        {
+          "type": "remove_item",
+          "item": "tiny_key"
+        }
+      ]
+    },
+    {
+      "say": [
+        "carvings"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "wardrobe_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The wardrobe is shut. Whatever is carved inside, you can't see it.",
+            "pt-BR": "O guarda-roupa está fechado. O que quer que esteja entalhado lá dentro, você não vê.",
+            "es": "El armario está cerrado. Lo que sea que esté tallado dentro, no lo ves."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "carvings"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Old dresses that smell of lavender. On the back panel are carved a rose, a lily and an ivy leaf.\nBeneath them: TELL OUR STORY FROM THE BEGINNING.",
+            "pt-BR": "Vestidos antigos com cheiro de lavanda. No painel do fundo estão entalhados uma rosa, um lírio e uma folha de hera.\nAbaixo deles: CONTE NOSSA HISTÓRIA DESDE O COMEÇO.",
+            "es": "Vestidos viejos que huelen a lavanda. En el panel del fondo hay tallados una rosa, un lirio y una hoja de hiedra.\nDebajo: CUENTA NUESTRA HISTORIA DESDE EL PRINCIPIO."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "ivy",
+        "rose",
+        "lily",
+        "wardrobe"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "wardrobe_open",
+          "value": true
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "panel_open",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You press the ivy, the rose, the lily. Behind the dresses, the back panel slides away.\nA narrow passage leads to a cold, tiled room, where a clawfoot tub gleams in the dark.",
+            "pt-BR": "Você aperta a hera, a rosa, o lírio. Atrás dos vestidos, o painel do fundo desliza.\nUm corredor estreito leva a um cômodo frio e azulejado, onde uma banheira de pés brilha no escuro.",
+            "es": "Presionas la hiedra, la rosa, el lirio. Tras los vestidos, el panel del fondo se desliza.\nUn pasillo estrecho lleva a una habitación fría y alicatada, donde una bañera con patas brilla en la oscuridad."
+          }
+        },
+        {
+          "type": "change_room",
+          "room": "bathroom"
+        }
+      ]
+    },
+    {
+      "say": [
+        "ivy",
+        "rose",
+        "lily",
+        "carvings"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "wardrobe_open",
+          "value": true
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "panel_open",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You press the ivy, the rose, the lily. Behind the dresses, the back panel slides away.\nA narrow passage leads to a cold, tiled room, where a clawfoot tub gleams in the dark.",
+            "pt-BR": "Você aperta a hera, a rosa, o lírio. Atrás dos vestidos, o painel do fundo desliza.\nUm corredor estreito leva a um cômodo frio e azulejado, onde uma banheira de pés brilha no escuro.",
+            "es": "Presionas la hiedra, la rosa, el lirio. Tras los vestidos, el panel del fondo se desliza.\nUn pasillo estrecho lleva a una habitación fría y alicatada, donde una bañera con patas brilla en la oscuridad."
+          }
+        },
+        {
+          "type": "change_room",
+          "room": "bathroom"
+        }
+      ]
+    },
+    {
+      "say": [
+        "door"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The door to the hall. It's locked from the other side.",
+            "pt-BR": "A porta para o corredor. Está trancada pelo outro lado.",
+            "es": "La puerta al pasillo. Está cerrada por el otro lado."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "door"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "It won't budge. Someone locked it from the other side.",
+            "pt-BR": "Ela não se mexe. Alguém a trancou pelo outro lado.",
+            "es": "No se mueve. Alguien la cerró por el otro lado."
+          }
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "text": {
+        "en-US": "It's too dark to read anything in here. Look for a way to make light.",
+        "pt-BR": "Está escuro demais para ler qualquer coisa aqui. Procure um jeito de fazer luz.",
+        "es": "Está demasiado oscuro para leer nada aquí. Busca una forma de hacer luz."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "lamp_lit",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "Someone kept their secrets close to where they slept.",
+        "pt-BR": "Alguém guardava seus segredos perto de onde dormia.",
+        "es": "Alguien guardaba sus secretos cerca de donde dormía."
+      },
+      "skipIf": [
+        {
+          "type": "has_item",
+          "item": "diary_note"
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "The silver box keeps a day that mattered to its owner.",
+        "pt-BR": "A caixa de prata guarda um dia importante para a sua dona.",
+        "es": "La caja de plata guarda un día importante para su dueña."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "box_open",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "A locket can hold more than a picture.",
+        "pt-BR": "Um medalhão pode guardar mais do que um retrato.",
+        "es": "Un medallón puede guardar más que un retrato."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "locket_open",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "The carvings want a love story told in the order it happened. The locket remembers each day.",
+        "pt-BR": "Os entalhes querem uma história de amor contada na ordem em que aconteceu. O medalhão lembra cada dia.",
+        "es": "Las tallas quieren una historia de amor contada en el orden en que ocurrió. El medallón recuerda cada día."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "panel_open",
+          "value": true
+        }
+      ]
+    }
+  ]
+}

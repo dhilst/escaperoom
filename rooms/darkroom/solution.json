@@ -1,0 +1,44 @@
+{
+  "en-US": [
+    "open drawer",
+    "bulb safelight",
+    "card",
+    "turn",
+    "open cabinet",
+    "turn",
+    "film enlarger",
+    "paper enlarger",
+    "paper developer",
+    "paper fixer",
+    "turn",
+    "right 59 left 30 door"
+  ],
+  "pt-BR": [
+    "abrir gaveta",
+    "lâmpada luz de segurança",
+    "cartão",
+    "virar",
+    "abrir armário",
+    "virar",
+    "filme ampliador",
+    "papel ampliador",
+    "papel revelador",
+    "papel fixador",
+    "virar",
+    "direita 59 esquerda 30 porta"
+  ],
+  "es": [
+    "abrir cajón",
+    "bombilla luz de seguridad",
+    "tarjeta",
+    "girar",
+    "abrir armario",
+    "girar",
+    "película ampliadora",
+    "papel ampliadora",
+    "papel revelador",
+    "papel fijador",
+    "girar",
+    "derecha 59 izquierda 30 puerta"
+  ]
+}

@@ -8,10 +8,10 @@ const at = (roomId: string) => createInitialState(game.rooms[roomId]);
 describe("help", () => {
   it("explains naming and combining, never hint", () => {
     const en = texts(playGame(["help"]).last)[0];
-    expect(en).toMatch(/^Name something to look at it/);
+    expect(en).toMatch(/^How to play: explore with single words\..*"key door"/);
     expect(en).not.toMatch(/hint|restart/);
-    expect(texts(playGame(["ajuda"], undefined, "pt-BR").last)[0]).toMatch(/^Diga o nome de algo/);
-    expect(texts(playGame(["ayuda"], undefined, "es").last)[0]).toMatch(/^Di el nombre de algo/);
+    expect(texts(playGame(["ajuda"], undefined, "pt-BR").last)[0]).toMatch(/^Como jogar:/);
+    expect(texts(playGame(["ayuda"], undefined, "es").last)[0]).toMatch(/^Cómo jugar:/);
   });
 
   it("works anywhere and changes nothing", () => {

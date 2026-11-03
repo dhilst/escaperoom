@@ -24,7 +24,7 @@ export const ptBR: Language = {
     itemRemoved: (name) => `[Removido do inventário: ${name}]`,
     noSuchObject: (typed) => `Não há "${typed}" aqui.`,
     notVisible: (typed) => `Daqui você não vê "${typed}".`,
-    help: "Diga o nome de algo para olhá-lo: relógio. Combine o que você carrega com o que vê: chave porta. Também: abrir <coisa> · virar · olhar · inventário",
+    help: "Como jogar: explore com palavras soltas. Diga o nome do que vê para olhar (relógio) e leia cada descrição com atenção: as palavras-chave estão ali, sem destaque para não estragar a surpresa. Pense na solução como frases ditas na ordem certa. Quando souber o bastante, tente frases mais longas: elas crescem conforme o jogo avança e rendem mais. Dispense as palavras extras: em vez de \"usar a chave na porta\", diga \"chave porta\". Também: abrir <coisa> · virar · olhar · inventário",
     hint: (n, total, text) => `Dica ${n}/${total}: ${text}`,
     hintLocked: (countdown) => `Próxima dica disponível em ${countdown}`,
     noMoreHints: "Não há mais dicas para esta sala.",

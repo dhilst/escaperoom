@@ -24,7 +24,7 @@ export const es: Language = {
     itemRemoved: (name) => `[Retirado del inventario: ${name}]`,
     noSuchObject: (typed) => `Aquí no hay "${typed}".`,
     notVisible: (typed) => `Desde aquí no ves "${typed}".`,
-    help: "Di el nombre de algo para mirarlo: reloj. Combina lo que llevas con lo que ves: llave puerta. También: abrir <cosa> · girar · mirar · inventario",
+    help: "Cómo jugar: explora con palabras sueltas. Di el nombre de lo que ves para mirarlo (reloj) y lee cada descripción con atención: las palabras clave están ahí, sin resaltar para no arruinar la sorpresa. Piensa en la solución como frases dichas en el orden correcto. Cuando sepas lo suficiente, prueba frases más largas: crecen a medida que avanza el juego y rinden más. Evita las palabras de más: en vez de \"usar la llave en la puerta\", di \"llave puerta\". También: abrir <cosa> · girar · mirar · inventario",
     hint: (n, total, text) => `Pista ${n}/${total}: ${text}`,
     hintLocked: (countdown) => `Próxima pista disponible en ${countdown}`,
     noMoreHints: "No hay más pistas para esta sala.",

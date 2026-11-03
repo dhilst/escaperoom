@@ -1,0 +1,1069 @@
+{
+  "id": "dining",
+  "title": {
+    "en-US": "The Dining Hall",
+    "pt-BR": "A Sala de Jantar",
+    "es": "El Comedor"
+  },
+  "cameras": {
+    "A": {
+      "image": "camera_a.png",
+      "description": {
+        "en-US": "A long table is laid for four beneath an unlit silver candelabra.\nA walnut sideboard stands by the wall, heavy curtains drawn beside it.",
+        "pt-BR": "Uma longa mesa está posta para quatro sob um candelabro de prata apagado.\nUm aparador de nogueira fica junto à parede, ao lado de pesadas cortinas fechadas.",
+        "es": "Una larga mesa está puesta para cuatro bajo un candelabro de plata apagado.\nUn aparador de nogal está junto a la pared, al lado de pesadas cortinas corridas."
+      },
+      "variants": [
+        {
+          "when": [
+            {
+              "type": "flag_equals",
+              "flag": "candles_lit",
+              "value": true
+            }
+          ],
+          "description": {
+            "en-US": "Candlelight runs down a long table laid for four, the silver glinting.\nA walnut sideboard stands by the wall, heavy curtains drawn beside it.",
+            "pt-BR": "A luz das velas corre pela longa mesa posta para quatro, e a prata reluz.\nUm aparador de nogueira fica junto à parede, ao lado de pesadas cortinas fechadas.",
+            "es": "La luz de las velas recorre la larga mesa puesta para cuatro, y la plata reluce.\nUn aparador de nogal está junto a la pared, al lado de pesadas cortinas corridas."
+          }
+        }
+      ]
+    },
+    "C": {
+      "image": "camera_c.png",
+      "description": {
+        "en-US": "A great portrait hangs over a cold fireplace, its faces lost in shadow.\nBeside it, a board of servants' bells waits on the panelled wall.",
+        "pt-BR": "Um grande retrato está pendurado sobre uma lareira fria, os rostos perdidos na sombra.\nAo lado, um quadro de campainhas dos criados espera na parede de lambris.",
+        "es": "Un gran retrato cuelga sobre una chimenea fría, con los rostros perdidos en la sombra.\nA su lado, un tablero de campanillas del servicio espera en la pared revestida."
+      },
+      "variants": [
+        {
+          "when": [
+            {
+              "type": "flag_equals",
+              "flag": "candles_lit",
+              "value": true
+            }
+          ],
+          "description": {
+            "en-US": "Candlelight finds the faces of a family portrait above a cold fireplace.\nBeside it, a board of servants' bells waits on the panelled wall.",
+            "pt-BR": "A luz das velas encontra os rostos de um retrato de família sobre uma lareira fria.\nAo lado, um quadro de campainhas dos criados espera na parede de lambris.",
+            "es": "La luz de las velas encuentra los rostros de un retrato familiar sobre una chimenea fría.\nA su lado, un tablero de campanillas del servicio espera en la pared revestida."
+          }
+        }
+      ]
+    }
+  },
+  "objects": {
+    "table": {
+      "name": {
+        "en-US": "table",
+        "pt-BR": "mesa",
+        "es": "mesa"
+      },
+      "aliases": {
+        "en-US": [
+          "dining table",
+          "long table",
+          "plates",
+          "silver",
+          "glasses",
+          "cutlery"
+        ],
+        "pt-BR": [
+          "mesa de jantar",
+          "mesa comprida",
+          "pratos",
+          "talheres",
+          "taças",
+          "prataria"
+        ],
+        "es": [
+          "mesa de comedor",
+          "mesa larga",
+          "platos",
+          "cubiertos",
+          "copas",
+          "platería"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "cards": {
+      "name": {
+        "en-US": "place cards",
+        "pt-BR": "cartões",
+        "es": "tarjetas"
+      },
+      "aliases": {
+        "en-US": [
+          "cards",
+          "card",
+          "place card",
+          "names",
+          "name cards"
+        ],
+        "pt-BR": [
+          "cartão",
+          "cartões de lugar",
+          "cartão de lugar",
+          "nomes",
+          "marcadores"
+        ],
+        "es": [
+          "tarjeta",
+          "tarjetas de mesa",
+          "tarjeta de mesa",
+          "nombres",
+          "marcadores"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "chairs": {
+      "name": {
+        "en-US": "chairs",
+        "pt-BR": "cadeiras",
+        "es": "sillas"
+      },
+      "aliases": {
+        "en-US": [
+          "chair",
+          "seat",
+          "seats"
+        ],
+        "pt-BR": [
+          "cadeira",
+          "assento",
+          "assentos"
+        ],
+        "es": [
+          "silla",
+          "asiento",
+          "asientos"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "candelabra": {
+      "name": {
+        "en-US": "candelabra",
+        "pt-BR": "candelabro",
+        "es": "candelabro"
+      },
+      "aliases": {
+        "en-US": [
+          "candelabrum",
+          "candles",
+          "candle",
+          "candlestick",
+          "silver candelabra"
+        ],
+        "pt-BR": [
+          "velas",
+          "vela",
+          "castiçal",
+          "candelabro de prata"
+        ],
+        "es": [
+          "velas",
+          "vela",
+          "candelero",
+          "candelabro de plata"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "sideboard": {
+      "name": {
+        "en-US": "sideboard",
+        "pt-BR": "aparador",
+        "es": "aparador"
+      },
+      "aliases": {
+        "en-US": [
+          "walnut sideboard",
+          "drawer",
+          "buffet",
+          "cabinet"
+        ],
+        "pt-BR": [
+          "aparador de nogueira",
+          "gaveta",
+          "bufê",
+          "armário"
+        ],
+        "es": [
+          "aparador de nogal",
+          "cajón",
+          "bufé",
+          "armario"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "curtains": {
+      "name": {
+        "en-US": "curtains",
+        "pt-BR": "cortinas",
+        "es": "cortinas"
+      },
+      "aliases": {
+        "en-US": [
+          "curtain",
+          "window",
+          "drapes"
+        ],
+        "pt-BR": [
+          "cortina",
+          "janela"
+        ],
+        "es": [
+          "cortina",
+          "ventana"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "portrait": {
+      "name": {
+        "en-US": "portrait",
+        "pt-BR": "retrato",
+        "es": "retrato"
+      },
+      "aliases": {
+        "en-US": [
+          "family portrait",
+          "painting",
+          "plaque",
+          "brass plaque",
+          "faces",
+          "family"
+        ],
+        "pt-BR": [
+          "retrato de família",
+          "pintura",
+          "placa",
+          "placa de latão",
+          "rostos",
+          "família"
+        ],
+        "es": [
+          "retrato familiar",
+          "pintura",
+          "cuadro",
+          "placa",
+          "placa de latón",
+          "rostros",
+          "familia"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "fireplace": {
+      "name": {
+        "en-US": "fireplace",
+        "pt-BR": "lareira",
+        "es": "chimenea"
+      },
+      "aliases": {
+        "en-US": [
+          "hearth",
+          "fire",
+          "ashes",
+          "mantel",
+          "mantelpiece"
+        ],
+        "pt-BR": [
+          "fogo",
+          "cinzas",
+          "cornija",
+          "lar"
+        ],
+        "es": [
+          "hogar",
+          "fuego",
+          "cenizas",
+          "repisa"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "bells": {
+      "name": {
+        "en-US": "bells",
+        "pt-BR": "campainhas",
+        "es": "campanillas"
+      },
+      "aliases": {
+        "en-US": [
+          "bell",
+          "bell board",
+          "servants bells",
+          "board",
+          "pinned card",
+          "notice"
+        ],
+        "pt-BR": [
+          "campainha",
+          "quadro de campainhas",
+          "sinos",
+          "sino",
+          "aviso"
+        ],
+        "es": [
+          "campanilla",
+          "tablero de campanillas",
+          "campanas",
+          "campana",
+          "tablero",
+          "aviso"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "panelling": {
+      "name": {
+        "en-US": "panelling",
+        "pt-BR": "lambris",
+        "es": "revestimiento"
+      },
+      "aliases": {
+        "en-US": [
+          "paneling",
+          "panels",
+          "panel",
+          "wall",
+          "walls"
+        ],
+        "pt-BR": [
+          "painéis",
+          "painel",
+          "parede",
+          "paredes"
+        ],
+        "es": [
+          "paneles",
+          "panel",
+          "pared",
+          "paredes",
+          "madera"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    }
+  },
+  "items": {
+    "lighter": {
+      "name": {
+        "en-US": "Silver lighter",
+        "pt-BR": "Isqueiro de prata",
+        "es": "Encendedor de plata"
+      },
+      "aliases": {
+        "en-US": [
+          "lighter",
+          "cigar lighter"
+        ],
+        "pt-BR": [
+          "isqueiro"
+        ],
+        "es": [
+          "encendedor",
+          "mechero"
+        ]
+      },
+      "description": {
+        "en-US": "A heavy silver cigar lighter. It still has a little fuel.",
+        "pt-BR": "Um pesado isqueiro de prata para charutos. Ainda tem um pouco de fluido.",
+        "es": "Un pesado encendedor de plata para puros. Aún le queda algo de combustible."
+      }
+    },
+    "cards_note": {
+      "name": {
+        "en-US": "Place cards: Clara, Henry, Edmund, Agnes",
+        "pt-BR": "Cartões: Clara, Henry, Edmund, Agnes",
+        "es": "Tarjetas: Clara, Henry, Edmund, Agnes"
+      },
+      "aliases": {
+        "en-US": [
+          "card note",
+          "cards note"
+        ],
+        "pt-BR": [
+          "anotação dos cartões"
+        ],
+        "es": [
+          "nota de las tarjetas"
+        ]
+      },
+      "description": {
+        "en-US": "You noted the place cards as they sit round the table: Clara, Henry, Edmund, Agnes.",
+        "pt-BR": "Você anotou os cartões na ordem em que estão à mesa: Clara, Henry, Edmund, Agnes.",
+        "es": "Anotaste las tarjetas en el orden en que están en la mesa: Clara, Henry, Edmund, Agnes."
+      }
+    },
+    "plaque_note": {
+      "name": {
+        "en-US": "Plaque: Henry 52, Clara 47, Agnes 19, Edmund 9",
+        "pt-BR": "Placa: Henry 52, Clara 47, Agnes 19, Edmund 9",
+        "es": "Placa: Henry 52, Clara 47, Agnes 19, Edmund 9"
+      },
+      "aliases": {
+        "en-US": [
+          "plaque note",
+          "portrait note"
+        ],
+        "pt-BR": [
+          "anotação da placa",
+          "anotação do retrato"
+        ],
+        "es": [
+          "nota de la placa",
+          "nota del retrato"
+        ]
+      },
+      "description": {
+        "en-US": "You copied the portrait's plaque: Henry, aged 52. Clara, 47. Agnes, 19. Little Edmund, 9.",
+        "pt-BR": "Você copiou a placa do retrato: Henry, 52 anos. Clara, 47. Agnes, 19. O pequeno Edmund, 9.",
+        "es": "Copiaste la placa del retrato: Henry, 52 años. Clara, 47. Agnes, 19. El pequeño Edmund, 9."
+      }
+    },
+    "bells_note": {
+      "name": {
+        "en-US": "Bells: youngest first, eldest last",
+        "pt-BR": "Campainhas: o mais novo primeiro, o mais velho por último",
+        "es": "Campanillas: el menor primero, el mayor al final"
+      },
+      "aliases": {
+        "en-US": [
+          "bell note",
+          "bells note",
+          "board note"
+        ],
+        "pt-BR": [
+          "anotação das campainhas"
+        ],
+        "es": [
+          "nota de las campanillas"
+        ]
+      },
+      "description": {
+        "en-US": "You copied the card on the bell board: \"Ring for dinner as the family sat: youngest first, eldest last.\"",
+        "pt-BR": "Você copiou o aviso do quadro de campainhas: \"Toque para o jantar como a família se sentava: o mais novo primeiro, o mais velho por último.\"",
+        "es": "Copiaste el aviso del tablero de campanillas: \"Toque para la cena como se sentaba la familia: el menor primero, el mayor al final.\""
+      }
+    }
+  },
+  "verbs": {
+    "henry": {
+      "name": {
+        "en-US": "henry",
+        "pt-BR": "henry",
+        "es": "henry"
+      }
+    },
+    "clara": {
+      "name": {
+        "en-US": "clara",
+        "pt-BR": "clara",
+        "es": "clara"
+      }
+    },
+    "agnes": {
+      "name": {
+        "en-US": "agnes",
+        "pt-BR": "agnes",
+        "es": "agnes"
+      }
+    },
+    "edmund": {
+      "name": {
+        "en-US": "edmund",
+        "pt-BR": "edmund",
+        "es": "edmund"
+      }
+    }
+  },
+  "initialFlags": {
+    "sideboard_open": false,
+    "candles_lit": false,
+    "cards_read": false,
+    "plaque_read": false,
+    "bells_read": false,
+    "bells_rung": false
+  },
+  "brightness": 0.45,
+  "lighting": [
+    {
+      "when": [
+        {
+          "type": "flag_equals",
+          "flag": "candles_lit",
+          "value": true
+        }
+      ],
+      "brightness": 1.1
+    }
+  ],
+  "interactions": [
+    {
+      "say": [
+        "table"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A long table laid for four: crystal, silver, plates furred with dust.\nA small place card stands at every seat.",
+            "pt-BR": "Uma longa mesa posta para quatro: cristal, prata, pratos cobertos de poeira.\nUm pequeno cartão marca cada lugar.",
+            "es": "Una larga mesa puesta para cuatro: cristal, plata, platos cubiertos de polvo.\nUna pequeña tarjeta marca cada asiento."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "cards"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "cards_read",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "cards_read",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Four place cards in a careful hand, read round the table:\nClara, Henry, Edmund, Agnes.",
+            "pt-BR": "Quatro cartões escritos com letra caprichada, lidos ao redor da mesa:\nClara, Henry, Edmund, Agnes.",
+            "es": "Cuatro tarjetas escritas con letra cuidadosa, leídas alrededor de la mesa:\nClara, Henry, Edmund, Agnes."
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "cards_note"
+        }
+      ]
+    },
+    {
+      "say": [
+        "cards"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Four place cards, read round the table: Clara, Henry, Edmund, Agnes.",
+            "pt-BR": "Quatro cartões, lidos ao redor da mesa: Clara, Henry, Edmund, Agnes.",
+            "es": "Cuatro tarjetas, leídas alrededor de la mesa: Clara, Henry, Edmund, Agnes."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "chairs"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Four high-backed chairs. One is pulled out, as if someone has just left the table.",
+            "pt-BR": "Quatro cadeiras de espaldar alto. Uma está afastada, como se alguém tivesse acabado de se levantar.",
+            "es": "Cuatro sillas de respaldo alto. Una está apartada, como si alguien acabara de levantarse."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "candelabra"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "candles_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A silver candelabra with four tall candles. Their wicks have never been lit.",
+            "pt-BR": "Um candelabro de prata com quatro velas altas. Os pavios nunca foram acesos.",
+            "es": "Un candelabro de plata con cuatro velas altas. Sus pabilos nunca se han encendido."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "candelabra"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Four flames lean toward the far wall, as if something there were breathing.",
+            "pt-BR": "Quatro chamas se inclinam para a parede oposta, como se algo ali respirasse.",
+            "es": "Cuatro llamas se inclinan hacia la pared del fondo, como si algo allí respirara."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "lighter",
+        "candelabra"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "candles_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "candles_lit",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The lighter catches on the third try. One by one, the four candles take the flame.\nWarm light spreads across the hall.",
+            "pt-BR": "O isqueiro acende na terceira tentativa. Uma a uma, as quatro velas pegam a chama.\nUma luz quente se espalha pela sala.",
+            "es": "El encendedor prende al tercer intento. Una a una, las cuatro velas toman la llama.\nUna luz cálida se extiende por el comedor."
+          }
+        },
+        {
+          "type": "remove_item",
+          "item": "lighter"
+        }
+      ]
+    },
+    {
+      "say": [
+        "sideboard"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "sideboard_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A heavy sideboard of black walnut. Its long silver drawer is shut.",
+            "pt-BR": "Um pesado aparador de nogueira escura. A longa gaveta da prataria está fechada.",
+            "es": "Un pesado aparador de nogal oscuro. Su largo cajón de la platería está cerrado."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "sideboard"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Tarnished spoons and folded napkins. Nothing more.",
+            "pt-BR": "Colheres escurecidas e guardanapos dobrados. Nada mais.",
+            "es": "Cucharas ennegrecidas y servilletas dobladas. Nada más."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "sideboard"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "sideboard_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "sideboard_open",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The drawer slides out on a breath of old polish. Among the spoons lies something heavy.\nYou found a silver lighter!",
+            "pt-BR": "A gaveta desliza num sopro de cera velha. Entre as colheres há algo pesado.\nVocê encontrou um isqueiro de prata!",
+            "es": "El cajón se desliza con un soplo de cera vieja. Entre las cucharas hay algo pesado.\n¡Encontraste un encendedor de plata!"
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "lighter"
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "sideboard"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Only tarnished spoons are left.",
+            "pt-BR": "Só restaram colheres escurecidas.",
+            "es": "Solo quedan cucharas ennegrecidas."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "curtains"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Heavy velvet curtains, drawn tight. Behind them the window is boarded over.",
+            "pt-BR": "Pesadas cortinas de veludo, bem fechadas. Atrás delas, a janela está pregada com tábuas.",
+            "es": "Pesadas cortinas de terciopelo, bien corridas. Detrás, la ventana está tapiada con tablas."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "curtains"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You pull them aside. Planks are nailed across the glass. No way out there.",
+            "pt-BR": "Você as afasta. Há tábuas pregadas sobre o vidro. Nenhuma saída por ali.",
+            "es": "Las apartas. Hay tablas clavadas sobre el vidrio. Por ahí no hay salida."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "portrait"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "candles_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A large family portrait, lost in shadow. A brass plaque below it is too dark to read.",
+            "pt-BR": "Um grande retrato de família, perdido na sombra. A placa de latão embaixo está escura demais para ler.",
+            "es": "Un gran retrato familiar, perdido en la sombra. La placa de latón de abajo está demasiado oscura para leerla."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "portrait"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "plaque_read",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "plaque_read",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A father, a mother, a grown daughter and a small boy stare down at the table.\nThe brass plaque reads: HENRY, AGED 52 · CLARA, 47 · AGNES, 19 · LITTLE EDMUND, 9.",
+            "pt-BR": "Um pai, uma mãe, uma filha crescida e um menino pequeno encaram a mesa.\nA placa de latão diz: HENRY, 52 ANOS · CLARA, 47 · AGNES, 19 · O PEQUENO EDMUND, 9.",
+            "es": "Un padre, una madre, una hija mayor y un niño pequeño miran fijamente la mesa.\nLa placa de latón dice: HENRY, 52 AÑOS · CLARA, 47 · AGNES, 19 · EL PEQUEÑO EDMUND, 9."
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "plaque_note"
+        }
+      ]
+    },
+    {
+      "say": [
+        "portrait"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The family stares down at the table. HENRY, AGED 52 · CLARA, 47 · AGNES, 19 · LITTLE EDMUND, 9.",
+            "pt-BR": "A família encara a mesa. HENRY, 52 ANOS · CLARA, 47 · AGNES, 19 · O PEQUENO EDMUND, 9.",
+            "es": "La familia mira fijamente la mesa. HENRY, 52 AÑOS · CLARA, 47 · AGNES, 19 · EL PEQUEÑO EDMUND, 9."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "fireplace"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Cold ashes, long undisturbed. The chimney moans softly above them.",
+            "pt-BR": "Cinzas frias, intocadas há muito tempo. A chaminé geme baixinho lá em cima.",
+            "es": "Cenizas frías, intactas desde hace mucho. La chimenea gime suavemente allá arriba."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "bells"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "bells_read",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "bells_read",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Four servants' bells on coiled springs, each labelled with a name: Henry, Clara, Agnes, Edmund.\nA card is pinned beneath: \"Ring for dinner as the family sat: youngest first, eldest last.\"",
+            "pt-BR": "Quatro campainhas dos criados em molas, cada uma com um nome: Henry, Clara, Agnes, Edmund.\nHá um aviso preso embaixo: \"Toque para o jantar como a família se sentava: o mais novo primeiro, o mais velho por último.\"",
+            "es": "Cuatro campanillas del servicio sobre resortes, cada una con un nombre: Henry, Clara, Agnes, Edmund.\nHay un aviso clavado debajo: \"Toque para la cena como se sentaba la familia: el menor primero, el mayor al final.\""
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "bells_note"
+        }
+      ]
+    },
+    {
+      "say": [
+        "bells"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Four bells labelled Henry, Clara, Agnes, Edmund.\n\"Ring for dinner as the family sat: youngest first, eldest last.\"",
+            "pt-BR": "Quatro campainhas com os nomes Henry, Clara, Agnes, Edmund.\n\"Toque para o jantar como a família se sentava: o mais novo primeiro, o mais velho por último.\"",
+            "es": "Cuatro campanillas con los nombres Henry, Clara, Agnes, Edmund.\n\"Toque para la cena como se sentaba la familia: el menor primero, el mayor al final.\""
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "bells"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The bells are rung, not opened. Each one answers to a name.",
+            "pt-BR": "As campainhas são tocadas, não abertas. Cada uma atende a um nome.",
+            "es": "Las campanillas se tocan, no se abren. Cada una responde a un nombre."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "panelling"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Dark oak panels. Beside the fireplace, one seam runs a little too straight.",
+            "pt-BR": "Painéis de carvalho escuro. Ao lado da lareira, uma junta é reta demais.",
+            "es": "Paneles de roble oscuro. Junto a la chimenea, una juntura es demasiado recta."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "panelling"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You press and pull at the seam. It doesn't budge. Something else must open it.",
+            "pt-BR": "Você empurra e puxa a junta. Ela não cede. Outra coisa deve abri-la.",
+            "es": "Empujas y tiras de la juntura. No cede. Otra cosa debe abrirla."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "edmund",
+        "agnes",
+        "clara",
+        "henry",
+        "bells"
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "bells_rung",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Edmund, Agnes, Clara, Henry: the bells ring out one after another, youngest to eldest.\nWith a click, a panel beside the fireplace swings inward. Beyond it waits a room of polished wood and silent instruments.",
+            "pt-BR": "Edmund, Agnes, Clara, Henry: as campainhas tocam uma após a outra, do mais novo ao mais velho.\nCom um estalo, um painel ao lado da lareira se abre para dentro. Além dele espera uma sala de madeira polida e instrumentos silenciosos.",
+            "es": "Edmund, Agnes, Clara, Henry: las campanillas suenan una tras otra, del menor al mayor.\nCon un chasquido, un panel junto a la chimenea se abre hacia dentro. Más allá espera una sala de madera pulida e instrumentos silenciosos."
+          }
+        },
+        {
+          "type": "change_room",
+          "room": "musicroom"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "text": {
+        "en-US": "Dinner in the dark is no dinner at all. The house keeps something to strike a flame, put away with the silver.",
+        "pt-BR": "Jantar no escuro não é jantar. A casa guarda algo para fazer fogo, junto com a prataria.",
+        "es": "Cenar a oscuras no es cenar. La casa guarda algo para hacer fuego, junto a la platería."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "sideboard_open",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "Four candles wait on the table, and now you carry a flame.",
+        "pt-BR": "Quatro velas esperam na mesa, e agora você carrega uma chama.",
+        "es": "Cuatro velas esperan en la mesa, y ahora llevas una llama."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "candles_lit",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "In the light, the family on the wall can finally be read.",
+        "pt-BR": "Com luz, a família na parede finalmente pode ser lida.",
+        "es": "Con luz, por fin se puede leer a la familia de la pared."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "plaque_read",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "The servants were summoned by name. See what their board asks of them.",
+        "pt-BR": "Os criados eram chamados pelo nome. Veja o que o quadro deles pede.",
+        "es": "Al servicio se le llamaba por su nombre. Mira qué pide su tablero."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "bells_read",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "The table's order is a trap. Call every name in one breath, from the youngest to the eldest, ending at the bells themselves.",
+        "pt-BR": "A ordem da mesa é uma armadilha. Chame todos os nomes de uma vez, do mais novo ao mais velho, terminando nas próprias campainhas.",
+        "es": "El orden de la mesa es una trampa. Nombra a todos de una vez, del menor al mayor, terminando en las propias campanillas."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "bells_rung",
+          "value": true
+        }
+      ]
+    }
+  ]
+}

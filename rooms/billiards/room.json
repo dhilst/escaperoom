@@ -1,0 +1,1328 @@
+{
+  "id": "billiards",
+  "title": {
+    "en-US": "The Billiard Room",
+    "pt-BR": "A Sala de Bilhar",
+    "es": "La Sala de Billar"
+  },
+  "cameras": {
+    "A": {
+      "image": "camera_a.png",
+      "description": {
+        "en-US": "A billiard table squats under a hanging lamp, its green cloth grey with dust.\nCues stand in a rack on the wall.",
+        "pt-BR": "Uma mesa de bilhar repousa sob uma luminária pendente, o pano verde cinzento de poeira.\nTacos descansam num suporte na parede.",
+        "es": "Una mesa de billar descansa bajo una lámpara colgante, el paño verde gris de polvo.\nLos tacos esperan en un soporte de la pared."
+      },
+      "variants": [
+        {
+          "when": [
+            {
+              "type": "flag_equals",
+              "flag": "lamp_lit",
+              "value": true
+            }
+          ],
+          "description": {
+            "en-US": "The hanging lamp pours hard light over the green cloth.\nBalls wait in their rack; cues stand along the wall.",
+            "pt-BR": "A luminária pendente derrama uma luz dura sobre o pano verde.\nAs bolas esperam no triângulo; os tacos se alinham na parede.",
+            "es": "La lámpara colgante vierte una luz dura sobre el paño verde.\nLas bolas esperan en su triángulo; los tacos se alinean en la pared."
+          }
+        }
+      ]
+    },
+    "C": {
+      "image": "camera_c.png",
+      "description": {
+        "en-US": "A scoreboard hangs above a glass-fronted liquor cabinet.\nA leather armchair sits by a cigar box. The panelling has closed behind you.",
+        "pt-BR": "Um placar pende sobre um armário de bebidas com portas de vidro.\nUma poltrona de couro fica ao lado de uma caixa de charutos. O painel se fechou atrás de você.",
+        "es": "Un marcador cuelga sobre un mueble bar con puertas de cristal.\nUn sillón de cuero está junto a una caja de puros. El panel se ha cerrado a tu espalda."
+      },
+      "variants": [
+        {
+          "when": [
+            {
+              "type": "flag_equals",
+              "flag": "lamp_lit",
+              "value": true
+            }
+          ],
+          "description": {
+            "en-US": "In the lamplight, chalk marks show on the scoreboard above the liquor cabinet.\nA leather armchair sits by a cigar box. The panelling has closed behind you.",
+            "pt-BR": "À luz da luminária, marcas de giz aparecem no placar sobre o armário de bebidas.\nUma poltrona de couro fica ao lado de uma caixa de charutos. O painel se fechou atrás de você.",
+            "es": "A la luz de la lámpara se ven marcas de tiza en el marcador sobre el mueble bar.\nUn sillón de cuero está junto a una caja de puros. El panel se ha cerrado a tu espalda."
+          }
+        }
+      ]
+    }
+  },
+  "objects": {
+    "table": {
+      "name": {
+        "en-US": "billiard table",
+        "pt-BR": "mesa de bilhar",
+        "es": "mesa de billar"
+      },
+      "aliases": {
+        "en-US": [
+          "table",
+          "pool table",
+          "cloth",
+          "felt",
+          "baize"
+        ],
+        "pt-BR": [
+          "mesa",
+          "mesa de sinuca",
+          "pano",
+          "feltro"
+        ],
+        "es": [
+          "mesa",
+          "mesa de pool",
+          "paño",
+          "fieltro",
+          "tapete"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "rack": {
+      "name": {
+        "en-US": "rack",
+        "pt-BR": "triângulo",
+        "es": "triángulo"
+      },
+      "aliases": {
+        "en-US": [
+          "triangle",
+          "balls",
+          "ball rack",
+          "billiard balls",
+          "slots"
+        ],
+        "pt-BR": [
+          "bolas",
+          "bolas de bilhar",
+          "vãos"
+        ],
+        "es": [
+          "bolas",
+          "bolas de billar",
+          "huecos del triángulo"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "pockets": {
+      "name": {
+        "en-US": "pockets",
+        "pt-BR": "caçapas",
+        "es": "troneras"
+      },
+      "aliases": {
+        "en-US": [
+          "pocket",
+          "corner pocket",
+          "holes"
+        ],
+        "pt-BR": [
+          "caçapa",
+          "buracos"
+        ],
+        "es": [
+          "tronera",
+          "buchacas",
+          "buchaca",
+          "agujeros"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "lamp": {
+      "name": {
+        "en-US": "lamp",
+        "pt-BR": "luminária",
+        "es": "lámpara"
+      },
+      "aliases": {
+        "en-US": [
+          "hanging lamp",
+          "light",
+          "bulb",
+          "chain",
+          "shade"
+        ],
+        "pt-BR": [
+          "luminária pendente",
+          "lâmpada",
+          "luz",
+          "corrente",
+          "cúpula"
+        ],
+        "es": [
+          "lámpara colgante",
+          "luz",
+          "bombilla",
+          "cadena",
+          "pantalla"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "cues": {
+      "name": {
+        "en-US": "cue rack",
+        "pt-BR": "suporte de tacos",
+        "es": "soporte de tacos"
+      },
+      "aliases": {
+        "en-US": [
+          "cues",
+          "cue",
+          "sticks"
+        ],
+        "pt-BR": [
+          "tacos",
+          "taco"
+        ],
+        "es": [
+          "tacos",
+          "taco"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "scoreboard": {
+      "name": {
+        "en-US": "scoreboard",
+        "pt-BR": "placar",
+        "es": "marcador"
+      },
+      "aliases": {
+        "en-US": [
+          "score board",
+          "board",
+          "abacus",
+          "beads",
+          "chalk",
+          "marks"
+        ],
+        "pt-BR": [
+          "marcador",
+          "contas",
+          "giz",
+          "quadro"
+        ],
+        "es": [
+          "tanteador",
+          "cuentas",
+          "tiza",
+          "pizarra"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "cabinet": {
+      "name": {
+        "en-US": "liquor cabinet",
+        "pt-BR": "armário de bebidas",
+        "es": "mueble bar"
+      },
+      "aliases": {
+        "en-US": [
+          "cabinet",
+          "bottles",
+          "decanters",
+          "decanter",
+          "sockets",
+          "lock",
+          "glass"
+        ],
+        "pt-BR": [
+          "armário",
+          "garrafas",
+          "licoreira",
+          "encaixes",
+          "fechadura",
+          "cristaleira"
+        ],
+        "es": [
+          "vitrina",
+          "armario",
+          "botellas",
+          "licorera",
+          "huecos",
+          "cerradura"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "chair": {
+      "name": {
+        "en-US": "armchair",
+        "pt-BR": "poltrona",
+        "es": "sillón"
+      },
+      "aliases": {
+        "en-US": [
+          "chair",
+          "cushion",
+          "seat",
+          "leather chair"
+        ],
+        "pt-BR": [
+          "cadeira",
+          "almofada",
+          "assento"
+        ],
+        "es": [
+          "silla",
+          "cojín",
+          "asiento",
+          "butaca"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "humidor": {
+      "name": {
+        "en-US": "cigar box",
+        "pt-BR": "caixa de charutos",
+        "es": "caja de puros"
+      },
+      "aliases": {
+        "en-US": [
+          "humidor",
+          "box",
+          "cigars",
+          "cigar",
+          "side table"
+        ],
+        "pt-BR": [
+          "umidor",
+          "caixa",
+          "charutos",
+          "charuto",
+          "mesinha"
+        ],
+        "es": [
+          "humidificador",
+          "caja",
+          "puros",
+          "puro",
+          "cigarros",
+          "mesita"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "panel": {
+      "name": {
+        "en-US": "panelling",
+        "pt-BR": "painel",
+        "es": "panel"
+      },
+      "aliases": {
+        "en-US": [
+          "paneling",
+          "panel",
+          "door",
+          "wall"
+        ],
+        "pt-BR": [
+          "lambri",
+          "porta",
+          "parede"
+        ],
+        "es": [
+          "paneles",
+          "puerta",
+          "pared",
+          "revestimiento"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    }
+  },
+  "items": {
+    "one_ball": {
+      "name": {
+        "en-US": "Yellow 1 ball",
+        "pt-BR": "Bola 1 amarela",
+        "es": "Bola 1 amarilla"
+      },
+      "aliases": {
+        "en-US": [
+          "1 ball",
+          "one ball",
+          "one",
+          "1",
+          "yellow",
+          "yellow ball"
+        ],
+        "pt-BR": [
+          "bola 1",
+          "bola um",
+          "um",
+          "1",
+          "amarela",
+          "bola amarela"
+        ],
+        "es": [
+          "bola 1",
+          "bola uno",
+          "uno",
+          "1",
+          "amarilla",
+          "bola amarilla"
+        ]
+      },
+      "description": {
+        "en-US": "A solid yellow ball, a black 1 in its white circle.",
+        "pt-BR": "Uma bola amarela lisa, com um 1 preto no círculo branco.",
+        "es": "Una bola amarilla lisa, con un 1 negro en su círculo blanco."
+      }
+    },
+    "six_ball": {
+      "name": {
+        "en-US": "Green 6 ball",
+        "pt-BR": "Bola 6 verde",
+        "es": "Bola 6 verde"
+      },
+      "aliases": {
+        "en-US": [
+          "6 ball",
+          "six ball",
+          "six",
+          "6",
+          "green",
+          "green ball"
+        ],
+        "pt-BR": [
+          "bola 6",
+          "bola seis",
+          "seis",
+          "6",
+          "verde",
+          "bola verde"
+        ],
+        "es": [
+          "bola 6",
+          "bola seis",
+          "seis",
+          "6",
+          "verde",
+          "bola verde"
+        ]
+      },
+      "description": {
+        "en-US": "A solid green ball, a black 6 in its white circle.",
+        "pt-BR": "Uma bola verde lisa, com um 6 preto no círculo branco.",
+        "es": "Una bola verde lisa, con un 6 negro en su círculo blanco."
+      }
+    },
+    "nine_ball": {
+      "name": {
+        "en-US": "Striped 9 ball",
+        "pt-BR": "Bola 9 listrada",
+        "es": "Bola 9 rayada"
+      },
+      "aliases": {
+        "en-US": [
+          "9 ball",
+          "nine ball",
+          "nine",
+          "9",
+          "stripe",
+          "striped",
+          "striped ball"
+        ],
+        "pt-BR": [
+          "bola 9",
+          "bola nove",
+          "nove",
+          "9",
+          "listrada",
+          "bola listrada"
+        ],
+        "es": [
+          "bola 9",
+          "bola nueve",
+          "nueve",
+          "9",
+          "rayada",
+          "bola rayada"
+        ]
+      },
+      "description": {
+        "en-US": "A white ball with a yellow stripe round its middle, a black 9 on the band.",
+        "pt-BR": "Uma bola branca com uma listra amarela no meio e um 9 preto na faixa.",
+        "es": "Una bola blanca con una raya amarilla en el centro y un 9 negro en la franja."
+      }
+    },
+    "scoreboard_note": {
+      "name": {
+        "en-US": "Scoreboard: green, stripe, yellow",
+        "pt-BR": "Placar: verde, listrada, amarela",
+        "es": "Marcador: verde, rayada, amarilla"
+      },
+      "aliases": {
+        "en-US": [
+          "scoreboard note"
+        ],
+        "pt-BR": [
+          "anotação do placar"
+        ],
+        "es": [
+          "nota del marcador"
+        ]
+      },
+      "description": {
+        "en-US": "You noted the chalk on the scoreboard: the next shots called were green, stripe, yellow.",
+        "pt-BR": "Você anotou o giz do placar: as próximas tacadas cantadas eram verde, listrada, amarela.",
+        "es": "Anotaste la tiza del marcador: los próximos tiros cantados eran verde, rayada, amarilla."
+      }
+    }
+  },
+  "verbs": {
+    "pull": {
+      "name": {
+        "en-US": "pull",
+        "pt-BR": "puxar",
+        "es": "tirar"
+      },
+      "aliases": {
+        "en-US": [
+          "tug",
+          "yank"
+        ],
+        "pt-BR": [
+          "puxe",
+          "puxa"
+        ],
+        "es": [
+          "jalar",
+          "tira",
+          "jala"
+        ]
+      }
+    },
+    "lift": {
+      "name": {
+        "en-US": "lift",
+        "pt-BR": "levantar",
+        "es": "levantar"
+      },
+      "aliases": {
+        "en-US": [
+          "raise"
+        ],
+        "pt-BR": [
+          "erguer",
+          "levante"
+        ],
+        "es": [
+          "alzar",
+          "levanta"
+        ]
+      }
+    }
+  },
+  "initialFlags": {
+    "lamp_lit": false,
+    "one_found": false,
+    "six_found": false,
+    "nine_found": false,
+    "scoreboard_read": false,
+    "cabinet_open": false
+  },
+  "brightness": 0.45,
+  "lighting": [
+    {
+      "when": [
+        {
+          "type": "flag_equals",
+          "flag": "lamp_lit",
+          "value": true
+        }
+      ],
+      "brightness": 1.1
+    }
+  ],
+  "interactions": [
+    {
+      "say": [
+        "lamp"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "lamp_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A green glass shade hangs low over the table, dark. A pull chain dangles from it.",
+            "pt-BR": "Uma cúpula de vidro verde pende baixa sobre a mesa, apagada. Uma corrente de puxar balança sob ela.",
+            "es": "Una pantalla de cristal verde cuelga baja sobre la mesa, apagada. De ella pende una cadena."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "lamp"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The lamp hums, throwing a hard circle of light on the cloth.",
+            "pt-BR": "A luminária zumbe, lançando um círculo de luz dura sobre o pano.",
+            "es": "La lámpara zumba y arroja un círculo de luz dura sobre el paño."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "pull",
+        "lamp"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "lamp_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "lamp_lit",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You tug the chain. The bulb flickers, buzzes, then holds.\nHard white light falls across the table.",
+            "pt-BR": "Você puxa a corrente. A lâmpada pisca, zumbe e então firma.\nUma luz branca e dura cai sobre a mesa.",
+            "es": "Tiras de la cadena. La bombilla parpadea, zumba y por fin se queda encendida.\nUna luz blanca y dura cae sobre la mesa."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "pull",
+        "lamp"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You'd rather not plunge the room back into darkness.",
+            "pt-BR": "Melhor não mergulhar a sala de novo na escuridão.",
+            "es": "Mejor no volver a hundir la sala en la oscuridad."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "table"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "lamp_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A full-size billiard table. In this gloom you can barely make out the cloth.",
+            "pt-BR": "Uma mesa de bilhar de tamanho oficial. Nesta penumbra mal se distingue o pano.",
+            "es": "Una mesa de billar de tamaño reglamentario. En esta penumbra apenas se distingue el paño."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "table"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Green baize, worn pale where countless shots were lined up.\nSix leather pockets sag at its edges.",
+            "pt-BR": "Feltro verde, gasto e pálido onde incontáveis tacadas foram miradas.\nSeis caçapas de couro pendem nas bordas.",
+            "es": "Paño verde, gastado y pálido donde se apuntaron incontables tiros.\nSeis troneras de cuero cuelgan de sus bordes."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "rack"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "lamp_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A wooden triangle packed with balls. Too dark to count them.",
+            "pt-BR": "Um triângulo de madeira cheio de bolas. Escuro demais para contá-las.",
+            "es": "Un triángulo de madera lleno de bolas. Demasiado oscuro para contarlas."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "rack"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Balls packed in the wooden triangle. Three slots are empty:\nthe yellow 1, the green 6 and the striped 9 are missing.",
+            "pt-BR": "Bolas apertadas no triângulo de madeira. Três vãos estão vazios:\nfaltam a 1 amarela, a 6 verde e a 9 listrada.",
+            "es": "Bolas apretadas en el triángulo de madera. Hay tres huecos vacíos:\nfaltan la 1 amarilla, la 6 verde y la 9 rayada."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "pockets"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "lamp_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Leather pockets, black holes in the gloom. You'd rather not reach in blind.",
+            "pt-BR": "Caçapas de couro, buracos negros na penumbra. Melhor não enfiar a mão às cegas.",
+            "es": "Troneras de cuero, agujeros negros en la penumbra. Mejor no meter la mano a ciegas."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "pockets"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "one_found",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "one_found",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "In the light, something gleams in a corner pocket.\nYou found the yellow 1 ball!",
+            "pt-BR": "Com a luz, algo reluz numa caçapa do canto.\nVocê encontrou a bola 1 amarela!",
+            "es": "Con la luz, algo brilla en una tronera de la esquina.\n¡Encontraste la bola 1 amarilla!"
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "one_ball"
+        }
+      ]
+    },
+    {
+      "say": [
+        "pockets"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Empty leather pockets, worn soft by years of play.",
+            "pt-BR": "Caçapas de couro vazias, amaciadas por anos de jogo.",
+            "es": "Troneras de cuero vacías, ablandadas por años de juego."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "cues"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Five cues in a wall rack. One is cracked clean through.\nThe chalk cubes are worn down to nubs.",
+            "pt-BR": "Cinco tacos num suporte de parede. Um está rachado de ponta a ponta.\nOs cubos de giz estão gastos até o fim.",
+            "es": "Cinco tacos en un soporte de pared. Uno está partido de punta a punta.\nLos cubos de tiza están gastados hasta el final."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "scoreboard"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "lamp_lit",
+          "value": true
+        },
+        {
+          "type": "flag_equals",
+          "flag": "scoreboard_read",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "scoreboard_read",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Beads on brass wires, and beneath them, in chalk:\nNEXT SHOTS CALLED: GREEN, STRIPE, YELLOW.",
+            "pt-BR": "Contas em arames de latão e, embaixo, em giz:\nPRÓXIMAS TACADAS CANTADAS: VERDE, LISTRADA, AMARELA.",
+            "es": "Cuentas en alambres de latón y, debajo, en tiza:\nPRÓXIMOS TIROS CANTADOS: VERDE, RAYADA, AMARILLA."
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "scoreboard_note"
+        }
+      ]
+    },
+    {
+      "say": [
+        "scoreboard"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "lamp_lit",
+          "value": true
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Beads on brass wires, and beneath them, in chalk:\nNEXT SHOTS CALLED: GREEN, STRIPE, YELLOW.",
+            "pt-BR": "Contas em arames de latão e, embaixo, em giz:\nPRÓXIMAS TACADAS CANTADAS: VERDE, LISTRADA, AMARELA.",
+            "es": "Cuentas en alambres de latón y, debajo, en tiza:\nPRÓXIMOS TIROS CANTADOS: VERDE, RAYADA, AMARILLA."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "scoreboard"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Beads on brass wires. Something is chalked below, too faint to read in this gloom.",
+            "pt-BR": "Contas em arames de latão. Há algo escrito a giz embaixo, apagado demais para ler nesta penumbra.",
+            "es": "Cuentas en alambres de latón. Debajo hay algo escrito con tiza, demasiado tenue para leerlo en esta penumbra."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "cabinet"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A glass-fronted cabinet of dusty decanters. Instead of a keyhole,\nits brass plate has three round sockets, each the size of a billiard ball.",
+            "pt-BR": "Um armário de vidro com licoreiras empoeiradas. Em vez de fechadura,\na placa de latão tem três encaixes redondos, do tamanho de bolas de bilhar.",
+            "es": "Un mueble de cristal con licoreras polvorientas. En lugar de cerradura,\nsu placa de latón tiene tres huecos redondos, del tamaño de bolas de billar."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "cabinet"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "It won't open. There is no keyhole, only three empty round sockets.",
+            "pt-BR": "Não abre. Não há fechadura, só três encaixes redondos vazios.",
+            "es": "No se abre. No hay cerradura, solo tres huecos redondos vacíos."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "691",
+        "cabinet"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "There are no dials. The sockets want the balls themselves.",
+            "pt-BR": "Não há discos. Os encaixes querem as próprias bolas.",
+            "es": "No hay ruedas. Los huecos quieren las bolas mismas."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "one_ball",
+        "cabinet"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The ball sits in a socket for a moment, then rolls back out into your hand.\nThe lock wants all three at once, in the order the shots were called.",
+            "pt-BR": "A bola fica um instante no encaixe e então rola de volta para a sua mão.\nA fechadura quer as três de uma vez, na ordem das tacadas cantadas.",
+            "es": "La bola se queda un momento en el hueco y luego rueda de vuelta a tu mano.\nLa cerradura quiere las tres a la vez, en el orden de los tiros cantados."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "six_ball",
+        "cabinet"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The ball sits in a socket for a moment, then rolls back out into your hand.\nThe lock wants all three at once, in the order the shots were called.",
+            "pt-BR": "A bola fica um instante no encaixe e então rola de volta para a sua mão.\nA fechadura quer as três de uma vez, na ordem das tacadas cantadas.",
+            "es": "La bola se queda un momento en el hueco y luego rueda de vuelta a tu mano.\nLa cerradura quiere las tres a la vez, en el orden de los tiros cantados."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "nine_ball",
+        "cabinet"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The ball sits in a socket for a moment, then rolls back out into your hand.\nThe lock wants all three at once, in the order the shots were called.",
+            "pt-BR": "A bola fica um instante no encaixe e então rola de volta para a sua mão.\nA fechadura quer as três de uma vez, na ordem das tacadas cantadas.",
+            "es": "La bola se queda un momento en el hueco y luego rueda de vuelta a tu mano.\nLa cerradura quiere las tres a la vez, en el orden de los tiros cantados."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "six_ball",
+        "nine_ball",
+        "one_ball",
+        "cabinet"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Green, stripe, yellow. Each ball drops into its socket with a heavy click.\nThe cabinet swings out from the wall on hidden hinges. Behind it waits\na long, dark hall, where painted faces line the walls.",
+            "pt-BR": "Verde, listrada, amarela. Cada bola cai no seu encaixe com um clique pesado.\nO armário se abre da parede sobre dobradiças ocultas. Atrás dele espera\num longo salão escuro, onde rostos pintados cobrem as paredes.",
+            "es": "Verde, rayada, amarilla. Cada bola cae en su hueco con un clic pesado.\nEl mueble se aparta de la pared sobre bisagras ocultas. Detrás espera\nun salón largo y oscuro, donde rostros pintados cubren las paredes."
+          }
+        },
+        {
+          "type": "set_flag",
+          "flag": "cabinet_open",
+          "value": true
+        },
+        {
+          "type": "remove_item",
+          "item": "six_ball"
+        },
+        {
+          "type": "remove_item",
+          "item": "nine_ball"
+        },
+        {
+          "type": "remove_item",
+          "item": "one_ball"
+        },
+        {
+          "type": "change_room",
+          "room": "gallery"
+        }
+      ]
+    },
+    {
+      "say": [
+        "chair"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "six_found",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A cracked leather armchair. There's a hard lump under the seat cushion.",
+            "pt-BR": "Uma poltrona de couro rachado. Há um volume duro sob a almofada do assento.",
+            "es": "Un sillón de cuero agrietado. Hay un bulto duro bajo el cojín del asiento."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "chair"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A cracked leather armchair, its cushion askew.",
+            "pt-BR": "Uma poltrona de couro rachado, com a almofada torta.",
+            "es": "Un sillón de cuero agrietado, con el cojín torcido."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "lift",
+        "chair"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "six_found",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "six_found",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You lift the cushion. Wedged in the springs lies a ball.\nYou found the green 6 ball!",
+            "pt-BR": "Você levanta a almofada. Presa entre as molas há uma bola.\nVocê encontrou a bola 6 verde!",
+            "es": "Levantas el cojín. Encajada entre los muelles hay una bola.\n¡Encontraste la bola 6 verde!"
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "six_ball"
+        }
+      ]
+    },
+    {
+      "say": [
+        "lift",
+        "chair"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Nothing else under the cushion but dust and a button.",
+            "pt-BR": "Sob a almofada não há mais nada além de poeira e um botão.",
+            "es": "Bajo el cojín no queda más que polvo y un botón."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "chair"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "It's an armchair. The cushion could be lifted, though.",
+            "pt-BR": "É uma poltrona. Mas dá para levantar a almofada.",
+            "es": "Es un sillón. Aunque el cojín se podría levantar."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "humidor"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "nine_found",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A cedar cigar box on a little side table. Its lid is shut.",
+            "pt-BR": "Uma caixa de charutos de cedro numa mesinha. A tampa está fechada.",
+            "es": "Una caja de puros de cedro sobre una mesita. La tapa está cerrada."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "humidor"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A cedar cigar box, its lid up. It still smells of old tobacco.",
+            "pt-BR": "Uma caixa de charutos de cedro, com a tampa aberta. Ainda cheira a tabaco velho.",
+            "es": "Una caja de puros de cedro, con la tapa abierta. Todavía huele a tabaco viejo."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "humidor"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "nine_found",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "nine_found",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The lid creaks up. Among dry, crumbling cigars rests a ball.\nYou found the striped 9 ball!",
+            "pt-BR": "A tampa range ao abrir. Entre charutos secos e esfarelados há uma bola.\nVocê encontrou a bola 9 listrada!",
+            "es": "La tapa cruje al abrirse. Entre puros secos y desmenuzados descansa una bola.\n¡Encontraste la bola 9 rayada!"
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "nine_ball"
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "humidor"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Only crumbling cigars are left.",
+            "pt-BR": "Só restam charutos esfarelados.",
+            "es": "Solo quedan puros desmenuzados."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "panel"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Dark wood panelling. The section you came through has closed without a seam.",
+            "pt-BR": "Lambri de madeira escura. A parte por onde você entrou se fechou sem deixar fresta.",
+            "es": "Revestimiento de madera oscura. La parte por la que entraste se ha cerrado sin dejar rendija."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "panel"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "It won't budge from this side. There is no handle.",
+            "pt-BR": "Não se move deste lado. Não há maçaneta.",
+            "es": "No se mueve desde este lado. No hay tirador."
+          }
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "text": {
+        "en-US": "Nobody can play billiards in the dark.",
+        "pt-BR": "Ninguém joga bilhar no escuro.",
+        "es": "Nadie puede jugar al billar a oscuras."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "lamp_lit",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "The rack is not complete. The missing balls can't have rolled far.",
+        "pt-BR": "O triângulo não está completo. As bolas que faltam não podem ter rolado para longe.",
+        "es": "El triángulo no está completo. Las bolas que faltan no pueden haber rodado lejos."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "one_found",
+          "value": true
+        },
+        {
+          "type": "flag_equals",
+          "flag": "six_found",
+          "value": true
+        },
+        {
+          "type": "flag_equals",
+          "flag": "nine_found",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "Search where players leave things behind: the table, a seat, a box of smokes.",
+        "pt-BR": "Procure onde os jogadores esquecem coisas: a mesa, um assento, uma caixa de fumo.",
+        "es": "Busca donde los jugadores olvidan cosas: la mesa, un asiento, una caja de tabaco."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "one_found",
+          "value": true
+        },
+        {
+          "type": "flag_equals",
+          "flag": "six_found",
+          "value": true
+        },
+        {
+          "type": "flag_equals",
+          "flag": "nine_found",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "The chalk on the wall records which shots were called next.",
+        "pt-BR": "O giz na parede registra quais tacadas foram cantadas em seguida.",
+        "es": "La tiza de la pared registra qué tiros se cantaron después."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "scoreboard_read",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "The cabinet's lock takes all the balls at once, in the order the shots were called.",
+        "pt-BR": "A fechadura do armário recebe todas as bolas de uma vez, na ordem das tacadas cantadas.",
+        "es": "La cerradura del mueble recibe todas las bolas a la vez, en el orden de los tiros cantados."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "cabinet_open",
+          "value": true
+        }
+      ]
+    }
+  ]
+}

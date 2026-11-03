@@ -1,0 +1,1460 @@
+{
+  "id": "attic",
+  "title": {
+    "en-US": "The Attic",
+    "pt-BR": "O Sótão",
+    "es": "El Desván"
+  },
+  "cameras": {
+    "A": {
+      "image": "camera_a.png",
+      "description": {
+        "en-US": "Moonlight from a round window falls on a battered steamer trunk.\nA dress form in a yellowed gown stands beside a rocking chair.",
+        "pt-BR": "O luar de uma janela redonda cai sobre um velho baú de viagem.\nUm manequim num vestido amarelado está ao lado de uma cadeira de balanço.",
+        "es": "La luz de la luna de una ventana redonda cae sobre un viejo baúl de viaje.\nUn maniquí con un vestido amarillento está junto a una mecedora."
+      },
+      "variants": [
+        {
+          "when": [
+            {
+              "type": "flag_equals",
+              "flag": "lantern_lit",
+              "value": true
+            }
+          ],
+          "description": {
+            "en-US": "Lantern light flickers over a battered steamer trunk.\nA dress form in a yellowed gown stands beside a rocking chair.",
+            "pt-BR": "A luz da lanterna tremula sobre um velho baú de viagem.\nUm manequim num vestido amarelado está ao lado de uma cadeira de balanço.",
+            "es": "La luz de la linterna parpadea sobre un viejo baúl de viaje.\nUn maniquí con un vestido amarillento está junto a una mecedora."
+          }
+        }
+      ]
+    },
+    "C": {
+      "image": "camera_c.png",
+      "description": {
+        "en-US": "A magic lantern sits dark on a crate, aimed at a white sheet over the chimney.\nA low door is set in the panelling beside it.",
+        "pt-BR": "Uma lanterna mágica repousa apagada sobre um caixote, apontada para um lençol branco na chaminé.\nUma portinha baixa está embutida no lambri ao lado.",
+        "es": "Una linterna mágica descansa apagada sobre un cajón, apuntando a una sábana blanca sobre la chimenea.\nUna puertecita baja está empotrada en los paneles de al lado."
+      },
+      "variants": [
+        {
+          "when": [
+            {
+              "type": "flag_equals",
+              "flag": "show_done",
+              "value": true
+            }
+          ],
+          "description": {
+            "en-US": "The magic lantern throws a bright, empty square onto the white sheet.\nBeside it, the low door stands open on a narrow stair.",
+            "pt-BR": "A lanterna mágica projeta um quadrado claro e vazio no lençol branco.\nAo lado, a portinha está aberta para uma escada estreita.",
+            "es": "La linterna mágica proyecta un cuadrado claro y vacío sobre la sábana blanca.\nAl lado, la puertecita está abierta a una escalera estrecha."
+          }
+        },
+        {
+          "when": [
+            {
+              "type": "flag_equals",
+              "flag": "lantern_lit",
+              "value": true
+            }
+          ],
+          "description": {
+            "en-US": "The magic lantern throws a bright, empty square onto the white sheet.\nA low door is set in the panelling beside it.",
+            "pt-BR": "A lanterna mágica projeta um quadrado claro e vazio no lençol branco.\nUma portinha baixa está embutida no lambri ao lado.",
+            "es": "La linterna mágica proyecta un cuadrado claro y vacío sobre la sábana blanca.\nUna puertecita baja está empotrada en los paneles de al lado."
+          }
+        }
+      ]
+    }
+  },
+  "objects": {
+    "trunk": {
+      "name": {
+        "en-US": "trunk",
+        "pt-BR": "baú",
+        "es": "baúl"
+      },
+      "aliases": {
+        "en-US": [
+          "steamer trunk",
+          "chest",
+          "lid",
+          "luggage",
+          "labels"
+        ],
+        "pt-BR": [
+          "baú de viagem",
+          "arca",
+          "tampa",
+          "mala",
+          "etiquetas"
+        ],
+        "es": [
+          "baúl de viaje",
+          "arcón",
+          "tapa",
+          "maleta",
+          "etiquetas"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "dress_form": {
+      "name": {
+        "en-US": "dress form",
+        "pt-BR": "manequim",
+        "es": "maniquí"
+      },
+      "aliases": {
+        "en-US": [
+          "mannequin",
+          "dummy",
+          "gown",
+          "dress",
+          "pocket",
+          "lace"
+        ],
+        "pt-BR": [
+          "vestido",
+          "bolso",
+          "boneco",
+          "renda"
+        ],
+        "es": [
+          "vestido",
+          "bolsillo",
+          "muñeco",
+          "encaje"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "rocking_chair": {
+      "name": {
+        "en-US": "rocking chair",
+        "pt-BR": "cadeira de balanço",
+        "es": "mecedora"
+      },
+      "aliases": {
+        "en-US": [
+          "rocker",
+          "chair",
+          "cushion"
+        ],
+        "pt-BR": [
+          "cadeira",
+          "almofada"
+        ],
+        "es": [
+          "silla",
+          "silla mecedora",
+          "cojín"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "window": {
+      "name": {
+        "en-US": "round window",
+        "pt-BR": "janela redonda",
+        "es": "ventana redonda"
+      },
+      "aliases": {
+        "en-US": [
+          "window",
+          "oculus",
+          "moon",
+          "moonlight"
+        ],
+        "pt-BR": [
+          "janela",
+          "óculo",
+          "lua",
+          "luar"
+        ],
+        "es": [
+          "ventana",
+          "óculo",
+          "luna",
+          "luz de luna"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "rafters": {
+      "name": {
+        "en-US": "rafters",
+        "pt-BR": "caibros",
+        "es": "vigas"
+      },
+      "aliases": {
+        "en-US": [
+          "beams",
+          "roof",
+          "cobwebs",
+          "cobweb",
+          "webs"
+        ],
+        "pt-BR": [
+          "vigas",
+          "telhado",
+          "teias",
+          "teia",
+          "teias de aranha"
+        ],
+        "es": [
+          "techo",
+          "tejado",
+          "telarañas",
+          "telaraña"
+        ]
+      },
+      "cameras": [
+        "A",
+        "C"
+      ]
+    },
+    "lantern": {
+      "name": {
+        "en-US": "magic lantern",
+        "pt-BR": "lanterna mágica",
+        "es": "linterna mágica"
+      },
+      "aliases": {
+        "en-US": [
+          "lantern",
+          "projector",
+          "lens",
+          "lamp",
+          "crate"
+        ],
+        "pt-BR": [
+          "lanterna",
+          "projetor",
+          "lente",
+          "lamparina",
+          "caixote"
+        ],
+        "es": [
+          "linterna",
+          "proyector",
+          "lente",
+          "lamparilla",
+          "cajón"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "slide_box": {
+      "name": {
+        "en-US": "slide box",
+        "pt-BR": "caixa de lâminas",
+        "es": "caja de placas"
+      },
+      "aliases": {
+        "en-US": [
+          "box",
+          "wooden box",
+          "case",
+          "clasp"
+        ],
+        "pt-BR": [
+          "caixa",
+          "caixa de madeira",
+          "estojo",
+          "fecho"
+        ],
+        "es": [
+          "caja",
+          "caja de madera",
+          "estuche",
+          "cierre"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "sheet": {
+      "name": {
+        "en-US": "sheet",
+        "pt-BR": "lençol",
+        "es": "sábana"
+      },
+      "aliases": {
+        "en-US": [
+          "white sheet",
+          "screen",
+          "chimney",
+          "chimney breast",
+          "wall"
+        ],
+        "pt-BR": [
+          "lençol branco",
+          "tela",
+          "chaminé",
+          "parede"
+        ],
+        "es": [
+          "sábana blanca",
+          "pantalla",
+          "chimenea",
+          "pared"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "door": {
+      "name": {
+        "en-US": "low door",
+        "pt-BR": "portinha",
+        "es": "puertecita"
+      },
+      "aliases": {
+        "en-US": [
+          "door",
+          "small door",
+          "panel",
+          "panelling",
+          "paneling",
+          "stair",
+          "stairs"
+        ],
+        "pt-BR": [
+          "porta",
+          "porta baixa",
+          "painel",
+          "lambri",
+          "escada"
+        ],
+        "es": [
+          "puerta",
+          "puerta baja",
+          "panel",
+          "paneles",
+          "escalera"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    }
+  },
+  "items": {
+    "matchbook": {
+      "name": {
+        "en-US": "Matchbook",
+        "pt-BR": "Cartela de fósforos",
+        "es": "Librillo de cerillas"
+      },
+      "aliases": {
+        "en-US": [
+          "matches",
+          "match",
+          "book of matches"
+        ],
+        "pt-BR": [
+          "fósforos",
+          "fósforo",
+          "cartela"
+        ],
+        "es": [
+          "cerillas",
+          "cerilla",
+          "fósforos",
+          "librillo"
+        ]
+      },
+      "description": {
+        "en-US": "A matchbook from a seaside hotel. Three matches left.",
+        "pt-BR": "Uma cartela de fósforos de um hotel à beira-mar. Restam três fósforos.",
+        "es": "Un librillo de cerillas de un hotel junto al mar. Quedan tres cerillas."
+      }
+    },
+    "playbill_note": {
+      "name": {
+        "en-US": "Playbill: sail, tempest, shipwreck, a light",
+        "pt-BR": "Programa: partida, tempestade, naufrágio, uma luz",
+        "es": "Programa: partida, tempestad, naufragio, una luz"
+      },
+      "aliases": {
+        "en-US": [
+          "playbill",
+          "programme",
+          "program",
+          "poster"
+        ],
+        "pt-BR": [
+          "programa",
+          "cartaz",
+          "folheto"
+        ],
+        "es": [
+          "programa",
+          "cartel",
+          "folleto"
+        ]
+      },
+      "description": {
+        "en-US": "THE LONG VOYAGE HOME, a lantern show in four scenes.\nSetting sail. The tempest. Shipwrecked. A light in the dark.",
+        "pt-BR": "A LONGA VIAGEM DE VOLTA, um espetáculo de lanterna em quatro cenas.\nZarpando. A tempestade. Naufrágio. Uma luz no escuro.",
+        "es": "EL LARGO VIAJE A CASA, una función de linterna en cuatro escenas.\nZarpando. La tempestad. Naufragio. Una luz en la oscuridad."
+      }
+    },
+    "ship_slide": {
+      "name": {
+        "en-US": "Ship slide",
+        "pt-BR": "Lâmina do navio",
+        "es": "Placa del barco"
+      },
+      "aliases": {
+        "en-US": [
+          "ship",
+          "tall ship",
+          "sailing ship"
+        ],
+        "pt-BR": [
+          "navio",
+          "veleiro"
+        ],
+        "es": [
+          "barco",
+          "velero"
+        ]
+      },
+      "description": {
+        "en-US": "A glass slide painted with a tall ship leaving harbour, every sail full.",
+        "pt-BR": "Uma lâmina de vidro pintada com um veleiro deixando o porto, todas as velas cheias.",
+        "es": "Una placa de vidrio pintada con un velero que deja el puerto, con todas las velas llenas."
+      }
+    },
+    "storm_slide": {
+      "name": {
+        "en-US": "Storm slide",
+        "pt-BR": "Lâmina da tempestade",
+        "es": "Placa de la tormenta"
+      },
+      "aliases": {
+        "en-US": [
+          "storm",
+          "tempest",
+          "waves"
+        ],
+        "pt-BR": [
+          "tempestade",
+          "temporal",
+          "ondas"
+        ],
+        "es": [
+          "tormenta",
+          "tempestad",
+          "olas"
+        ]
+      },
+      "description": {
+        "en-US": "A glass slide painted with black waves and lightning over a broken mast.",
+        "pt-BR": "Uma lâmina de vidro pintada com ondas negras e raios sobre um mastro partido.",
+        "es": "Una placa de vidrio pintada con olas negras y rayos sobre un mástil roto."
+      }
+    },
+    "island_slide": {
+      "name": {
+        "en-US": "Island slide",
+        "pt-BR": "Lâmina da ilha",
+        "es": "Placa de la isla"
+      },
+      "aliases": {
+        "en-US": [
+          "island",
+          "castaway"
+        ],
+        "pt-BR": [
+          "ilha",
+          "náufrago"
+        ],
+        "es": [
+          "isla",
+          "náufrago"
+        ]
+      },
+      "description": {
+        "en-US": "A glass slide painted with a castaway crawling onto a little island.",
+        "pt-BR": "Uma lâmina de vidro pintada com um náufrago se arrastando até uma ilhota.",
+        "es": "Una placa de vidrio pintada con un náufrago que se arrastra hasta una islita."
+      }
+    },
+    "lighthouse_slide": {
+      "name": {
+        "en-US": "Lighthouse slide",
+        "pt-BR": "Lâmina do farol",
+        "es": "Placa del faro"
+      },
+      "aliases": {
+        "en-US": [
+          "lighthouse",
+          "light house",
+          "beacon"
+        ],
+        "pt-BR": [
+          "farol"
+        ],
+        "es": [
+          "faro"
+        ]
+      },
+      "description": {
+        "en-US": "A glass slide painted with a lighthouse on a far cliff, its beam reaching out.",
+        "pt-BR": "Uma lâmina de vidro pintada com um farol num penhasco distante, o facho se estendendo.",
+        "es": "Una placa de vidrio pintada con un faro en un acantilado lejano, con su haz extendido."
+      }
+    }
+  },
+  "initialFlags": {
+    "form_searched": false,
+    "trunk_open": false,
+    "box_open": false,
+    "lantern_lit": false,
+    "show_done": false
+  },
+  "brightness": 0.45,
+  "lighting": [
+    {
+      "when": [
+        {
+          "type": "flag_equals",
+          "flag": "lantern_lit",
+          "value": true
+        }
+      ],
+      "brightness": 1.1
+    }
+  ],
+  "interactions": [
+    {
+      "say": [
+        "trunk"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "trunk_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A battered steamer trunk plastered with old travel labels.\nThe lid is shut, but not locked.",
+            "pt-BR": "Um velho baú de viagem coberto de etiquetas antigas.\nA tampa está fechada, mas não trancada.",
+            "es": "Un viejo baúl de viaje cubierto de etiquetas antiguas.\nLa tapa está cerrada, pero sin llave."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "trunk"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Pasted inside the lid, a faded playbill:\nTHE LONG VOYAGE HOME, a lantern show in four scenes.\nSetting sail. The tempest. Shipwrecked. A light in the dark.",
+            "pt-BR": "Colado por dentro da tampa, um programa desbotado:\nA LONGA VIAGEM DE VOLTA, um espetáculo de lanterna em quatro cenas.\nZarpando. A tempestade. Naufrágio. Uma luz no escuro.",
+            "es": "Pegado por dentro de la tapa, un programa desteñido:\nEL LARGO VIAJE A CASA, una función de linterna en cuatro escenas.\nZarpando. La tempestad. Naufragio. Una luz en la oscuridad."
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "playbill_note"
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "trunk"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "trunk_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "trunk_open",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The lid creaks up on moth-eaten costumes, a tin crown and a cardboard sword.\nPasted inside the lid, a faded playbill:\nTHE LONG VOYAGE HOME, a lantern show in four scenes.\nSetting sail. The tempest. Shipwrecked. A light in the dark.",
+            "pt-BR": "A tampa se ergue rangendo sobre fantasias roídas por traças, uma coroa de lata e uma espada de papelão.\nColado por dentro da tampa, um programa desbotado:\nA LONGA VIAGEM DE VOLTA, um espetáculo de lanterna em quatro cenas.\nZarpando. A tempestade. Naufrágio. Uma luz no escuro.",
+            "es": "La tapa se alza crujiendo sobre disfraces apolillados, una corona de hojalata y una espada de cartón.\nPegado por dentro de la tapa, un programa desteñido:\nEL LARGO VIAJE A CASA, una función de linterna en cuatro escenas.\nZarpando. La tempestad. Naufragio. Una luz en la oscuridad."
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "playbill_note"
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "trunk"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Only costumes and cardboard props remain.",
+            "pt-BR": "Só restam fantasias e adereços de papelão.",
+            "es": "Solo quedan disfraces y utilería de cartón."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "dress_form"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "form_searched",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A dress form wearing a moth-eaten gown, its lace gone yellow.\nSomething rattles in the gown's pocket.",
+            "pt-BR": "Um manequim vestindo um vestido roído por traças, a renda amarelada.\nAlgo chacoalha no bolso do vestido.",
+            "es": "Un maniquí con un vestido apolillado, el encaje amarillento.\nAlgo suena en el bolsillo del vestido."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "dress_form"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A dress form in a moth-eaten gown. Its pocket hangs empty now.",
+            "pt-BR": "Um manequim num vestido roído por traças. O bolso agora está vazio.",
+            "es": "Un maniquí con un vestido apolillado. Ahora su bolsillo cuelga vacío."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "dress_form"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "form_searched",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "form_searched",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You slip a hand into the gown's pocket. Dry lace crumbles at your touch.\nYou found a matchbook!",
+            "pt-BR": "Você enfia a mão no bolso do vestido. A renda seca se desfaz ao toque.\nVocê encontrou uma cartela de fósforos!",
+            "es": "Metes la mano en el bolsillo del vestido. El encaje seco se deshace al tocarlo.\n¡Encontraste un librillo de cerillas!"
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "matchbook"
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "dress_form"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The pocket is empty.",
+            "pt-BR": "O bolso está vazio.",
+            "es": "El bolsillo está vacío."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "rocking_chair"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A rocking chair with a flattened cushion.\nIt rocks, very slightly, though no one sits in it.",
+            "pt-BR": "Uma cadeira de balanço com uma almofada achatada.\nEla balança, bem de leve, embora ninguém esteja sentado.",
+            "es": "Una mecedora con un cojín aplastado.\nSe mece, muy levemente, aunque nadie está sentado en ella."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "window"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A round window high in the gable. The moon looks in, cold and white.\nIt's far too small to climb through.",
+            "pt-BR": "Uma janela redonda no alto da empena. A lua espia, fria e branca.\nÉ pequena demais para passar.",
+            "es": "Una ventana redonda en lo alto del hastial. La luna se asoma, fría y blanca.\nEs demasiado pequeña para pasar."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "window"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "It's painted shut. And far too small to climb through anyway.",
+            "pt-BR": "Está emperrada de tinta. E é pequena demais para passar, de qualquer jeito.",
+            "es": "Está sellada con pintura. Y de todos modos es demasiado pequeña para pasar."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "rafters"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Bare rafters, heavy with cobwebs. The roof slopes so low you have to stoop.",
+            "pt-BR": "Caibros nus, carregados de teias de aranha. O telhado é tão baixo que você precisa se curvar.",
+            "es": "Vigas desnudas, cargadas de telarañas. El techo es tan bajo que tienes que agacharte."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "lantern"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "lantern_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A brass magic lantern on a crate, its lens aimed at the white sheet.\nThere's oil in its little lamp, but no flame.",
+            "pt-BR": "Uma lanterna mágica de latão sobre um caixote, a lente apontada para o lençol branco.\nHá óleo na lamparina, mas nenhuma chama.",
+            "es": "Una linterna mágica de latón sobre un cajón, con la lente apuntando a la sábana blanca.\nHay aceite en su lamparilla, pero ninguna llama."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "lantern"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "show_done",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The magic lantern glows warm. A slide carrier waits in front of the lens.",
+            "pt-BR": "A lanterna mágica brilha, quente. Um porta-lâminas espera diante da lente.",
+            "es": "La linterna mágica brilla, cálida. Un portaplacas espera delante de la lente."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "lantern"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The lantern still glows. The show is over.",
+            "pt-BR": "A lanterna ainda brilha. O espetáculo acabou.",
+            "es": "La linterna aún brilla. La función ha terminado."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "lantern"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "lantern_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The lamp hatch swings open on a little oil lamp, its wick trimmed.",
+            "pt-BR": "A portinhola se abre para uma pequena lamparina a óleo, o pavio aparado.",
+            "es": "La portezuela se abre a una pequeña lamparilla de aceite, con la mecha recortada."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "lantern"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Better not. The flame is burning nicely.",
+            "pt-BR": "Melhor não. A chama está queimando bem.",
+            "es": "Mejor no. La llama arde bien."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "matchbook",
+        "lantern"
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "lantern_lit",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The match flares and the wick takes. The magic lantern throws a cone of warm light across the attic.\nA bright square glows on the white sheet.",
+            "pt-BR": "O fósforo se acende e o pavio pega. A lanterna mágica lança um cone de luz quente pelo sótão.\nUm quadrado claro brilha no lençol branco.",
+            "es": "La cerilla se enciende y la mecha prende. La linterna mágica lanza un cono de luz cálida por el desván.\nUn cuadrado claro brilla en la sábana blanca."
+          }
+        },
+        {
+          "type": "remove_item",
+          "item": "matchbook"
+        }
+      ]
+    },
+    {
+      "say": [
+        "slide_box"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "box_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A flat wooden box beside the lantern, made to carry glass slides. Its clasp is loose.",
+            "pt-BR": "Uma caixa de madeira chata ao lado da lanterna, feita para guardar lâminas de vidro. O fecho está solto.",
+            "es": "Una caja de madera plana junto a la linterna, hecha para guardar placas de vidrio. El cierre está suelto."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "slide_box"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Empty felt slots.",
+            "pt-BR": "Encaixes de feltro vazios.",
+            "es": "Ranuras de fieltro vacías."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "slide_box"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "box_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "box_open",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Inside, four painted glass slides rest in felt slots: a ship, a storm, an island, a lighthouse.\nYou took the slides!",
+            "pt-BR": "Lá dentro, quatro lâminas de vidro pintadas descansam em encaixes de feltro: um navio, uma tempestade, uma ilha, um farol.\nVocê pegou as lâminas!",
+            "es": "Dentro, cuatro placas de vidrio pintadas descansan en ranuras de fieltro: un barco, una tormenta, una isla, un faro.\n¡Tomaste las placas!"
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "ship_slide"
+        },
+        {
+          "type": "add_item",
+          "item": "storm_slide"
+        },
+        {
+          "type": "add_item",
+          "item": "island_slide"
+        },
+        {
+          "type": "add_item",
+          "item": "lighthouse_slide"
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "slide_box"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Only empty felt slots.",
+            "pt-BR": "Só encaixes de feltro vazios.",
+            "es": "Solo ranuras de fieltro vacías."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "sheet"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "lantern_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A white sheet pinned over the chimney breast, like the screen of a tiny theatre.",
+            "pt-BR": "Um lençol branco preso sobre a chaminé, como a tela de um teatrinho.",
+            "es": "Una sábana blanca clavada sobre la chimenea, como la pantalla de un teatrito."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "sheet"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "show_done",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The lantern makes a bright, empty square on the sheet. It wants pictures.",
+            "pt-BR": "A lanterna faz um quadrado claro e vazio no lençol. Ele pede imagens.",
+            "es": "La linterna hace un cuadrado claro y vacío en la sábana. Pide imágenes."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "sheet"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The sheet glows blank again. The show is over.",
+            "pt-BR": "O lençol brilha vazio de novo. O espetáculo acabou.",
+            "es": "La sábana brilla vacía otra vez. La función ha terminado."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "door"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "show_done",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A low door, no taller than a child, set flush in the panelling beside the chimney.\nNo handle. No keyhole.",
+            "pt-BR": "Uma portinha, não mais alta que uma criança, embutida no lambri ao lado da chaminé.\nSem maçaneta. Sem fechadura.",
+            "es": "Una puertecita, no más alta que un niño, empotrada en los paneles junto a la chimenea.\nSin pomo. Sin cerradura."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "door"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The low door stands open. A narrow stair winds down into the dark.",
+            "pt-BR": "A portinha está aberta. Uma escada estreita desce em espiral para o escuro.",
+            "es": "La puertecita está abierta. Una escalera estrecha baja en espiral hacia la oscuridad."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "door"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "show_done",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Your fingers find no edge to pull. It won't budge.",
+            "pt-BR": "Seus dedos não acham onde puxar. Ela não se mexe.",
+            "es": "Tus dedos no encuentran de dónde tirar. No se mueve."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "door"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You stoop through the low door. A back stair corkscrews down through the walls of the house, down and down.\nIt ends in a grand foyer: a coat rack, a silent grandfather clock, and the great front door.",
+            "pt-BR": "Você se curva e passa pela portinha. Uma escada de serviço desce em espiral pelas paredes da casa, sem fim.\nEla termina num grande saguão: um cabideiro, um relógio de pêndulo silencioso e a enorme porta da frente.",
+            "es": "Te agachas y pasas por la puertecita. Una escalera de servicio baja en espiral por las paredes de la casa, sin fin.\nTermina en un gran vestíbulo: un perchero, un reloj de pie silencioso y la enorme puerta principal."
+          }
+        },
+        {
+          "type": "change_room",
+          "room": "foyer"
+        }
+      ]
+    },
+    {
+      "say": [
+        "ship_slide",
+        "storm_slide",
+        "island_slide",
+        "lighthouse_slide",
+        "lantern"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "lantern_lit",
+          "value": true
+        },
+        {
+          "type": "flag_equals",
+          "flag": "show_done",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "show_done",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You feed the slides through the lantern, one after another.\nA ship sets sail. A storm breaks its mast. A castaway reaches an island. Far off, a lighthouse burns.\nAs the last picture glows, something clicks inside the wall. The low door swings open.",
+            "pt-BR": "Você passa as lâminas pela lanterna, uma após a outra.\nUm navio zarpa. Uma tempestade parte seu mastro. Um náufrago alcança uma ilha. Ao longe, um farol arde.\nQuando a última imagem brilha, algo estala dentro da parede. A portinha se abre.",
+            "es": "Pasas las placas por la linterna, una tras otra.\nUn barco zarpa. Una tormenta le rompe el mástil. Un náufrago llega a una isla. A lo lejos, arde un faro.\nCuando brilla la última imagen, algo chasquea dentro de la pared. La puertecita se abre."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "ship_slide",
+        "storm_slide",
+        "island_slide",
+        "lighthouse_slide",
+        "lantern"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "show_done",
+          "value": true
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The show is over. The low door already stands open.",
+            "pt-BR": "O espetáculo acabou. A portinha já está aberta.",
+            "es": "La función ha terminado. La puertecita ya está abierta."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "ship_slide",
+        "lantern"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "lantern_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The lantern is dark. The slide would show nothing.",
+            "pt-BR": "A lanterna está apagada. A lâmina não mostraria nada.",
+            "es": "La linterna está apagada. La placa no mostraría nada."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "ship_slide",
+        "lantern"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "show_done",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The picture wavers on the sheet, then fades. One scene alone tells no story.\nThe lantern wants the whole show, in the playbill's order.",
+            "pt-BR": "A imagem treme no lençol e some. Uma cena sozinha não conta história.\nA lanterna quer o espetáculo inteiro, na ordem do programa.",
+            "es": "La imagen tiembla en la sábana y se apaga. Una escena sola no cuenta ninguna historia.\nLa linterna quiere la función entera, en el orden del programa."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "storm_slide",
+        "lantern"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "lantern_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The lantern is dark. The slide would show nothing.",
+            "pt-BR": "A lanterna está apagada. A lâmina não mostraria nada.",
+            "es": "La linterna está apagada. La placa no mostraría nada."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "storm_slide",
+        "lantern"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "show_done",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The picture wavers on the sheet, then fades. One scene alone tells no story.\nThe lantern wants the whole show, in the playbill's order.",
+            "pt-BR": "A imagem treme no lençol e some. Uma cena sozinha não conta história.\nA lanterna quer o espetáculo inteiro, na ordem do programa.",
+            "es": "La imagen tiembla en la sábana y se apaga. Una escena sola no cuenta ninguna historia.\nLa linterna quiere la función entera, en el orden del programa."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "island_slide",
+        "lantern"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "lantern_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The lantern is dark. The slide would show nothing.",
+            "pt-BR": "A lanterna está apagada. A lâmina não mostraria nada.",
+            "es": "La linterna está apagada. La placa no mostraría nada."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "island_slide",
+        "lantern"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "show_done",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The picture wavers on the sheet, then fades. One scene alone tells no story.\nThe lantern wants the whole show, in the playbill's order.",
+            "pt-BR": "A imagem treme no lençol e some. Uma cena sozinha não conta história.\nA lanterna quer o espetáculo inteiro, na ordem do programa.",
+            "es": "La imagen tiembla en la sábana y se apaga. Una escena sola no cuenta ninguna historia.\nLa linterna quiere la función entera, en el orden del programa."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "lighthouse_slide",
+        "lantern"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "lantern_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The lantern is dark. The slide would show nothing.",
+            "pt-BR": "A lanterna está apagada. A lâmina não mostraria nada.",
+            "es": "La linterna está apagada. La placa no mostraría nada."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "lighthouse_slide",
+        "lantern"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "show_done",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The picture wavers on the sheet, then fades. One scene alone tells no story.\nThe lantern wants the whole show, in the playbill's order.",
+            "pt-BR": "A imagem treme no lençol e some. Uma cena sozinha não conta história.\nA lanterna quer o espetáculo inteiro, na ordem do programa.",
+            "es": "La imagen tiembla en la sábana y se apaga. Una escena sola no cuenta ninguna historia.\nLa linterna quiere la función entera, en el orden del programa."
+          }
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "text": {
+        "en-US": "Somebody packed away a whole theatre up here. Shows always come with a programme.",
+        "pt-BR": "Alguém guardou um teatro inteiro aqui em cima. Espetáculos sempre vêm com um programa.",
+        "es": "Alguien guardó un teatro entero aquí arriba. Las funciones siempre traen un programa."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "trunk_open",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "Old clothes keep old things in their pockets.",
+        "pt-BR": "Roupas velhas guardam coisas velhas nos bolsos.",
+        "es": "La ropa vieja guarda cosas viejas en los bolsillos."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "form_searched",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "The lantern has oil, but no flame.",
+        "pt-BR": "A lanterna tem óleo, mas nenhuma chama.",
+        "es": "La linterna tiene aceite, pero ninguna llama."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "lantern_lit",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "A lantern show needs pictures. They're kept close to the lantern.",
+        "pt-BR": "Um espetáculo de lanterna precisa de imagens. Elas estão guardadas perto da lanterna.",
+        "es": "Una función de linterna necesita imágenes. Están guardadas cerca de la linterna."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "box_open",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "One picture alone tells nothing. Show them all at once, in the order the playbill tells the story.",
+        "pt-BR": "Uma imagem sozinha não diz nada. Mostre todas de uma vez, na ordem em que o programa conta a história.",
+        "es": "Una imagen sola no dice nada. Muéstralas todas a la vez, en el orden en que el programa cuenta la historia."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "show_done",
+          "value": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1315 @@
+{
+  "id": "musicroom",
+  "title": {
+    "en-US": "The Music Room",
+    "pt-BR": "A Sala de Música",
+    "es": "La Sala de Música"
+  },
+  "cameras": {
+    "A": {
+      "image": "camera_a.png",
+      "description": {
+        "en-US": "A grand piano waits in the gloom, its lid propped open.\nVelvet curtains are drawn tight across a tall window.",
+        "pt-BR": "Um piano de cauda espera na penumbra, com a tampa erguida.\nCortinas de veludo cobrem bem fechadas uma janela alta.",
+        "es": "Un piano de cola espera en la penumbra, con la tapa levantada.\nUnas cortinas de terciopelo cubren bien cerradas una ventana alta."
+      },
+      "variants": [
+        {
+          "when": [
+            {
+              "type": "flag_equals",
+              "flag": "curtains_open",
+              "value": true
+            }
+          ],
+          "description": {
+            "en-US": "Moonlight falls across a grand piano, its lid propped open.\nThe velvet curtains hang open on a tall window.",
+            "pt-BR": "O luar cai sobre um piano de cauda, com a tampa erguida.\nAs cortinas de veludo estão abertas sobre uma janela alta.",
+            "es": "La luz de la luna cae sobre un piano de cola, con la tapa levantada.\nLas cortinas de terciopelo cuelgan abiertas sobre una ventana alta."
+          }
+        }
+      ]
+    },
+    "C": {
+      "image": "camera_c.png",
+      "description": {
+        "en-US": "A gramophone's brass horn gleams beside a cello on its stand.\nDark oak panelling covers the wall, one panel carved with a lyre.",
+        "pt-BR": "A corneta de latão de um gramofone brilha ao lado de um violoncelo no suporte.\nUm lambri de carvalho escuro cobre a parede; um dos painéis tem uma lira entalhada.",
+        "es": "La bocina de latón de un gramófono brilla junto a un violonchelo en su soporte.\nUn revestimiento de roble oscuro cubre la pared; uno de los paneles tiene una lira tallada."
+      },
+      "variants": [
+        {
+          "when": [
+            {
+              "type": "flag_equals",
+              "flag": "panel_open",
+              "value": true
+            }
+          ],
+          "description": {
+            "en-US": "A gramophone's brass horn gleams beside a cello on its stand.\nThe lyre panel stands open on a dark passage.",
+            "pt-BR": "A corneta de latão de um gramofone brilha ao lado de um violoncelo no suporte.\nO painel da lira está aberto para uma passagem escura.",
+            "es": "La bocina de latón de un gramófono brilla junto a un violonchelo en su soporte.\nEl panel de la lira está abierto a un pasadizo oscuro."
+          }
+        }
+      ]
+    }
+  },
+  "objects": {
+    "piano": {
+      "name": {
+        "en-US": "piano",
+        "pt-BR": "piano",
+        "es": "piano"
+      },
+      "aliases": {
+        "en-US": [
+          "grand piano",
+          "keyboard",
+          "keys",
+          "gap",
+          "lid",
+          "fallboard"
+        ],
+        "pt-BR": [
+          "piano de cauda",
+          "teclado",
+          "teclas",
+          "vão",
+          "buraco",
+          "tampa"
+        ],
+        "es": [
+          "piano de cola",
+          "teclado",
+          "teclas",
+          "hueco",
+          "tapa"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "sheet_music": {
+      "name": {
+        "en-US": "sheet music",
+        "pt-BR": "partitura",
+        "es": "partitura"
+      },
+      "aliases": {
+        "en-US": [
+          "music",
+          "score",
+          "sheet",
+          "music stand",
+          "lullaby"
+        ],
+        "pt-BR": [
+          "partituras",
+          "música",
+          "estante de partitura",
+          "canção de ninar"
+        ],
+        "es": [
+          "partituras",
+          "música",
+          "atril",
+          "canción de cuna",
+          "nana"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "curtains": {
+      "name": {
+        "en-US": "curtains",
+        "pt-BR": "cortinas",
+        "es": "cortinas"
+      },
+      "aliases": {
+        "en-US": [
+          "curtain",
+          "drapes",
+          "velvet",
+          "window",
+          "tall window"
+        ],
+        "pt-BR": [
+          "cortina",
+          "veludo",
+          "janela",
+          "janela alta"
+        ],
+        "es": [
+          "cortina",
+          "terciopelo",
+          "ventana",
+          "ventana alta"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "candelabra": {
+      "name": {
+        "en-US": "candelabra",
+        "pt-BR": "candelabro",
+        "es": "candelabro"
+      },
+      "aliases": {
+        "en-US": [
+          "candlestick",
+          "candles",
+          "candle"
+        ],
+        "pt-BR": [
+          "castiçal",
+          "velas",
+          "vela"
+        ],
+        "es": [
+          "candelero",
+          "velas",
+          "vela"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "bench": {
+      "name": {
+        "en-US": "bench",
+        "pt-BR": "banqueta",
+        "es": "banqueta"
+      },
+      "aliases": {
+        "en-US": [
+          "piano bench",
+          "stool",
+          "seat"
+        ],
+        "pt-BR": [
+          "banco",
+          "assento"
+        ],
+        "es": [
+          "banco",
+          "taburete",
+          "asiento"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "gramophone": {
+      "name": {
+        "en-US": "gramophone",
+        "pt-BR": "gramofone",
+        "es": "gramófono"
+      },
+      "aliases": {
+        "en-US": [
+          "phonograph",
+          "horn",
+          "brass horn",
+          "record player",
+          "record",
+          "turntable"
+        ],
+        "pt-BR": [
+          "fonógrafo",
+          "corneta",
+          "corneta de latão",
+          "disco",
+          "vitrola"
+        ],
+        "es": [
+          "fonógrafo",
+          "bocina",
+          "bocina de latón",
+          "disco",
+          "tocadiscos"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "cello": {
+      "name": {
+        "en-US": "cello",
+        "pt-BR": "violoncelo",
+        "es": "violonchelo"
+      },
+      "aliases": {
+        "en-US": [
+          "violoncello",
+          "strings",
+          "cello stand"
+        ],
+        "pt-BR": [
+          "cello",
+          "cordas"
+        ],
+        "es": [
+          "chelo",
+          "cuerdas"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "cello_case": {
+      "name": {
+        "en-US": "cello case",
+        "pt-BR": "estojo",
+        "es": "estuche"
+      },
+      "aliases": {
+        "en-US": [
+          "case",
+          "latches"
+        ],
+        "pt-BR": [
+          "estojo do violoncelo",
+          "fechos",
+          "caixa"
+        ],
+        "es": [
+          "estuche del violonchelo",
+          "cierres",
+          "funda"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "panel": {
+      "name": {
+        "en-US": "panel",
+        "pt-BR": "painel",
+        "es": "panel"
+      },
+      "aliases": {
+        "en-US": [
+          "panelling",
+          "paneling",
+          "panels",
+          "lyre",
+          "wall",
+          "oak",
+          "passage"
+        ],
+        "pt-BR": [
+          "lambri",
+          "painéis",
+          "lira",
+          "parede",
+          "carvalho",
+          "passagem"
+        ],
+        "es": [
+          "revestimiento",
+          "paneles",
+          "lira",
+          "pared",
+          "roble",
+          "pasadizo"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    }
+  },
+  "items": {
+    "bow": {
+      "name": {
+        "en-US": "Cello bow",
+        "pt-BR": "Arco de violoncelo",
+        "es": "Arco de violonchelo"
+      },
+      "aliases": {
+        "en-US": [
+          "bow"
+        ],
+        "pt-BR": [
+          "arco"
+        ],
+        "es": [
+          "arco"
+        ]
+      },
+      "description": {
+        "en-US": "A long cello bow, its horsehair grey with rosin dust.",
+        "pt-BR": "Um longo arco de violoncelo, com a crina cinzenta de pó de breu.",
+        "es": "Un largo arco de violonchelo, con las cerdas grises de polvo de resina."
+      }
+    },
+    "ivory_key": {
+      "name": {
+        "en-US": "Ivory key",
+        "pt-BR": "Tecla de marfim",
+        "es": "Tecla de marfil"
+      },
+      "aliases": {
+        "en-US": [
+          "key",
+          "piano key",
+          "ivory"
+        ],
+        "pt-BR": [
+          "tecla",
+          "marfim"
+        ],
+        "es": [
+          "tecla",
+          "marfil"
+        ]
+      },
+      "description": {
+        "en-US": "A white piano key, yellowed ivory on a wooden stem.",
+        "pt-BR": "Uma tecla branca de piano, marfim amarelado sobre uma haste de madeira.",
+        "es": "Una tecla blanca de piano, marfil amarillento sobre un vástago de madera."
+      }
+    },
+    "sheet_note": {
+      "name": {
+        "en-US": "Lullaby: re la mi sol, backwards",
+        "pt-BR": "Canção: re la mi sol, de trás para a frente",
+        "es": "Nana: re la mi sol, al revés"
+      },
+      "aliases": {
+        "en-US": [
+          "note",
+          "lullaby note",
+          "tune"
+        ],
+        "pt-BR": [
+          "anotação",
+          "anotação da partitura"
+        ],
+        "es": [
+          "nota",
+          "nota de la partitura"
+        ]
+      },
+      "description": {
+        "en-US": "You noted the lullaby's notes: re, la, mi, sol.\nIn the margin: \"She always played it backwards.\"",
+        "pt-BR": "Você anotou as notas da canção: re, la, mi, sol.\nNa margem: \"Ela sempre tocava de trás para a frente.\"",
+        "es": "Anotaste las notas de la nana: re, la, mi, sol.\nEn el margen: \"Ella siempre la tocaba al revés.\""
+      }
+    }
+  },
+  "verbs": {
+    "do": {
+      "name": {
+        "en-US": "do",
+        "pt-BR": "do",
+        "es": "do"
+      }
+    },
+    "re": {
+      "name": {
+        "en-US": "re",
+        "pt-BR": "re",
+        "es": "re"
+      }
+    },
+    "mi": {
+      "name": {
+        "en-US": "mi",
+        "pt-BR": "mi",
+        "es": "mi"
+      }
+    },
+    "fa": {
+      "name": {
+        "en-US": "fa",
+        "pt-BR": "fa",
+        "es": "fa"
+      }
+    },
+    "sol": {
+      "name": {
+        "en-US": "sol",
+        "pt-BR": "sol",
+        "es": "sol"
+      }
+    },
+    "la": {
+      "name": {
+        "en-US": "la",
+        "pt-BR": "la",
+        "es": "la"
+      }
+    },
+    "si": {
+      "name": {
+        "en-US": "si",
+        "pt-BR": "si",
+        "es": "si"
+      },
+      "aliases": {
+        "en-US": [
+          "ti"
+        ],
+        "pt-BR": [],
+        "es": []
+      }
+    }
+  },
+  "initialFlags": {
+    "curtains_open": false,
+    "sheet_read": false,
+    "case_open": false,
+    "key_freed": false,
+    "key_fitted": false,
+    "panel_open": false
+  },
+  "brightness": 0.45,
+  "lighting": [
+    {
+      "when": [
+        {
+          "type": "flag_equals",
+          "flag": "curtains_open",
+          "value": true
+        }
+      ],
+      "brightness": 1.05
+    }
+  ],
+  "interactions": [
+    {
+      "say": [
+        "curtains"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "curtains_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Heavy velvet curtains, drawn tight. A thread of moonlight leaks under the hem.",
+            "pt-BR": "Pesadas cortinas de veludo, bem fechadas. Um fio de luar escapa pela barra.",
+            "es": "Pesadas cortinas de terciopelo, bien cerradas. Un hilo de luz de luna se cuela por el bajo."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "curtains"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Moonlight streams through the tall window. The garden below is grey and still.",
+            "pt-BR": "O luar entra pela janela alta. O jardim lá embaixo está cinzento e imóvel.",
+            "es": "La luz de la luna entra por la ventana alta. El jardín de abajo está gris e inmóvil."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "curtains"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "curtains_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "curtains_open",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You drag the curtains apart. Dust rains down, and moonlight pours over the piano.",
+            "pt-BR": "Você puxa as cortinas. Cai uma chuva de poeira, e o luar se derrama sobre o piano.",
+            "es": "Separas las cortinas de un tirón. Llueve polvo, y la luz de la luna se derrama sobre el piano."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "curtains"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "They're already open.",
+            "pt-BR": "Já estão abertas.",
+            "es": "Ya están abiertas."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "sheet_music"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "curtains_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Sheet music on the stand. Too dark to make out a single note.",
+            "pt-BR": "Uma partitura na estante. Escuro demais para distinguir uma nota sequer.",
+            "es": "Una partitura en el atril. Demasiado oscuro para distinguir una sola nota."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "sheet_music"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "sheet_read",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "sheet_read",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A lullaby, copied by hand. Under the staff someone pencilled the names:\nRE, LA, MI, SOL. In the margin: \"She always played it backwards.\"",
+            "pt-BR": "Uma canção de ninar, copiada à mão. Sob a pauta alguém escreveu a lápis:\nRE, LA, MI, SOL. Na margem: \"Ela sempre tocava de trás para a frente.\"",
+            "es": "Una nana, copiada a mano. Bajo el pentagrama alguien escribió a lápiz:\nRE, LA, MI, SOL. En el margen: \"Ella siempre la tocaba al revés.\""
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "sheet_note"
+        }
+      ]
+    },
+    {
+      "say": [
+        "sheet_music"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A lullaby, copied by hand. Under the staff someone pencilled the names:\nRE, LA, MI, SOL. In the margin: \"She always played it backwards.\"",
+            "pt-BR": "Uma canção de ninar, copiada à mão. Sob a pauta alguém escreveu a lápis:\nRE, LA, MI, SOL. Na margem: \"Ela sempre tocava de trás para a frente.\"",
+            "es": "Una nana, copiada a mano. Bajo el pentagrama alguien escribió a lápiz:\nRE, LA, MI, SOL. En el margen: \"Ella siempre la tocaba al revés.\""
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "cello_case"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "case_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A battered cello case leaning on the wall, its brass latches tarnished.",
+            "pt-BR": "Um estojo de violoncelo surrado, encostado na parede, com os fechos de latão manchados.",
+            "es": "Un estuche de violonchelo maltrecho, apoyado en la pared, con los cierres de latón deslustrados."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "cello_case"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The case lies open, lined with faded velvet. Empty.",
+            "pt-BR": "O estojo está aberto, forrado de veludo desbotado. Vazio.",
+            "es": "El estuche está abierto, forrado de terciopelo descolorido. Vacío."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "cello_case"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "case_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "case_open",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The latches snap open. On faded velvet lies a long bow.\nYou took the cello bow!",
+            "pt-BR": "Os fechos se abrem com um estalo. Sobre o veludo desbotado há um longo arco.\nVocê pegou o arco de violoncelo!",
+            "es": "Los cierres se abren con un chasquido. Sobre el terciopelo descolorido hay un largo arco.\n¡Tomaste el arco de violonchelo!"
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "bow"
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "cello_case"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Only faded velvet left inside.",
+            "pt-BR": "Só restou o veludo desbotado.",
+            "es": "Dentro solo queda el terciopelo descolorido."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "cello"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A cello on its stand, three of its strings snapped. Its bow is missing.",
+            "pt-BR": "Um violoncelo no suporte, com três cordas arrebentadas. Falta o arco.",
+            "es": "Un violonchelo en su soporte, con tres cuerdas rotas. Le falta el arco."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "bow",
+        "cello"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You draw the bow across the last string. A low groan fills the room, then nothing.",
+            "pt-BR": "Você passa o arco na última corda. Um gemido grave enche a sala, e depois nada.",
+            "es": "Pasas el arco por la última cuerda. Un gemido grave llena la sala, y luego nada."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "gramophone"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "key_freed",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A gramophone with a great brass horn. Something pale is wedged deep in its throat,\nfar beyond your fingers.",
+            "pt-BR": "Um gramofone com uma grande corneta de latão. Algo claro está entalado no fundo,\nlonge do alcance dos dedos.",
+            "es": "Un gramófono con una gran bocina de latón. Algo pálido está atascado en el fondo,\nlejos del alcance de tus dedos."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "gramophone"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A gramophone with a great brass horn. Its throat is empty now.",
+            "pt-BR": "Um gramofone com uma grande corneta de latão. Agora o fundo está vazio.",
+            "es": "Un gramófono con una gran bocina de latón. Ahora el fondo está vacío."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "gramophone"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You lift the lid. A cracked record sits on the turntable. It will never play again.",
+            "pt-BR": "Você ergue a tampa. Um disco rachado está no prato. Nunca mais vai tocar.",
+            "es": "Levantas la tapa. Un disco rajado descansa en el plato. Nunca volverá a sonar."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "bow",
+        "gramophone"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "key_freed",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "key_freed",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You slide the bow deep into the horn and work the thing loose.\nIt drops into your palm. You found an ivory piano key!",
+            "pt-BR": "Você enfia o arco fundo na corneta e solta a coisa aos poucos.\nEla cai na sua mão. Você encontrou uma tecla de marfim!",
+            "es": "Metes el arco hasta el fondo de la bocina y aflojas la cosa poco a poco.\nCae en tu mano. ¡Encontraste una tecla de marfil!"
+          }
+        },
+        {
+          "type": "remove_item",
+          "item": "bow"
+        },
+        {
+          "type": "add_item",
+          "item": "ivory_key"
+        }
+      ]
+    },
+    {
+      "say": [
+        "piano"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "key_fitted",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A black grand piano under a skin of dust. One white key is missing\nfrom the middle of the keyboard, a gap like a pulled tooth.",
+            "pt-BR": "Um piano de cauda preto sob uma camada de poeira. Falta uma tecla branca\nno meio do teclado, um vão como um dente arrancado.",
+            "es": "Un piano de cola negro bajo una capa de polvo. Falta una tecla blanca\nen medio del teclado, un hueco como un diente arrancado."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "piano"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A black grand piano. Its keyboard is whole again.",
+            "pt-BR": "Um piano de cauda preto. O teclado está completo de novo.",
+            "es": "Un piano de cola negro. Su teclado vuelve a estar completo."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "piano"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The lid is already propped open. Inside, the strings wait under the dust.",
+            "pt-BR": "A tampa já está erguida. Lá dentro, as cordas esperam sob a poeira.",
+            "es": "La tapa ya está levantada. Dentro, las cuerdas esperan bajo el polvo."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "ivory_key",
+        "piano"
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "key_fitted",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The ivory key clicks into the gap. The keyboard is whole again.",
+            "pt-BR": "A tecla de marfim se encaixa no vão com um clique. O teclado está completo de novo.",
+            "es": "La tecla de marfil encaja en el hueco con un clic. El teclado vuelve a estar completo."
+          }
+        },
+        {
+          "type": "remove_item",
+          "item": "ivory_key"
+        }
+      ]
+    },
+    {
+      "say": [
+        "sol",
+        "mi",
+        "la",
+        "re",
+        "piano"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "panel_open",
+          "value": true
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The panel already stands open behind you.",
+            "pt-BR": "O painel já está aberto atrás de você.",
+            "es": "El panel ya está abierto a tu espalda."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "sol",
+        "mi",
+        "la",
+        "re",
+        "piano"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "key_fitted",
+          "value": true
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "panel_open",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Sol, mi, la, re. The last note hangs in the moonlight.\nBehind you, wood groans: the lyre panel swings open.",
+            "pt-BR": "Sol, mi, la, re. A última nota fica suspensa no luar.\nAtrás de você, a madeira geme: o painel da lira se abre.",
+            "es": "Sol, mi, la, re. La última nota queda suspendida a la luz de la luna.\nA tu espalda, la madera cruje: el panel de la lira se abre."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "la",
+        "piano"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "key_fitted",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Your finger finds only the gap where the la key should be.",
+            "pt-BR": "Seu dedo encontra só o vão onde deveria estar a tecla lá.",
+            "es": "Tu dedo solo encuentra el hueco donde debería estar la tecla la."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "do",
+        "piano"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Do. The note rings out and slowly fades.",
+            "pt-BR": "Do. A nota ressoa e some devagar.",
+            "es": "Do. La nota resuena y se apaga despacio."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "re",
+        "piano"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Re. The note rings out and slowly fades.",
+            "pt-BR": "Re. A nota ressoa e some devagar.",
+            "es": "Re. La nota resuena y se apaga despacio."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "mi",
+        "piano"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Mi. The note rings out and slowly fades.",
+            "pt-BR": "Mi. A nota ressoa e some devagar.",
+            "es": "Mi. La nota resuena y se apaga despacio."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "fa",
+        "piano"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Fa. The note rings out and slowly fades.",
+            "pt-BR": "Fa. A nota ressoa e some devagar.",
+            "es": "Fa. La nota resuena y se apaga despacio."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "sol",
+        "piano"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Sol. The note rings out and slowly fades.",
+            "pt-BR": "Sol. A nota ressoa e some devagar.",
+            "es": "Sol. La nota resuena y se apaga despacio."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "la",
+        "piano"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "La. The note rings out and slowly fades.",
+            "pt-BR": "La. A nota ressoa e some devagar.",
+            "es": "La. La nota resuena y se apaga despacio."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "si",
+        "piano"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Si. The note rings out and slowly fades.",
+            "pt-BR": "Si. A nota ressoa e some devagar.",
+            "es": "Si. La nota resuena y se apaga despacio."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "panel"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "panel_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Dark oak panelling. One panel is carved with a lyre, its seams finer than the rest.\nThere's no handle, no keyhole.",
+            "pt-BR": "Lambri de carvalho escuro. Um painel tem uma lira entalhada, com frestas mais finas que as outras.\nNão há maçaneta nem fechadura.",
+            "es": "Revestimiento de roble oscuro. Un panel tiene una lira tallada, con juntas más finas que las demás.\nNo hay pomo ni cerradura."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "panel"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The lyre panel stands open. A cold draft smells of cigars and old baize.",
+            "pt-BR": "O painel da lira está aberto. Uma corrente fria cheira a charuto e a feltro velho.",
+            "es": "El panel de la lira está abierto. Una corriente fría huele a puros y a paño viejo."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "panel"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "panel_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "It won't budge. The carved lyre seems to be waiting for something.",
+            "pt-BR": "Não se mexe. A lira entalhada parece esperar alguma coisa.",
+            "es": "No se mueve. La lira tallada parece esperar algo."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "panel"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You squeeze through the panel. A short passage opens on a room of green baize,\nthick with the smell of old cigars.",
+            "pt-BR": "Você passa espremido pelo painel. Um corredor curto dá numa sala de feltro verde,\ncarregada de cheiro de charuto velho.",
+            "es": "Te escurres por el panel. Un pasillo corto da a una sala de paño verde,\ncargada de olor a puros viejos."
+          }
+        },
+        {
+          "type": "change_room",
+          "room": "billiards"
+        }
+      ]
+    },
+    {
+      "say": [
+        "candelabra"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A silver candelabra, its candles burnt down to stubs. No wick left to light.",
+            "pt-BR": "Um candelabro de prata, com as velas queimadas até o toco. Não sobrou pavio para acender.",
+            "es": "Un candelabro de plata, con las velas consumidas hasta el cabo. No queda mecha que encender."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "bench"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A piano bench, its velvet worn through where someone sat for years.",
+            "pt-BR": "Uma banqueta de piano, com o veludo gasto onde alguém se sentou por anos.",
+            "es": "Una banqueta de piano, con el terciopelo gastado donde alguien se sentó durante años."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "bench"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Inside the bench: yellowed scales and finger exercises. Nothing more.",
+            "pt-BR": "Dentro da banqueta: escalas amareladas e exercícios de dedilhado. Nada mais.",
+            "es": "Dentro de la banqueta: escalas amarillentas y ejercicios de digitación. Nada más."
+          }
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "text": {
+        "en-US": "It is too dark in here to read anything. Let some light in.",
+        "pt-BR": "Está escuro demais aqui para ler qualquer coisa. Deixe a luz entrar.",
+        "es": "Está demasiado oscuro aquí para leer nada. Deja entrar la luz."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "curtains_open",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "The music on the stand holds a tune, and a word from whoever played it.",
+        "pt-BR": "A partitura na estante guarda uma melodia, e um recado de quem a tocava.",
+        "es": "La partitura del atril guarda una melodía, y un recado de quien la tocaba."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "sheet_read",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "A piano with a missing key can't play every tune. Something in this room swallowed it.",
+        "pt-BR": "Um piano sem uma tecla não toca todas as melodias. Algo nesta sala a engoliu.",
+        "es": "Un piano al que le falta una tecla no toca todas las melodías. Algo en esta sala se la tragó."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "key_freed",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "Fingers are too short to reach deep into brass. Something long, made for strings, would do.",
+        "pt-BR": "Os dedos são curtos demais para alcançar o fundo do latão. Algo comprido, feito para cordas, serviria.",
+        "es": "Los dedos son demasiado cortos para llegar al fondo del latón. Algo largo, hecho para cuerdas, serviría."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "key_freed",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "The pencilled margin means it: play the melody from its last note to its first, on the keys.",
+        "pt-BR": "A margem escrita a lápis fala sério: toque a melodia da última nota até a primeira, nas teclas.",
+        "es": "El margen a lápiz va en serio: toca la melodía de la última nota a la primera, en las teclas."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "panel_open",
+          "value": true
+        }
+      ]
+    }
+  ]
+}

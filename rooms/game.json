@@ -10,6 +10,16 @@
     "chapel",
     "clocktower",
     "kitchen",
+    "laundry",
+    "dining",
+    "musicroom",
+    "billiards",
+    "gallery",
+    "armory",
+    "bedroom",
+    "bathroom",
+    "darkroom",
+    "attic",
     "foyer"
   ]
 }

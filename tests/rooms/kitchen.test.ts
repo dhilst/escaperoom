@@ -11,7 +11,7 @@ const SOLUTION = solution("kitchen");
 const LIT = SOLUTION.slice(0, 5);
 
 describe("The Kitchen", () => {
-  it("can be solved and leads to the foyer", () => {
+  it("can be solved and leads to the laundry", () => {
     const { state, log, last } = playGame(SOLUTION, at());
     expect(texts(log[0])).toContain("[Ice block added to inventory]");
     expect(texts(log[2])).toContain("[Matches added to inventory]");
@@ -21,9 +21,9 @@ describe("The Kitchen", () => {
       "[Ice block removed from inventory]",
       "[Hall key added to inventory]",
     ]);
-    expect(texts(last)[0]).toMatch(/grand hall\.\nFar ahead, in the gloom, waits the front door\.$/);
-    expect(last).toContainEqual(expect.objectContaining({ type: "room_entered", room: "foyer" }));
-    expect(state).toMatchObject({ roomId: "foyer", completed: false });
+    expect(texts(last)[0]).toMatch(/narrow service passage\.\nIt smells of lye and old steam\.$/);
+    expect(last).toContainEqual(expect.objectContaining({ type: "room_entered", room: "laundry" }));
+    expect(state).toMatchObject({ roomId: "laundry", completed: false });
   });
 
   it("the ice won't melt on a cold stove", () => {

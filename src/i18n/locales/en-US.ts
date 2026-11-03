@@ -24,7 +24,7 @@ export const enUS: Language = {
     itemRemoved: (name) => `[${name} removed from inventory]`,
     noSuchObject: (typed) => `There is no such ${typed}.`,
     notVisible: (typed) => `You don't see any ${typed} here.`,
-    help: "Name something to look at it: clock. Combine what you carry with what you see: key door. Also: open <thing> · turn · look · inventory",
+    help: "How to play: explore with single words. Name what you see to look at it (clock), and read every description closely: the keywords are there, unmarked so nothing is spoiled. Think of the solution as sentences said in the right order. Once you know enough, try longer phrases: they grow as the game goes on, and they pay off more. Skip the extra words: not \"use the key in the door\" but \"key door\". Also: open <thing> · turn · look · inventory",
     hint: (n, total, text) => `Hint ${n}/${total}: ${text}`,
     hintLocked: (countdown) => `Next hint available in ${countdown}`,
     noMoreHints: "There are no more hints for this room.",

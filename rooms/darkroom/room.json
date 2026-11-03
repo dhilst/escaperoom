@@ -1,0 +1,1760 @@
+{
+  "id": "darkroom",
+  "title": {
+    "en-US": "The Darkroom",
+    "pt-BR": "O Quarto Escuro",
+    "es": "El Cuarto Oscuro"
+  },
+  "cameras": {
+    "A": {
+      "image": "camera_a.png",
+      "description": {
+        "en-US": "An enlarger looms over a workbench and two shallow trays.\nA hooded lamp hangs dark on the wall. Everything smells of vinegar.",
+        "pt-BR": "Um ampliador se ergue sobre uma bancada e duas bandejas rasas.\nUma lâmpada com capuz pende apagada na parede. Tudo cheira a vinagre.",
+        "es": "Una ampliadora se alza sobre una mesa de trabajo y dos cubetas planas.\nUna lámpara con capucha cuelga apagada en la pared. Todo huele a vinagre."
+      },
+      "variants": [
+        {
+          "when": [
+            {
+              "type": "flag_equals",
+              "flag": "safelight_on",
+              "value": true
+            }
+          ],
+          "description": {
+            "en-US": "In the red glow, an enlarger looms over the workbench and its two trays.\nA card is pinned above the trays, beside a taped-down switch.",
+            "pt-BR": "No brilho vermelho, um ampliador se ergue sobre a bancada e suas duas bandejas.\nHá um cartão preso acima das bandejas, ao lado de um interruptor coberto de fita.",
+            "es": "Bajo el resplandor rojo, una ampliadora se alza sobre la mesa y sus dos cubetas.\nHay una tarjeta clavada sobre las cubetas, junto a un interruptor tapado con cinta."
+          }
+        }
+      ]
+    },
+    "C": {
+      "image": "camera_c.png",
+      "description": {
+        "en-US": "A tall cabinet stands beside a deep sink.\nShapes hang from a line overhead. A thin strip of light shows under the door.",
+        "pt-BR": "Um armário alto fica ao lado de uma pia funda.\nFormas pendem de um varal no alto. Uma fresta de luz aparece sob a porta.",
+        "es": "Un armario alto está junto a un fregadero hondo.\nDe un cordel cuelgan formas. Una rendija de luz asoma bajo la puerta."
+      },
+      "variants": [
+        {
+          "when": [
+            {
+              "type": "flag_equals",
+              "flag": "safelight_on",
+              "value": true
+            }
+          ],
+          "description": {
+            "en-US": "A tall cabinet and a deep sink, red in the safelight.\nOld prints hang from a line. Every face looks toward the door and its dial lock.",
+            "pt-BR": "Um armário alto e uma pia funda, vermelhos sob a luz de segurança.\nFotos antigas pendem de um varal. Todos os rostos olham para a porta e seu cadeado de disco.",
+            "es": "Un armario alto y un fregadero hondo, rojos bajo la luz de seguridad.\nDe un cordel cuelgan fotos viejas. Todas las caras miran hacia la puerta y su cerradura de disco."
+          }
+        }
+      ]
+    }
+  },
+  "objects": {
+    "bench": {
+      "name": {
+        "en-US": "workbench",
+        "pt-BR": "bancada",
+        "es": "mesa de trabajo"
+      },
+      "aliases": {
+        "en-US": [
+          "bench",
+          "work bench",
+          "table",
+          "counter"
+        ],
+        "pt-BR": [
+          "mesa",
+          "balcão",
+          "bancada de trabalho"
+        ],
+        "es": [
+          "banco de trabajo",
+          "mesa",
+          "mostrador",
+          "encimera"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "drawer": {
+      "name": {
+        "en-US": "drawer",
+        "pt-BR": "gaveta",
+        "es": "cajón"
+      },
+      "aliases": {
+        "en-US": [
+          "bench drawer",
+          "drawers"
+        ],
+        "pt-BR": [
+          "gaveta da bancada",
+          "gavetas"
+        ],
+        "es": [
+          "cajón de la mesa",
+          "cajones"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "enlarger": {
+      "name": {
+        "en-US": "enlarger",
+        "pt-BR": "ampliador",
+        "es": "ampliadora"
+      },
+      "aliases": {
+        "en-US": [
+          "photo enlarger",
+          "easel",
+          "carrier",
+          "negative carrier",
+          "column"
+        ],
+        "pt-BR": [
+          "ampliador fotográfico",
+          "prancheta",
+          "porta negativo",
+          "coluna"
+        ],
+        "es": [
+          "ampliadora fotográfica",
+          "marginador",
+          "portanegativos",
+          "columna"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "developer": {
+      "name": {
+        "en-US": "developer",
+        "pt-BR": "revelador",
+        "es": "revelador"
+      },
+      "aliases": {
+        "en-US": [
+          "developer tray",
+          "first tray",
+          "left tray"
+        ],
+        "pt-BR": [
+          "bandeja do revelador",
+          "primeira bandeja",
+          "bandeja da esquerda"
+        ],
+        "es": [
+          "cubeta del revelador",
+          "primera cubeta",
+          "cubeta de la izquierda"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "fixer": {
+      "name": {
+        "en-US": "fixer",
+        "pt-BR": "fixador",
+        "es": "fijador"
+      },
+      "aliases": {
+        "en-US": [
+          "fixer tray",
+          "second tray",
+          "right tray",
+          "fix"
+        ],
+        "pt-BR": [
+          "bandeja do fixador",
+          "segunda bandeja",
+          "bandeja da direita"
+        ],
+        "es": [
+          "cubeta del fijador",
+          "segunda cubeta",
+          "cubeta de la derecha"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "trays": {
+      "name": {
+        "en-US": "trays",
+        "pt-BR": "bandejas",
+        "es": "cubetas"
+      },
+      "aliases": {
+        "en-US": [
+          "tray",
+          "chemicals",
+          "bottles"
+        ],
+        "pt-BR": [
+          "bandeja",
+          "químicos",
+          "frascos"
+        ],
+        "es": [
+          "cubeta",
+          "químicos",
+          "frascos"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "safelight": {
+      "name": {
+        "en-US": "safelight",
+        "pt-BR": "luz de segurança",
+        "es": "luz de seguridad"
+      },
+      "aliases": {
+        "en-US": [
+          "safe light",
+          "red light",
+          "red lamp",
+          "lamp",
+          "hood",
+          "socket"
+        ],
+        "pt-BR": [
+          "luz vermelha",
+          "lâmpada com capuz",
+          "luminária",
+          "capuz",
+          "soquete"
+        ],
+        "es": [
+          "luz roja",
+          "lámpara roja",
+          "lámpara",
+          "capucha",
+          "casquillo"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "switch": {
+      "name": {
+        "en-US": "switch",
+        "pt-BR": "interruptor",
+        "es": "interruptor"
+      },
+      "aliases": {
+        "en-US": [
+          "light switch",
+          "white light",
+          "ceiling light",
+          "tape"
+        ],
+        "pt-BR": [
+          "luz branca",
+          "luz do teto",
+          "fita"
+        ],
+        "es": [
+          "luz blanca",
+          "luz del techo",
+          "cinta"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "sign": {
+      "name": {
+        "en-US": "card",
+        "pt-BR": "cartão",
+        "es": "tarjeta"
+      },
+      "aliases": {
+        "en-US": [
+          "sign",
+          "notice",
+          "pinned card"
+        ],
+        "pt-BR": [
+          "aviso",
+          "cartão preso",
+          "placa"
+        ],
+        "es": [
+          "letrero",
+          "aviso",
+          "tarjeta clavada",
+          "cartel"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "timer": {
+      "name": {
+        "en-US": "timer",
+        "pt-BR": "temporizador",
+        "es": "temporizador"
+      },
+      "aliases": {
+        "en-US": [
+          "exposure timer",
+          "clock",
+          "needle"
+        ],
+        "pt-BR": [
+          "cronômetro",
+          "relógio",
+          "ponteiro"
+        ],
+        "es": [
+          "reloj",
+          "aguja",
+          "cronómetro"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
+    },
+    "cabinet": {
+      "name": {
+        "en-US": "cabinet",
+        "pt-BR": "armário",
+        "es": "armario"
+      },
+      "aliases": {
+        "en-US": [
+          "tall cabinet",
+          "cupboard",
+          "supply cabinet",
+          "shelves"
+        ],
+        "pt-BR": [
+          "armário alto",
+          "prateleiras",
+          "estante"
+        ],
+        "es": [
+          "armario alto",
+          "alacena",
+          "estantes"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "sink": {
+      "name": {
+        "en-US": "sink",
+        "pt-BR": "pia",
+        "es": "fregadero"
+      },
+      "aliases": {
+        "en-US": [
+          "deep sink",
+          "tap",
+          "faucet",
+          "water"
+        ],
+        "pt-BR": [
+          "pia funda",
+          "torneira",
+          "água",
+          "tanque"
+        ],
+        "es": [
+          "fregadero hondo",
+          "grifo",
+          "agua",
+          "pila"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "line": {
+      "name": {
+        "en-US": "drying line",
+        "pt-BR": "varal",
+        "es": "tendedero"
+      },
+      "aliases": {
+        "en-US": [
+          "line",
+          "prints",
+          "photos",
+          "photographs",
+          "pictures",
+          "faces",
+          "clothespins"
+        ],
+        "pt-BR": [
+          "fotos",
+          "retratos",
+          "rostos",
+          "prendedores"
+        ],
+        "es": [
+          "cordel",
+          "fotos",
+          "retratos",
+          "caras",
+          "pinzas"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    },
+    "door": {
+      "name": {
+        "en-US": "door",
+        "pt-BR": "porta",
+        "es": "puerta"
+      },
+      "aliases": {
+        "en-US": [
+          "dial",
+          "dial lock",
+          "lock",
+          "exit",
+          "frame"
+        ],
+        "pt-BR": [
+          "disco",
+          "cadeado de disco",
+          "cadeado",
+          "fechadura",
+          "saída",
+          "batente"
+        ],
+        "es": [
+          "disco",
+          "cerradura de disco",
+          "cerradura",
+          "salida",
+          "marco"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
+    }
+  },
+  "items": {
+    "red_bulb": {
+      "name": {
+        "en-US": "Red bulb",
+        "pt-BR": "Lâmpada vermelha",
+        "es": "Bombilla roja"
+      },
+      "aliases": {
+        "en-US": [
+          "bulb",
+          "red lightbulb",
+          "lightbulb",
+          "spare bulb"
+        ],
+        "pt-BR": [
+          "lâmpada",
+          "lâmpada reserva",
+          "bulbo"
+        ],
+        "es": [
+          "bombilla",
+          "foco",
+          "bombilla de repuesto",
+          "bombillo"
+        ]
+      },
+      "description": {
+        "en-US": "A spare bulb of deep red glass. A darkroom light.",
+        "pt-BR": "Uma lâmpada reserva de vidro vermelho-escuro. Luz de quarto escuro.",
+        "es": "Una bombilla de repuesto de vidrio rojo oscuro. Luz de cuarto oscuro."
+      }
+    },
+    "canister": {
+      "name": {
+        "en-US": "Film canister",
+        "pt-BR": "Lata de filme",
+        "es": "Bote de película"
+      },
+      "aliases": {
+        "en-US": [
+          "canister",
+          "film",
+          "negative",
+          "negatives",
+          "roll of film"
+        ],
+        "pt-BR": [
+          "lata",
+          "filme",
+          "negativo",
+          "negativos",
+          "rolo de filme"
+        ],
+        "es": [
+          "bote",
+          "película",
+          "negativo",
+          "negativos",
+          "carrete"
+        ]
+      },
+      "description": {
+        "en-US": "A tin canister. Inside, a strip of developed negatives, curled tight.",
+        "pt-BR": "Uma lata de filme. Dentro, uma tira de negativos revelados, bem enrolada.",
+        "es": "Un bote de hojalata. Dentro, una tira de negativos revelados, bien enrollada."
+      }
+    },
+    "paper": {
+      "name": {
+        "en-US": "Photo paper",
+        "pt-BR": "Papel fotográfico",
+        "es": "Papel fotográfico"
+      },
+      "aliases": {
+        "en-US": [
+          "paper",
+          "photographic paper",
+          "sheet",
+          "box of paper"
+        ],
+        "pt-BR": [
+          "papel",
+          "folha",
+          "caixa de papel"
+        ],
+        "es": [
+          "papel",
+          "hoja",
+          "caja de papel"
+        ]
+      },
+      "description": {
+        "en-US": "One last sheet of photographic paper, glossy and blank.",
+        "pt-BR": "Uma última folha de papel fotográfico, brilhante e em branco.",
+        "es": "Una última hoja de papel fotográfico, brillante y en blanco."
+      }
+    },
+    "photograph": {
+      "name": {
+        "en-US": "Photograph: R 59, L 30",
+        "pt-BR": "Fotografia: D 59, E 30",
+        "es": "Fotografía: D 59, I 30"
+      },
+      "aliases": {
+        "en-US": [
+          "photograph",
+          "photo",
+          "print",
+          "picture"
+        ],
+        "pt-BR": [
+          "fotografia",
+          "foto",
+          "cópia",
+          "imagem"
+        ],
+        "es": [
+          "fotografía",
+          "foto",
+          "copia",
+          "imagen"
+        ]
+      },
+      "description": {
+        "en-US": "Your print: a hand on the dial of this room's door.\nChalked on the frame beside it: R 59, L 30.",
+        "pt-BR": "Sua cópia: uma mão no disco da porta desta sala.\nEscrito a giz no batente ao lado: D 59, E 30.",
+        "es": "Tu copia: una mano en el disco de la puerta de este cuarto.\nEscrito con tiza en el marco: D 59, I 30."
+      }
+    },
+    "sign_note": {
+      "name": {
+        "en-US": "Card: expose, develop, fix",
+        "pt-BR": "Cartão: expor, revelar, fixar",
+        "es": "Tarjeta: exponer, revelar, fijar"
+      },
+      "aliases": {
+        "en-US": [
+          "card note",
+          "note"
+        ],
+        "pt-BR": [
+          "anotação do cartão",
+          "anotação"
+        ],
+        "es": [
+          "nota de la tarjeta",
+          "nota"
+        ]
+      },
+      "description": {
+        "en-US": "You noted the card above the trays: \"EXPOSE. DEVELOP. FIX. Never the other way round.\"",
+        "pt-BR": "Você anotou o cartão acima das bandejas: \"EXPOR. REVELAR. FIXAR. Nunca ao contrário.\"",
+        "es": "Anotaste la tarjeta sobre las cubetas: \"EXPONER. REVELAR. FIJAR. Nunca al revés.\""
+      }
+    }
+  },
+  "verbs": {
+    "right": {
+      "name": {
+        "en-US": "right",
+        "pt-BR": "direita",
+        "es": "derecha"
+      },
+      "aliases": {
+        "en-US": [
+          "r",
+          "clockwise"
+        ],
+        "pt-BR": [
+          "d",
+          "horário"
+        ],
+        "es": [
+          "d",
+          "horario"
+        ]
+      }
+    },
+    "left": {
+      "name": {
+        "en-US": "left",
+        "pt-BR": "esquerda",
+        "es": "izquierda"
+      },
+      "aliases": {
+        "en-US": [
+          "l",
+          "counterclockwise",
+          "anticlockwise"
+        ],
+        "pt-BR": [
+          "e",
+          "antihorário"
+        ],
+        "es": [
+          "i",
+          "antihorario"
+        ]
+      }
+    }
+  },
+  "initialFlags": {
+    "drawer_open": false,
+    "cabinet_open": false,
+    "safelight_on": false,
+    "film_loaded": false,
+    "paper_exposed": false,
+    "paper_developed": false,
+    "paper_fixed": false
+  },
+  "brightness": 0.4,
+  "lighting": [
+    {
+      "when": [
+        {
+          "type": "flag_equals",
+          "flag": "safelight_on",
+          "value": true
+        }
+      ],
+      "brightness": 1.0
+    }
+  ],
+  "interactions": [
+    {
+      "say": [
+        "bench"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A long workbench, stained by years of spills. A drawer sits under the trays.",
+            "pt-BR": "Uma bancada comprida, manchada por anos de respingos. Há uma gaveta sob as bandejas.",
+            "es": "Una mesa de trabajo larga, manchada por años de salpicaduras. Hay un cajón bajo las cubetas."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "drawer"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "drawer_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A shallow drawer under the bench. Something rolls inside when you touch it.",
+            "pt-BR": "Uma gaveta rasa sob a bancada. Algo rola lá dentro quando você a toca.",
+            "es": "Un cajón poco hondo bajo la mesa. Algo rueda dentro cuando lo tocas."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "drawer"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Grease pencils and a dead moth. Nothing else.",
+            "pt-BR": "Lápis dermatográficos e uma mariposa morta. Mais nada.",
+            "es": "Lápices grasos y una polilla muerta. Nada más."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "drawer"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "drawer_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "drawer_open",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The drawer sticks, then gives. Among grease pencils, a glass bulb rolls into your hand.\nYou found a red bulb!",
+            "pt-BR": "A gaveta emperra, depois cede. Entre lápis dermatográficos, uma lâmpada de vidro rola para a sua mão.\nVocê encontrou uma lâmpada vermelha!",
+            "es": "El cajón se atasca y luego cede. Entre lápices grasos, una bombilla de vidrio rueda hasta tu mano.\n¡Encontraste una bombilla roja!"
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "red_bulb"
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "drawer"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Only grease pencils and a dead moth are left.",
+            "pt-BR": "Só restaram lápis dermatográficos e uma mariposa morta.",
+            "es": "Solo quedan lápices grasos y una polilla muerta."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "safelight"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "safelight_on",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A darkroom safelight under a black hood. Its socket is empty.",
+            "pt-BR": "Uma luz de segurança de laboratório sob um capuz preto. O soquete está vazio.",
+            "es": "Una luz de seguridad de laboratorio bajo una capucha negra. El casquillo está vacío."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "safelight"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "It glows a deep, steady red. Safe for paper, they say.",
+            "pt-BR": "Ela brilha num vermelho profundo e constante. Segura para o papel, dizem.",
+            "es": "Brilla con un rojo hondo y constante. Segura para el papel, dicen."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "safelight"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You tilt the hood. Nothing inside but the socket.",
+            "pt-BR": "Você inclina o capuz. Nada lá dentro além do soquete.",
+            "es": "Inclinas la capucha. Dentro no hay nada más que el casquillo."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "red_bulb",
+        "safelight"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "safelight_on",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "safelight_on",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You screw the red bulb into the hood. It flickers, then glows the color of old blood.\nThe darkroom swims up out of the dark.",
+            "pt-BR": "Você rosqueia a lâmpada vermelha no capuz. Ela pisca e então brilha da cor de sangue velho.\nO quarto escuro emerge da escuridão.",
+            "es": "Enroscas la bombilla roja en la capucha. Parpadea y luego brilla del color de la sangre vieja.\nEl cuarto oscuro emerge de la oscuridad."
+          }
+        },
+        {
+          "type": "remove_item",
+          "item": "red_bulb"
+        }
+      ]
+    },
+    {
+      "say": [
+        "switch"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The switch for the ceiling bulb, taped down hard.\nOn the tape, in grease pencil: NO WHITE LIGHT. RED ONLY.",
+            "pt-BR": "O interruptor da lâmpada do teto, preso com fita.\nNa fita, a lápis: NADA DE LUZ BRANCA. SÓ VERMELHA.",
+            "es": "El interruptor de la bombilla del techo, sujeto con cinta.\nEn la cinta, a lápiz graso: NADA DE LUZ BLANCA. SOLO ROJA."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "switch"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You pick at the tape, then stop. Whoever taped it down meant it.",
+            "pt-BR": "Você cutuca a fita e para. Quem a colou estava falando sério.",
+            "es": "Rascas la cinta y te detienes. Quien la pegó lo decía en serio."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "sign"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "safelight_on",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A card is pinned above the trays, too dark to read.",
+            "pt-BR": "Há um cartão preso acima das bandejas, escuro demais para ler.",
+            "es": "Hay una tarjeta clavada sobre las cubetas, demasiado oscura para leerla."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "sign"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A card pinned above the trays, in a careful hand:\nEXPOSE. DEVELOP. FIX. Never the other way round.",
+            "pt-BR": "Um cartão preso acima das bandejas, com letra cuidadosa:\nEXPOR. REVELAR. FIXAR. Nunca ao contrário.",
+            "es": "Una tarjeta clavada sobre las cubetas, con letra cuidadosa:\nEXPONER. REVELAR. FIJAR. Nunca al revés."
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "sign_note"
+        }
+      ]
+    },
+    {
+      "say": [
+        "timer"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "An exposure timer. Its needle rests on ten seconds.",
+            "pt-BR": "Um temporizador de exposição. O ponteiro descansa nos dez segundos.",
+            "es": "Un temporizador de exposición. La aguja descansa en diez segundos."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "trays"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Two shallow trays: developer on the left, fixer on the right.",
+            "pt-BR": "Duas bandejas rasas: revelador à esquerda, fixador à direita.",
+            "es": "Dos cubetas planas: revelador a la izquierda, fijador a la derecha."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "developer"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A tray of developer. It smells of vinegar and metal.",
+            "pt-BR": "Uma bandeja de revelador. Cheira a vinagre e metal.",
+            "es": "Una cubeta de revelador. Huele a vinagre y a metal."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "fixer"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A tray of fixer, sharp as bad wine.",
+            "pt-BR": "Uma bandeja de fixador, ácida como vinho ruim.",
+            "es": "Una cubeta de fijador, agria como vino malo."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "enlarger"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "film_loaded",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "An enlarger on a steel column, its lamp head aimed down at the easel.\nThe negative carrier is empty.",
+            "pt-BR": "Um ampliador numa coluna de aço, com a cabeça da lâmpada voltada para a prancheta.\nO porta-negativo está vazio.",
+            "es": "Una ampliadora sobre una columna de acero, con el cabezal apuntando al marginador.\nEl portanegativos está vacío."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "enlarger"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A strip of negatives sits in the carrier. On the easel, a faint image: a door, and a hand.",
+            "pt-BR": "Uma tira de negativos está no porta-negativo. Na prancheta, uma imagem fraca: uma porta e uma mão.",
+            "es": "Una tira de negativos está en el portanegativos. En el marginador, una imagen tenue: una puerta y una mano."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "enlarger"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "film_loaded",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The negative carrier slides out. It's empty, made for a strip of film.",
+            "pt-BR": "O porta-negativo desliza para fora. Está vazio, feito para uma tira de filme.",
+            "es": "El portanegativos se desliza hacia afuera. Está vacío, hecho para una tira de película."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "enlarger"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The negative is in place. Best leave it.",
+            "pt-BR": "O negativo está no lugar. Melhor deixá-lo.",
+            "es": "El negativo está en su sitio. Mejor dejarlo."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "canister",
+        "enlarger"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "safelight_on",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You can't see your own hands. You need light here, but the right kind.",
+            "pt-BR": "Você não enxerga as próprias mãos. Precisa de luz aqui, mas do tipo certo.",
+            "es": "No ves ni tus propias manos. Aquí hace falta luz, pero de la buena."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "canister",
+        "enlarger"
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "film_loaded",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You thread the negatives into the carrier and slide it home.\nOn the easel, a faint image: a door, and a hand on its dial.",
+            "pt-BR": "Você encaixa os negativos no porta-negativo e o empurra até o fim.\nNa prancheta, uma imagem fraca: uma porta e uma mão no seu disco.",
+            "es": "Colocas los negativos en el portanegativos y lo empujas hasta el fondo.\nEn el marginador, una imagen tenue: una puerta y una mano en su disco."
+          }
+        },
+        {
+          "type": "remove_item",
+          "item": "canister"
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "canister"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "safelight_on",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You can't see your own hands. You need light here, but the right kind.",
+            "pt-BR": "Você não enxerga as próprias mãos. Precisa de luz aqui, mas do tipo certo.",
+            "es": "No ves ni tus propias manos. Aquí hace falta luz, pero de la buena."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "canister"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You hold the strip up to the red light: tiny frames, dark where they should be light.\nA door. A hand. Too small to read anything more.",
+            "pt-BR": "Você ergue a tira contra a luz vermelha: quadrinhos minúsculos, escuros onde deveriam ser claros.\nUma porta. Uma mão. Pequeno demais para ler mais.",
+            "es": "Levantas la tira contra la luz roja: cuadritos diminutos, oscuros donde deberían ser claros.\nUna puerta. Una mano. Demasiado pequeño para leer nada más."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "paper",
+        "enlarger"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "safelight_on",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You can't see your own hands. You need light here, but the right kind.",
+            "pt-BR": "Você não enxerga as próprias mãos. Precisa de luz aqui, mas do tipo certo.",
+            "es": "No ves ni tus propias manos. Aquí hace falta luz, pero de la buena."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "paper",
+        "enlarger"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "film_loaded",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The enlarger has no negative in it. You'd only print white.",
+            "pt-BR": "O ampliador está sem negativo. Você só imprimiria branco.",
+            "es": "La ampliadora no tiene negativo. Solo imprimirías blanco."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "paper",
+        "enlarger"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "paper_exposed",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "paper_exposed",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You lay the sheet on the easel and switch the lamp on. One, two, three... ten. Off.\nThe paper looks as blank as before. The image hides in it, waiting.",
+            "pt-BR": "Você coloca a folha na prancheta e acende a lâmpada. Um, dois, três... dez. Apaga.\nO papel parece tão branco quanto antes. A imagem se esconde nele, esperando.",
+            "es": "Pones la hoja en el marginador y enciendes la lámpara. Uno, dos, tres... diez. Apagas.\nEl papel parece tan blanco como antes. La imagen se esconde en él, esperando."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "paper",
+        "enlarger"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The sheet is already exposed. Another dose would burn it black.",
+            "pt-BR": "A folha já foi exposta. Outra dose a queimaria até ficar preta.",
+            "es": "La hoja ya está expuesta. Otra dosis la quemaría hasta dejarla negra."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "paper",
+        "developer"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "safelight_on",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You can't see your own hands. You need light here, but the right kind.",
+            "pt-BR": "Você não enxerga as próprias mãos. Precisa de luz aqui, mas do tipo certo.",
+            "es": "No ves ni tus propias manos. Aquí hace falta luz, pero de la buena."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "paper",
+        "developer"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "paper_exposed",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You rock the blank sheet in the developer. Nothing comes up: it was never exposed.\nYou lift it out before it spoils.",
+            "pt-BR": "Você balança a folha em branco no revelador. Nada aparece: ela nunca foi exposta.\nVocê a tira antes que se estrague.",
+            "es": "Meces la hoja en blanco en el revelador. No aparece nada: nunca fue expuesta.\nLa sacas antes de que se estropee."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "paper",
+        "developer"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "paper_developed",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "paper_developed",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You rock the tray. Grey shapes swim up out of the white:\nthe door of this room, a hand on its dial, chalk marks on the frame.\nIt keeps darkening. It wants the fixer, and soon.",
+            "pt-BR": "Você balança a bandeja. Formas cinzentas emergem do branco:\na porta desta sala, uma mão no seu disco, marcas de giz no batente.\nEla continua escurecendo. Precisa do fixador, e logo.",
+            "es": "Meces la cubeta. Formas grises emergen del blanco:\nla puerta de este cuarto, una mano en su disco, marcas de tiza en el marco.\nSigue oscureciéndose. Necesita el fijador, y pronto."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "paper",
+        "developer"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "It's developed. Any longer and it will go black.",
+            "pt-BR": "Ela já foi revelada. Mais um pouco e ficará preta.",
+            "es": "Ya está revelada. Un poco más y se pondrá negra."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "paper",
+        "fixer"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "safelight_on",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You can't see your own hands. You need light here, but the right kind.",
+            "pt-BR": "Você não enxerga as próprias mãos. Precisa de luz aqui, mas do tipo certo.",
+            "es": "No ves ni tus propias manos. Aquí hace falta luz, pero de la buena."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "paper",
+        "fixer"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "paper_developed",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You hold back. The fixer would set the sheet for good, and there's nothing on it yet.",
+            "pt-BR": "Você se contém. O fixador fixaria a folha para sempre, e ainda não há nada nela.",
+            "es": "Te contienes. El fijador fijaría la hoja para siempre, y todavía no hay nada en ella."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "paper",
+        "fixer"
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "paper_fixed",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You slide the print into the fixer, and the darkening stops.\nYou rinse it and hold it to the red light: a hand on the door's dial,\nand chalked on the frame beside it: R 59, L 30.",
+            "pt-BR": "Você passa a cópia para o fixador, e o escurecimento para.\nVocê a enxágua e a ergue contra a luz vermelha: uma mão no disco da porta,\ne escrito a giz no batente ao lado: D 59, E 30.",
+            "es": "Pasas la copia al fijador y el oscurecimiento se detiene.\nLa enjuagas y la levantas contra la luz roja: una mano en el disco de la puerta,\ny escrito con tiza en el marco: D 59, I 30."
+          }
+        },
+        {
+          "type": "remove_item",
+          "item": "paper"
+        },
+        {
+          "type": "add_item",
+          "item": "photograph"
+        }
+      ]
+    },
+    {
+      "say": [
+        "paper"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "paper_exposed",
+          "value": true
+        },
+        {
+          "type": "flag_equals",
+          "flag": "paper_developed",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "It still looks blank, but it has been exposed. The image is in it, waiting.",
+            "pt-BR": "Ainda parece em branco, mas foi exposta. A imagem está nela, esperando.",
+            "es": "Todavía parece en blanco, pero ya fue expuesta. La imagen está en ella, esperando."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "paper"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "paper_developed",
+          "value": true
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The image is still darkening. It needs the fixer.",
+            "pt-BR": "A imagem continua escurecendo. Precisa do fixador.",
+            "es": "La imagen sigue oscureciéndose. Necesita el fijador."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "paper"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "One last sheet of photographic paper, glossy and blank.",
+            "pt-BR": "Uma última folha de papel fotográfico, brilhante e em branco.",
+            "es": "Una última hoja de papel fotográfico, brillante y en blanco."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "cabinet"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "cabinet_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A tall supply cabinet with a stiff latch. Something inside rattles like tin.",
+            "pt-BR": "Um armário alto de suprimentos, com um trinco duro. Algo lá dentro chacoalha como lata.",
+            "es": "Un armario alto de suministros, con un pestillo duro. Algo dentro suena a hojalata."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "cabinet"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Empty boxes of paper and dried-out bottles. Nothing more of use.",
+            "pt-BR": "Caixas de papel vazias e frascos ressecados. Nada mais de útil.",
+            "es": "Cajas de papel vacías y frascos resecos. Nada más que sirva."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "cabinet"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "cabinet_open",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "cabinet_open",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The latch gives. Among empty boxes, a tin canister of film, and a box with one sheet of paper left.\nYou found a film canister and photo paper!",
+            "pt-BR": "O trinco cede. Entre caixas vazias, uma lata de filme e uma caixa com uma última folha de papel.\nVocê encontrou uma lata de filme e papel fotográfico!",
+            "es": "El pestillo cede. Entre cajas vacías, un bote de película y una caja con una última hoja de papel.\n¡Encontraste un bote de película y papel fotográfico!"
+          }
+        },
+        {
+          "type": "add_item",
+          "item": "canister"
+        },
+        {
+          "type": "add_item",
+          "item": "paper"
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "cabinet"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Only empty boxes and dried-out bottles are left.",
+            "pt-BR": "Só restaram caixas vazias e frascos ressecados.",
+            "es": "Solo quedan cajas vacías y frascos resecos."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "sink"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A deep sink. The tap drips, slow as a heartbeat, into stained water.",
+            "pt-BR": "Uma pia funda. A torneira pinga, lenta como um coração, em água manchada.",
+            "es": "Un fregadero hondo. El grifo gotea, lento como un latido, en agua manchada."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "line"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "safelight_on",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Shapes hang from a line overhead, too dark to make out.",
+            "pt-BR": "Formas pendem de um varal no alto, escuras demais para distinguir.",
+            "es": "De un cordel cuelgan formas, demasiado oscuras para distinguirlas."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "line"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Old prints, pegged in a row. Faces you don't know, all of them turned the same way:\ntoward the door.",
+            "pt-BR": "Fotos antigas, presas em fila. Rostos que você não conhece, todos virados para o mesmo lado:\npara a porta.",
+            "es": "Fotos viejas, colgadas en fila. Caras que no conoces, todas vueltas hacia el mismo lado:\nhacia la puerta."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "door"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "A light-tight door with a dial lock like a safe's, numbered 0 to 99.\nAn arrow is scratched beside it: one way, then back the other.",
+            "pt-BR": "Uma porta vedada à luz, com um cadeado de disco como o de um cofre, numerado de 0 a 99.\nHá uma seta riscada ao lado: para um lado, depois de volta para o outro.",
+            "es": "Una puerta estanca a la luz, con una cerradura de disco como la de una caja fuerte, numerada del 0 al 99.\nHay una flecha rayada al lado: hacia un lado, luego de vuelta hacia el otro."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "open",
+        "door"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "It won't budge. The dial lock holds it.",
+            "pt-BR": "Ela não se mexe. O cadeado de disco a segura.",
+            "es": "No se mueve. La cerradura de disco la sujeta."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "right",
+        "59",
+        "left",
+        "30",
+        "door"
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "Right to fifty-nine, left to thirty. The bolt slides back with a dry clack.\nBeyond the door, a ladder climbs into the dark, up to a trapdoor and the attic above.",
+            "pt-BR": "Para a direita até cinquenta e nove, para a esquerda até trinta. O ferrolho recua com um estalo seco.\nAlém da porta, uma escada sobe na escuridão até um alçapão e o sótão lá em cima.",
+            "es": "A la derecha hasta cincuenta y nueve, a la izquierda hasta treinta. El cerrojo se retira con un chasquido seco.\nTras la puerta, una escalera sube en la oscuridad hasta una trampilla y el desván."
+          }
+        },
+        {
+          "type": "change_room",
+          "room": "attic"
+        }
+      ]
+    }
+  ],
+  "hints": [
+    {
+      "text": {
+        "en-US": "It is far too dark to work in here, and the wrong kind of light would ruin everything.",
+        "pt-BR": "Está escuro demais para trabalhar aqui, e o tipo errado de luz estragaria tudo.",
+        "es": "Aquí está demasiado oscuro para trabajar, y la luz equivocada lo arruinaría todo."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "safelight_on",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "The red lamp on the wall has no bulb. A workbench often keeps a spare.",
+        "pt-BR": "A luminária vermelha da parede está sem lâmpada. Uma bancada costuma guardar uma reserva.",
+        "es": "La lámpara roja de la pared no tiene bombilla. Una mesa de trabajo suele guardar una de repuesto."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "safelight_on",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "A photographer keeps film and paper locked away from the light. Look in the tall cabinet.",
+        "pt-BR": "Um fotógrafo guarda filme e papel longe da luz. Procure no armário alto.",
+        "es": "Un fotógrafo guarda la película y el papel lejos de la luz. Busca en el armario alto."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "cabinet_open",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "The negatives belong in the enlarger, and the paper goes under its lamp.",
+        "pt-BR": "Os negativos vão no ampliador, e o papel vai sob a sua lâmpada.",
+        "es": "Los negativos van en la ampliadora, y el papel va bajo su lámpara."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "paper_exposed",
+          "value": true
+        }
+      ]
+    },
+    {
+      "text": {
+        "en-US": "A print shows nothing until it is developed, and keeps nothing until it is fixed. The card above the trays knows the way.",
+        "pt-BR": "Uma cópia não mostra nada até ser revelada, e não guarda nada até ser fixada. O cartão acima das bandejas sabe o caminho.",
+        "es": "Una copia no muestra nada hasta revelarla, y no guarda nada hasta fijarla. La tarjeta sobre las cubetas conoce el camino."
+      },
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "paper_fixed",
+          "value": true
+        }
+      ]
+    }
+  ]
+}
