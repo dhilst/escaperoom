@@ -10,4 +10,4 @@ export {
 } from "./state";
 export { stepGame, createGameState, enterRoom } from "./game";
 export { validateRoom, validateGame, RoomValidationError } from "./validate";
-export { restoreState } from "./save";
+export { clearedRooms, nextSave, restoreState, resumeGame, type SaveData } from "./save";

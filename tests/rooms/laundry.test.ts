@@ -30,7 +30,7 @@ describe("The Laundry", () => {
   it("the washtub gives up the pillowcase once", () => {
     const { state, log } = run(["washtub", "washtub", "water"]);
     expect(texts(log[0])).toContain("[Pillowcase added to inventory]");
-    expect(texts(log[1])).toEqual(["Grey water, cold and still. Nothing else lies at the bottom."]);
+    expect(texts(log[1])).toEqual(["Grey water, cold and still. Nothing else lies at the bottom.\nA soap dish sits on the rim."]);
     expect(state.inventory).toEqual(["pillowcase"]);
   });
 
@@ -138,5 +138,9 @@ describe("The Laundry", () => {
     const esWin = run(solution("laundry", "es"), start("es"), "es");
     expect(texts(esWin.last)[0]).toMatch(/^Frotas la llave con el jabón/);
     expect(esWin.state.roomId).toBe("dining");
+  });
+
+  it("mentions the soap dish, so the soap can be found", () => {
+    expect(texts(run(["look"]).last)[0]).toMatch(/soap dish on its rim/);
   });
 });

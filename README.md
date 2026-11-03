@@ -123,11 +123,20 @@ Doing the parts one at a time doesn't work in those rooms.
 The game saves to the browser's `localStorage` after every command: the
 room, camera, inventory, flags, revealed hints and the level's hint clock.
 Reopening the page resumes where you left off, with "Your progress was
-restored.", even in a different `?lang`. Saves are checked against the
-current rooms (`restoreState()` in `src/engine/save.ts`), and one that no
-longer fits is ignored. Winning clears the save, so reloading after the end
-starts a new game. To start over by hand, clear the site's data in the
-browser. In development, `?room=N` always starts that level.
+restored.", even in a different `?lang`.
+
+The save also lists the levels you have finished, so new levels never cost
+you progress (`resumeGame()` in `src/engine/save.ts`):
+
+- A save that still fits the current rooms resumes exactly.
+- A finished game is kept. If levels were added since, the next visit
+  starts at the first one you haven't played. If not, it starts a new game.
+- A save whose room changed shape restarts that room, not the whole game.
+  One whose room was removed goes on at the first unfinished level.
+
+To start over by hand, clear the site's data in the browser. In
+development, `?room=N` always starts that level and doesn't save, so
+testing never overwrites real progress.
 
 ### Hidden commands
 

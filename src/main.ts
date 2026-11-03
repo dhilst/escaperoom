@@ -105,7 +105,7 @@ function start(game: GameDefinition, language: Language): void {
     const isHelp = parsed.command.words.length === 1 && parsed.command.words[0] === "help";
     ui.say(lines, isHelp ? HELP_HOLD_MS : undefined);
     render();
-    writeSave(state);
+    if (saving) writeSave(state, game);
   };
 
   ui.form.addEventListener("submit", (e) => {
@@ -123,14 +123,14 @@ function start(game: GameDefinition, language: Language): void {
     ui.input.value = history[historyIndex] ?? "";
   });
 
-  const { state: initial, restored } = startState(game);
+  const { state: initial, restored, saving } = startState(game);
   state = initial;
   ui.say([
     { text: describeCamera(state, currentRoom()), kind: "response" },
     { text: restored ? language.ui.progressRestored : language.ui.helpTip, kind: "hint" },
   ]);
   render();
-  writeSave(state);
+  if (saving) writeSave(state, game);
   ui.focusInput();
 }
 
@@ -145,13 +145,16 @@ ui.setTypingSpeed(wpmFromParam(params.get("wpm")));
  * Testing aid, dev server only: ?room=N starts at level N (1-based; a room id
  * such as ?room=cellar works too). Production builds ignore it.
  */
-function startState(game: GameDefinition): { state: GameState; restored: boolean } {
+function startState(game: GameDefinition): { state: GameState; restored: boolean; saving: boolean } {
   const wanted = import.meta.env.DEV ? params.get("room") : null;
   const roomId = wanted && (game.order[Number(wanted) - 1] ?? (wanted in game.rooms ? wanted : undefined));
-  if (roomId) return { state: createInitialState(game.rooms[roomId], Date.now()), restored: false };
+  // A test session doesn't save, so it never overwrites real progress.
+  if (roomId) return { state: createInitialState(game.rooms[roomId], Date.now()), restored: false, saving: false };
   // Progress is saved in this browser after every command (see persistence.ts).
-  const saved = loadSave(game);
-  return saved ? { state: saved, restored: true } : { state: createGameState(game, Date.now()), restored: false };
+  const saved = loadSave(game, Date.now());
+  return saved
+    ? { state: saved, restored: true, saving: true }
+    : { state: createGameState(game, Date.now()), restored: false, saving: true };
 }
 
 const hintUnlockMs =

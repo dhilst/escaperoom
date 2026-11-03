@@ -9,9 +9,9 @@
     "A": {
       "image": "camera_a.png",
       "description": {
-        "en-US": "A copper boiler squats on a cold brick firebox beside an iron mangle.\nA zinc washtub of grey water stands under a fogged window.",
-        "pt-BR": "Uma caldeira de cobre repousa sobre uma fornalha de tijolos fria, ao lado de uma calandra de ferro.\nUma tina de zinco com água cinzenta fica sob uma janela embaçada.",
-        "es": "Una caldera de cobre descansa sobre un hogar de ladrillo frío, junto a un escurridor de hierro.\nUna tina de zinc con agua gris está bajo una ventana empañada."
+        "en-US": "A copper boiler squats on a cold brick firebox beside an iron mangle.\nA zinc washtub of grey water stands under a fogged window, a soap dish on its rim.",
+        "pt-BR": "Uma caldeira de cobre repousa sobre uma fornalha de tijolos fria, ao lado de uma calandra de ferro.\nUma tina de zinco com água cinzenta fica sob uma janela embaçada, com uma saboneteira na borda.",
+        "es": "Una caldera de cobre descansa sobre un hogar de ladrillo frío, junto a un escurridor de hierro.\nUna tina de zinc con agua gris está bajo una ventana empañada, con una jabonera en el borde."
       },
       "variants": [
         {
@@ -23,9 +23,9 @@
             }
           ],
           "description": {
-            "en-US": "The copper boiler glows over its roaring firebox beside the iron mangle.\nSteam curls from the zinc washtub under the fogged window.",
-            "pt-BR": "A caldeira de cobre brilha sobre a fornalha acesa, ao lado da calandra de ferro.\nO vapor sobe da tina de zinco sob a janela embaçada.",
-            "es": "La caldera de cobre brilla sobre el hogar encendido, junto al escurridor de hierro.\nEl vapor sube de la tina de zinc bajo la ventana empañada."
+            "en-US": "The copper boiler glows over its roaring firebox beside the iron mangle.\nSteam curls from the zinc washtub under the fogged window, a soap dish on its rim.",
+            "pt-BR": "A caldeira de cobre brilha sobre a fornalha acesa, ao lado da calandra de ferro.\nO vapor sobe da tina de zinco sob a janela embaçada, com uma saboneteira na borda.",
+            "es": "La caldera de cobre brilla sobre el hogar encendido, junto al escurridor de hierro.\nEl vapor sube de la tina de zinc bajo la ventana empañada, con una jabonera en el borde."
           }
         }
       ]
@@ -707,9 +707,9 @@
         {
           "type": "display_message",
           "text": {
-            "en-US": "Grey water, cold and still. Nothing else lies at the bottom.",
-            "pt-BR": "Água cinzenta, fria e parada. Não há mais nada no fundo.",
-            "es": "Agua gris, fría y quieta. No queda nada más en el fondo."
+            "en-US": "Grey water, cold and still. Nothing else lies at the bottom.\nA soap dish sits on the rim.",
+            "pt-BR": "Água cinzenta, fria e parada. Não há mais nada no fundo.\nHá uma saboneteira na borda.",
+            "es": "Agua gris, fría y quieta. No queda nada más en el fondo.\nHay una jabonera en el borde."
           }
         }
       ]

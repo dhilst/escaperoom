@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { loadGame } from "../src/content";
-import { createGameState, restoreState } from "../src/engine";
+import { createGameState, createInitialState, nextSave, restoreState, resumeGame } from "../src/engine";
 import { game, playGame } from "./helpers";
 import { fullSolution, solution } from "./solutions";
 
@@ -60,5 +60,66 @@ describe("saved games", () => {
     const saved = roundTrip(midGame());
     delete saved.flags.power_on;
     expect(restoreState(saved, game)!.flags.power_on).toBe(false);
+  });
+});
+
+describe("finished levels", () => {
+  /** Write saves the way the browser does, one per command, starting from `from`. */
+  const playSaving = (lines: string[], from: unknown = undefined) => {
+    let save = from;
+    let state = resumeGame(from, game)?.state ?? createGameState(game);
+    for (const line of lines) {
+      state = playGame([line], state).state;
+      save = roundTrip(nextSave(save, state, game));
+    }
+    return save as ReturnType<typeof nextSave>;
+  };
+
+  it("are recorded as the player moves on", () => {
+    const save = playSaving([...solution("study"), ...solution("cellar")]);
+    expect(save).toMatchObject({ roomId: "observatory", cleared: ["study", "cellar"] });
+  });
+
+  it("a mid-game save resumes exactly where it was", () => {
+    const save = roundTrip(nextSave(undefined, midGame(), game));
+    expect(resumeGame(save, game)!.state).toEqual(midGame());
+  });
+
+  it("a won game is kept, and starts over only when nothing new is left", () => {
+    const won = playSaving(fullSolution());
+    expect(won.completed).toBe(true);
+    expect(won.cleared).toEqual(game.order);
+    expect(resumeGame(won, game)).toBeUndefined();
+  });
+
+  it("levels added after a win are waiting for the player", () => {
+    const won = playSaving(fullSolution());
+    // An older game without the laundry and the dining hall:
+    const older = { ...won, cleared: won.cleared.filter((id) => id !== "laundry" && id !== "dining") };
+    const resumed = resumeGame(older, game, 123)!;
+    expect(resumed.state).toMatchObject({ roomId: "laundry", inventory: [], completed: false, levelStartedAt: 123 });
+    // ...and once they're played, the game ends again where it always did.
+    const { state } = playGame(game.order.slice(game.order.indexOf("laundry")).flatMap((id) => solution(id)), resumed.state);
+    expect(state).toMatchObject({ roomId: "foyer", completed: true });
+  });
+
+  it("saves from before finished levels were recorded count the earlier rooms as done", () => {
+    const old = roundTrip(midGame()); // in the cellar, no `cleared`
+    const inObservatory = playGame(solution("cellar"), createInitialState(game.rooms.cellar)).state;
+    expect(nextSave(old, inObservatory, game).cleared).toEqual(["study", "cellar"]);
+  });
+
+  it("a room that changed shape restarts that room instead of the whole game", () => {
+    const save = { ...roundTrip(nextSave(undefined, midGame(), game)), inventory: ["no_such_item"] };
+    expect(resumeGame(save, game, 5)!.state).toMatchObject({ roomId: "cellar", inventory: [], levelStartedAt: 5 });
+  });
+
+  it("a room that no longer exists goes on at the first unfinished level", () => {
+    const save = { ...roundTrip(nextSave(undefined, midGame(), game)), roomId: "ballroom", cleared: ["study", "cellar"] };
+    expect(resumeGame(save, game)!.state.roomId).toBe("observatory");
+  });
+
+  it("nothing usable means a new game", () => {
+    for (const data of [undefined, null, "x", [], 42]) expect(resumeGame(data, game)).toBeUndefined();
   });
 });

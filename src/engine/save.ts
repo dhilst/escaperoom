@@ -1,3 +1,4 @@
+import { createInitialState } from "./state";
 import type { CameraId, FlagValue, GameDefinition, GameState } from "./types";
 
 /**
@@ -47,4 +48,52 @@ export function restoreState(data: unknown, game: GameDefinition): GameState | u
     hints: [...(hints as number[])],
     levelStartedAt: s.levelStartedAt,
   };
+}
+
+/** What is stored: the game state plus the rooms the player has finished. */
+export type SaveData = GameState & { cleared: string[] };
+
+const isRecord = (v: unknown): v is Record<string, unknown> => typeof v === "object" && v !== null && !Array.isArray(v);
+
+/**
+ * The rooms a save has finished. Saves from before `cleared` existed count
+ * every room before their current one (in today's level order).
+ */
+export function clearedRooms(data: unknown, game: GameDefinition): string[] {
+  if (!isRecord(data)) return [];
+  if (Array.isArray(data.cleared)) return data.cleared.filter((id): id is string => typeof id === "string");
+  const index = typeof data.roomId === "string" ? game.order.indexOf(data.roomId) : -1;
+  return index > 0 ? game.order.slice(0, index) : [];
+}
+
+/** The save to write after `state`, carrying over what the previous save had finished. */
+export function nextSave(previous: unknown, state: GameState, game: GameDefinition): SaveData {
+  const cleared = new Set(clearedRooms(previous, game));
+  const before = isRecord(previous) ? previous.roomId : undefined;
+  if (typeof before === "string" && before !== state.roomId) cleared.add(before);
+  if (state.completed) cleared.add(state.roomId);
+  return { ...state, cleared: [...cleared] };
+}
+
+/**
+ * Where a returning player picks up. A save that still fits resumes exactly.
+ * A finished game, or one whose room is gone, goes on at the first room not
+ * yet finished, so levels added since are waiting for the player. A save
+ * whose room changed shape restarts that room. With nothing left to play,
+ * or nothing usable saved, it's undefined: a new game.
+ */
+export function resumeGame(
+  data: unknown,
+  game: GameDefinition,
+  now = 0,
+): { state: GameState; cleared: string[] } | undefined {
+  if (!isRecord(data)) return undefined;
+  const cleared = clearedRooms(data, game);
+  const exact = restoreState(data, game);
+  if (exact) return { state: exact, cleared };
+  const roomId = typeof data.roomId === "string" ? data.roomId : undefined;
+  const room = roomId !== undefined && game.order.includes(roomId) ? game.rooms[roomId] : undefined;
+  if (room && data.completed === false) return { state: createInitialState(room, now), cleared };
+  const next = game.order.find((id) => !cleared.includes(id));
+  return next ? { state: createInitialState(game.rooms[next], now), cleared } : undefined;
 }
