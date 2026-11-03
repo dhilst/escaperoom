@@ -1,6 +1,10 @@
 {
   "id": "chapel",
-  "title": {"en-US": "The Chapel", "pt-BR": "A Capela", "es": "La Capilla"},
+  "title": {
+    "en-US": "The Chapel",
+    "pt-BR": "A Capela",
+    "es": "La Capilla"
+  },
   "cameras": {
     "A": {
       "image": "camera_a.png",
@@ -11,7 +15,13 @@
       },
       "variants": [
         {
-          "when": [{"type": "flag_equals", "flag": "lit", "value": 3}],
+          "when": [
+            {
+              "type": "flag_equals",
+              "flag": "lit",
+              "value": 3
+            }
+          ],
           "description": {
             "en-US": "A stone altar stands beneath a stained-glass window.\nAll three candles burn. The glass glows above them.",
             "pt-BR": "Um altar de pedra se ergue sob um vitral.\nAs três velas queimam. O vitral brilha acima delas.",
@@ -29,7 +39,13 @@
       },
       "variants": [
         {
-          "when": [{"type": "flag_equals", "flag": "panel_open", "value": true}],
+          "when": [
+            {
+              "type": "flag_equals",
+              "flag": "panel_open",
+              "value": true
+            }
+          ],
           "description": {
             "en-US": "A red lamp hangs on a chain above a lectern and its open hymnal.\nThe confessional stands against the wall. Cold air seeps from it.",
             "pt-BR": "Uma lamparina vermelha pende de uma corrente sobre um atril com um hinário aberto.\nO confessionário está encostado na parede. Um ar frio escapa dele.",
@@ -41,13 +57,35 @@
   },
   "objects": {
     "altar": {
-      "name": {"en-US": "altar", "pt-BR": "altar", "es": "altar"},
-      "aliases": {
-        "en-US": ["stone altar", "candles", "altar cloth", "carpet", "runner"],
-        "pt-BR": ["altar de pedra", "velas", "toalha do altar", "tapete"],
-        "es": ["altar de piedra", "velas", "mantel", "alfombra"]
+      "name": {
+        "en-US": "altar",
+        "pt-BR": "altar",
+        "es": "altar"
       },
-      "cameras": ["A"]
+      "aliases": {
+        "en-US": [
+          "stone altar",
+          "candles",
+          "altar cloth",
+          "carpet",
+          "runner"
+        ],
+        "pt-BR": [
+          "altar de pedra",
+          "velas",
+          "toalha do altar",
+          "tapete"
+        ],
+        "es": [
+          "altar de piedra",
+          "velas",
+          "mantel",
+          "alfombra"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
     },
     "white_candle": {
       "name": {
@@ -55,22 +93,64 @@
         "pt-BR": "vela branca",
         "es": "vela blanca"
       },
-      "aliases": {"en-US": ["white"], "pt-BR": ["branca"], "es": ["blanca"]},
-      "cameras": ["A"]
+      "aliases": {
+        "en-US": [
+          "white"
+        ],
+        "pt-BR": [
+          "branca"
+        ],
+        "es": [
+          "blanca"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
     },
     "red_candle": {
-      "name": {"en-US": "red candle", "pt-BR": "vela vermelha", "es": "vela roja"},
-      "aliases": {"en-US": ["red"], "pt-BR": ["vermelha"], "es": ["roja"]},
-      "cameras": ["A"]
+      "name": {
+        "en-US": "red candle",
+        "pt-BR": "vela vermelha",
+        "es": "vela roja"
+      },
+      "aliases": {
+        "en-US": [
+          "red"
+        ],
+        "pt-BR": [
+          "vermelha"
+        ],
+        "es": [
+          "roja"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
     },
     "black_candle": {
-      "name": {"en-US": "black candle", "pt-BR": "vela preta", "es": "vela negra"},
-      "aliases": {
-        "en-US": ["black"],
-        "pt-BR": ["preta", "vela negra", "negra"],
-        "es": ["negra"]
+      "name": {
+        "en-US": "black candle",
+        "pt-BR": "vela preta",
+        "es": "vela negra"
       },
-      "cameras": ["A"]
+      "aliases": {
+        "en-US": [
+          "black"
+        ],
+        "pt-BR": [
+          "preta",
+          "vela negra",
+          "negra"
+        ],
+        "es": [
+          "negra"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
     },
     "candle_box": {
       "name": {
@@ -79,25 +159,67 @@
         "es": "caja de velas"
       },
       "aliases": {
-        "en-US": ["box", "small box", "tin box"],
-        "pt-BR": ["caixa", "caixinha", "caixa de lata"],
-        "es": ["caja", "cajita", "caja de lata"]
+        "en-US": [
+          "box",
+          "small box",
+          "tin box"
+        ],
+        "pt-BR": [
+          "caixa",
+          "caixinha",
+          "caixa de lata"
+        ],
+        "es": [
+          "caja",
+          "cajita",
+          "caja de lata"
+        ]
       },
-      "cameras": ["A"]
+      "cameras": [
+        "A"
+      ]
     },
     "window": {
-      "name": {"en-US": "stained-glass window", "pt-BR": "vitral", "es": "vitral"},
-      "aliases": {
-        "en-US": ["stained glass", "window", "glass"],
-        "pt-BR": ["janela", "vidro", "vitrais"],
-        "es": ["vidriera", "ventana", "vidrio"]
+      "name": {
+        "en-US": "stained-glass window",
+        "pt-BR": "vitral",
+        "es": "vitral"
       },
-      "cameras": ["A"]
+      "aliases": {
+        "en-US": [
+          "stained glass",
+          "window",
+          "glass"
+        ],
+        "pt-BR": [
+          "janela",
+          "vidro",
+          "vitrais"
+        ],
+        "es": [
+          "vidriera",
+          "ventana",
+          "vidrio"
+        ]
+      },
+      "cameras": [
+        "A"
+      ]
     },
     "lamp": {
-      "name": {"en-US": "lamp", "pt-BR": "lamparina", "es": "lámpara"},
+      "name": {
+        "en-US": "lamp",
+        "pt-BR": "lamparina",
+        "es": "lámpara"
+      },
       "aliases": {
-        "en-US": ["red lamp", "sanctuary lamp", "red light", "flame", "chain"],
+        "en-US": [
+          "red lamp",
+          "sanctuary lamp",
+          "red light",
+          "flame",
+          "chain"
+        ],
         "pt-BR": [
           "lamparina vermelha",
           "lâmpada",
@@ -113,25 +235,64 @@
           "cadena"
         ]
       },
-      "cameras": ["C"]
+      "cameras": [
+        "C"
+      ]
     },
     "lectern": {
-      "name": {"en-US": "lectern", "pt-BR": "atril", "es": "atril"},
-      "aliases": {
-        "en-US": ["stand", "reading stand"],
-        "pt-BR": ["púlpito", "estante"],
-        "es": ["facistol", "pupitre"]
+      "name": {
+        "en-US": "lectern",
+        "pt-BR": "atril",
+        "es": "atril"
       },
-      "cameras": ["C"]
+      "aliases": {
+        "en-US": [
+          "stand",
+          "reading stand"
+        ],
+        "pt-BR": [
+          "púlpito",
+          "estante"
+        ],
+        "es": [
+          "facistol",
+          "pupitre"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
     },
     "hymnal": {
-      "name": {"en-US": "hymnal", "pt-BR": "hinário", "es": "himnario"},
-      "aliases": {
-        "en-US": ["hymn book", "hymnbook", "book", "verse", "page"],
-        "pt-BR": ["livro de hinos", "livro", "verso", "página"],
-        "es": ["libro de himnos", "libro", "verso", "página"]
+      "name": {
+        "en-US": "hymnal",
+        "pt-BR": "hinário",
+        "es": "himnario"
       },
-      "cameras": ["C"]
+      "aliases": {
+        "en-US": [
+          "hymn book",
+          "hymnbook",
+          "book",
+          "verse",
+          "page"
+        ],
+        "pt-BR": [
+          "livro de hinos",
+          "livro",
+          "verso",
+          "página"
+        ],
+        "es": [
+          "libro de himnos",
+          "libro",
+          "verso",
+          "página"
+        ]
+      },
+      "cameras": [
+        "C"
+      ]
     },
     "confessional": {
       "name": {
@@ -140,7 +301,13 @@
         "es": "confesionario"
       },
       "aliases": {
-        "en-US": ["booth", "panel", "back panel", "curtain", "exit"],
+        "en-US": [
+          "booth",
+          "panel",
+          "back panel",
+          "curtain",
+          "exit"
+        ],
         "pt-BR": [
           "cabine",
           "painel",
@@ -156,16 +323,34 @@
           "salida"
         ]
       },
-      "cameras": ["C"]
+      "cameras": [
+        "C"
+      ]
     }
   },
   "items": {
     "taper": {
-      "name": {"en-US": "Taper", "pt-BR": "Pavio de cera", "es": "Mecha de cera"},
+      "name": {
+        "en-US": "Taper",
+        "pt-BR": "Pavio de cera",
+        "es": "Mecha de cera"
+      },
       "aliases": {
-        "en-US": ["wax taper", "long taper", "spill"],
-        "pt-BR": ["pavio", "vela fina", "acendedor"],
-        "es": ["mecha", "vela larga", "encendedor"]
+        "en-US": [
+          "wax taper",
+          "long taper",
+          "spill"
+        ],
+        "pt-BR": [
+          "pavio",
+          "vela fina",
+          "acendedor"
+        ],
+        "es": [
+          "mecha",
+          "vela larga",
+          "encendedor"
+        ]
       },
       "description": {
         "en-US": "A long wax taper, made for reaching high wicks.",
@@ -180,9 +365,21 @@
         "es": "Himnario: alba, sangre, noche"
       },
       "aliases": {
-        "en-US": ["hymnal note", "verse note", "note"],
-        "pt-BR": ["anotação do hinário", "anotação do verso", "anotação"],
-        "es": ["nota del himnario", "nota del verso", "nota"]
+        "en-US": [
+          "hymnal note",
+          "verse note",
+          "note"
+        ],
+        "pt-BR": [
+          "anotação do hinário",
+          "anotação do verso",
+          "anotação"
+        ],
+        "es": [
+          "nota del himnario",
+          "nota del verso",
+          "nota"
+        ]
       },
       "description": {
         "en-US": "You noted the underlined verse: \"First the dawn, then the blood, then the night.\"",
@@ -191,12 +388,30 @@
       }
     }
   },
-  "initialFlags": {"box_open": false, "taper_lit": false, "lit": 0, "panel_open": false},
+  "initialFlags": {
+    "box_open": false,
+    "taper_lit": false,
+    "lit": 0,
+    "panel_open": false
+  },
   "brightness": 0.5,
-  "lighting": [{"when": [{"type": "flag_equals", "flag": "lit", "value": 3}], "brightness": 1.05}],
+  "lighting": [
+    {
+      "when": [
+        {
+          "type": "flag_equals",
+          "flag": "lit",
+          "value": 3
+        }
+      ],
+      "brightness": 1.05
+    }
+  ],
   "interactions": [
     {
-      "say": ["altar"],
+      "say": [
+        "altar"
+      ],
       "effects": [
         {
           "type": "display_message",
@@ -209,7 +424,9 @@
       ]
     },
     {
-      "say": ["window"],
+      "say": [
+        "window"
+      ],
       "effects": [
         {
           "type": "display_message",
@@ -222,8 +439,16 @@
       ]
     },
     {
-      "say": ["white_candle"],
-      "conditions": [{"type": "flag_equals", "flag": "lit", "value": 0}],
+      "say": [
+        "white_candle"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "lit",
+          "value": 0
+        }
+      ],
       "effects": [
         {
           "type": "display_message",
@@ -236,7 +461,9 @@
       ]
     },
     {
-      "say": ["white_candle"],
+      "say": [
+        "white_candle"
+      ],
       "effects": [
         {
           "type": "display_message",
@@ -249,8 +476,16 @@
       ]
     },
     {
-      "say": ["red_candle"],
-      "conditions": [{"type": "flag_equals", "flag": "lit", "value": 2}],
+      "say": [
+        "red_candle"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "lit",
+          "value": 2
+        }
+      ],
       "effects": [
         {
           "type": "display_message",
@@ -263,8 +498,16 @@
       ]
     },
     {
-      "say": ["red_candle"],
-      "conditions": [{"type": "flag_equals", "flag": "lit", "value": 3}],
+      "say": [
+        "red_candle"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "lit",
+          "value": 3
+        }
+      ],
       "effects": [
         {
           "type": "display_message",
@@ -277,7 +520,9 @@
       ]
     },
     {
-      "say": ["red_candle"],
+      "say": [
+        "red_candle"
+      ],
       "effects": [
         {
           "type": "display_message",
@@ -290,8 +535,16 @@
       ]
     },
     {
-      "say": ["black_candle"],
-      "conditions": [{"type": "flag_equals", "flag": "lit", "value": 3}],
+      "say": [
+        "black_candle"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "lit",
+          "value": 3
+        }
+      ],
       "effects": [
         {
           "type": "display_message",
@@ -304,7 +557,9 @@
       ]
     },
     {
-      "say": ["black_candle"],
+      "say": [
+        "black_candle"
+      ],
       "effects": [
         {
           "type": "display_message",
@@ -317,8 +572,16 @@
       ]
     },
     {
-      "say": ["candle_box"],
-      "conditions": [{"type": "flag_equals", "flag": "box_open", "value": false}],
+      "say": [
+        "candle_box"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "box_open",
+          "value": false
+        }
+      ],
       "effects": [
         {
           "type": "display_message",
@@ -331,7 +594,9 @@
       ]
     },
     {
-      "say": ["candle_box"],
+      "say": [
+        "candle_box"
+      ],
       "effects": [
         {
           "type": "display_message",
@@ -344,10 +609,23 @@
       ]
     },
     {
-      "say": ["open", "candle_box"],
-      "conditions": [{"type": "flag_equals", "flag": "box_open", "value": false}],
+      "say": [
+        "open",
+        "candle_box"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "box_open",
+          "value": false
+        }
+      ],
       "effects": [
-        {"type": "set_flag", "flag": "box_open", "value": true},
+        {
+          "type": "set_flag",
+          "flag": "box_open",
+          "value": true
+        },
         {
           "type": "display_message",
           "text": {
@@ -356,11 +634,17 @@
             "es": "La tapa de lata cruje al abrirse. Dentro hay una larga mecha de cera.\n¡Encontraste una mecha de cera!"
           }
         },
-        {"type": "add_item", "item": "taper"}
+        {
+          "type": "add_item",
+          "item": "taper"
+        }
       ]
     },
     {
-      "say": ["open", "candle_box"],
+      "say": [
+        "open",
+        "candle_box"
+      ],
       "effects": [
         {
           "type": "display_message",
@@ -373,7 +657,9 @@
       ]
     },
     {
-      "say": ["lamp"],
+      "say": [
+        "lamp"
+      ],
       "effects": [
         {
           "type": "display_message",
@@ -386,10 +672,23 @@
       ]
     },
     {
-      "say": ["taper", "lamp"],
-      "conditions": [{"type": "flag_equals", "flag": "taper_lit", "value": false}],
+      "say": [
+        "taper",
+        "lamp"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "taper_lit",
+          "value": false
+        }
+      ],
       "effects": [
-        {"type": "set_flag", "flag": "taper_lit", "value": true},
+        {
+          "type": "set_flag",
+          "flag": "taper_lit",
+          "value": true
+        },
         {
           "type": "display_message",
           "text": {
@@ -401,7 +700,10 @@
       ]
     },
     {
-      "say": ["taper", "lamp"],
+      "say": [
+        "taper",
+        "lamp"
+      ],
       "effects": [
         {
           "type": "display_message",
@@ -414,7 +716,9 @@
       ]
     },
     {
-      "say": ["lectern"],
+      "say": [
+        "lectern"
+      ],
       "effects": [
         {
           "type": "display_message",
@@ -427,7 +731,9 @@
       ]
     },
     {
-      "say": ["hymnal"],
+      "say": [
+        "hymnal"
+      ],
       "effects": [
         {
           "type": "display_message",
@@ -437,12 +743,23 @@
             "es": "Una cinta marca la página. Un verso está subrayado con tinta:\n\"Primero el alba, luego la sangre, luego la noche.\""
           }
         },
-        {"type": "add_item", "item": "hymnal_note"}
+        {
+          "type": "add_item",
+          "item": "hymnal_note"
+        }
       ]
     },
     {
-      "say": ["confessional"],
-      "conditions": [{"type": "flag_equals", "flag": "panel_open", "value": false}],
+      "say": [
+        "confessional"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "panel_open",
+          "value": false
+        }
+      ],
       "effects": [
         {
           "type": "display_message",
@@ -455,7 +772,9 @@
       ]
     },
     {
-      "say": ["confessional"],
+      "say": [
+        "confessional"
+      ],
       "effects": [
         {
           "type": "display_message",
@@ -468,8 +787,17 @@
       ]
     },
     {
-      "say": ["open", "confessional"],
-      "conditions": [{"type": "flag_equals", "flag": "panel_open", "value": false}],
+      "say": [
+        "open",
+        "confessional"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "panel_open",
+          "value": false
+        }
+      ],
       "effects": [
         {
           "type": "display_message",
@@ -482,7 +810,10 @@
       ]
     },
     {
-      "say": ["open", "confessional"],
+      "say": [
+        "open",
+        "confessional"
+      ],
       "effects": [
         {
           "type": "display_message",
@@ -492,12 +823,24 @@
             "es": "Apartas el panel suelto. Detrás del confesionario,\nuna escalera de caracol sube hacia la torre."
           }
         },
-        {"type": "change_room", "room": "clocktower"}
+        {
+          "type": "change_room",
+          "room": "clocktower"
+        }
       ]
     },
     {
-      "say": ["taper", "white_candle"],
-      "conditions": [{"type": "flag_equals", "flag": "panel_open", "value": true}],
+      "say": [
+        "taper",
+        "white_candle"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "panel_open",
+          "value": true
+        }
+      ],
       "effects": [
         {
           "type": "display_message",
@@ -510,8 +853,17 @@
       ]
     },
     {
-      "say": ["taper", "red_candle"],
-      "conditions": [{"type": "flag_equals", "flag": "panel_open", "value": true}],
+      "say": [
+        "taper",
+        "red_candle"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "panel_open",
+          "value": true
+        }
+      ],
       "effects": [
         {
           "type": "display_message",
@@ -524,8 +876,17 @@
       ]
     },
     {
-      "say": ["taper", "black_candle"],
-      "conditions": [{"type": "flag_equals", "flag": "panel_open", "value": true}],
+      "say": [
+        "taper",
+        "black_candle"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "panel_open",
+          "value": true
+        }
+      ],
       "effects": [
         {
           "type": "display_message",
@@ -538,8 +899,17 @@
       ]
     },
     {
-      "say": ["taper", "white_candle"],
-      "conditions": [{"type": "flag_equals", "flag": "taper_lit", "value": false}],
+      "say": [
+        "taper",
+        "white_candle"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "taper_lit",
+          "value": false
+        }
+      ],
       "effects": [
         {
           "type": "display_message",
@@ -552,8 +922,17 @@
       ]
     },
     {
-      "say": ["taper", "red_candle"],
-      "conditions": [{"type": "flag_equals", "flag": "taper_lit", "value": false}],
+      "say": [
+        "taper",
+        "red_candle"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "taper_lit",
+          "value": false
+        }
+      ],
       "effects": [
         {
           "type": "display_message",
@@ -566,8 +945,17 @@
       ]
     },
     {
-      "say": ["taper", "black_candle"],
-      "conditions": [{"type": "flag_equals", "flag": "taper_lit", "value": false}],
+      "say": [
+        "taper",
+        "black_candle"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "taper_lit",
+          "value": false
+        }
+      ],
       "effects": [
         {
           "type": "display_message",
@@ -580,47 +968,67 @@
       ]
     },
     {
-      "say": ["taper", "white_candle"],
+      "say": [
+        "taper",
+        "white_candle"
+      ],
       "effects": [
         {
           "type": "display_message",
           "text": {
-            "en-US": "The wick won't take a lone flame.\nThe altar wants all three candles, in the hymn's order.",
-            "pt-BR": "O pavio não aceita uma chama sozinha.\nO altar quer as três velas, na ordem do hino.",
-            "es": "La mecha no acepta una llama sola.\nEl altar quiere las tres velas, en el orden del himno."
+            "en-US": "The wick won't take a lone flame.\nCarry the taper to all three candles at once, in the hymn's order.",
+            "pt-BR": "O pavio não aceita uma chama sozinha.\nLeve o pavio às três velas de uma vez, na ordem do hino.",
+            "es": "La mecha no acepta una llama sola.\nLleva la mecha a las tres velas a la vez, en el orden del himno."
           }
         }
       ]
     },
     {
-      "say": ["taper", "red_candle"],
+      "say": [
+        "taper",
+        "red_candle"
+      ],
       "effects": [
         {
           "type": "display_message",
           "text": {
-            "en-US": "The wick won't take a lone flame.\nThe altar wants all three candles, in the hymn's order.",
-            "pt-BR": "O pavio não aceita uma chama sozinha.\nO altar quer as três velas, na ordem do hino.",
-            "es": "La mecha no acepta una llama sola.\nEl altar quiere las tres velas, en el orden del himno."
+            "en-US": "The wick won't take a lone flame.\nCarry the taper to all three candles at once, in the hymn's order.",
+            "pt-BR": "O pavio não aceita uma chama sozinha.\nLeve o pavio às três velas de uma vez, na ordem do hino.",
+            "es": "La mecha no acepta una llama sola.\nLleva la mecha a las tres velas a la vez, en el orden del himno."
           }
         }
       ]
     },
     {
-      "say": ["taper", "black_candle"],
+      "say": [
+        "taper",
+        "black_candle"
+      ],
       "effects": [
         {
           "type": "display_message",
           "text": {
-            "en-US": "The wick won't take a lone flame.\nThe altar wants all three candles, in the hymn's order.",
-            "pt-BR": "O pavio não aceita uma chama sozinha.\nO altar quer as três velas, na ordem do hino.",
-            "es": "La mecha no acepta una llama sola.\nEl altar quiere las tres velas, en el orden del himno."
+            "en-US": "The wick won't take a lone flame.\nCarry the taper to all three candles at once, in the hymn's order.",
+            "pt-BR": "O pavio não aceita uma chama sozinha.\nLeve o pavio às três velas de uma vez, na ordem do hino.",
+            "es": "La mecha no acepta una llama sola.\nLleva la mecha a las tres velas a la vez, en el orden del himno."
           }
         }
       ]
     },
     {
-      "say": ["white_candle", "red_candle", "black_candle", "altar"],
-      "conditions": [{"type": "flag_equals", "flag": "panel_open", "value": true}],
+      "say": [
+        "white_candle",
+        "red_candle",
+        "black_candle",
+        "altar"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "panel_open",
+          "value": true
+        }
+      ],
       "effects": [
         {
           "type": "display_message",
@@ -633,11 +1041,203 @@
       ]
     },
     {
-      "say": ["white_candle", "red_candle", "black_candle", "altar"],
-      "conditions": [{"type": "flag_equals", "flag": "taper_lit", "value": true}],
+      "say": [
+        "white_candle",
+        "red_candle",
+        "black_candle",
+        "altar"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "taper_lit",
+          "value": true
+        }
+      ],
       "effects": [
-        {"type": "set_flag", "flag": "lit", "value": 3},
-        {"type": "set_flag", "flag": "panel_open", "value": true},
+        {
+          "type": "set_flag",
+          "flag": "lit",
+          "value": 3
+        },
+        {
+          "type": "set_flag",
+          "flag": "panel_open",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You touch the taper to the white candle, then the red, then the black.\nAll three burn. Behind you, wood gives with a dry click.",
+            "pt-BR": "Você encosta o pavio na vela branca, depois na vermelha, depois na preta.\nAs três ardem. Atrás de você, a madeira cede com um estalo seco.",
+            "es": "Acercas la mecha a la vela blanca, luego a la roja, luego a la negra.\nLas tres arden. Detrás de ti, la madera cede con un chasquido seco."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "taper",
+        "white_candle",
+        "red_candle",
+        "black_candle"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "panel_open",
+          "value": true
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "All three candles already burn. Better leave them be.",
+            "pt-BR": "As três velas já ardem. Melhor deixá-las assim.",
+            "es": "Las tres velas ya arden. Mejor dejarlas así."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "taper",
+        "white_candle",
+        "red_candle",
+        "black_candle"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "taper_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The taper isn't lit.",
+            "pt-BR": "O pavio não está aceso.",
+            "es": "La mecha no está encendida."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "taper",
+        "white_candle",
+        "red_candle",
+        "black_candle"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "taper_lit",
+          "value": true
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "lit",
+          "value": 3
+        },
+        {
+          "type": "set_flag",
+          "flag": "panel_open",
+          "value": true
+        },
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "You touch the taper to the white candle, then the red, then the black.\nAll three burn. Behind you, wood gives with a dry click.",
+            "pt-BR": "Você encosta o pavio na vela branca, depois na vermelha, depois na preta.\nAs três ardem. Atrás de você, a madeira cede com um estalo seco.",
+            "es": "Acercas la mecha a la vela blanca, luego a la roja, luego a la negra.\nLas tres arden. Detrás de ti, la madera cede con un chasquido seco."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "taper",
+        "white_candle",
+        "red_candle",
+        "black_candle",
+        "altar"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "panel_open",
+          "value": true
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "All three candles already burn. Better leave them be.",
+            "pt-BR": "As três velas já ardem. Melhor deixá-las assim.",
+            "es": "Las tres velas ya arden. Mejor dejarlas así."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "taper",
+        "white_candle",
+        "red_candle",
+        "black_candle",
+        "altar"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "taper_lit",
+          "value": false
+        }
+      ],
+      "effects": [
+        {
+          "type": "display_message",
+          "text": {
+            "en-US": "The taper isn't lit.",
+            "pt-BR": "O pavio não está aceso.",
+            "es": "La mecha no está encendida."
+          }
+        }
+      ]
+    },
+    {
+      "say": [
+        "taper",
+        "white_candle",
+        "red_candle",
+        "black_candle",
+        "altar"
+      ],
+      "conditions": [
+        {
+          "type": "flag_equals",
+          "flag": "taper_lit",
+          "value": true
+        }
+      ],
+      "effects": [
+        {
+          "type": "set_flag",
+          "flag": "lit",
+          "value": 3
+        },
+        {
+          "type": "set_flag",
+          "flag": "panel_open",
+          "value": true
+        },
         {
           "type": "display_message",
           "text": {
@@ -656,7 +1256,13 @@
         "pt-BR": "As velas do altar estão frias. Qualquer chama aqui precisa ser levada até elas.",
         "es": "Las velas del altar están frías. Cualquier llama de aquí tiene que llevarse hasta ellas."
       },
-      "skipIf": [{"type": "flag_equals", "flag": "taper_lit", "value": true}]
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "taper_lit",
+          "value": true
+        }
+      ]
     },
     {
       "text": {
@@ -664,7 +1270,13 @@
         "pt-BR": "Velas tão altas não se acendem com a mão. Veja o que está ao lado delas no altar.",
         "es": "Velas tan altas no se encienden con la mano. Mira lo que hay junto a ellas en el altar."
       },
-      "skipIf": [{"type": "flag_equals", "flag": "box_open", "value": true}]
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "box_open",
+          "value": true
+        }
+      ]
     },
     {
       "text": {
@@ -672,7 +1284,13 @@
         "pt-BR": "Só uma chama nesta capela nunca pôde se apagar. Ela pende de uma corrente.",
         "es": "Solo una llama de esta capilla nunca ha podido apagarse. Cuelga de una cadena."
       },
-      "skipIf": [{"type": "flag_equals", "flag": "taper_lit", "value": true}]
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "taper_lit",
+          "value": true
+        }
+      ]
     },
     {
       "text": {
@@ -680,15 +1298,27 @@
         "pt-BR": "As velas pedem uma ordem. O livro no atril canta uma.",
         "es": "Las velas piden un orden. El libro del atril canta uno."
       },
-      "skipIf": [{"type": "flag_equals", "flag": "panel_open", "value": true}]
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "panel_open",
+          "value": true
+        }
+      ]
     },
     {
       "text": {
-        "en-US": "Each word of the verse is a color on the altar. Name all three at the altar, in the hymn's order.",
-        "pt-BR": "Cada palavra do verso é uma cor no altar. Diga as três ao altar, na ordem do hino.",
-        "es": "Cada palabra del verso es un color del altar. Nombra los tres ante el altar, en el orden del himno."
+        "en-US": "Each word of the verse is a color on the altar. Carry the flame to all three at once, in the hymn's order.",
+        "pt-BR": "Cada palavra do verso é uma cor no altar. Leve a chama às três de uma vez, na ordem do hino.",
+        "es": "Cada palabra del verso es un color del altar. Lleva la llama a las tres a la vez, en el orden del himno."
       },
-      "skipIf": [{"type": "flag_equals", "flag": "panel_open", "value": true}]
+      "skipIf": [
+        {
+          "type": "flag_equals",
+          "flag": "panel_open",
+          "value": true
+        }
+      ]
     }
   ]
 }

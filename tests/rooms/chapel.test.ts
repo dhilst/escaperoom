@@ -56,7 +56,7 @@ describe("The Chapel", () => {
 
   it("one candle at a time no longer works", () => {
     const { state, last } = run([...READY, "taper white candle"]);
-    expect(texts(last)).toEqual(["The wick won't take a lone flame.\nThe altar wants all three candles, in the hymn's order."]);
+    expect(texts(last)).toEqual(["The wick won't take a lone flame.\nCarry the taper to all three candles at once, in the hymn's order."]);
     expect(state.flags.lit).toBe(0);
   });
 
@@ -66,6 +66,20 @@ describe("The Chapel", () => {
     expect(state.flags).toMatchObject({ lit: 3, panel_open: true });
     // the full names work too
     expect(run([...READY, "white candle red candle black candle altar"]).state.flags.panel_open).toBe(true);
+  });
+
+  it("or carrying the taper to the three candles, with or without the altar", () => {
+    for (const line of ["taper white red black", "taper white red black altar"]) {
+      const { state, last } = run([...READY, line]);
+      expect(texts(last)[0], line).toMatch(/^You touch the taper to the white candle, then the red, then the black/);
+      expect(state.flags, line).toMatchObject({ lit: 3, panel_open: true });
+    }
+    for (const line of ["taper red white black", "taper white red", "taper black red white altar"]) {
+      expect(run([...READY, line]).state.flags.panel_open, line).toBe(false);
+    }
+    expect(texts(run(["open candle box", "taper white red black"]).last)).toEqual(["The taper isn't lit."]);
+    const again = run([...READY, "taper white red black", "taper white red black"]);
+    expect(texts(again.last)).toEqual(["All three candles already burn. Better leave them be."]);
   });
 
   it("any other order, a missing word, or no flame does nothing", () => {

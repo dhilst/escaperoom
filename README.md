@@ -113,8 +113,8 @@ longer phrases protect the later puzzles.
 The game uses this as a difficulty curve. Early rooms are solved with
 two-word phrases. Later, a room's final unlock is a longer phrase built
 from everything you learned there. The nursery's lock wants its pictures
-pressed in the mural's order and then the code (five words). The chapel's
-altar wants the three candles named in the hymn's order (four words). The
+pressed in the mural's order and then the code (five words). In the chapel,
+the lit taper is carried to the three candles in the hymn's order (four words). The
 front door wants its three keys in the order carved above it (four words).
 Doing the parts one at a time doesn't work in those rooms.
 
